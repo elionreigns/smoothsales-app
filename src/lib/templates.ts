@@ -14,7 +14,9 @@ export type TemplateId =
   | "elion-producers"
   | "elion-venue-church"
   | "elion-venue-show"
-  | "elion-venue-dj";
+  | "elion-venue-dj"
+  | "wedding-couples"
+  | "wedding-contractors";
 
 export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "botox", label: "Botox Oahu – Price sheet & specials" },
@@ -30,9 +32,11 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-venue-church", label: "E Lion Music – Venue: Church" },
   { value: "elion-venue-show", label: "E Lion Music – Venue: Show / festival" },
   { value: "elion-venue-dj", label: "E Lion Music – Venue: DJ E Lion" },
+  { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples planning a wedding" },
+  { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors / vendors (submit to be featured)" },
 ];
 
-const CONTACT_LINE_HTML = `<p style="margin-top:12px;color:#555;font-size:13px;">Reach us at <a href="mailto:coralcrowntechnologies@gmail.com">coralcrowntechnologies@gmail.com</a> or (808) 393-0153 for any of these services.</p>`;
+const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.9;">Reach us at <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> or (808) 393-0153 for any of these services.</p>`;
 const CONTACT_LINE_TEXT = `\n\nReach us at coralcrowntechnologies@gmail.com or (808) 393-0153 for any of these services.`;
 
 export function getTemplate(id: TemplateId): { subject: string; html: string; text: string } {
@@ -72,7 +76,8 @@ export type ServiceSelection =
   | "tech"
   | "prayer"
   | "tourism"
-  | "elion";
+  | "elion"
+  | "wedding";
 export type TourismSub = "" | "hawaii" | "usa";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
@@ -86,6 +91,7 @@ export type ElionSub =
   | "venue-church"
   | "venue-show"
   | "venue-dj";
+export type WeddingSub = "" | "couples" | "contractors";
 
 const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   fans: "elion-fans",
@@ -97,6 +103,11 @@ const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   "venue-dj": "elion-venue-dj",
 };
 
+const WEDDING_TEMPLATE_MAP: Record<Exclude<WeddingSub, "">, TemplateId> = {
+  couples: "wedding-couples",
+  contractors: "wedding-contractors",
+};
+
 /**
  * Returns only the template options that match the current service (and sub-option).
  */
@@ -106,7 +117,8 @@ export function getTemplatesForSelection(
   prayerSub: PrayerSub,
   botoxSub: BotoxSub,
   techSub: TechSub,
-  elionSub: ElionSub
+  elionSub: ElionSub,
+  weddingSub: WeddingSub
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return TEMPLATE_OPTIONS.filter((o) => o.value === "botox");
@@ -130,6 +142,10 @@ export function getTemplatesForSelection(
     const id = ELION_TEMPLATE_MAP[elionSub];
     return TEMPLATE_OPTIONS.filter((o) => o.value === id);
   }
+  if (service === "wedding" && weddingSub !== "") {
+    const id = WEDDING_TEMPLATE_MAP[weddingSub];
+    return TEMPLATE_OPTIONS.filter((o) => o.value === id);
+  }
   return [];
 }
 
@@ -140,7 +156,8 @@ export function hasRequiredSelection(
   prayerSub: PrayerSub,
   botoxSub: BotoxSub,
   techSub: TechSub,
-  elionSub: ElionSub
+  elionSub: ElionSub,
+  weddingSub: WeddingSub
 ): boolean {
   if (!service) return false;
   if (service === "prayer") return prayerSub !== "";
@@ -148,6 +165,7 @@ export function hasRequiredSelection(
   if (service === "botox") return botoxSub !== "";
   if (service === "tech") return techSub !== "";
   if (service === "elion") return elionSub !== "";
+  if (service === "wedding") return weddingSub !== "";
   return false;
 }
 
@@ -163,37 +181,45 @@ Why patients choose us: Dr. Kathryn Schaefer, MD brings over 25 years of experie
 Getting you scheduled: 850 W Hind Dr, Suite 109, Honolulu. Mon, Tue, Thu, Fri 8am–5pm. Visit BotoxOahu.com or call/text (808) 261-1121 – we will get you on the books.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#f0fdfa;border:1px solid #0d9488;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(13,148,136,0.18),0 4px 12px rgba(0,0,0,0.06);">
-<div style="background:linear-gradient(145deg,#0d9488 0%,#0f766e 40%,#115e59 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #14b8a6;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
-<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Botox Oahu</p>
-<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">You deserve clear pricing and physician-led care</h1>
-<p style="margin:14px 0 0;font-size:15px;opacity:0.95;line-height:1.45;">Same-day availability, transparent prices, and a team that treats you like family.</p>
+    html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:linear-gradient(180deg,#f0fdfa 0%,#ecfeff 100%);border:1px solid rgba(13,148,136,0.15);border-radius:24px;overflow:hidden;box-shadow:0 24px 48px -12px rgba(13,148,136,0.12),0 12px 24px -8px rgba(0,0,0,0.06);">
+<div style="background:linear-gradient(155deg,#0d9488 0%,#0f766e 35%,#115e59 100%);color:#fff;padding:40px 32px;border-bottom:4px solid rgba(255,255,255,0.25);text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.15);text-shadow:0 1px 3px rgba(0,0,0,0.2);">
+<p style="margin:0 0 10px;font-size:13px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;opacity:0.95;">Botox Oahu</p>
+<h1 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;">You deserve clear pricing and physician-led care</h1>
+<p style="margin:18px 0 0;font-size:15px;opacity:0.95;line-height:1.5;">Same-day availability, transparent prices, and a team that treats you like family.</p>
 </div>
-<div style="padding:32px 28px;color:#134e4a;text-align:center;">
-<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0f766e;text-transform:uppercase;">Hello</p>
-<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #99f6e4;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">Come in for a visit. Whether it is Botox, fillers, weight loss, or any of our services, we have made it easy to look and feel your best – no guesswork on cost, no long waits. Most people need 25–40 units for forehead, frown lines, and crow's feet; at <strong style="color:#0d9488;">$11.11/unit</strong> that is about $278–$444. We also offer a <strong>90-unit package for $1000</strong>. You can choose Dr. Schaefer (MD) or our nurse injectors and save $1 per unit; same quality, fresh product drawn in front of you.</p>
-<div style="background:#fff;border:2px solid #5eead4;border-radius:14px;padding:24px 24px;margin:28px 0;box-shadow:0 4px 16px rgba(13,148,136,0.12),inset 0 1px 0 rgba(255,255,255,0.8);">
-<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0f766e;text-transform:uppercase;">Price snapshot</p>
-<p style="margin:0;font-size:13px;line-height:1.65;color:#134e4a;"><strong>Botox</strong> $11.11/unit · 90-unit pkg $1000 · <strong>Daxxify</strong> 4–6 months · <strong>Fillers</strong> from $450 · Buy 2 Get 1 Free · <strong>Weight loss</strong> GLP-1 from $100/week · <strong>EM Slim Neo</strong> 4 sessions $1000 · <strong>Stem cells</strong> from $850 · <strong>NAD+/B12</strong> $100 or 4 for $300 · Pico 3 for $900 · Tattoo removal buy 3, 4th free.</p>
+<div style="padding:36px 32px;color:#134e4a;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.18em;color:#0f766e;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 26px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid rgba(13,148,136,0.2);padding-bottom:18px;">Hi {{Name}},</p>
+<p style="margin:0 0 28px;font-size:15px;line-height:1.75;">Come in for a visit. Whether it is Botox, fillers, weight loss, or any of our services, we have made it easy to look and feel your best – no guesswork on cost, no long waits. Most people need 25–40 units for forehead, frown lines, and crow's feet; at <strong style="color:#0d9488;">$11.11/unit</strong> that is about $278–$444. We also offer a <strong>90-unit package for $1000</strong>. You can choose Dr. Schaefer (MD) or our nurse injectors and save $1 per unit; same quality, fresh product drawn in front of you.</p>
+<div style="background:#fff;border:1px solid rgba(13,148,136,0.2);border-radius:18px;padding:26px 26px;margin:30px 0;box-shadow:0 4px 24px rgba(13,148,136,0.08),inset 0 1px 0 rgba(255,255,255,0.9);">
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.18em;color:#0f766e;text-transform:uppercase;">Price snapshot</p>
+<p style="margin:0;font-size:13px;line-height:1.7;color:#134e4a;"><strong>Botox</strong> $11.11/unit · 90-unit pkg $1000 · <strong>Daxxify</strong> 4–6 months · <strong>Fillers</strong> from $450 · Buy 2 Get 1 Free · <strong>Weight loss</strong> GLP-1 from $100/week · <strong>EM Slim Neo</strong> 4 sessions $1000 · <strong>Stem cells</strong> from $850 · <strong>NAD+/B12</strong> $100 or 4 for $300 · Pico 3 for $900 · Tattoo removal buy 3, 4th free.</p>
 </div>
-<p style="margin:30px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0f766e;text-transform:uppercase;">Why patients choose us</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Dr. Kathryn Schaefer, MD brings over <strong>25 years</strong> of experience and a commitment to <strong>natural-looking results</strong>. You get personal care: under-15-minute visits, free parking at Aina Haina, and a complimentary 2-week touch-up on injectables. We also offer a free online cost calculator so you can plan your visit with confidence. Same-day and next-day appointments are often available.</p>
-<ul style="margin:0 auto 28px;padding-left:22px;font-size:14px;line-height:1.8;display:table;text-align:left;">
-<li style="margin-bottom:10px;"><strong>Botox & Daxxify:</strong> $11.11/unit; 90-unit pkg $1000; nurse option saves $1/unit; Daxxify lasts 4–6 months</li>
-<li style="margin-bottom:10px;"><strong>Dermal fillers:</strong> Juvéderm Volbella, Vollure, Voluma, Versa from $450; Buy 2 Get 1 Free; lips, cheeks, smile lines</li>
-<li style="margin-bottom:10px;"><strong>Migraine:</strong> Botox for chronic migraines (15+ headache days); insurance-friendly; PREEMPT protocol</li>
-<li style="margin-bottom:10px;"><strong>Weight loss:</strong> Physician-monitored GLP-1 from $100/week</li>
-<li style="margin-bottom:10px;"><strong>Body & wellness:</strong> EM Slim Neo 4 sessions $1000; LipoHIFU; NAD+ and B12</li>
-<li style="margin-bottom:10px;"><strong>Skin & laser:</strong> RF microneedling, CO2 laser, Pico 3 for $900, tattoo removal buy 3 get 4th free</li>
+<p style="margin:32px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.18em;color:#0f766e;text-transform:uppercase;">Why patients choose us</p>
+<p style="margin:0 0 20px;font-size:14px;line-height:1.75;">Dr. Kathryn Schaefer, MD brings over <strong>25 years</strong> of experience and a commitment to <strong>natural-looking results</strong>. You get personal care: under-15-minute visits, free parking at Aina Haina, and a complimentary 2-week touch-up on injectables. We also offer a free online cost calculator so you can plan your visit with confidence. Same-day and next-day appointments are often available.</p>
+<ul style="margin:0 auto 30px;padding-left:24px;font-size:14px;line-height:1.85;display:table;text-align:left;">
+<li style="margin-bottom:12px;"><strong>Botox & Daxxify:</strong> $11.11/unit; 90-unit pkg $1000; nurse option saves $1/unit; Daxxify lasts 4–6 months</li>
+<li style="margin-bottom:12px;"><strong>Dermal fillers:</strong> Juvéderm Volbella, Vollure, Voluma, Versa from $450; Buy 2 Get 1 Free; lips, cheeks, smile lines</li>
+<li style="margin-bottom:12px;"><strong>Migraine:</strong> Botox for chronic migraines (15+ headache days); insurance-friendly; PREEMPT protocol</li>
+<li style="margin-bottom:12px;"><strong>Weight loss:</strong> Physician-monitored GLP-1 from $100/week</li>
+<li style="margin-bottom:12px;"><strong>Body & wellness:</strong> EM Slim Neo 4 sessions $1000; LipoHIFU; NAD+ and B12</li>
+<li style="margin-bottom:12px;"><strong>Skin & laser:</strong> RF microneedling, CO2 laser, Pico 3 for $900, tattoo removal buy 3 get 4th free</li>
 <li style="margin-bottom:0;"><strong>Regenerative:</strong> Wharton's Jelly stem cells from $850; Latisse, laser hair removal, mole removal; Nitronox available</li>
 </ul>
-<div style="background:linear-gradient(145deg,#ccfbf1 0%,#99f6e4 100%);border:2px solid #0d9488;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(13,148,136,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#134e4a;line-height:1.55;"><strong>Getting you scheduled:</strong> We're at 850 W Hind Dr, Suite 109, Honolulu (Aina Haina) with free parking. Open Mon, Tue, Thu, Fri 8am–5pm. Same-day and next-day appointments are often available – book online anytime or call/text to lock in your slot. We'll confirm and send a reminder. First-time visitors get the same transparent pricing and quick check-in.</p>
-<p style="margin:0 0 10px;"><a href="https://www.botoxoahu.com" style="display:inline-block;background:linear-gradient(145deg,#0d9488 0%,#0f766e 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(13,148,136,0.4);">BotoxOahu.com</a> <span style="color:#134e4a;font-weight:600;margin-left:12px;">or (808) 261-1121</span></p>
+<p style="margin:30px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.18em;color:#0f766e;text-transform:uppercase;">What patients say</p>
+<div style="background:#fff;border:1px solid rgba(13,148,136,0.15);border-radius:18px;padding:24px 26px;margin:0 auto 30px;max-width:520px;box-shadow:0 4px 20px rgba(13,148,136,0.06),inset 0 1px 0 rgba(255,255,255,0.9);">
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#134e4a;font-style:italic;">"Dr. Schaefer drew the Botox from the bottle right in front of me. She marked every area and talked me through the whole process – the results were excellent." <strong style="font-style:normal;color:#0f766e;">– Michelle R.</strong></p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#134e4a;font-style:italic;">"Coming from Beverly Hills, she's equivalent to the doctors there but with much more reasonable prices. I'm 100% satisfied." <strong style="font-style:normal;color:#0f766e;">– Jennifer K.</strong></p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#134e4a;font-style:italic;">"You can tell the difference when Botox isn't over-diluted. My results lasted longer and looked more natural than other clinics I've tried." <strong style="font-style:normal;color:#0f766e;">– Lisa T.</strong></p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#134e4a;font-style:italic;">"Perfect injection placement and no prolonged bee-sting bumps like I've had elsewhere. I would go to her for Botox or fillers in a heartbeat." <strong style="font-style:normal;color:#0f766e;">– Amanda S.</strong></p>
+<p style="margin:0;font-size:14px;line-height:1.7;color:#134e4a;font-style:italic;">"I love that she never oversells anything – she only recommends what you truly need, and the results speak for themselves." <strong style="font-style:normal;color:#0f766e;">– Sarah M.</strong></p>
+</div>
+<div style="background:linear-gradient(155deg,#ccfbf1 0%,#99f6e4 100%);border:1px solid rgba(13,148,136,0.25);border-radius:18px;padding:28px 28px;margin:30px 0;box-shadow:0 8px 28px -4px rgba(13,148,136,0.18),inset 0 1px 0 rgba(255,255,255,0.6);">
+<p style="margin:0 0 16px;font-size:15px;color:#134e4a;line-height:1.6;"><strong>Getting you scheduled:</strong> We're at 850 W Hind Dr, Suite 109, Honolulu (Aina Haina) with free parking. Open Mon, Tue, Thu, Fri 8am–5pm. Same-day and next-day appointments are often available – book online anytime or call/text to lock in your slot. We'll confirm and send a reminder. First-time visitors get the same transparent pricing and quick check-in.</p>
+<p style="margin:0 0 12px;"><a href="https://www.botoxoahu.com" style="display:inline-block;background:linear-gradient(155deg,#0d9488 0%,#0f766e 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(13,148,136,0.45);letter-spacing:0.02em;">BotoxOahu.com</a> <span style="color:#134e4a;font-weight:600;margin-left:14px;">or (808) 261-1121</span></p>
 <p style="margin:0;font-size:13px;color:#0f766e;font-style:italic;">P.S. Complimentary 2-week touch-up on injectables – we want you loving your results.</p>
 </div>
-<div style="margin-top:28px;padding-top:24px;border-top:2px solid #99f6e4;"><img src="{{BASE_URL}}/promo/botoxcard.png" alt="Botox Oahu" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /></div>
+<div style="margin-top:32px;padding-top:28px;border-top:2px solid rgba(13,148,136,0.15);"><img src="{{BASE_URL}}/promo/botoxcard.png" alt="Botox Oahu" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },
@@ -212,7 +238,7 @@ What we offer:
 Inquire: sales@coralcrownsolutions.com | CoralCrownSolutions.com
 
 Coral Crown Solutions`,
-    html: `<div style="font-family:'Segoe UI',system-ui,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:1px solid #1e293b;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(30,41,59,0.22),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:'Segoe UI',system-ui,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:1px solid #1e293b;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(30,41,59,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#1e293b 0%,#334155 45%,#475569 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #3b82f6;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Coral Crown Solutions</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Unlock your digital kingdom</h1>
@@ -231,7 +257,7 @@ Coral Crown Solutions`,
 </ul>
 <p style="margin:26px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1e40af;text-transform:uppercase;">Why choose us</p>
 <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Custom solutions from scratch – no bloated themes. One partner from initial code to marketing. Proven results across e-commerce, games, and platforms. We handle domain setup, SSL, and ongoing updates so you can focus on your business.</p>
-<div style="background:#eff6ff;border:2px solid #3b82f6;border-radius:14px;padding:20px 22px;margin:22px 0;box-shadow:0 4px 14px rgba(59,130,246,0.12);">
+<div style="background:#eff6ff;border:2px solid #3b82f6;border-radius:18px;padding:20px 22px;margin:22px 0;box-shadow:0 4px 14px rgba(59,130,246,0.12);">
 <p style="margin:0 0 10px;font-size:13px;color:#1e3a8a;font-style:italic;">"They updated my Shopify website, helped with graphics, and made it easy to implement AI in my business!"</p>
 <p style="margin:0;font-size:13px;color:#1e3a8a;font-style:italic;">"Coral Crown took my business to the next level with the best SEO and site upgrades. I recommend!"</p>
 </div>
@@ -243,12 +269,12 @@ Coral Crown Solutions`,
 <li style="margin-bottom:0;"><strong>For creatives:</strong> Music players, Spotify/Apple Music distribution, custom CDs & USBs, photography & video</li>
 </ul>
 <p style="margin:0 0 26px;font-size:14px;line-height:1.5;"><strong>Hosting:</strong> $5/mo hosting only; $20/mo hosting + maintenance with free SSL. Unlimited WHM, 99.9% uptime.</p>
-<div style="background:linear-gradient(145deg,#dbeafe 0%,#e0f2fe 100%);border:2px solid #0ea5e9;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(14,165,233,0.2);">
+<div style="background:linear-gradient(145deg,#dbeafe 0%,#e0f2fe 100%);border:2px solid #0ea5e9;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(14,165,233,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#0c4a6e;line-height:1.55;"><strong>Next step:</strong> Reply to this email or visit the site below. Tell us your goals and timeline – we'll put together a plan and quote that fits your budget. No obligation, no long-term contract. We typically respond within 24 hours and can schedule a short call to walk through options.</p>
-<p style="margin:0 0 10px;"><a href="https://www.coralcrownsolutions.com" style="display:inline-block;background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(37,99,235,0.4);">CoralCrownSolutions.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.coralcrownsolutions.com" style="display:inline-block;background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(37,99,235,0.4);">CoralCrownSolutions.com</a></p>
 <p style="margin:0;font-size:13px;color:#1e40af;font-style:italic;">P.S. From custom code to AI chatbots – one partner from launch to growth.</p>
 </div>
-<div style="margin-top:28px;padding-top:24px;border-top:2px solid #cbd5e1;"><img src="{{BASE_URL}}/promo/coralcrownfront.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /><img src="{{BASE_URL}}/promo/coralcrownback.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /></div>
+<div style="margin-top:28px;padding-top:24px;border-top:2px solid #cbd5e1;"><img src="{{BASE_URL}}/promo/coralcrownfront.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/coralcrownback.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },
@@ -265,7 +291,7 @@ Getting you in: Sign up with Google at the link below for instant access. No for
 Join free: https://www.prayerauthority.com
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#fffbeb;border:1px solid #b45309;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(180,83,9,0.2),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#fffbeb;border:1px solid #b45309;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(180,83,9,0.2),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b45309 0%,#92400e 45%,#78350f 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f59e0b;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Free to join</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Join Prayer Authority</h1>
@@ -283,13 +309,13 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <li style="margin-bottom:8px;"><strong>Diamond</strong> (premium) – adds Dreamstone, 12-Counselor, Spousal Translator, Urim & Thummim</li>
 <li style="margin-bottom:0;">Every tool is built to help you grow in prayer and Scripture – no commitment required</li>
 </ul>
-<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #b45309;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(180,83,9,0.2);">
+<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #b45309;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(180,83,9,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#78350f;line-height:1.55;"><strong>Getting you in:</strong> Click the button below to join with Google. You'll land on your dashboard immediately – no extra forms, no follow-up emails required. All member tools are ready the moment you sign in. If you have questions later, our support and community are there for you.</p>
 <p style="margin:0 0 10px;font-size:14px;color:#78350f;">We're here to help you get started. No pressure – just a place where prayer and Scripture come together.</p>
-<p style="margin:0 0 10px;"><a href="https://www.prayerauthority.com" style="display:inline-block;background:linear-gradient(145deg,#b45309 0%,#92400e 100%);color:#fff;padding:14px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(180,83,9,0.4);">Join free – Prayer Authority</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.prayerauthority.com" style="display:inline-block;background:linear-gradient(145deg,#b45309 0%,#92400e 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(180,83,9,0.4);">Join free – Prayer Authority</a></p>
 <p style="margin:0;font-size:13px;color:#92400e;font-style:italic;">P.S. Ruby tier is free forever – no credit card, no trial that expires.</p>
 </div>
-<div style="margin-top:28px;padding-top:24px;border-top:2px solid #fde68a;"><img src="{{BASE_URL}}/promo/prayerauthorityfront.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /><img src="{{BASE_URL}}/promo/prayerauthorityback.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /></div>
+<div style="margin-top:28px;padding-top:24px;border-top:2px solid #fde68a;"><img src="{{BASE_URL}}/promo/prayerauthorityfront.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/prayerauthorityback.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },
@@ -304,7 +330,7 @@ Why churches love it: Free (Ruby) and premium (Diamond) tiers so you can scale. 
 Next step: Get your leadership and key volunteers signed up first, then roll out to your congregation. We're here to help you onboard – just reply or visit PrayerAuthority.com.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#fef9c3;border:1px solid #92400e;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(146,64,14,0.2),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#fef9c3;border:1px solid #92400e;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(146,64,14,0.2),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#92400e 0%,#78350f 45%,#654321 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f59e0b;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">For your church</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Prayer Authority for your church</h1>
@@ -322,12 +348,12 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <li style="margin-bottom:10px;"><strong>No IT needed:</strong> Members join with Google in seconds; we handle the platform</li>
 <li style="margin-bottom:0;"><strong>Support:</strong> We're here to help you onboard – reply to this email or visit the site below</li>
 </ul>
-<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #b45309;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(180,83,9,0.2);">
+<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #b45309;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(180,83,9,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#78350f;line-height:1.55;"><strong>Getting you started:</strong> Reply to this email or click below. Tell us your church name and how many members you'd like to onboard – we'll send a short guide and can schedule a quick call to walk your team through sign-up. No obligation. We typically respond within 24 hours.</p>
-<p style="margin:0 0 10px;"><a href="https://www.prayerauthority.com" style="display:inline-block;background:linear-gradient(145deg,#b45309 0%,#92400e 100%);color:#fff;padding:14px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(180,83,9,0.4);">PrayerAuthority.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.prayerauthority.com" style="display:inline-block;background:linear-gradient(145deg,#b45309 0%,#92400e 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(180,83,9,0.4);">PrayerAuthority.com</a></p>
 <p style="margin:0;font-size:13px;color:#92400e;font-style:italic;">P.S. Ruby is free for your whole congregation – scale when you're ready.</p>
 </div>
-<div style="margin-top:28px;padding-top:24px;border-top:2px solid #fde68a;"><img src="{{BASE_URL}}/promo/prayerauthorityfront.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /><img src="{{BASE_URL}}/promo/prayerauthorityback.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /></div>
+<div style="margin-top:28px;padding-top:24px;border-top:2px solid #fde68a;"><img src="{{BASE_URL}}/promo/prayerauthorityfront.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/prayerauthorityback.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },
@@ -345,7 +371,7 @@ How-to video: https://www.youtube.com/watch?v=StNgZM1DuSg
 Call (808) 393-0153 | https://www.timeforfunhawaii.com
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#dcfce7;border:2px solid #15803d;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(21,128,61,0.22),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#dcfce7;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Time for Fun Hawaii</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Discover the best Hawaii tours with exclusive discounts</h1>
@@ -362,13 +388,13 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <li style="margin-bottom:0;"><strong>No time?</strong> Add tours to your tour bag, send it to us, and we'll call you to help set up your vacation – no webinar required.</li>
 </ol>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;"><strong>Webinar schedule:</strong> Mon–Tue 12:45AM & 2:45PM HST; Wed–Sun 8:45AM, 10:45AM, 12:45PM HST (check-in 15 min before). One attendee 25–71, US/Canadian, $40k+ household income. Couples together; single females welcome. Computer or tablet (no phones).</p>
-<div style="background:linear-gradient(145deg,#ccfbf1 0%,#99f6e4 100%);border:2px solid #15803d;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
+<div style="background:linear-gradient(145deg,#ccfbf1 0%,#99f6e4 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Getting you scheduled:</strong> Call <strong>(808) 393-0153</strong> or register at the link below. Webinar spots fill up – reserve yours and we'll confirm your time or set up a call to build your vacation. Check-in is 15 minutes before your slot; have a computer or tablet ready. First-time attendees get the same exclusive rates.</p>
-<p style="margin:0 0 10px;"><a href="https://www.timeforfunhawaii.com" style="display:inline-block;background:linear-gradient(145deg,#15803d 0%,#166534 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(21,128,61,0.4);">TimeForFunHawaii.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.timeforfunhawaii.com" style="display:inline-block;background:linear-gradient(145deg,#15803d 0%,#166534 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(21,128,61,0.4);">TimeForFunHawaii.com</a></p>
 <p style="margin:0;font-size:14px;"><a href="https://www.youtube.com/watch?v=StNgZM1DuSg" style="color:#166534;font-weight:600;">Watch our how-to video</a> – see how easy it is.</p>
 <p style="margin:10px 0 0;font-size:13px;color:#15803d;font-style:italic;">P.S. No time for the webinar? Add tours to your cart and we'll call you – you can still save.</p>
 </div>
-<div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><img src="{{BASE_URL}}/promo/timeforfunhawaii.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /><img src="{{BASE_URL}}/promo/timeforfunhawaiiback.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /></div>
+<div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><img src="{{BASE_URL}}/promo/timeforfunhawaii.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/timeforfunhawaiiback.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },
@@ -383,7 +409,7 @@ As a thank you for attending our educational webinar (60–75 min), choose ONE o
 https://www.timeforfunusa.com
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#e0f2fe;border:2px solid #0369a1;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(3,105,161,0.22),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#e0f2fe;border:2px solid #0369a1;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(3,105,161,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#0369a1 0%,#0c4a6e 45%,#0e7490 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #0ea5e9;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Time for Fun USA</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Choose 1 of 4 complimentary vacations</h1>
@@ -402,12 +428,12 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <li style="margin-bottom:0;"><strong>Mexico Getaway</strong> (8d/7n) – stunning beaches, tropical paradise</li>
 </ul>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;"><strong>Requirements:</strong> 25+, US or Canadian, $40k+ household income. Couples attend together; single females may attend alone. Desktop, laptop, or tablet with camera and microphone (no phones). Not at work or on lunch break.</p>
-<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #0369a1;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(3,105,161,0.2);">
+<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #0369a1;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(3,105,161,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#0c4a6e;line-height:1.55;"><strong>Getting you scheduled:</strong> Register at the link below – webinar seats are limited. We'll confirm your time and send a reminder. Check-in is 15 minutes before your slot; have a computer or tablet with camera and mic ready. After the 60–75 min presentation you'll choose your complimentary vacation. No obligation.</p>
-<p style="margin:0 0 10px;"><a href="https://www.timeforfunusa.com" style="display:inline-block;background:linear-gradient(145deg,#ea580c 0%,#c2410c 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(234,88,12,0.4);">TimeForFunUSA.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.timeforfunusa.com" style="display:inline-block;background:linear-gradient(145deg,#ea580c 0%,#c2410c 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(234,88,12,0.4);">TimeForFunUSA.com</a></p>
 <p style="margin:0;font-size:13px;color:#0369a1;font-style:italic;">P.S. Valid 18 months – if you never use it, there's no cost. Our thank-you to you.</p>
 </div>
-<div style="margin-top:28px;padding-top:24px;border-top:2px solid #7dd3fc;"><img src="{{BASE_URL}}/promo/timeforfunusa.jpg" alt="Time for Fun USA" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /><img src="{{BASE_URL}}/promo/timeforfunusaback.jpg" alt="Time for Fun USA" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.1);" /></div>
+<div style="margin-top:28px;padding-top:24px;border-top:2px solid #7dd3fc;"><img src="{{BASE_URL}}/promo/timeforfunusa.jpg" alt="Time for Fun USA" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/timeforfunusaback.jpg" alt="Time for Fun USA" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },
@@ -422,7 +448,7 @@ Why E Lion: He's not just another Christian rapper – he's a prophetic voice wi
 Where to start: Pick your platform and hit follow. Full catalog, bio, and more at elionmusic.com – and if you love it, share it with someone who needs the vibe.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#1c1917;border:2px solid #f59e0b;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(245,158,11,0.3),0 4px 12px rgba(0,0,0,0.2);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#1c1917;border:2px solid #f59e0b;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(245,158,11,0.3),0 10px 28px -8px rgba(0,0,0,0.15);">
 <div style="background:linear-gradient(145deg,#f59e0b 0%,#d97706 45%,#b45309 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #fbbf24;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Holy Hip-Hop from Hawaii</h1>
@@ -434,10 +460,16 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">Hit follow and stream E Lion on your favorite platform. He's been making "Hip Hope" – hip-hop that uplifts – for over 15 years, and we'd be honored to have you in the mix.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#fbbf24;text-transform:uppercase;">Why E Lion</p>
 <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">E Lion (Eric Hans Schaefer) isn't just another Christian rapper – he's a prophetic voice with <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, <strong>30K+ CDs sold</strong> hand-to-hand, and <strong>Family Feud grand prize winner</strong> (2016 – first Hawaiian family to win 5 consecutive episodes). His sound blends hip-hop with worship, Hawaiian and Hebrew themes. Albums: Father Nature, Bible Battle Royale, Lightclub, Just Us; author of <strong>P48X</strong> (Philippians 4:8).</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#fbbf24;text-transform:uppercase;">What people say</p>
+<div style="background:#292524;border:2px solid #78716c;border-radius:18px;padding:20px 22px;margin:0 auto 24px;max-width:520px;box-shadow:0 2px 12px rgba(0,0,0,0.3);">
+<p style="margin:0 0 12px;font-size:13px;line-height:1.6;color:#fef3c7;font-style:italic;">"You'll be reaching millions through stadiums… and you're going to touch lives that no one else can touch." <strong style="font-style:normal;color:#fbbf24;">– John Keough (Healing Rooms)</strong></p>
+<p style="margin:0 0 12px;font-size:13px;line-height:1.6;color:#fef3c7;font-style:italic;">"God has given you a deep desire to win souls… Your name is going to be great, and you are going to become well known in other countries… Your path has been set in Heaven, and your destiny is great." <strong style="font-style:normal;color:#fbbf24;">– Prophetess Deborah Allen (Power Prayers)</strong></p>
+<p style="margin:0;font-size:13px;line-height:1.6;color:#fef3c7;font-style:italic;">"I personally think your artistic, highly visionary, and hard working. I love your rhymes... they definitely are a gift from God." <strong style="font-style:normal;color:#fbbf24;">– Guinnevere Allen (One Love Church, Hawaii)</strong></p>
+</div>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.6;"><strong>Stream everywhere:</strong> <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#fbbf24;">Spotify</a> · <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="color:#fbbf24;">Apple Music</a> · <a href="https://www.amazon.com/music/player/artists/B01GOGAW4W/e-lion" style="color:#fbbf24;">Amazon Music</a> · <a href="https://www.tiktok.com/@elionreigns" style="color:#fbbf24;">TikTok</a> · <a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="color:#fbbf24;">Pandora</a> · <a href="https://soundcloud.com/elionrapmusic" style="color:#fbbf24;">SoundCloud</a> · <a href="https://www.deezer.com/us/artist/354652062" style="color:#fbbf24;">Deezer</a> · <a href="https://www.iheart.com/artist/e-lion-46608091/" style="color:#fbbf24;">iHeartRadio</a></p>
-<div style="background:#292524;border:2px solid #f59e0b;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(0,0,0,0.4);">
+<div style="background:#292524;border:2px solid #f59e0b;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(0,0,0,0.4);">
 <p style="margin:0 0 14px;font-size:15px;color:#fef3c7;line-height:1.55;"><strong>Where to start:</strong> Visit elionmusic.com for the full catalog, bio, lyrics, and merch. Pick your platform and hit follow – if you love it, share it with someone who needs the vibe. New music and content drop regularly; follow on social for behind-the-scenes and tour dates.</p>
-<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#f59e0b 0%,#d97706 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(245,158,11,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#f59e0b 0%,#d97706 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(245,158,11,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#fbbf24;font-style:italic;">P.S. Family Feud grand prize winner – first Hawaiian family to win 5 in a row. Your vibe, your tribe.</p>
 </div>
 </div>
@@ -454,7 +486,7 @@ Why it makes sense: E Lion brings 15+ years, 1,000+ performances, 10M+ YouTube v
 Next step: Reply to this email or hit elionmusic.com and say you're in. We'll send you links to the catalog, pick a direction, and get down to details (tempo, vibe, credits). We'd love to make something fire with you.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f5f3ff;border:2px solid #7c3aed;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(124,58,237,0.28),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f5f3ff;border:2px solid #7c3aed;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(124,58,237,0.28),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 50%,#4c1d95 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #a78bfa;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Let's collaborate</h1>
@@ -466,9 +498,9 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is reaching out to peer artists for <strong>free collaboration</strong> – custom verses, features, cross-promotion. We're not looking for a handout; we're looking for creatives who want to grow together and make something that reaches both our audiences.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#6d28d9;text-transform:uppercase;">Why it makes sense</p>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;">E Lion brings <strong>15+ years</strong>, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, and <strong>Family Feud grand prize</strong> (2016 – first Hawaiian family to win 5 consecutive episodes). Holy Hip-Hop from Hawaii – Hawaiian and Hebrew fusion, broadcast-friendly. Music on Spotify, Apple Music, Amazon, TikTok, Pandora, SoundCloud, Deezer, iHeartRadio. Press: <a href="https://www.elionmusic.com/articles/bored-city-interview-e-lion" style="color:#6d28d9;">Bored City</a>, <a href="https://www.elionmusic.com/articles/spotlight-interview-e-lion" style="color:#6d28d9;">Spotlight</a>, <a href="https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music" style="color:#6d28d9;">TBK247</a>, <a href="https://www.elionmusic.com/wiki/" style="color:#6d28d9;">Wiki</a>.</p>
-<div style="background:linear-gradient(145deg,#ede9fe 0%,#ddd6fe 100%);border:2px solid #7c3aed;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(124,58,237,0.2);">
+<div style="background:linear-gradient(145deg,#ede9fe 0%,#ddd6fe 100%);border:2px solid #7c3aed;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(124,58,237,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#4c1d95;line-height:1.55;"><strong>Next step:</strong> Reply to this email or click below and say you're in. We'll send you links to the catalog, pick a direction (one verse, one feature, or something bigger), and get down to details – tempo, vibe, credits, and how we'll cross-promote. We typically respond within 24–48 hours and would love to make something fire with you.</p>
-<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(124,58,237,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(124,58,237,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#6d28d9;font-style:italic;">P.S. Free collaboration – no fee, no catch. We're looking for peers to grow with.</p>
 </div>
 </div>
@@ -485,7 +517,7 @@ Why E Lion: Proven, family-friendly reach. An estimated 115–145 million unique
 Next step: Reply with what you have in mind (apparel, gear, etc.) and we'll get down to details – what E Lion would wear/use, how we'll tag and credit you, and where your brand appears.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#eff6ff;border:2px solid #1e40af;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(30,64,175,0.24),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#eff6ff;border:2px solid #1e40af;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(30,64,175,0.24),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#1e40af 0%,#1e3a8a 50%,#1d4ed8 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #3b82f6;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Partner with E Lion</h1>
@@ -497,9 +529,9 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is open to <strong>sponsored brand partnerships</strong> – he'll wear or use your products in exchange for store credit or specific items from your site. We're not asking for a free ride – we're offering real exposure to a proven, family-friendly audience in exchange for product or credit.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">Why E Lion</p>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;">Proven reach: an estimated <strong>115–145 million unique viewers</strong> have seen his Family Feud grand prize run (2016, 5 consecutive wins; 183–234M total views in syndication). Plus <strong>10M+ YouTube views</strong>, <strong>1,000+ live performances</strong>, <strong>30K+ CDs sold</strong>, and music on every major platform. First Hawaiian family to win Family Feud – high recall, positive association. <a href="https://www.elionmusic.com/rap/" style="color:#1d4ed8;">Official profile</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#1d4ed8;">Grand prize coverage</a></p>
-<div style="background:linear-gradient(145deg,#dbeafe 0%,#bfdbfe 100%);border:2px solid #1e40af;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(30,64,175,0.2);">
+<div style="background:linear-gradient(145deg,#dbeafe 0%,#bfdbfe 100%);border:2px solid #1e40af;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(30,64,175,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#1e3a8a;line-height:1.55;"><strong>Next step:</strong> Reply with what you have in mind (apparel, gear, accessories, etc.). We'll get down to details – what E Lion would wear or use, how we'll tag and credit you on social and in content, and where your brand appears. We typically respond within 24–48 hours. No obligation – let's explore if we're a fit.</p>
-<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(37,99,235,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(37,99,235,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#1d4ed8;font-style:italic;">P.S. 115M+ viewers saw the Family Feud run – your brand in front of people who pay attention.</p>
 </div>
 </div>
@@ -516,7 +548,7 @@ Why work with E Lion: 15+ years in music, 1,000+ performances, 10M+ YouTube view
 Next step: If you're down to send beats for exclusive use, reply and we'll get into format, BPM range, and how you want to be credited. We're ready when you are.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(234,88,12,0.24),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(234,88,12,0.24),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#ea580c 0%,#c2410c 50%,#9a3412 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #fb923c;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Your beats. Full credit.</h1>
@@ -528,9 +560,9 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion would like <strong>exclusive access to your beats</strong> for his recordings. In exchange, <strong>your name is credited on all releases</strong> and across his networks – Spotify, Apple Music, Amazon Music, TikTok, Pandora, SoundCloud, Deezer, iHeartRadio. Your sound gets in front of millions; your name stays on the record.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#c2410c;text-transform:uppercase;">Why work with E Lion</p>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;"><strong>15+ years</strong> in music, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, Family Feud grand prize winner. Style: Holy Hip-Hop – Hawaiian and Hebrew fusion, high-energy, clean, broadcast-friendly. He's serious about quality and serious about giving producers their due – no ghost credits. <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#c2410c;">Spotify</a> · <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="color:#c2410c;">Apple Music</a> · <a href="https://www.elionmusic.com" style="color:#c2410c;">elionmusic.com</a></p>
-<div style="background:linear-gradient(145deg,#ffedd5 0%,#fed7aa 100%);border:2px solid #ea580c;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(234,88,12,0.2);">
+<div style="background:linear-gradient(145deg,#ffedd5 0%,#fed7aa 100%);border:2px solid #ea580c;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(234,88,12,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#9a3412;line-height:1.55;"><strong>Next step:</strong> Reply if you're down to send beats for exclusive use. We'll get into format (WAV/MP3), BPM range, and how you want to be credited (liner notes, metadata, social tags). We're ready when you are – typically we respond within 24–48 hours and can send a short brief so you know the vibe we're going for.</p>
-<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#ea580c 0%,#c2410c 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(234,88,12,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#ea580c 0%,#c2410c 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(234,88,12,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#c2410c;font-style:italic;">P.S. Your name on every release – no ghost credits. We take producer credit seriously.</p>
 </div>
 </div>
@@ -547,7 +579,7 @@ Why E Lion: 1,000+ performances, 10M+ YouTube views, Family Feud grand prize (20
 Next step: Reply with your ideal date(s) and type of event (concert vs keynote). We'll send a set list, credentials, and get down to details – rate, rider, and how we can serve your people.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#fffbeb;border:2px solid #b45309;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(180,83,9,0.22),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#fffbeb;border:2px solid #b45309;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(180,83,9,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b45309 0%,#92400e 50%,#78350f 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f59e0b;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Bring E Lion to your church</h1>
@@ -558,10 +590,14 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fde68a;padding-bottom:16px;">Hi {{Name}},</p>
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is available for <strong>church events</strong> – full concert (1 hour+ of original Holy Hip-Hop, 15-minute speaking segments, P48X book promotion, Prayer Authority app demo) or conference keynote (15–45 min with musical segments and meet & greet). We'd love to partner with you for a service or conference.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#92400e;text-transform:uppercase;">Why E Lion</p>
-<p style="margin:0 0 24px;font-size:14px;line-height:1.7;"><strong>15+ years</strong> in ministry and music, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, Family Feud grand prize winner (2016 – first Hawaiian family to win 5 consecutive episodes). Prophetic endorsements from major Christian leaders; performed at Waikiki Shell, Blaisdell, HebrewFest, and churches nationwide. Custom set list – you choose which songs fit your service. <a href="https://www.elionmusic.com/rap/" style="color:#92400e;">Full catalog & profile</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#92400e;">Family Feud coverage</a></p>
-<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #b45309;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(180,83,9,0.2);">
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;"><strong>15+ years</strong> in ministry and music, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, Family Feud grand prize winner (2016 – first Hawaiian family to win 5 consecutive episodes). Prophetic endorsements from major Christian leaders; performed at Waikiki Shell, Blaisdell, HebrewFest, and churches nationwide. Custom set list – you choose which songs fit your service. <a href="https://www.elionmusic.com/rap/" style="color:#92400e;">Full catalog & profile</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#92400e;">Family Feud coverage</a></p>
+<div style="background:#fffbeb;border:2px solid #fde68a;border-radius:18px;padding:18px 20px;margin:0 auto 24px;max-width:520px;">
+<p style="margin:0 0 10px;font-size:13px;line-height:1.6;color:#78350f;font-style:italic;">"Thank you for performing at the Movie Night event for New Hope. You're a blessing and I'm always here for you!" <strong style="font-style:normal;color:#92400e;">– Keola Richards (Leader, New Hope Christian Church)</strong></p>
+<p style="margin:0;font-size:13px;line-height:1.6;color:#78350f;font-style:italic;">"I never really liked rap until I heard you rap, you're really good. I really believe in you, and I know that I'm not the only one. God's got your back!" <strong style="font-style:normal;color:#92400e;">– Thomas Amarino (President, Gideons Association of Hawaii)</strong></p>
+</div>
+<div style="background:linear-gradient(145deg,#fef3c7 0%,#fde68a 100%);border:2px solid #b45309;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(180,83,9,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#78350f;line-height:1.55;"><strong>Next step:</strong> Reply with your ideal date(s) and type of event (concert vs keynote). We'll send a set list, credentials, and get down to details – rate, rider, tech needs, and how we can serve your people. We typically respond within 24–48 hours. No obligation – let's see if we're a fit for your calendar.</p>
-<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#b45309 0%,#92400e 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(180,83,9,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#b45309 0%,#92400e 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(180,83,9,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#92400e;font-style:italic;">P.S. P48X book + Prayer Authority app demos – ministry and music in one package.</p>
 </div>
 </div>
@@ -578,7 +614,7 @@ Why book E Lion: An estimated 115–145 million unique viewers have seen his Fam
 Next step: Reply with your event name, date(s), and slot – we'll send credentials, a set list, and get down to rider and rate. Let's make it happen.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fef2f2;border:2px solid #b91c1c;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(185,28,28,0.26),0 4px 12px rgba(0,0,0,0.06);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fef2f2;border:2px solid #b91c1c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(185,28,28,0.26),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b91c1c 0%,#991b1b 50%,#7f1d1d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f87171;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Book E Lion for your stage</h1>
@@ -590,9 +626,9 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is available for <strong>festivals and stage shows</strong> – full concert (1 hour+ of original Holy Hip-Hop, 15-minute speaking segments, audience interaction). Custom set list – you select which songs he performs at your venue.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Reach & credentials</p>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;">An estimated <strong>115–145 million unique viewers</strong> have seen his Family Feud grand prize run (2016; 183–234M total views in syndication). <strong>15+ years</strong>, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>. First Hawaiian family to win 5 consecutive episodes. Performed at Waikiki Shell, Blaisdell, HebrewFest, and venues across the US and internationally. Music on every major platform. <a href="https://www.elionmusic.com/rap/" style="color:#b91c1c;">Profile & catalog</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#b91c1c;">Family Feud coverage</a></p>
-<div style="background:linear-gradient(145deg,#fee2e2 0%,#fecaca 100%);border:2px solid #b91c1c;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(185,28,28,0.2);">
+<div style="background:linear-gradient(145deg,#fee2e2 0%,#fecaca 100%);border:2px solid #b91c1c;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(185,28,28,0.2);">
 <p style="margin:0 0 14px;font-size:15px;color:#7f1d1d;line-height:1.55;"><strong>Next step:</strong> Reply with your event name, date(s), and slot. We'll send credentials, set list, and get down to rider and rate. We typically respond within 24–48 hours – let's make it happen.</p>
-<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#b91c1c 0%,#991b1b 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(185,28,28,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#b91c1c 0%,#991b1b 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(185,28,28,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#b91c1c;font-style:italic;">P.S. Waikiki Shell, Blaisdell, HebrewFest – your stage, his energy.</p>
 </div>
 </div>
@@ -609,7 +645,7 @@ Why DJ E Lion: 15+ years in music, 1,000+ performances, 10M+ YouTube views, Fami
 Next step: Reply with your event type, date(s), and duration – we'll get into rate and what you need (PA, tables, etc.). Let's turn it up.
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
-    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#1e1b4b;border:2px solid #a78bfa;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(167,139,250,0.35),0 4px 12px rgba(0,0,0,0.15);">
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#1e1b4b;border:2px solid #a78bfa;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(167,139,250,0.35),0 10px 28px -8px rgba(0,0,0,0.12);">
 <div style="background:linear-gradient(145deg,#4c1d95 0%,#5b21b6 50%,#6d28d9 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #c4b5fd;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
 <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">DJ E Lion – Book your event</h1>
@@ -621,10 +657,84 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>DJ E Lion</strong> is available to DJ your event – his own music and other artists, family-friendly Holy Hip-Hop vibe. Perfect for parties, youth events, and any venue that wants a clean, high-energy set without the edge.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a78bfa;text-transform:uppercase;">Why DJ E Lion</p>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;"><strong>15+ years</strong> in music, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, Family Feud grand prize winner (2016). He knows how to read a room and keep the vibe right. Music on Spotify, Apple Music, Amazon, TikTok, Pandora, SoundCloud, Deezer, iHeartRadio.</p>
-<div style="background:#312e81;border:2px solid #a78bfa;border-radius:14px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(0,0,0,0.4);">
+<div style="background:#312e81;border:2px solid #a78bfa;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(0,0,0,0.4);">
 <p style="margin:0 0 14px;font-size:15px;color:#e9d5ff;line-height:1.55;"><strong>Next step:</strong> Reply with your event type, date(s), and duration. We'll get into rate and what you need (PA, tables, setup time). We typically respond within 24–48 hours – let's turn it up.</p>
-<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(124,58,237,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(124,58,237,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#a78bfa;font-style:italic;">P.S. 1,000+ stages – he knows how to read a room and keep the vibe right.</p>
+</div>
+</div>
+</div>`,
+  },
+  "wedding-couples": {
+    subject: "Plan your dream Hawaiian wedding – Hawaii Wedding Plans",
+    text: `Hi {{Name}},
+
+Plan your perfect Hawaiian wedding with Hawaii Wedding Plans – complete wedding planning for Oahu, Maui, Kauai, and Big Island. Choose your island, select venues and vendors (photographers, caterers, officiants, entertainment), and build your package with our interactive planner and AI chatbot.
+
+Services: Island pages, venue selection, photographer & videographer portfolios, catering, florals, officiants, entertainment, themes (beach, underwater, mermaid, pirate), 7-day package builder, engagement rings, fashion, honeymoon, bachelor/bachelorette party resources. Helpful articles on why Hawaii, how to use the site, picking wedding party, who not to invite, and more.
+
+Start planning: HawaiiWeddingPlans.com | (808) 994-9034 | coralcrowntechnologies@gmail.com
+
+Coral Crown Solutions | sales@coralcrownsolutions.com`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fdf2f8;border:2px solid #be185d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(190,24,93,0.2),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#be185d 0%,#9d174d 45%,#831843 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f472b6;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
+<p style="margin:0 0 8px;font-size:14px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Hawaii Wedding Plans</p>
+<h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Plan your dream Hawaiian wedding</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Oahu, Maui, Kauai & Big Island – venues, vendors, and one place to plan it all.</p>
+</div>
+<div style="padding:32px 28px;color:#831843;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#be185d;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fbcfe8;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">Whether you are dreaming of a beach ceremony on Oahu, a romantic sunset on Maui, lush Kauai, or the Big Island's dramatic landscapes, <strong>Hawaii Wedding Plans</strong> helps you plan from start to finish. Choose your island, select venues and vendors, and build your package with our interactive planner and AI-powered chatbot.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#be185d;text-transform:uppercase;">What you get</p>
+<ul style="margin:0 auto 22px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
+<li style="margin-bottom:8px;"><strong>Island pages:</strong> Oahu, Maui, Kauai, Big Island – venues, photographers, videographers, caterers, officiants, entertainment</li>
+<li style="margin-bottom:8px;"><strong>Interactive planner:</strong> Build your package, see real-time pricing, use the AI chatbot for recommendations</li>
+<li style="margin-bottom:8px;"><strong>Themes:</strong> Beach, tropical, underwater, mermaid, pirate, and more</li>
+<li style="margin-bottom:8px;"><strong>7-day package builder:</strong> Pre-designed options; English and Japanese</li>
+<li style="margin-bottom:0;"><strong>Resources:</strong> Engagement rings, fashion, honeymoon, bachelor/bachelorette parties, planning articles</li>
+</ul>
+<p style="margin:26px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#be185d;text-transform:uppercase;">Planning articles</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;">We have guides to help you every step of the way: <a href="https://www.hawaiiweddingplans.com/articles/why-hawaii-destination-wedding.php" style="color:#be185d;">Why Hawaii for your destination wedding</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-use-wedding-planning-website.php" style="color:#be185d;">how to use our website</a>, <a href="https://www.hawaiiweddingplans.com/articles/should-we-get-married.php" style="color:#be185d;">should we get married?</a>, <a href="https://www.hawaiiweddingplans.com/articles/best-books-to-read.php" style="color:#be185d;">best books for newlyweds</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-throw-best-bachelor-party-hawaii.php" style="color:#be185d;">bachelor party in Hawaii</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-throw-best-bachelorette-party-hawaii.php" style="color:#be185d;">bachelorette party</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-pick-best-men-bridesmaids.php" style="color:#be185d;">picking your wedding party</a>, <a href="https://www.hawaiiweddingplans.com/articles/who-not-to-invite-to-wedding.php" style="color:#be185d;">who not to invite</a>.</p>
+<div style="background:linear-gradient(145deg,#fce7f3 0%,#fbcfe8 100%);border:2px solid #be185d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(190,24,93,0.2);">
+<p style="margin:0 0 14px;font-size:15px;color:#831843;line-height:1.55;"><strong>Start planning:</strong> Visit HawaiiWeddingPlans.com to choose your island and build your package. Need help? Call <strong>(808) 994-9034</strong> or email <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#be185d;">coralcrowntechnologies@gmail.com</a>. Making dreams come true – we are here for you.</p>
+<p style="margin:0;"><a href="https://www.hawaiiweddingplans.com" style="display:inline-block;background:linear-gradient(145deg,#be185d 0%,#9d174d 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(190,24,93,0.4);">HawaiiWeddingPlans.com</a></p>
+</div>
+</div>
+</div>`,
+  },
+  "wedding-contractors": {
+    subject: "Get featured on Hawaii Wedding Plans – Submit your service or venue",
+    text: `Hi {{Name}},
+
+Hawaii Wedding Plans is the go-to wedding planning platform for Oahu, Maui, Kauai, and Big Island. We would love to feature your service or venue – photographers, videographers, caterers, florists, officiants, musicians/DJs, planners, venues, transportation, and more.
+
+Submit your business: https://hawaiiweddingplans.com/submit/index.php – we will review and get back to you. Or send your information to coralcrowntechnologies@gmail.com.
+
+Categories we feature: Venues, photographers, videographers, caterers, florists, officiants, musicians/DJs, wedding planners, transportation, entertainment, themes (beach, underwater, mermaid, pirate). Couples use our interactive planner and AI chatbot to build packages – your listing gets in front of couples planning their dream Hawaii wedding.
+
+Coral Crown Solutions | sales@coralcrownsolutions.com`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
+<p style="margin:0 0 8px;font-size:14px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Hawaii Wedding Plans</p>
+<h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Get featured – submit your service or venue</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Join our directory and reach couples planning their dream Hawaiian wedding.</p>
+</div>
+<div style="padding:32px 28px;color:#14532d;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #86efac;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>Hawaii Wedding Plans</strong> is the complete wedding planning platform for Oahu, Maui, Kauai, and Big Island. Couples choose their island, select venues and vendors, and build packages with our interactive planner and AI chatbot. We would love to <strong>feature your business</strong> – venues, photographers, videographers, caterers, florists, officiants, musicians/DJs, planners, transportation, entertainment, and more.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Why get listed</p>
+<ul style="margin:0 auto 22px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
+<li style="margin-bottom:8px;">Couples browse by island and category – your listing is front and center</li>
+<li style="margin-bottom:8px;">Unique, easy-to-use site: interactive vendor selection, real-time package building, AI chatbot for recommendations</li>
+<li style="margin-bottom:8px;">Categories: Venues, photographers, videographers, caterers, florists, officiants, entertainment, themes (beach, underwater, mermaid, pirate)</li>
+<li style="margin-bottom:0;">Celebrity appearances, catering, specialty services – we want to grow our directory with quality vendors like you</li>
+</ul>
+<div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
+<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Submit your business:</strong> Use our quick submit form – we will review your listing and get back to you. Or send your business name, service type, contact info, website, location, and description to <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#15803d;">coralcrowntechnologies@gmail.com</a>. No obligation – we are building the go-to resource for Hawaii weddings and would love to include you.</p>
+<p style="margin:0 0 10px;"><a href="https://hawaiiweddingplans.com/submit/index.php" style="display:inline-block;background:linear-gradient(145deg,#15803d 0%,#166534 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(21,128,61,0.4);">Submit – Hawaii Wedding Plans</a></p>
+<p style="margin:0;font-size:13px;color:#166534;">Or email: coralcrowntechnologies@gmail.com | (808) 994-9034</p>
 </div>
 </div>
 </div>`,
