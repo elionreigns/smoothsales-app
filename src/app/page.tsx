@@ -9,13 +9,14 @@ import {
   type TemplateId,
 } from "@/lib/templates";
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
 type TechSub = "individual" | "corporate" | "";
 type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "";
 type WeddingSub = "couples" | "contractors" | "";
+type P48XSub = "personal" | "physical-distributors" | "affiliate-sellers" | "";
 
 type Recipient = { email: string; name: string };
 
@@ -27,6 +28,7 @@ export default function SmoothSalesPage() {
   const [techSub, setTechSub] = useState<TechSub>("");
   const [elionSub, setElionSub] = useState<ElionSub>("");
   const [weddingSub, setWeddingSub] = useState<WeddingSub>("");
+  const [p48xSub, setP48xSub] = useState<P48XSub>("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [templateId, setTemplateId] = useState<string>("");
@@ -40,12 +42,12 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub]
   );
 
   useEffect(() => {
@@ -144,7 +146,7 @@ export default function SmoothSalesPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-amber-300 to-amber-400 bg-clip-text text-transparent drop-shadow-sm" style={{ fontFamily: "var(--font-cormorant)" }}>
               SmoothSales
             </h1>
-            <p className="text-slate-400 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base px-1">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans</p>
+            <p className="text-slate-400 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base px-1">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans, P48X</p>
           </header>
 
           {/* Service selection card – always visible */}
@@ -163,6 +165,7 @@ export default function SmoothSalesPage() {
                     setTechSub("");
                     setElionSub("");
                     setWeddingSub("");
+                    setP48xSub("");
                   }}
                   className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
@@ -173,6 +176,7 @@ export default function SmoothSalesPage() {
                   <option value="tourism">Tourism (Time for Fun)</option>
                   <option value="elion">E Lion Music</option>
                   <option value="wedding">Wedding Planner (Hawaii Wedding Plans)</option>
+                  <option value="p48x">P48X (Philippians 4:8 Expounded)</option>
                 </select>
               </div>
 
@@ -270,6 +274,22 @@ export default function SmoothSalesPage() {
                   </select>
                 </div>
               )}
+
+              {service === "p48x" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={p48xSub}
+                    onChange={(e) => setP48xSub(e.target.value as P48XSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="personal">Personal (readers & listeners)</option>
+                    <option value="physical-distributors">Physical distributors (wholesale / retail)</option>
+                    <option value="affiliate-sellers">Affiliate sellers (15% on direct sales)</option>
+                  </select>
+                </div>
+              )}
             </div>
           </section>
 
@@ -300,6 +320,7 @@ export default function SmoothSalesPage() {
                 {service === "tourism" && <TourismContent region={tourismSub} />}
                 {service === "elion" && <ElionContent audience={elionSub} />}
                 {service === "wedding" && <WeddingContent audience={weddingSub} />}
+                {service === "p48x" && <P48XContent audience={p48xSub} />}
                 {/* Email preview */}
                 {templateId && (
                   <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-600/80">
@@ -354,7 +375,10 @@ export default function SmoothSalesPage() {
             </>
           )}
 
-          {service && !showPitchAndCampaign && (
+          {service === "p48x" && !p48xSub && (
+            <p className="text-slate-500 text-sm">Select an audience above to continue.</p>
+          )}
+          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (
             <p className="text-slate-500 text-sm">Select an option above to continue.</p>
           )}
         </div>
@@ -479,6 +503,17 @@ function WeddingContent({ audience }: { audience: WeddingSub }) {
       {audience === "contractors" && (
         <p>For <strong>contractors/vendors</strong>: Submit your service or venue to be featured. <a href="https://hawaiiweddingplans.com/submit/index.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Submit form</a> or email coralcrowntechnologies@gmail.com</p>
       )}
+    </div>
+  );
+}
+
+function P48XContent({ audience }: { audience: P48XSub }) {
+  return (
+    <div className="prose prose-invert prose-sm max-w-none text-slate-300">
+      <p><strong className="text-slate-100">P48X</strong> – Philippians 4:8 Expounded. Book, free app (daily reflections, Google Calendar, journal), and ~15 hrs audiobook in the author&apos;s voice. Buy: <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Barnes &amp; Noble</a>, <a href="https://books.apple.com/us/book/p48x/id6746675717" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Apple Books</a>, <a href="https://www.smashwords.com/books/view/1780908" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Smashwords</a>, <a href="https://www.kobo.com/us/en/ebook/p48x" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Rakuten Kobo</a>. App: <a href="https://www.prayerauthority.com/prayers/p48x.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Prayer Authority P48X</a>. <a href="https://www.youtube.com/watch?v=tvY4niTN4jA" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Demo: set up P48X with Google Calendar</a>.</p>
+      {audience === "personal" && <p>Personal template: why the book helps, power of right thoughts, app + audiobook, where to buy and sign up, demo video.</p>}
+      {audience === "physical-distributors" && <p>Physical distributors: wholesale printed copies, markup for your store; author is E Lion (elionmusic.com), Family Feud grand prize – link to <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Family Feud article</a>.</p>}
+      {audience === "affiliate-sellers" && <p>Affiliate sellers: we&apos;re looking for people to push the book; 15% off your book purchases when your referral emails us with a receipt.</p>}
     </div>
   );
 }

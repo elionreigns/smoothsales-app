@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "SmoothSales | Coral Crown Solutions",
-  description: "Service outreach: Botox Oahu, Tech, Prayer Authority, Time for Fun Hawaii & USA, E Lion Music, Hawaii Wedding Plans. Email campaigns made simple.",
+  description: "Service outreach: Botox Oahu, Tech, Prayer Authority, Time for Fun Hawaii & USA, E Lion Music, Hawaii Wedding Plans, P48X. Email campaigns made simple.",
 };
 
 export const viewport: Viewport = {

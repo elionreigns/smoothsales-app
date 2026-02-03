@@ -16,7 +16,10 @@ export type TemplateId =
   | "elion-venue-show"
   | "elion-venue-dj"
   | "wedding-couples"
-  | "wedding-contractors";
+  | "wedding-contractors"
+  | "p48x-personal"
+  | "p48x-physical-distributors"
+  | "p48x-affiliate-sellers";
 
 export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "botox", label: "Botox Oahu – Price sheet & specials" },
@@ -34,6 +37,9 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-venue-dj", label: "E Lion Music – Venue: DJ E Lion" },
   { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples planning a wedding" },
   { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors / vendors (submit to be featured)" },
+  { value: "p48x-personal", label: "P48X – Personal (readers & listeners, book + app + audiobook)" },
+  { value: "p48x-physical-distributors", label: "P48X – Physical distributors (wholesale, retail stores)" },
+  { value: "p48x-affiliate-sellers", label: "P48X – Affiliate sellers (15% on direct sales)" },
 ];
 
 const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.9;">Reach us at <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> or (808) 393-0153 for any of these services.</p>`;
@@ -77,7 +83,8 @@ export type ServiceSelection =
   | "prayer"
   | "tourism"
   | "elion"
-  | "wedding";
+  | "wedding"
+  | "p48x";
 export type TourismSub = "" | "hawaii" | "usa";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
@@ -92,6 +99,7 @@ export type ElionSub =
   | "venue-show"
   | "venue-dj";
 export type WeddingSub = "" | "couples" | "contractors";
+export type P48XSub = "" | "personal" | "physical-distributors" | "affiliate-sellers";
 
 const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   fans: "elion-fans",
@@ -108,6 +116,12 @@ const WEDDING_TEMPLATE_MAP: Record<Exclude<WeddingSub, "">, TemplateId> = {
   contractors: "wedding-contractors",
 };
 
+const P48X_TEMPLATE_MAP: Record<Exclude<P48XSub, "">, TemplateId> = {
+  personal: "p48x-personal",
+  "physical-distributors": "p48x-physical-distributors",
+  "affiliate-sellers": "p48x-affiliate-sellers",
+};
+
 /**
  * Returns only the template options that match the current service (and sub-option).
  */
@@ -118,7 +132,8 @@ export function getTemplatesForSelection(
   botoxSub: BotoxSub,
   techSub: TechSub,
   elionSub: ElionSub,
-  weddingSub: WeddingSub
+  weddingSub: WeddingSub,
+  p48xSub: P48XSub
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return TEMPLATE_OPTIONS.filter((o) => o.value === "botox");
@@ -146,6 +161,10 @@ export function getTemplatesForSelection(
     const id = WEDDING_TEMPLATE_MAP[weddingSub];
     return TEMPLATE_OPTIONS.filter((o) => o.value === id);
   }
+  if (service === "p48x" && p48xSub !== "") {
+    const id = P48X_TEMPLATE_MAP[p48xSub];
+    return TEMPLATE_OPTIONS.filter((o) => o.value === id);
+  }
   return [];
 }
 
@@ -157,7 +176,8 @@ export function hasRequiredSelection(
   botoxSub: BotoxSub,
   techSub: TechSub,
   elionSub: ElionSub,
-  weddingSub: WeddingSub
+  weddingSub: WeddingSub,
+  p48xSub: P48XSub
 ): boolean {
   if (!service) return false;
   if (service === "prayer") return prayerSub !== "";
@@ -166,6 +186,7 @@ export function hasRequiredSelection(
   if (service === "tech") return techSub !== "";
   if (service === "elion") return elionSub !== "";
   if (service === "wedding") return weddingSub !== "";
+  if (service === "p48x") return p48xSub !== "";
   return false;
 }
 
@@ -808,6 +829,107 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Submit your business:</strong> Use our quick submit form – we will review your listing and get back to you. Or send your business name, service type, contact info, website, location, and description to <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#15803d;">coralcrowntechnologies@gmail.com</a>. No obligation – we are building the go-to resource for Hawaii weddings and would love to include you.</p>
 <p style="margin:0 0 10px;"><a href="https://hawaiiweddingplans.com/submit/index.php" style="display:inline-block;background:linear-gradient(145deg,#15803d 0%,#166534 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(21,128,61,0.4);">Submit – Hawaii Wedding Plans</a></p>
 <p style="margin:0;font-size:13px;color:#166534;">Or email: coralcrowntechnologies@gmail.com | (808) 994-9034</p>
+</div>
+</div>
+</div>`,
+  },
+  "p48x-personal": {
+    subject: "P48X – Transform your mind with Philippians 4:8 (book, app & audiobook)",
+    text: `Hi {{Name}},
+
+P48X – Philippians 4:8 Expounded. In a world that constantly shifts, this book is an unshakable foundation. Each chapter explores one of the virtues Paul called us to meditate on: Purity, Truth, Praiseworthiness, Wholesomeness, Excellence, Admirable, Peace, Honor, and Lovely things – and how they show up in the lives of those who walked with God.
+
+Why it helps: What you think shapes who you become. P48X gives you a daily path to center your mind on what is true, honorable, pure, and lovely – and the companion app makes it practical. Connect your Google Calendar; the app creates special links that take you to your reflection page. Log in with Google, get a randomized prompt for the day, journal and reflect. There's also about 15 hours of audiobook in the author's voice (cloned with ElevenLabs) – read it, listen to it, or do both.
+
+Where to get it: Barnes & Noble, Apple Books, Smashwords, Rakuten Kobo. Sign up for the free P48X app (daily reflections, journal) at Prayer Authority – use your Google account.
+
+Demo: How to set up your daily P48X reflection schedule with Google Calendar: https://www.youtube.com/watch?v=tvY4niTN4jA
+
+Book: https://www.prayerauthority.com/prayers/p48x.php | Barnes & Noble https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621 | Apple Books https://books.apple.com/us/book/p48x/id6746675717 | Smashwords https://www.smashwords.com/books/view/1780908 | Rakuten Kobo https://www.kobo.com/us/en/ebook/p48x
+
+Coral Crown Solutions | sales@coralcrownsolutions.com`,
+    html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:linear-gradient(180deg,#fefce8 0%,#fef9c3 100%);border:2px solid #ca8a04;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(202,138,4,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#a16207 0%,#854d0e 45%,#713f12 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #eab308;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">P48X · Philippians 4:8 Expounded</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Transform your mind & spirit</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Book, interactive app, and ~15 hours of audiobook in the author's voice.</p>
+</div>
+<div style="padding:32px 28px;color:#422006;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a16207;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fde047;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">In a world that constantly shifts, <strong>P48X</strong> offers an unshakable foundation rooted in Philippians 4:8. Each chapter explores one of the virtues Paul exhorted us to meditate on – Purity, Truth, Praiseworthiness, Wholesomeness, Excellence, Admirable, Peace, Honor, and Lovely things – and how they manifest in the lives of those who walked with God.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a16207;text-transform:uppercase;">Why this book will help you</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">What you think shapes who you become. Focusing your mind on what is <strong>true, honorable, pure, and lovely</strong> brings peace and clarity. P48X is both a deep read and a daily practice – and the <strong>free P48X app</strong> makes it practical: connect your Google Calendar, get special links to your reflection page, log in with Google, and receive a randomized prompt each day to journal and reflect.</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a16207;text-transform:uppercase;">Audiobook option</p>
+<p style="margin:0 0 24px;font-size:14px;line-height:1.7;">Prefer to listen? There's about <strong>15 hours of audiobook</strong> in the author's voice (cloned with ElevenLabs). Read the book, listen to it, or do both – your choice.</p>
+<div style="background:#fff;border:2px solid #eab308;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(202,138,4,0.15);">
+<p style="margin:0 0 12px;font-size:15px;color:#422006;line-height:1.55;"><strong>Get the book:</strong> <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#a16207;">Barnes &amp; Noble</a> · <a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#a16207;">Apple Books</a> · <a href="https://www.smashwords.com/books/view/1780908" style="color:#a16207;">Smashwords</a> · <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#a16207;">Rakuten Kobo</a></p>
+<p style="margin:0 0 12px;font-size:15px;color:#422006;line-height:1.55;"><strong>Use the app:</strong> <a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#a16207;">P48X Reflections at Prayer Authority</a> – sign up with Google, set up daily prompts, journal and reflect.</p>
+<p style="margin:0 0 10px;"><a href="https://www.youtube.com/watch?v=tvY4niTN4jA" style="display:inline-block;background:linear-gradient(145deg,#a16207 0%,#854d0e 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(202,138,4,0.4);">Watch: How to set up P48X with Google Calendar</a></p>
+<p style="margin:0;font-size:13px;color:#713f12;font-style:italic;">P.S. Your path to a life of profound peace, purpose, and clarity is waiting.</p>
+</div>
+</div>
+</div>`,
+  },
+  "p48x-physical-distributors": {
+    subject: "P48X – Wholesale printed copies for your store (Eric Schaefer / E Lion)",
+    text: `Hi {{Name}},
+
+We're reaching out to stores and physical distributors who may want to carry P48X – Philippians 4:8 Expounded by Eric Schaefer. You can order printed copies wholesale and mark up the book to sell in your store.
+
+About the author: Eric is also E Lion – Holy Hip-Hop artist from Hawaii, Family Feud grand prize winner (2016, first Hawaiian family to win 5 consecutive episodes), founder of Prayer Authority, and author of P48X. His music is at elionmusic.com – same heart for faith, excellence, and reaching people. The book has strong appeal for faith-based retailers, churches, and general inspirational readers.
+
+Family Feud coverage: https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize
+
+If you're interested in wholesale orders for your store, reply to this email and we'll send pricing and order details.
+
+Coral Crown Solutions | sales@coralcrownsolutions.com`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fefce8;border:2px solid #ca8a04;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(202,138,4,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#854d0e 0%,#713f12 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #eab308;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">P48X · Wholesale for retailers</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Carry P48X in your store</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Order printed copies wholesale and mark up to sell. Philippians 4:8 Expounded by Eric Schaefer.</p>
+</div>
+<div style="padding:32px 28px;color:#422006;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a16207;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fde047;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">We're reaching out to <strong>physical distributors and retail stores</strong> who may want to carry <strong>P48X – Philippians 4:8 Expounded</strong>. You can order printed copies wholesale and mark up the book to sell in your store. Ideal for faith-based retailers, churches, and inspirational book sections.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a16207;text-transform:uppercase;">About the author</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Eric Schaefer is also <strong>E Lion</strong> – Holy Hip-Hop artist from Hawaii, <strong>Family Feud grand prize winner</strong> (2016 – first Hawaiian family to win 5 consecutive episodes), founder of Prayer Authority, and author of P48X. His music and brand at <a href="https://www.elionmusic.com" style="color:#a16207;">elionmusic.com</a> share the same heart for faith, excellence, and reaching people – so your customers who know E Lion or Family Feud will recognize the name.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#a16207;">Family Feud: Grand Prize article</a></p>
+<div style="background:#fff;border:2px solid #eab308;border-radius:18px;padding:24px 26px;margin:28px 0;">
+<p style="margin:0 0 14px;font-size:15px;color:#422006;line-height:1.55;"><strong>Next step:</strong> If you're interested in wholesale orders for your store, reply to this email and we'll send pricing, minimums, and order details. We typically respond within 24–48 hours.</p>
+<p style="margin:0;font-size:13px;color:#713f12;">Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+</div>
+</div>
+</div>`,
+  },
+  "p48x-affiliate-sellers": {
+    subject: "P48X – Partner with us: 15% on direct book sales (affiliate sellers)",
+    text: `Hi {{Name}},
+
+We're looking for people who are willing to push P48X – Philippians 4:8 Expounded – and we want to reward you for it. If you sell the book directly and the buyer emails us with a receipt showing they got it from you, you get 15% off your own book purchases (or equivalent credit). One simple rule: the person says they got it from you and emails us with the receipt.
+
+P48X is the ultimate guide to transforming your mind and spirit, rooted in Philippians 4:8. It's on Barnes & Noble, Apple Books, Smashwords, and Rakuten Kobo. There's also a free P48X app at Prayer Authority (daily reflections, Google Calendar integration, journal) and about 15 hours of audiobook in the author's voice.
+
+If you'd like to partner with us as an affiliate seller, reply to this email and we'll send you the exact terms and how to track referrals.
+
+Coral Crown Solutions | sales@coralcrownsolutions.com`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">P48X · Affiliate sellers</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Partner with us – 15% on direct sales</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">We're looking for people who want to push P48X. You get 15% off book purchases when your referral emails us with a receipt.</p>
+</div>
+<div style="padding:32px 28px;color:#14532d;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #86efac;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">We're looking for <strong>affiliate sellers</strong> who are willing to push <strong>P48X – Philippians 4:8 Expounded</strong>. Here's the deal: if you sell the book directly and that person emails us with a receipt showing they got it from you, <strong>you get 15% off your own book purchases</strong> (or equivalent credit). One simple rule: the buyer says they got it from you and emails us with the receipt.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">What you're promoting</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">P48X is the ultimate guide to transforming your mind and spirit, rooted in Philippians 4:8. Available at <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#15803d;">Barnes &amp; Noble</a>, <a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#15803d;">Apple Books</a>, <a href="https://www.smashwords.com/books/view/1780908" style="color:#15803d;">Smashwords</a>, and <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#15803d;">Rakuten Kobo</a>. There's also a free <strong>P48X app</strong> at <a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#15803d;">Prayer Authority</a> (daily reflections, Google Calendar, journal) and about 15 hours of audiobook in the author's voice.</p>
+<div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;">
+<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Next step:</strong> If you'd like to partner with us as an affiliate seller, reply to this email and we'll send you the exact terms and how to track referrals. We're building a team of people who believe in this book and want to spread it.</p>
+<p style="margin:0;font-size:13px;color:#166534;">Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153</p>
 </div>
 </div>
 </div>`,
