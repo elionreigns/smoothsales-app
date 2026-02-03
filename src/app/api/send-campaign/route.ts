@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { getTemplate, type TemplateId } from "@/lib/templates";
+import { getTemplate, substitutePlaceholders, type TemplateId } from "@/lib/templates";
 
 // Use SMOOTHSALES_FROM once coralcrownsolutions.com is verified in Resend. For testing, use onboarding@resend.dev in Resend dashboard.
 const FROM_EMAIL = process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
+
+type Recipient = { email: string; name?: string; nameOfPerson?: string; nameOfOrganization?: string };
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,24 +18,29 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const emailsRaw = body.emails;
     const templateId = body.templateId as TemplateId | undefined;
+    const recipientsRaw = body.recipients as Recipient[] | undefined;
+    const emailsRaw = body.emails; // legacy: still accept flat list
 
-    if (!Array.isArray(emailsRaw) && typeof emailsRaw !== "string") {
-      return NextResponse.json(
-        { success: false, error: "emails must be an array or newline-separated string" },
-        { status: 400 }
-      );
+    let recipients: Recipient[] = [];
+    if (Array.isArray(recipientsRaw) && recipientsRaw.length > 0) {
+      recipients = recipientsRaw
+        .map((r: { email?: string; name?: string; nameOfPerson?: string; nameOfOrganization?: string }) => ({
+          email: String(r.email ?? "").trim().toLowerCase(),
+          name: typeof r.name === "string" ? r.name.trim() : undefined,
+          nameOfPerson: typeof r.nameOfPerson === "string" ? r.nameOfPerson.trim() : undefined,
+          nameOfOrganization: typeof r.nameOfOrganization === "string" ? r.nameOfOrganization.trim() : undefined,
+        }))
+        .filter((r) => r.email && r.email.includes("@"));
+    } else if (Array.isArray(emailsRaw) || typeof emailsRaw === "string") {
+      const list: string[] =
+        typeof emailsRaw === "string"
+          ? emailsRaw.split(/[\n,;]+/).map((e: string) => e.trim().toLowerCase()).filter((e: string) => e.includes("@"))
+          : emailsRaw.map((e: string) => String(e).trim().toLowerCase()).filter((e: string) => e.includes("@"));
+      recipients = list.map((email) => ({ email }));
     }
 
-    const emails: string[] = typeof emailsRaw === "string"
-      ? emailsRaw
-        .split(/[\n,;]+/)
-        .map((e: string) => e.trim().toLowerCase())
-        .filter((e: string) => e.length > 0 && e.includes("@"))
-      : emailsRaw.map((e: string) => String(e).trim().toLowerCase()).filter((e: string) => e.includes("@"));
-
-    if (emails.length === 0) {
+    if (recipients.length === 0) {
       return NextResponse.json(
         { success: false, error: "No valid email addresses" },
         { status: 400 }
@@ -47,6 +54,15 @@ export async function POST(request: NextRequest) {
       "prayer-church",
       "tourism-hawaii",
       "tourism-usa",
+      "elion-fans",
+      "elion-artists",
+      "elion-brands",
+      "elion-producers",
+      "elion-venue-church",
+      "elion-venue-show",
+      "elion-venue-dj",
+      "wedding-couples",
+      "wedding-contractors",
     ];
     if (!templateId || !validIds.includes(templateId)) {
       return NextResponse.json(
@@ -56,33 +72,37 @@ export async function POST(request: NextRequest) {
     }
 
     const { subject, html, text } = getTemplate(templateId);
-    // Emails need absolute URLs for images (business cards in /promo). Use app URL from env or Vercel.
     const baseUrl =
       process.env.NEXT_PUBLIC_APP_URL?.trim() ||
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
     const htmlWithImages = html.replace(/\{\{BASE_URL\}\}/g, baseUrl);
 
     const resend = new Resend(apiKey);
-
     const results: { to: string; ok: boolean; id?: string; error?: string }[] = [];
 
-    for (const to of emails) {
+    for (const rec of recipients) {
+      const vars = {
+        Name: rec.name ?? "there",
+        "Name of Person": rec.nameOfPerson ?? rec.name ?? "there",
+        "Name of Organization": rec.nameOfOrganization ?? rec.name ?? "",
+      };
+      const { html: personalHtml, text: personalText } = substitutePlaceholders(htmlWithImages, text, vars);
       try {
         const { data, error } = await resend.emails.send({
           from: FROM_EMAIL,
-          to,
+          to: rec.email,
           subject,
-          html: htmlWithImages,
-          text,
+          html: personalHtml,
+          text: personalText,
         });
         if (error) {
-          results.push({ to, ok: false, error: error.message });
+          results.push({ to: rec.email, ok: false, error: error.message });
         } else {
-          results.push({ to, ok: true, id: data?.id });
+          results.push({ to: rec.email, ok: true, id: data?.id });
         }
       } catch (err) {
         results.push({
-          to,
+          to: rec.email,
           ok: false,
           error: err instanceof Error ? err.message : "Send failed",
         });
@@ -95,7 +115,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       sent,
-      total: emails.length,
+      total: recipients.length,
       failed: failed.length,
       details: results,
     });

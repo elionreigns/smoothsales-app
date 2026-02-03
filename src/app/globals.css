@@ -2,4 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-body { font-family: system-ui, sans-serif; }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Focus ring for accessibility */
+*:focus-visible {
+  outline: 2px solid rgb(245 158 11 / 0.6);
+  outline-offset: 2px;
+}
+
+/* Prose in email preview – ensure links and lists look good */
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

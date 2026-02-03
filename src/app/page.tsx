@@ -137,19 +137,19 @@ export default function SmoothSalesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-slate-100">
-      <div className="max-w-7xl mx-auto py-8 px-4 flex gap-6">
+      <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 flex flex-col lg:flex-row gap-8">
         {/* Main column */}
-        <div className="flex-1 min-w-0 space-y-6">
-          <header className="text-center pb-4">
-            <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent" style={{ fontFamily: "var(--font-cormorant)" }}>
+        <div className="flex-1 min-w-0 space-y-8">
+          <header className="text-center pb-2">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-amber-300 to-amber-400 bg-clip-text text-transparent drop-shadow-sm" style={{ fontFamily: "var(--font-cormorant)" }}>
               SmoothSales
             </h1>
-            <p className="text-slate-400 mt-1">Coral Crown Solutions – service outreach & email campaigns</p>
+            <p className="text-slate-400 mt-2 text-sm sm:text-base">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans</p>
           </header>
 
           {/* Service selection card – always visible */}
-          <section className="bg-slate-800/80 backdrop-blur rounded-2xl border border-slate-700/60 shadow-xl p-6">
-            <h2 className="text-sm font-semibold text-amber-400/90 uppercase tracking-wider mb-4">Select service</h2>
+          <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-6 sm:p-7">
+            <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-4">Select service</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">Service</label>
@@ -276,8 +276,8 @@ export default function SmoothSalesPage() {
           {/* Pitch / content + template + preview – only when service + sub selected */}
           {showPitchAndCampaign && (
             <>
-              <section className="bg-slate-800/80 backdrop-blur rounded-2xl border border-slate-700/60 shadow-xl p-6">
-                <h2 className="text-sm font-semibold text-amber-400/90 uppercase tracking-wider mb-4">
+              <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-6 sm:p-7">
+                <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-4">
                   Pitch & email template
                 </h2>
                 <div className="mb-4">
@@ -302,10 +302,10 @@ export default function SmoothSalesPage() {
                 {service === "wedding" && <WeddingContent audience={weddingSub} />}
                 {/* Email preview */}
                 {templateId && (
-                  <div className="mt-6 pt-6 border-t border-slate-600">
-                    <p className="text-xs text-slate-400 uppercase tracking-wider mb-2">Email preview (with signature)</p>
+                  <div className="mt-6 pt-6 border-t border-slate-600/80">
+                    <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">Email preview (with signature)</p>
                     <div
-                      className="bg-white text-slate-800 rounded-xl p-4 max-h-[420px] overflow-auto text-left prose prose-slate prose-sm max-w-none"
+                      className="bg-white text-slate-800 rounded-2xl p-5 sm:p-6 max-h-[480px] overflow-auto text-left prose prose-slate prose-sm max-w-none shadow-inner ring-1 ring-slate-200/50"
                       dangerouslySetInnerHTML={{ __html: previewHtml }}
                     />
                   </div>
@@ -313,8 +313,8 @@ export default function SmoothSalesPage() {
               </section>
 
               {/* Send campaign – only when service selected */}
-              <section className="bg-slate-800/80 backdrop-blur rounded-2xl border border-slate-700/60 shadow-xl p-6">
-                <h2 className="text-sm font-semibold text-amber-400/90 uppercase tracking-wider mb-4">
+              <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-6 sm:p-7">
+                <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-4">
                   Send campaign
                 </h2>
                 <p className="text-slate-400 text-sm mb-3">
@@ -327,11 +327,11 @@ export default function SmoothSalesPage() {
                   rows={5}
                   className="w-full bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 font-mono text-sm placeholder-slate-500 focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
                 />
-                <div className="mt-4 flex items-center gap-4">
+                <div className="mt-4 flex flex-wrap items-center gap-4">
                   <button
                     onClick={handleSend}
                     disabled={sending || !templateId || recipients.length === 0}
-                    className="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-semibold px-6 py-3 rounded-xl hover:from-amber-400 hover:to-amber-500 disabled:opacity-50 disabled:pointer-events-none shadow-lg"
+                    className="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-semibold px-7 py-3.5 rounded-xl hover:from-amber-400 hover:to-amber-500 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none shadow-lg shadow-amber-900/20 transition transform"
                   >
                     {sending ? "Sending…" : "Send to all"}
                   </button>
@@ -361,9 +361,9 @@ export default function SmoothSalesPage() {
 
         {/* Right sidebar – recipients with name fields */}
         {showPitchAndCampaign && (
-          <aside className="w-80 shrink-0">
-            <div className="bg-slate-800/80 backdrop-blur rounded-2xl border border-slate-700/60 shadow-xl p-4 sticky top-4">
-              <h3 className="text-sm font-semibold text-amber-400/90 uppercase tracking-wider mb-3">
+          <aside className="w-full lg:w-80 shrink-0">
+            <div className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-5 lg:sticky lg:top-6">
+              <h3 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-3">
                 Recipients
               </h3>
               <p className="text-slate-500 text-xs mb-3">
@@ -461,7 +461,7 @@ function ElionContent({ audience }: { audience: ElionSub }) {
   return (
     <div className="prose prose-invert prose-sm max-w-none text-slate-300">
       <p><strong className="text-slate-100">E Lion Music</strong> – Holy Hip-Hop artist, Family Feud grand prize winner (2016), 15+ years, 1,000+ performances, 10M+ YouTube views. P48X author, Prayer Authority founder.</p>
-      <p>Stream: <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Spotify</a>, <a href="https://music.apple.com/us/artist/e-lion/1111804063" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Apple Music</a>, <a href="https://www.elionmusic.com" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">ELionMusic.com</a></p>
+      <p>Stream: <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Spotify</a>, <a href="https://music.apple.com/us/artist/e-lion/1111804063" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Apple Music</a>, <a href="https://www.amazon.com/music/player/artists/B01GOGAW4W/e-lion" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Amazon Music</a>, <a href="https://www.tiktok.com/@elionreigns" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">TikTok</a>, <a href="https://www.elionmusic.com/rap/" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Full catalog</a>, <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Family Feud</a>, <a href="https://www.elionmusic.com" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">elionmusic.com</a></p>
     </div>
   );
 }
@@ -471,7 +471,10 @@ function WeddingContent({ audience }: { audience: WeddingSub }) {
     <div className="prose prose-invert prose-sm max-w-none text-slate-300">
       <p><strong className="text-slate-100">Hawaii Wedding Plans</strong> – Complete wedding planning for Oahu, Maui, Kauai & Big Island. Interactive planner, AI chatbot, island pages, venues, photographers, caterers, themes, and planning articles.</p>
       {audience === "couples" && (
-        <p>For <strong>couples</strong>: Choose your island, build your package, and use our guides (why Hawaii, how to use the site, bachelor/bachelorette parties, picking your wedding party, and more). <a href="https://www.hawaiiweddingplans.com" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">HawaiiWeddingPlans.com</a> | (808) 994-9034</p>
+        <>
+          <p>For <strong>couples</strong>: Choose your island, build your package. Planning articles: <a href="https://www.hawaiiweddingplans.com/articles/why-hawaii-destination-wedding.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Why Hawaii</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-use-wedding-planning-website.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">how to use the site</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-throw-best-bachelor-party-hawaii.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">bachelor party</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-throw-best-bachelorette-party-hawaii.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">bachelorette party</a>, <a href="https://www.hawaiiweddingplans.com/articles/how-to-pick-best-men-bridesmaids.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">picking wedding party</a>, <a href="https://www.hawaiiweddingplans.com/articles/who-not-to-invite-to-wedding.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">who not to invite</a>.</p>
+          <p><a href="https://www.hawaiiweddingplans.com" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">HawaiiWeddingPlans.com</a> | (808) 994-9034</p>
+        </>
       )}
       {audience === "contractors" && (
         <p>For <strong>contractors/vendors</strong>: Submit your service or venue to be featured. <a href="https://hawaiiweddingplans.com/submit/index.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Submit form</a> or email coralcrowntechnologies@gmail.com</p>
