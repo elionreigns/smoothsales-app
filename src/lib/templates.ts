@@ -24,6 +24,40 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
   return { subject: t.subject, html: t.html, text: t.text };
 }
 
+/** Service/sub types used by the UI. */
+export type ServiceSelection =
+  | ""
+  | "botox"
+  | "tech"
+  | "prayer"
+  | "tourism";
+export type TourismSub = "" | "hawaii" | "usa";
+export type PrayerSub = "" | "individual" | "church";
+
+/**
+ * Returns only the template options that match the current service (and sub-option).
+ * Use this so the bottom template dropdown only shows the right templates.
+ */
+export function getTemplatesForSelection(
+  service: ServiceSelection,
+  tourismSub: TourismSub,
+  prayerSub: PrayerSub
+): { value: TemplateId; label: string }[] {
+  if (service === "botox") return TEMPLATE_OPTIONS.filter((o) => o.value === "botox");
+  if (service === "tech") return TEMPLATE_OPTIONS.filter((o) => o.value === "tech");
+  if (service === "prayer") {
+    if (prayerSub === "individual") return TEMPLATE_OPTIONS.filter((o) => o.value === "prayer-individual");
+    if (prayerSub === "church") return TEMPLATE_OPTIONS.filter((o) => o.value === "prayer-church");
+    return [];
+  }
+  if (service === "tourism") {
+    if (tourismSub === "hawaii") return TEMPLATE_OPTIONS.filter((o) => o.value === "tourism-hawaii");
+    if (tourismSub === "usa") return TEMPLATE_OPTIONS.filter((o) => o.value === "tourism-usa");
+    return [];
+  }
+  return [];
+}
+
 const TEMPLATES: Record<TemplateId, { subject: string; html: string; text: string }> = {
   botox: {
     subject: "Botox Oahu – Physician-led aesthetics, weight loss & specials",
@@ -57,11 +91,12 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 </ul>
 <p><a href="https://www.botoxoahu.com">BotoxOahu.com</a> | Book: <a href="https://www.patientfusion.com/doctor/mary-schaefer-md-12622">patientfusion.com</a> | (808) 261-1121</p>
 <p style="color:#666;font-size:12px;">Coral Crown Solutions | sales@coralcrownsolutions.com</p>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #eee;"><img src="{{BASE_URL}}/promo/botoxcard.png" alt="Botox Oahu" width="280" style="display:block;max-width:100%;height:auto;border:0;" /></div>
 </div>`,
   },
   tech: {
-    subject: "Coral Crown Solutions – Websites, chatbots, e‑commerce & more",
-    text: `Coral Crown Solutions – Tech & growth
+    subject: "Coral Crown Solutions – Unlock your digital kingdom",
+    text: `Coral Crown Solutions – Unlock your digital kingdom. We build the websites, create the marketing, and provide the tools for your talent or business to thrive online.
 
 What we offer:
 • Websites: Build for $800, host $20/mo, help point your domain, monthly updates $100/mo
@@ -73,8 +108,8 @@ Inquire: sales@coralcrownsolutions.com | CoralCrownSolutions.com
 
 Coral Crown Solutions`,
     html: `<div style="font-family:sans-serif;max-width:600px;">
-<h2>Coral Crown Solutions – Tech & growth</h2>
-<p>Websites, chatbots, e‑commerce, and store management.</p>
+<h2>Unlock your digital kingdom</h2>
+<p>We build the websites, create the marketing, and provide the tools for your talent or business to thrive online. Entrepreneurs, artists, actors/models, creators – custom solutions from scratch, no bloated themes.</p>
 <h3>What we offer</h3>
 <ul>
 <li><strong>Websites:</strong> Build for $800, host $20/mo, domain pointing, monthly updates $100/mo</li>
@@ -84,6 +119,7 @@ Coral Crown Solutions`,
 <p>Pricing depends on scope, length, and regularity of work. Inquire for a quote.</p>
 <p><a href="https://www.coralcrownsolutions.com">CoralCrownSolutions.com</a> | sales@coralcrownsolutions.com</p>
 <p style="color:#666;font-size:12px;">Coral Crown Solutions</p>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #eee;"><img src="{{BASE_URL}}/promo/coralcrownfront.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;border:0;" /><img src="{{BASE_URL}}/promo/coralcrownback.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;border:0;margin-top:8px;" /></div>
 </div>`,
   },
   "prayer-individual": {
@@ -110,6 +146,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 </ul>
 <p><a href="https://www.prayerauthority.com/prayers/register.php">Join free – Prayer Authority</a></p>
 <p style="color:#666;font-size:12px;">Coral Crown Solutions | sales@coralcrownsolutions.com</p>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #eee;"><img src="{{BASE_URL}}/promo/prayerauthorityfront.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;border:0;" /><img src="{{BASE_URL}}/promo/prayerauthorityback.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;border:0;margin-top:8px;" /></div>
 </div>`,
   },
   "prayer-church": {
@@ -136,6 +173,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 </ul>
 <p><a href="https://www.prayerauthority.com">PrayerAuthority.com</a> | sales@coralcrownsolutions.com</p>
 <p style="color:#666;font-size:12px;">Coral Crown Solutions</p>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #eee;"><img src="{{BASE_URL}}/promo/prayerauthorityfront.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;border:0;" /><img src="{{BASE_URL}}/promo/prayerauthorityback.jpg" alt="Prayer Authority" width="280" style="display:block;max-width:100%;height:auto;border:0;margin-top:8px;" /></div>
 </div>`,
   },
   "tourism-hawaii": {
@@ -158,23 +196,24 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 </ol>
 <p><a href="https://www.timeforfunhawaii.com">TimeForFunHawaii.com</a> | Call (808) 393-0153</p>
 <p style="color:#666;font-size:12px;">Coral Crown Solutions | sales@coralcrownsolutions.com</p>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #eee;"><img src="{{BASE_URL}}/promo/timeforfunhawaii.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;border:0;" /><img src="{{BASE_URL}}/promo/timeforfunhawaiiback.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;border:0;margin-top:8px;" /></div>
 </div>`,
   },
   "tourism-usa": {
-    subject: "Time for Fun USA – Tour deals & travel promotions",
+    subject: "Choose 1 of 4 Complimentary Vacations – H.I.E. Wholesale Travel (Time for Fun USA)",
     text: `Time for Fun USA – Tour deals across the USA
 
-Travel promotions and exclusive discounts on top tours and activities. Watch our webinar for major savings or book directly – we’ll help you plan your trip.
+As a thank you for attending our educational webinar (60–75 min), choose ONE of 4 complimentary vacation packages: Carnival Cruise (3–5 nights), 7 Night Condo Stay, 7 Day Caribbean Cruise for Two, Mexico Getaway (8d/7n). You pay only required fees/taxes. Requirements: 25+, US/Canadian, $40k+ income. Register now – we’ll help you Full details: Carnival 3–5 nights, 7 Night Condo, 7 Day Caribbean for Two, Mexico 8d/7n. Valid 18 months. If never used, no cost.
 
 https://www.timeforfunusa.com
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
     html: `<div style="font-family:sans-serif;max-width:600px;">
-<h2>Time for Fun USA</h2>
-<p>Tour deals and travel promotions across the USA.</p>
-<p>Watch our webinar for exclusive discounts or book with us – we’ll help you plan.</p>
-<p><a href="https://www.timeforfunusa.com">TimeForFunUSA.com</a></p>
+<h2>Choose 1 of 4 Complimentary Vacations</h2>
+<p><strong>H.I.E. Wholesale Travel Company</strong> – Hawaii-based, A+ BBB. Attend our 60–75 min webinar and pick one: Carnival Cruise (3–5 nights), 7 Night Condo Stay, 7 Day Caribbean Cruise for Two, Mexico Getaway (8d/7n). Valid 18 months. You pay only required fees/taxes. Requirements: 25+, US/Canadian, $40k+ income.</p>
+<p><a href="https://www.timeforfunusa.com">Register now – TimeForFunUSA.com</a></p>
 <p style="color:#666;font-size:12px;">Coral Crown Solutions | sales@coralcrownsolutions.com</p>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #eee;"><img src="{{BASE_URL}}/promo/timeforfunusa.jpg" alt="Time for Fun USA" width="280" style="display:block;max-width:100%;height:auto;border:0;" /><img src="{{BASE_URL}}/promo/timeforfunusaback.jpg" alt="Time for Fun USA" width="280" style="display:block;max-width:100%;height:auto;border:0;margin-top:8px;" /></div>
 </div>`,
   },
 };

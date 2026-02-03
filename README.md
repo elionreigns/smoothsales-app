@@ -74,7 +74,8 @@ Service outreach and bulk email campaigns for Coral Crown Solutions. One dashboa
 
 2. **Environment variables** (Project → Settings → Environment Variables):
    - `RESEND_API_KEY` = your Resend API key (required for sending).
-   - `SMOOTHSALES_FROM` = optional; default is `Coral Crown Solutions <sales@coralcrownsolutions.com>`.
+   - `SMOOTHSALES_FROM` = optional; e.g. `Coral Crown Solutions <sales@coralcrownsolutions.com>` (must verify that domain in Resend first).
+   - `NEXT_PUBLIC_APP_URL` = optional; full app URL (e.g. `https://smoothsales-app.vercel.app`) so email templates can load business-card images from `/promo/`. If unset, the app uses Vercel’s `VERCEL_URL` automatically.
 
 3. **Redeploy** after adding env vars so the build uses them at runtime.
 
@@ -82,7 +83,7 @@ Service outreach and bulk email campaigns for Coral Crown Solutions. One dashboa
 
 ## Resend setup (sending from sales@coralcrownsolutions.com)
 
-You already use Resend for helicopter bookings. You have two options:
+**You do not need a new Resend account.** One Resend account can have multiple domains verified and send from different addresses (e.g. helicopter project from one address, SmoothSales from `sales@coralcrownsolutions.com`). The “one email” limit is per **domain** you verify, not per account.
 
 ### Option A – Same Resend account (recommended)
 
@@ -99,15 +100,13 @@ You already use Resend for helicopter bookings. You have two options:
    - If you don’t set `SMOOTHSALES_FROM`, the app still defaults to that address in code; sending will work only after the domain is verified in Resend.
 
 3. **API key**
-   - Use the **same** Resend API key as your helicopter project, or create a new key in the same account (e.g. “SmoothSales”) and set it as `RESEND_API_KEY` in Vercel for this project.
+   - Use the **same** Resend API key as your helicopter project, or create a new API key in the same account (e.g. “SmoothSales”) and set it as `RESEND_API_KEY` in Vercel for this project.
 
 No need for a second Resend account; one account can send from multiple verified domains.
 
 ### Option B – New Resend account
 
-- Create a new Resend account (e.g. with sales@coralcrownsolutions.com or a different email).
-- Verify `coralcrownsolutions.com` (or the domain you want) in that account.
-- Create an API key and set it as `RESEND_API_KEY` in Vercel for SmoothSales.
+- Only if you want SmoothSales completely separate: create a new Resend account, verify `coralcrownsolutions.com` there, create an API key, and set it as `RESEND_API_KEY` in Vercel.
 
 Use Option A if you want one place to manage all sending (helicopter + SmoothSales).
 
@@ -130,6 +129,12 @@ Use Option A if you want one place to manage all sending (helicopter + SmoothSal
 - [ ] Domain `coralcrownsolutions.com` verified in Resend if you want to send from `sales@coralcrownsolutions.com`
 - [ ] Redeploy after env changes
 - [ ] Test “Send to all” with your own email
+
+---
+
+## Email signatures (business cards)
+
+Templates include business card images in the signature, served from `/promo/` (see `public/promo/`). Images are loaded in emails via the app’s public URL (`NEXT_PUBLIC_APP_URL` or Vercel’s URL). Ensure the app is deployed so image links work in sent emails.
 
 ---
 

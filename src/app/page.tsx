@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { TEMPLATE_OPTIONS } from "@/lib/templates";
+import { useState, useMemo, useEffect } from "react";
+import { getTemplatesForSelection } from "@/lib/templates";
 
 type Service = "botox" | "tech" | "prayer" | "tourism" | "";
 type TourismSub = "hawaii" | "usa" | "";
@@ -12,7 +12,21 @@ export default function SmoothSalesPage() {
   const [tourismSub, setTourismSub] = useState<TourismSub>("");
   const [prayerSub, setPrayerSub] = useState<PrayerSub>("");
   const [emails, setEmails] = useState("");
-  const [templateId, setTemplateId] = useState<string>(TEMPLATE_OPTIONS[0].value);
+  const filteredTemplates = useMemo(
+    () => getTemplatesForSelection(service, tourismSub, prayerSub),
+    [service, tourismSub, prayerSub]
+  );
+  const [templateId, setTemplateId] = useState<string>("");
+
+  // When service/sub changes, set template to the only (or first) matching option
+  useEffect(() => {
+    if (filteredTemplates.length === 0) {
+      setTemplateId("");
+      return;
+    }
+    const first = filteredTemplates[0].value;
+    setTemplateId((prev) => (filteredTemplates.some((t) => t.value === prev) ? prev : first));
+  }, [filteredTemplates]);
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{ sent: number; total: number; failed: number; details?: { to: string; ok: boolean; error?: string }[] } | null>(null);
   const [error, setError] = useState("");
@@ -128,14 +142,19 @@ export default function SmoothSalesPage() {
               value={templateId}
               onChange={(e) => setTemplateId(e.target.value)}
               className="border border-slate-300 rounded-lg px-4 py-2"
+              disabled={filteredTemplates.length === 0}
             >
-              {TEMPLATE_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>{opt.label}</option>
-              ))}
+              {filteredTemplates.length === 0 ? (
+                <option value="">— Select service and option above —</option>
+              ) : (
+                filteredTemplates.map((opt) => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))
+              )}
             </select>
             <button
               onClick={handleSend}
-              disabled={sending}
+              disabled={sending || !templateId}
               className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50"
             >
               {sending ? "Sending…" : "Send to all"}

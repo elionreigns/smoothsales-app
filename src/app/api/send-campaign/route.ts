@@ -56,6 +56,12 @@ export async function POST(request: NextRequest) {
     }
 
     const { subject, html, text } = getTemplate(templateId);
+    // Emails need absolute URLs for images (business cards in /promo). Use app URL from env or Vercel.
+    const baseUrl =
+      process.env.NEXT_PUBLIC_APP_URL?.trim() ||
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+    const htmlWithImages = html.replace(/\{\{BASE_URL\}\}/g, baseUrl);
+
     const resend = new Resend(apiKey);
 
     const results: { to: string; ok: boolean; id?: string; error?: string }[] = [];
@@ -66,7 +72,7 @@ export async function POST(request: NextRequest) {
           from: FROM_EMAIL,
           to,
           subject,
-          html,
+          html: htmlWithImages,
           text,
         });
         if (error) {
