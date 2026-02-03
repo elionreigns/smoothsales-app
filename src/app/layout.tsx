@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -10,12 +10,19 @@ export const metadata: Metadata = {
   description: "Service outreach: Botox Oahu, Tech, Prayer Authority, Time for Fun Hawaii & USA, E Lion Music, Hawaii Wedding Plans. Email campaigns made simple.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0f172a",
+};
+
 export default function RootLayout({
   children,
 }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased font-sans scroll-smooth">
+      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased font-sans scroll-smooth min-w-0 overflow-x-hidden">
         {children}
       </body>
     </html>

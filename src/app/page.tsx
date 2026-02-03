@@ -136,20 +136,20 @@ export default function SmoothSalesPage() {
   }, [templateId, previewName]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-slate-100">
-      <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 flex flex-col lg:flex-row gap-8">
+    <div className="min-h-screen min-w-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-slate-100 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto py-5 sm:py-8 lg:py-10 px-3 sm:px-6 flex flex-col lg:flex-row gap-5 sm:gap-8">
         {/* Main column */}
-        <div className="flex-1 min-w-0 space-y-8">
-          <header className="text-center pb-2">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-amber-300 to-amber-400 bg-clip-text text-transparent drop-shadow-sm" style={{ fontFamily: "var(--font-cormorant)" }}>
+        <div className="flex-1 min-w-0 space-y-5 sm:space-y-8">
+          <header className="text-center pb-1 sm:pb-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-amber-300 to-amber-400 bg-clip-text text-transparent drop-shadow-sm" style={{ fontFamily: "var(--font-cormorant)" }}>
               SmoothSales
             </h1>
-            <p className="text-slate-400 mt-2 text-sm sm:text-base">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans</p>
+            <p className="text-slate-400 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base px-1">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans</p>
           </header>
 
           {/* Service selection card – always visible */}
-          <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-6 sm:p-7">
-            <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-4">Select service</h2>
+          <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-4 sm:p-6 lg:p-7">
+            <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-3 sm:mb-4">Select service</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">Service</label>
@@ -164,7 +164,7 @@ export default function SmoothSalesPage() {
                     setElionSub("");
                     setWeddingSub("");
                   }}
-                  className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
+                  className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
                   <option value="">Select…</option>
                   <option value="botox">Botox Oahu</option>
@@ -182,7 +182,7 @@ export default function SmoothSalesPage() {
                   <select
                     value={weddingSub}
                     onChange={(e) => setWeddingSub(e.target.value as WeddingSub)}
-                    className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
                   >
                     <option value="">Select…</option>
                     <option value="couples">Couples (planning a wedding)</option>
@@ -197,7 +197,7 @@ export default function SmoothSalesPage() {
                   <select
                     value={tourismSub}
                     onChange={(e) => setTourismSub(e.target.value as TourismSub)}
-                    className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
                   >
                     <option value="">Select…</option>
                     <option value="hawaii">Hawaii</option>
@@ -212,7 +212,7 @@ export default function SmoothSalesPage() {
                   <select
                     value={prayerSub}
                     onChange={(e) => setPrayerSub(e.target.value as PrayerSub)}
-                    className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
                   >
                     <option value="">Select…</option>
                     <option value="individual">Individual member</option>
@@ -227,7 +227,7 @@ export default function SmoothSalesPage() {
                   <select
                     value={botoxSub}
                     onChange={(e) => setBotoxSub(e.target.value as BotoxSub)}
-                    className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
                   >
                     <option value="">Select…</option>
                     <option value="individual">Individual</option>
@@ -242,7 +242,7 @@ export default function SmoothSalesPage() {
                   <select
                     value={techSub}
                     onChange={(e) => setTechSub(e.target.value as TechSub)}
-                    className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
                   >
                     <option value="">Select…</option>
                     <option value="individual">Individual</option>
@@ -257,7 +257,7 @@ export default function SmoothSalesPage() {
                   <select
                     value={elionSub}
                     onChange={(e) => setElionSub(e.target.value as ElionSub)}
-                    className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
                   >
                     <option value="">Select…</option>
                     <option value="fans">Fans & listeners</option>
@@ -276,8 +276,8 @@ export default function SmoothSalesPage() {
           {/* Pitch / content + template + preview – only when service + sub selected */}
           {showPitchAndCampaign && (
             <>
-              <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-6 sm:p-7">
-                <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-4">
+              <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-4 sm:p-6 lg:p-7">
+                <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-3 sm:mb-4">
                   Pitch & email template
                 </h2>
                 <div className="mb-4">
@@ -285,7 +285,7 @@ export default function SmoothSalesPage() {
                   <select
                     value={templateId}
                     onChange={(e) => setTemplateId(e.target.value)}
-                    className="w-full max-w-md bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                    className="w-full lg:max-w-md bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
                   >
                     {filteredTemplates.map((opt) => (
                       <option key={opt.value} value={opt.value}>
@@ -302,10 +302,10 @@ export default function SmoothSalesPage() {
                 {service === "wedding" && <WeddingContent audience={weddingSub} />}
                 {/* Email preview */}
                 {templateId && (
-                  <div className="mt-6 pt-6 border-t border-slate-600/80">
+                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-600/80">
                     <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">Email preview (with signature)</p>
                     <div
-                      className="bg-white text-slate-800 rounded-2xl p-5 sm:p-6 max-h-[480px] overflow-auto text-left prose prose-slate prose-sm max-w-none shadow-inner ring-1 ring-slate-200/50"
+                      className="bg-white text-slate-800 rounded-2xl p-3 sm:p-5 lg:p-6 max-h-[55vh] sm:max-h-[420px] lg:max-h-[480px] overflow-auto text-left prose prose-slate prose-sm max-w-none shadow-inner ring-1 ring-slate-200/50 [-webkit-overflow-scrolling:touch]"
                       dangerouslySetInnerHTML={{ __html: previewHtml }}
                     />
                   </div>
@@ -313,11 +313,11 @@ export default function SmoothSalesPage() {
               </section>
 
               {/* Send campaign – only when service selected */}
-              <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-6 sm:p-7">
-                <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-4">
+              <section className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-4 sm:p-6 lg:p-7">
+                <h2 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-3 sm:mb-4">
                   Send campaign
                 </h2>
-                <p className="text-slate-400 text-sm mb-3">
+                <p className="text-slate-400 text-xs sm:text-sm mb-3">
                   Paste emails below (one per line or comma/semicolon separated). Recipients appear in the sidebar where you can add names for personalization.
                 </p>
                 <textarea
@@ -325,13 +325,13 @@ export default function SmoothSalesPage() {
                   onChange={(e) => setEmails(e.target.value)}
                   placeholder="email1@example.com&#10;email2@example.com"
                   rows={5}
-                  className="w-full bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 font-mono text-sm placeholder-slate-500 focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
+                  className="w-full bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 font-mono text-sm placeholder-slate-500 focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[120px] touch-manipulation"
                 />
-                <div className="mt-4 flex flex-wrap items-center gap-4">
+                <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
                   <button
                     onClick={handleSend}
                     disabled={sending || !templateId || recipients.length === 0}
-                    className="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-semibold px-7 py-3.5 rounded-xl hover:from-amber-400 hover:to-amber-500 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none shadow-lg shadow-amber-900/20 transition transform"
+                    className="min-h-[48px] min-w-[140px] bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-semibold px-6 sm:px-7 py-3.5 rounded-xl hover:from-amber-400 hover:to-amber-500 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none shadow-lg shadow-amber-900/20 transition transform touch-manipulation"
                   >
                     {sending ? "Sending…" : "Send to all"}
                   </button>
@@ -362,17 +362,17 @@ export default function SmoothSalesPage() {
         {/* Right sidebar – recipients with name fields */}
         {showPitchAndCampaign && (
           <aside className="w-full lg:w-80 shrink-0">
-            <div className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-5 lg:sticky lg:top-6">
-              <h3 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-3">
+            <div className="bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl shadow-black/20 p-4 sm:p-5 lg:sticky lg:top-6">
+              <h3 className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-2 sm:mb-3">
                 Recipients
               </h3>
-              <p className="text-slate-500 text-xs mb-3">
+              <p className="text-slate-500 text-xs mb-2 sm:mb-3">
                 Add a name for personalization (e.g. &quot;Hi [Name],&quot; in the email).
               </p>
               {recipients.length === 0 ? (
-                <p className="text-slate-500 text-sm">Paste emails in the Send campaign area to see them here.</p>
+                <p className="text-slate-500 text-xs sm:text-sm">Paste emails in the Send campaign area to see them here.</p>
               ) : (
-                <ul className="space-y-3 max-h-[60vh] overflow-auto">
+                <ul className="space-y-3 max-h-[50vh] sm:max-h-[60vh] overflow-auto [-webkit-overflow-scrolling:touch]">
                   {recipients.map((r) => (
                     <li key={r.email} className="flex flex-col gap-1">
                       <span className="text-slate-400 font-mono text-xs truncate" title={r.email}>
@@ -383,7 +383,7 @@ export default function SmoothSalesPage() {
                         value={r.name}
                         onChange={(e) => updateRecipientName(r.email, e.target.value)}
                         placeholder="Name (optional)"
-                        className="w-full bg-slate-700/80 border border-slate-600 rounded-lg px-3 py-2 text-slate-100 text-sm placeholder-slate-500 focus:ring-1 focus:ring-amber-500/50"
+                        className="w-full bg-slate-700/80 border border-slate-600 rounded-lg px-3 py-2.5 text-slate-100 text-base sm:text-sm placeholder-slate-500 focus:ring-1 focus:ring-amber-500/50 min-h-[44px] touch-manipulation"
                       />
                     </li>
                   ))}
