@@ -9,12 +9,13 @@ import {
   type TemplateId,
 } from "@/lib/templates";
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
 type TechSub = "individual" | "corporate" | "";
 type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "";
+type WeddingSub = "couples" | "contractors" | "";
 
 type Recipient = { email: string; name: string };
 
@@ -25,6 +26,7 @@ export default function SmoothSalesPage() {
   const [botoxSub, setBotoxSub] = useState<BotoxSub>("");
   const [techSub, setTechSub] = useState<TechSub>("");
   const [elionSub, setElionSub] = useState<ElionSub>("");
+  const [weddingSub, setWeddingSub] = useState<WeddingSub>("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [templateId, setTemplateId] = useState<string>("");
@@ -38,12 +40,12 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub]
   );
 
   useEffect(() => {
@@ -160,6 +162,7 @@ export default function SmoothSalesPage() {
                     setBotoxSub("");
                     setTechSub("");
                     setElionSub("");
+                    setWeddingSub("");
                   }}
                   className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
                 >
@@ -169,8 +172,24 @@ export default function SmoothSalesPage() {
                   <option value="prayer">Prayer Authority</option>
                   <option value="tourism">Tourism (Time for Fun)</option>
                   <option value="elion">E Lion Music</option>
+                  <option value="wedding">Wedding Planner (Hawaii Wedding Plans)</option>
                 </select>
               </div>
+
+              {service === "wedding" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={weddingSub}
+                    onChange={(e) => setWeddingSub(e.target.value as WeddingSub)}
+                    className="w-full max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="couples">Couples (planning a wedding)</option>
+                    <option value="contractors">Contractors / vendors (get featured)</option>
+                  </select>
+                </div>
+              )}
 
               {service === "tourism" && (
                 <div>
@@ -280,6 +299,7 @@ export default function SmoothSalesPage() {
                 {service === "prayer" && <PrayerContent audience={prayerSub} />}
                 {service === "tourism" && <TourismContent region={tourismSub} />}
                 {service === "elion" && <ElionContent audience={elionSub} />}
+                {service === "wedding" && <WeddingContent audience={weddingSub} />}
                 {/* Email preview */}
                 {templateId && (
                   <div className="mt-6 pt-6 border-t border-slate-600">
@@ -442,6 +462,20 @@ function ElionContent({ audience }: { audience: ElionSub }) {
     <div className="prose prose-invert prose-sm max-w-none text-slate-300">
       <p><strong className="text-slate-100">E Lion Music</strong> – Holy Hip-Hop artist, Family Feud grand prize winner (2016), 15+ years, 1,000+ performances, 10M+ YouTube views. P48X author, Prayer Authority founder.</p>
       <p>Stream: <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Spotify</a>, <a href="https://music.apple.com/us/artist/e-lion/1111804063" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Apple Music</a>, <a href="https://www.elionmusic.com" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">ELionMusic.com</a></p>
+    </div>
+  );
+}
+
+function WeddingContent({ audience }: { audience: WeddingSub }) {
+  return (
+    <div className="prose prose-invert prose-sm max-w-none text-slate-300">
+      <p><strong className="text-slate-100">Hawaii Wedding Plans</strong> – Complete wedding planning for Oahu, Maui, Kauai & Big Island. Interactive planner, AI chatbot, island pages, venues, photographers, caterers, themes, and planning articles.</p>
+      {audience === "couples" && (
+        <p>For <strong>couples</strong>: Choose your island, build your package, and use our guides (why Hawaii, how to use the site, bachelor/bachelorette parties, picking your wedding party, and more). <a href="https://www.hawaiiweddingplans.com" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">HawaiiWeddingPlans.com</a> | (808) 994-9034</p>
+      )}
+      {audience === "contractors" && (
+        <p>For <strong>contractors/vendors</strong>: Submit your service or venue to be featured. <a href="https://hawaiiweddingplans.com/submit/index.php" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Submit form</a> or email coralcrowntechnologies@gmail.com</p>
+      )}
     </div>
   );
 }
