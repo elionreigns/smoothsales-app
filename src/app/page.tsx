@@ -7,6 +7,7 @@ import {
   getTemplate,
   substitutePlaceholders,
   type TemplateId,
+  type HealingHerbalsSub,
 } from "@/lib/templates";
 
 type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "";
@@ -43,12 +44,12 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub]
   );
 
   useEffect(() => {
