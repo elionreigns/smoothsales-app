@@ -29,6 +29,7 @@ export default function SmoothSalesPage() {
   const [elionSub, setElionSub] = useState<ElionSub>("");
   const [weddingSub, setWeddingSub] = useState<WeddingSub>("");
   const [p48xSub, setP48xSub] = useState<P48XSub>("");
+  const [healingHerbalsSub, setHealingHerbalsSub] = useState<HealingHerbalsSub>("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [templateId, setTemplateId] = useState<string>("");
@@ -146,7 +147,7 @@ export default function SmoothSalesPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-amber-300 to-amber-400 bg-clip-text text-transparent drop-shadow-sm" style={{ fontFamily: "var(--font-cormorant)" }}>
               SmoothSales
             </h1>
-            <p className="text-slate-400 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base px-1">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans, P48X</p>
+            <p className="text-slate-400 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base px-1">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans, P48X, Healing Herbals</p>
           </header>
 
           {/* Service selection card – always visible */}
@@ -166,6 +167,7 @@ export default function SmoothSalesPage() {
                     setElionSub("");
                     setWeddingSub("");
                     setP48xSub("");
+                    setHealingHerbalsSub("");
                   }}
                   className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
@@ -321,6 +323,7 @@ export default function SmoothSalesPage() {
                 {service === "elion" && <ElionContent audience={elionSub} />}
                 {service === "wedding" && <WeddingContent audience={weddingSub} />}
                 {service === "p48x" && <P48XContent audience={p48xSub} />}
+                {service === "healing-herbals" && <HealingHerbalsContent audience={healingHerbalsSub} />}
                 {/* Email preview */}
                 {templateId && (
                   <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-600/80">
@@ -378,7 +381,10 @@ export default function SmoothSalesPage() {
           {service === "p48x" && !p48xSub && (
             <p className="text-slate-500 text-sm">Select an audience above to continue.</p>
           )}
-          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (
+          {service === "healing-herbals" && !healingHerbalsSub && (
+            <p className="text-slate-500 text-sm">Select Smoke Shop or Individual above to continue.</p>
+          )}
+          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (service !== "healing-herbals" || healingHerbalsSub !== "") && (
             <p className="text-slate-500 text-sm">Select an option above to continue.</p>
           )}
         </div>
@@ -514,6 +520,21 @@ function P48XContent({ audience }: { audience: P48XSub }) {
       {audience === "personal" && <p>Personal template: why the book helps, power of right thoughts, app + audiobook, where to buy and sign up, demo video.</p>}
       {audience === "physical-distributors" && <p>Physical distributors: wholesale printed copies, markup for your store; author is E Lion (elionmusic.com), Family Feud grand prize – link to <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Family Feud article</a>.</p>}
       {audience === "affiliate-sellers" && <p>Affiliate sellers: we&apos;re looking for people to push the book; 15% off your book purchases when your referral emails us with a receipt.</p>}
+    </div>
+  );
+}
+
+function HealingHerbalsContent({ audience }: { audience: HealingHerbalsSub }) {
+  return (
+    <div className="prose prose-invert prose-sm max-w-none text-slate-300">
+      <p><strong className="text-slate-100">Healing Herbals</strong> – Blue Lotus and Kava Extract. Botanical liquids that fit common vape cartridges (e.g. XROS model line) to replace nicotine.</p>
+      {audience === "smoke-shop" && (
+        <p>Smoke shop template: <strong>wholesale $27.50</strong> per bottle, <strong>suggested retail $50</strong>. You keep the margin. Reply for wholesale pricing, minimums, and order details.</p>
+      )}
+      {audience === "individual" && (
+        <p>Individual template: <strong>retail $50</strong> per bottle. Reply or call (808) 393-0153 to order.</p>
+      )}
+      <p>coralcrowntechnologies@gmail.com | (808) 393-0153</p>
     </div>
   );
 }

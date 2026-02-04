@@ -19,7 +19,9 @@ export type TemplateId =
   | "wedding-contractors"
   | "p48x-personal"
   | "p48x-physical-distributors"
-  | "p48x-affiliate-sellers";
+  | "p48x-affiliate-sellers"
+  | "healing-herbals-smoke-shop"
+  | "healing-herbals-individual";
 
 export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "botox", label: "Botox Oahu – Price sheet & specials" },
@@ -40,6 +42,8 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "p48x-personal", label: "P48X – Personal (readers & listeners, book + app + audiobook)" },
   { value: "p48x-physical-distributors", label: "P48X – Physical distributors (wholesale, retail stores)" },
   { value: "p48x-affiliate-sellers", label: "P48X – Affiliate sellers (15% on direct sales)" },
+  { value: "healing-herbals-smoke-shop", label: "Healing Herbals – Smoke Shop (wholesale + suggested retail)" },
+  { value: "healing-herbals-individual", label: "Healing Herbals – Individual (retail only)" },
 ];
 
 const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.9;">Reach us at <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> or (808) 393-0153 for any of these services.</p>`;
@@ -84,7 +88,8 @@ export type ServiceSelection =
   | "tourism"
   | "elion"
   | "wedding"
-  | "p48x";
+  | "p48x"
+  | "healing-herbals";
 export type TourismSub = "" | "hawaii" | "usa";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
@@ -100,6 +105,7 @@ export type ElionSub =
   | "venue-dj";
 export type WeddingSub = "" | "couples" | "contractors";
 export type P48XSub = "" | "personal" | "physical-distributors" | "affiliate-sellers";
+export type HealingHerbalsSub = "" | "smoke-shop" | "individual";
 
 const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   fans: "elion-fans",
@@ -122,6 +128,11 @@ const P48X_TEMPLATE_MAP: Record<Exclude<P48XSub, "">, TemplateId> = {
   "affiliate-sellers": "p48x-affiliate-sellers",
 };
 
+const HEALING_HERBALS_TEMPLATE_MAP: Record<Exclude<HealingHerbalsSub, "">, TemplateId> = {
+  "smoke-shop": "healing-herbals-smoke-shop",
+  individual: "healing-herbals-individual",
+};
+
 /**
  * Returns only the template options that match the current service (and sub-option).
  */
@@ -133,7 +144,8 @@ export function getTemplatesForSelection(
   techSub: TechSub,
   elionSub: ElionSub,
   weddingSub: WeddingSub,
-  p48xSub: P48XSub
+  p48xSub: P48XSub,
+  healingHerbalsSub: HealingHerbalsSub
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return TEMPLATE_OPTIONS.filter((o) => o.value === "botox");
@@ -165,6 +177,10 @@ export function getTemplatesForSelection(
     const id = P48X_TEMPLATE_MAP[p48xSub];
     return TEMPLATE_OPTIONS.filter((o) => o.value === id);
   }
+  if (service === "healing-herbals" && healingHerbalsSub !== "") {
+    const id = HEALING_HERBALS_TEMPLATE_MAP[healingHerbalsSub];
+    return TEMPLATE_OPTIONS.filter((o) => o.value === id);
+  }
   return [];
 }
 
@@ -177,7 +193,8 @@ export function hasRequiredSelection(
   techSub: TechSub,
   elionSub: ElionSub,
   weddingSub: WeddingSub,
-  p48xSub: P48XSub
+  p48xSub: P48XSub,
+  healingHerbalsSub: HealingHerbalsSub
 ): boolean {
   if (!service) return false;
   if (service === "prayer") return prayerSub !== "";
@@ -187,6 +204,7 @@ export function hasRequiredSelection(
   if (service === "elion") return elionSub !== "";
   if (service === "wedding") return weddingSub !== "";
   if (service === "p48x") return p48xSub !== "";
+  if (service === "healing-herbals") return healingHerbalsSub !== "";
   return false;
 }
 
@@ -425,7 +443,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 
 Time for Fun USA – Tour deals across the USA
 
-As a thank you for attending our educational webinar (60–75 min), choose ONE of 4 complimentary vacation packages: Carnival Cruise (3–5 nights), 7 Night Condo Stay, 7 Day Caribbean Cruise for Two, Mexico Getaway (8d/7n). You pay only required fees/taxes. Requirements: 25+, US/Canadian, $40k+ income. Register now – we’ll help you Full details: Carnival 3–5 nights, 7 Night Condo, 7 Day Caribbean for Two, Mexico 8d/7n. Valid 18 months. If never used, no cost.
+As a thank you for attending our educational webinar (60–75 min), choose ONE of 4 complimentary vacation packages: Carnival Cruise (3–5 nights), 7 Night Condo Stay, 7 Day Caribbean Cruise for Two, Mexico Getaway (8d/7n). You pay only required fees/taxes. Requirements: 25+, US/Canadian, $40k+ income. Register now – we’ll Hawaii residents: want to get off the rock? Watch one webinar and pick your complimentary trip. Details: Carnival 3–5 nights, 7 Night Condo, 7 Day Caribbean for Two, Mexico 8d/7n. Valid 18 months. If never used, no cost.
 
 https://www.timeforfunusa.com
 
@@ -440,6 +458,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0369a1;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #7dd3fc;padding-bottom:16px;">Hi {{Name}},</p>
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">We'd love to give you a complimentary vacation. Attend our 60–75 minute educational webinar on wholesale travel – then choose one of four packages: Carnival Cruise (3–5 nights), 7 Night Condo Stay, 7 Day Caribbean Cruise for Two, or Mexico Getaway (8d/7n). You pay only required fees and taxes when you're ready to go.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;"><strong>Hawaii residents:</strong> Want to get off the rock? Watch one webinar and pick your complimentary trip – Caribbean, Mexico, cruise, or condo. No catch.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0369a1;text-transform:uppercase;">Why you'll love it</p>
 <p style="margin:0 0 18px;font-size:14px;line-height:1.7;"><strong>H.I.E. Wholesale Travel</strong> – Hawaii-based, A+ BBB, 500,000+ active users. Attend one presentation, learn about wholesale travel, and walk away with your choice. Valid 18 months. If you never use it, there's no cost whatsoever.</p>
 <ul style="margin:0 auto 22px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
@@ -843,9 +862,11 @@ Why it helps: What you think shapes who you become. P48X gives you a daily path 
 
 Where to get it: Barnes & Noble, Apple Books, Smashwords, Rakuten Kobo. Sign up for the free P48X app (daily reflections, journal) at Prayer Authority – use your Google account.
 
+Direct link to P48X page (book info + app): https://www.prayerauthority.com/prayers/p48x.php
+
 Demo: How to set up your daily P48X reflection schedule with Google Calendar: https://www.youtube.com/watch?v=tvY4niTN4jA
 
-Book: https://www.prayerauthority.com/prayers/p48x.php | Barnes & Noble https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621 | Apple Books https://books.apple.com/us/book/p48x/id6746675717 | Smashwords https://www.smashwords.com/books/view/1780908 | Rakuten Kobo https://www.kobo.com/us/en/ebook/p48x
+Book & app: https://www.prayerauthority.com/prayers/p48x.php | Barnes & Noble https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621 | Apple Books https://books.apple.com/us/book/p48x/id6746675717 | Smashwords https://www.smashwords.com/books/view/1780908 | Rakuten Kobo https://www.kobo.com/us/en/ebook/p48x
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
     html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:linear-gradient(180deg,#fefce8 0%,#fef9c3 100%);border:2px solid #ca8a04;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(202,138,4,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
@@ -863,9 +884,10 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a16207;text-transform:uppercase;">Audiobook option</p>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.7;">Prefer to listen? There's about <strong>15 hours of audiobook</strong> in the author's voice (cloned with ElevenLabs). Read the book, listen to it, or do both – your choice.</p>
 <div style="background:#fff;border:2px solid #eab308;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(202,138,4,0.15);">
+<p style="margin:0 0 10px;"><a href="https://www.prayerauthority.com/prayers/p48x.php" style="display:inline-block;background:linear-gradient(145deg,#a16207 0%,#854d0e 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(202,138,4,0.4);">P48X page – book &amp; app</a></p>
 <p style="margin:0 0 12px;font-size:15px;color:#422006;line-height:1.55;"><strong>Get the book:</strong> <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#a16207;">Barnes &amp; Noble</a> · <a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#a16207;">Apple Books</a> · <a href="https://www.smashwords.com/books/view/1780908" style="color:#a16207;">Smashwords</a> · <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#a16207;">Rakuten Kobo</a></p>
 <p style="margin:0 0 12px;font-size:15px;color:#422006;line-height:1.55;"><strong>Use the app:</strong> <a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#a16207;">P48X Reflections at Prayer Authority</a> – sign up with Google, set up daily prompts, journal and reflect.</p>
-<p style="margin:0 0 10px;"><a href="https://www.youtube.com/watch?v=tvY4niTN4jA" style="display:inline-block;background:linear-gradient(145deg,#a16207 0%,#854d0e 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(202,138,4,0.4);">Watch: How to set up P48X with Google Calendar</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.youtube.com/watch?v=tvY4niTN4jA" style="display:inline-block;background:rgba(202,138,4,0.2);color:#a16207;border:2px solid #ca8a04;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Watch: How to set up P48X with Google Calendar</a></p>
 <p style="margin:0;font-size:13px;color:#713f12;font-style:italic;">P.S. Your path to a life of profound peace, purpose, and clarity is waiting.</p>
 </div>
 </div>
@@ -878,6 +900,8 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 We're reaching out to stores and physical distributors who may want to carry P48X – Philippians 4:8 Expounded by Eric Schaefer. You can order printed copies wholesale and mark up the book to sell in your store.
 
 About the author: Eric is also E Lion – Holy Hip-Hop artist from Hawaii, Family Feud grand prize winner (2016, first Hawaiian family to win 5 consecutive episodes), founder of Prayer Authority, and author of P48X. His music is at elionmusic.com – same heart for faith, excellence, and reaching people. The book has strong appeal for faith-based retailers, churches, and general inspirational readers.
+
+P48X page (book & app info): https://www.prayerauthority.com/prayers/p48x.php
 
 Family Feud coverage: https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize
 
@@ -896,7 +920,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">We're reaching out to <strong>physical distributors and retail stores</strong> who may want to carry <strong>P48X – Philippians 4:8 Expounded</strong>. You can order printed copies wholesale and mark up the book to sell in your store. Ideal for faith-based retailers, churches, and inspirational book sections.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#a16207;text-transform:uppercase;">About the author</p>
 <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Eric Schaefer is also <strong>E Lion</strong> – Holy Hip-Hop artist from Hawaii, <strong>Family Feud grand prize winner</strong> (2016 – first Hawaiian family to win 5 consecutive episodes), founder of Prayer Authority, and author of P48X. His music and brand at <a href="https://www.elionmusic.com" style="color:#a16207;">elionmusic.com</a> share the same heart for faith, excellence, and reaching people – so your customers who know E Lion or Family Feud will recognize the name.</p>
-<p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#a16207;">Family Feud: Grand Prize article</a></p>
+<p style="margin:0 0 10px;font-size:14px;line-height:1.6;"><a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#a16207;">P48X page – book &amp; app</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#a16207;">Family Feud: Grand Prize article</a></p>
 <div style="background:#fff;border:2px solid #eab308;border-radius:18px;padding:24px 26px;margin:28px 0;">
 <p style="margin:0 0 14px;font-size:15px;color:#422006;line-height:1.55;"><strong>Next step:</strong> If you're interested in wholesale orders for your store, reply to this email and we'll send pricing, minimums, and order details. We typically respond within 24–48 hours.</p>
 <p style="margin:0;font-size:13px;color:#713f12;">Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153</p>
@@ -911,6 +935,8 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 We're looking for people who are willing to push P48X – Philippians 4:8 Expounded – and we want to reward you for it. If you sell the book directly and the buyer emails us with a receipt showing they got it from you, you get 15% off your own book purchases (or equivalent credit). One simple rule: the person says they got it from you and emails us with the receipt.
 
 P48X is the ultimate guide to transforming your mind and spirit, rooted in Philippians 4:8. It's on Barnes & Noble, Apple Books, Smashwords, and Rakuten Kobo. There's also a free P48X app at Prayer Authority (daily reflections, Google Calendar integration, journal) and about 15 hours of audiobook in the author's voice.
+
+Direct link to P48X page (book & app): https://www.prayerauthority.com/prayers/p48x.php
 
 If you'd like to partner with us as an affiliate seller, reply to this email and we'll send you the exact terms and how to track referrals.
 
@@ -927,10 +953,76 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">We're looking for <strong>affiliate sellers</strong> who are willing to push <strong>P48X – Philippians 4:8 Expounded</strong>. Here's the deal: if you sell the book directly and that person emails us with a receipt showing they got it from you, <strong>you get 15% off your own book purchases</strong> (or equivalent credit). One simple rule: the buyer says they got it from you and emails us with the receipt.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">What you're promoting</p>
 <p style="margin:0 0 18px;font-size:14px;line-height:1.7;">P48X is the ultimate guide to transforming your mind and spirit, rooted in Philippians 4:8. Available at <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#15803d;">Barnes &amp; Noble</a>, <a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#15803d;">Apple Books</a>, <a href="https://www.smashwords.com/books/view/1780908" style="color:#15803d;">Smashwords</a>, and <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#15803d;">Rakuten Kobo</a>. There's also a free <strong>P48X app</strong> at <a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#15803d;">Prayer Authority</a> (daily reflections, Google Calendar, journal) and about 15 hours of audiobook in the author's voice.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#15803d;font-weight:600;">Direct link: P48X page (book &amp; app)</a></p>
 <div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;">
 <p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Next step:</strong> If you'd like to partner with us as an affiliate seller, reply to this email and we'll send you the exact terms and how to track referrals. We're building a team of people who believe in this book and want to spread it.</p>
 <p style="margin:0;font-size:13px;color:#166534;">Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153</p>
 </div>
+</div>
+</div>`,
+  },
+  "healing-herbals-smoke-shop": {
+    subject: "Healing Herbals – Wholesale for smoke shops: Blue Lotus & Kava Extract",
+    text: `Hi {{Name}},
+
+Healing Herbals – wholesale for smoke shops. Our main sellers: Blue Lotus and Kava Extract. Botanical liquids that fit common vape cartridges (e.g. XROS model line) so your customers can replace nicotine with something smoother.
+
+Wholesale: $27.50 per bottle. Suggested retail: $50. You keep the margin.
+
+Products: Blue Lotus, Kava Extract (vape/cartridge), plus full botanical line – extracts, tinctures, disposables. Reply for wholesale pricing, minimums, and full product list.
+
+Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Healing Herbals</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Wholesale for smoke shops</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Blue Lotus & Kava Extract – replace nicotine. Fit XROS and common vape cartridges.</p>
+</div>
+<div style="padding:32px 28px;color:#14532d;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #86efac;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>Healing Herbals</strong> – botanical liquids that fit common vape cartridges (e.g. XROS model line) so your customers can replace nicotine with something smoother. Our main sellers: <strong>Blue Lotus</strong> and <strong>Kava Extract</strong>.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Wholesale & suggested retail</p>
+<table style="margin:0 auto 22px;border-collapse:collapse;font-size:14px;text-align:left;">
+<tr style="background:#dcfce7;"><th style="padding:12px 16px;border:1px solid #86efac;">Item</th><th style="padding:12px 16px;border:1px solid #86efac;">Wholesale</th><th style="padding:12px 16px;border:1px solid #86efac;">Suggested retail</th></tr>
+<tr><td style="padding:12px 16px;border:1px solid #86efac;">Blue Lotus</td><td style="padding:12px 16px;border:1px solid #86efac;">$27.50</td><td style="padding:12px 16px;border:1px solid #86efac;">$50</td></tr>
+<tr><td style="padding:12px 16px;border:1px solid #86efac;">Kava Extract</td><td style="padding:12px 16px;border:1px solid #86efac;">$27.50</td><td style="padding:12px 16px;border:1px solid #86efac;">$50</td></tr>
+</table>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">You keep the margin. Same great fit for popular vape devices – customers switching from nicotine love the drop-in option.</p>
+<div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
+<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Next step:</strong> Reply to this email for wholesale pricing, minimums, and order details. We typically respond within 24 hours.</p>
+<p style="margin:0;font-size:13px;color:#166534;">coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><img src="{{BASE_URL}}/promo/healingherbals-bluelotus.png" alt="Blue Lotus" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/healingherbals-kava.png" alt="Kava Extract" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
+</div>
+</div>`,
+  },
+  "healing-herbals-individual": {
+    subject: "Healing Herbals – Blue Lotus & Kava Extract for your vape ($50)",
+    text: `Hi {{Name}},
+
+Healing Herbals – Blue Lotus and Kava Extract. Botanical liquids that fit common vape cartridges (e.g. XROS model line) so you can replace nicotine with something smoother.
+
+Retail: $50 per bottle. Same great fit for popular vape devices. Reply or call to order.
+
+Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Healing Herbals</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Blue Lotus & Kava Extract</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Replace nicotine. Fit XROS and common vape cartridges.</p>
+</div>
+<div style="padding:32px 28px;color:#14532d;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #86efac;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>Healing Herbals</strong> – botanical liquids that fit common vape cartridges (e.g. XROS model line) so you can replace nicotine with something smoother. <strong>Blue Lotus</strong>, <strong>Kava Extract</strong>, and more – extracts, tinctures, disposables.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Retail</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">$50 per bottle (main line). Same great fit for popular vape devices. Ask about our full product list.</p>
+<div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
+<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Order:</strong> Reply to this email or call (808) 393-0153. We typically respond within 24 hours.</p>
+<p style="margin:0;font-size:13px;color:#166534;">coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><img src="{{BASE_URL}}/promo/healingherbals-bluelotus.png" alt="Blue Lotus" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/healingherbals-kava.png" alt="Kava Extract" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },

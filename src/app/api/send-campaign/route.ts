@@ -63,6 +63,11 @@ export async function POST(request: NextRequest) {
       "elion-venue-dj",
       "wedding-couples",
       "wedding-contractors",
+      "p48x-personal",
+      "p48x-physical-distributors",
+      "p48x-affiliate-sellers",
+      "healing-herbals-smoke-shop",
+      "healing-herbals-individual",
     ];
     if (!templateId || !validIds.includes(templateId)) {
       return NextResponse.json(
