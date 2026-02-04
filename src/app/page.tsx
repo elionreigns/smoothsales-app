@@ -10,7 +10,7 @@ import {
   type HealingHerbalsSub,
 } from "@/lib/templates";
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
@@ -180,6 +180,7 @@ export default function SmoothSalesPage() {
                   <option value="elion">E Lion Music</option>
                   <option value="wedding">Wedding Planner (Hawaii Wedding Plans)</option>
                   <option value="p48x">P48X (Philippians 4:8 Expounded)</option>
+                  <option value="healing-herbals">Healing Herbals</option>
                 </select>
               </div>
 
@@ -290,6 +291,21 @@ export default function SmoothSalesPage() {
                     <option value="personal">Personal (readers & listeners)</option>
                     <option value="physical-distributors">Physical distributors (wholesale / retail)</option>
                     <option value="affiliate-sellers">Affiliate sellers (15% on direct sales)</option>
+                  </select>
+                </div>
+              )}
+
+              {service === "healing-herbals" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={healingHerbalsSub}
+                    onChange={(e) => setHealingHerbalsSub(e.target.value as HealingHerbalsSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="smoke-shop">Smoke Shop (wholesale + suggested retail)</option>
+                    <option value="individual">Individual (retail only)</option>
                   </select>
                 </div>
               )}
