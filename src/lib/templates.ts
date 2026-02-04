@@ -969,9 +969,11 @@ Healing Herbals Kava Collection – top-quality kava and botanicals from Vanuatu
 
 Why partner with Healing Herbals? Premium, lab-tested botanicals and beverages that sell fast: Kava vapes & products (our #1 seller), Kanna sprays & extracts, Blue Lotus, Kratom extracts & powders, exclusive Korthal alcohol-free THC/CBD/Kratom/Kava drinks. High margins (100–150% on wholesale), private labeling, custom blends, low MOQ, fast delivery.
 
-Wholesale offers: 50% OFF packaged retail at healingherbals.store – Code: Storefront3 (excludes bulk >1 oz/1 g). Extra 2.5% OFF with Zelle to (631) 871-7641. Preferred MOQ: $250 (flexible) / $500 for full discount.
+Wholesale offers: 50% OFF at healingherbals.store – Code: Storefront3 (min $500 before discount). Code applies to packaged products and extracts under 1 g / herbs under 1 oz; for bulk see pricing doc below. Zelle to (631) 871-7641 for extra 2.5% off. We prefer $250 MOQ.
 
-Our two most popular nicotine replacement products (see images): Kava Extract Juice and Blue Lotus Extract Juice – suitable for vapes with replaceable tops, refillable juice. Wholesale $27.50 each, suggested retail $50 each. Full catalog includes Kava pastes, powders, instant, liquid extract, shots, tinctures, gummies; Blue Lotus flowers, extracts, vapes; Kratom; Kanna; Korthal beverages; and more – inquire for complete price list.
+Our two most popular nicotine replacement products (see images): Kava Extract Juice and Blue Lotus Extract Juice – vape-ready, replaceable tops, refillable. Wholesale $27.50 each, suggested retail $50 each.
+
+Catalogs: 2025 product catalog (packaged & finished goods) – https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f8168b99-2269-4e2b-8887-7781b959a710 | Bulk herbs & extracts (Kanna, Kava, Blue Lotus, Amanita, Kratom & more) – https://docs.google.com/document/d/1TB1pHCUEMJsMYjuiMs380r1Lly5bfE3UqCVKzxUZWB0/edit?usp=drivesdk | Korthal (exclusive wholesale) – https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a6d3213b-821e-4c3a-b6ae-506bd5fa1587
 
 To order wholesale: Robert "Robbie" Lattig (631) 871-7641 or Herbalhealingsmarketing@gmail.com. Local Oahu: Eric (808) 393-0153.
 
@@ -989,17 +991,23 @@ Mahalo nui loa! Eric & Robbie – Healing Herbals Team`,
 <p style="margin:0 0 26px;font-size:15px;line-height:1.7;">Why partner with us? Premium, lab-tested botanicals that sell fast: <strong>Kava vapes & products</strong> (our #1 seller), <strong>Kanna</strong> sprays & extracts, <strong>Blue Lotus</strong>, <strong>Kratom</strong> extracts & powders, exclusive <strong>Korthal</strong> alcohol-free drinks. High margins (100–150% on wholesale), private labeling, custom blends, low MOQ, fast delivery.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Wholesale offers</p>
 <ul style="margin:0 auto 16px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
-<li style="margin-bottom:6px;"><strong>50% OFF</strong> packaged retail at healingherbals.store – Code: <strong>Storefront3</strong> (excludes bulk &gt;1 oz/1 g)</li>
+<li style="margin-bottom:6px;"><strong>50% OFF</strong> at healingherbals.store – Code: <strong>Storefront3</strong> (min $500 before discount). Applies to packaged products and extracts under 1 g / herbs under 1 oz; for bulk see links below.</li>
 <li style="margin-bottom:6px;"><strong>Extra 2.5% OFF</strong> with Zelle to (631) 871-7641</li>
-<li style="margin-bottom:0;">Preferred MOQ: $250 (flexible) / $500 for full discount</li>
+<li style="margin-bottom:0;">We prefer $250 MOQ. Direct invoice available.</li>
 </ul>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Our two most popular nicotine replacement products</p>
 <table style="margin:0 auto 22px;border-collapse:collapse;font-size:13px;text-align:left;">
 <tr style="background:#dcfce7;"><th style="padding:10px 14px;border:1px solid #86efac;">Product</th><th style="padding:10px 14px;border:1px solid #86efac;">Wholesale</th><th style="padding:10px 14px;border:1px solid #86efac;">Retail</th></tr>
 <tr><td style="padding:10px 14px;border:1px solid #86efac;">Kava Extract Juice (vape, replaceable top, refillable)</td><td style="padding:10px 14px;border:1px solid #86efac;">$27.50</td><td style="padding:10px 14px;border:1px solid #86efac;">$50</td></tr>
 <tr><td style="padding:10px 14px;border:1px solid #86efac;">Blue Lotus Extract Juice (vape, replaceable top, refillable)</td><td style="padding:10px 14px;border:1px solid #86efac;">$27.50</td><td style="padding:10px 14px;border:1px solid #86efac;">$50</td></tr>
-<tr><td style="padding:10px 14px;border:1px solid #86efac;" colspan="3">Full catalog: Kava pastes, powders, instant, liquid extract, shots, tinctures, gummies; Blue Lotus flowers, extracts, vapes; Kratom; Kanna; Korthal beverages; and more – inquire for complete price list.</td></tr>
+<tr><td style="padding:10px 14px;border:1px solid #86efac;" colspan="3">Full range: Kanna, Kava, Blue Lotus, Kratom, Amanita Muscaria, House products, Korthal. See catalogs below.</td></tr>
 </table>
+<p style="margin:20px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#15803d;text-transform:uppercase;">Catalogs</p>
+<ul style="margin:0 auto 16px;padding-left:22px;font-size:13px;line-height:1.7;display:table;text-align:left;">
+<li style="margin-bottom:8px;"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f8168b99-2269-4e2b-8887-7781b959a710" style="color:#15803d;font-weight:600;">2025 product catalog</a> (packaged &amp; finished goods)</li>
+<li style="margin-bottom:8px;"><a href="https://docs.google.com/document/d/1TB1pHCUEMJsMYjuiMs380r1Lly5bfE3UqCVKzxUZWB0/edit?usp=drivesdk" style="color:#15803d;font-weight:600;">Bulk herbs &amp; extracts</a> (Kanna, Kava, Blue Lotus, Amanita, Kratom &amp; more)</li>
+<li style="margin-bottom:0;"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a6d3213b-821e-4c3a-b6ae-506bd5fa1587" style="color:#15803d;font-weight:600;">Korthal</a> (exclusive wholesale)</li>
+</ul>
 <div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
 <p style="margin:0 0 10px;font-size:15px;color:#14532d;line-height:1.55;"><strong>To order wholesale:</strong> Robert "Robbie" Lattig <strong>(631) 871-7641</strong> or <a href="mailto:Herbalhealingsmarketing@gmail.com" style="color:#15803d;">Herbalhealingsmarketing@gmail.com</a></p>
 <p style="margin:0;font-size:14px;color:#166534;"><strong>Local Oahu:</strong> Eric (Healing Herbals) <strong>(808) 393-0153</strong></p>
@@ -1015,7 +1023,7 @@ Mahalo nui loa! Eric & Robbie – Healing Herbals Team`,
 
 Healing Herbals Kava Collection – top-quality kava and Blue Lotus from Vanuatu, Fiji, Samoa, and Hawaii. Kava (Piper methysticum) has been sought after for hundreds of years for relaxation, decreased anxiety, and mental clarity without the dulling effects of alcohol.
 
-Our two most popular nicotine replacement products: Kava Extract Juice and Blue Lotus Extract Juice – suitable for vapes with replaceable tops, refillable juice – $50 each. Plus Kava shots, tinctures, seltzers, instant mixes, gummies; Kanna, Kratom; full catalog at healingherbals.store.
+Our two most popular nicotine replacement products: Kava Extract Juice and Blue Lotus Extract Juice – vape-ready, replaceable tops, refillable – $50 each. Plus Kava shots, tinctures, seltzers, instant mixes, gummies; Kanna, Kratom; full catalog at healingherbals.store (50% off with code Storefront3, min $500 before discount).
 
 Order: Herbalhealingsmarketing@gmail.com or Robbie (631) 871-7641. Local Oahu: Eric (808) 393-0153.
 
@@ -1034,7 +1042,7 @@ Mahalo nui loa! Eric & Robbie – Healing Herbals Team`,
 <ul style="margin:0 auto 16px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
 <li style="margin-bottom:6px;"><strong>Kava Extract Juice</strong> & <strong>Blue Lotus Extract Juice</strong> – suitable for vapes, replaceable tops, refillable juice – <strong>$50 each</strong></li>
 <li style="margin-bottom:6px;">Kava shots, tinctures, seltzers, instant mixes, gummies; Kanna, Kratom</li>
-<li style="margin-bottom:0;">Full catalog at <strong>healingherbals.store</strong></li>
+<li style="margin-bottom:0;">Full catalog at <strong><a href="https://healingherbals.store" style="color:#15803d;">healingherbals.store</a></strong> (50% off with code Storefront3, min $500 before discount)</li>
 </ul>
 <div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
 <p style="margin:0 0 10px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Order:</strong> <a href="mailto:Herbalhealingsmarketing@gmail.com" style="color:#15803d;">Herbalhealingsmarketing@gmail.com</a> or Robbie (631) 871-7641</p>
