@@ -534,7 +534,7 @@ function HealingHerbalsContent({ audience }: { audience: HealingHerbalsSub }) {
       {audience === "individual" && (
         <p>Individual template: <strong>retail $50</strong> per bottle. Reply or call (808) 393-0153 to order.</p>
       )}
-      <p>coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+      <p><a href="mailto:coralcrowntechnologies@gmail.com" className="text-amber-400 hover:text-amber-300">Email us</a> | (808) 393-0153</p>
     </div>
   );
 }

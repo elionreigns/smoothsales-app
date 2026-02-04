@@ -46,8 +46,8 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "healing-herbals-individual", label: "Healing Herbals – Individual (retail only)" },
 ];
 
-const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.9;">Reach us at <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> or (808) 393-0153 for any of these services.</p>`;
-const CONTACT_LINE_TEXT = `\n\nReach us at coralcrowntechnologies@gmail.com or (808) 393-0153 for any of these services.`;
+const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.9;">Reach us: <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Email us</a> or (808) 393-0153 for any of these services.</p>`;
+const CONTACT_LINE_TEXT = `\n\nReach us: Email us (coralcrowntechnologies@gmail.com) or (808) 393-0153 for any of these services.`;
 
 export function getTemplate(id: TemplateId): { subject: string; html: string; text: string } {
   const t = TEMPLATES[id];
@@ -777,7 +777,7 @@ Planning articles (full links):
 • How to pick best men & bridesmaids: https://www.hawaiiweddingplans.com/articles/how-to-pick-best-men-bridesmaids.php
 • Who not to invite to your wedding: https://www.hawaiiweddingplans.com/articles/who-not-to-invite-to-wedding.php
 
-Start planning: HawaiiWeddingPlans.com | (808) 994-9034 | coralcrowntechnologies@gmail.com
+Start planning: HawaiiWeddingPlans.com | (808) 994-9034 | Email: coralcrowntechnologies@gmail.com
 
 Coral Crown Solutions | sales@coralcrownsolutions.com`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fdf2f8;border:2px solid #be185d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(190,24,93,0.2),0 10px 28px -8px rgba(0,0,0,0.1);">
@@ -810,7 +810,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <li style="margin-bottom:6px;"><a href="https://www.hawaiiweddingplans.com/articles/who-not-to-invite-to-wedding.php" style="color:#be185d;font-weight:600;text-decoration:none;">Who not to invite to your wedding</a></li>
 </ul>
 <div style="background:linear-gradient(145deg,#fce7f3 0%,#fbcfe8 100%);border:2px solid #be185d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(190,24,93,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#831843;line-height:1.55;"><strong>Start planning:</strong> Visit HawaiiWeddingPlans.com to choose your island and build your package. Need help? Call <strong>(808) 994-9034</strong> or email <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#be185d;">coralcrowntechnologies@gmail.com</a>. Making dreams come true – we are here for you.</p>
+<p style="margin:0 0 14px;font-size:15px;color:#831843;line-height:1.55;"><strong>Start planning:</strong> Visit HawaiiWeddingPlans.com to choose your island and build your package. Need help? Call <strong>(808) 994-9034</strong> or <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#be185d;">email us</a>. Making dreams come true – we are here for you.</p>
 <p style="margin:0;"><a href="https://www.hawaiiweddingplans.com" style="display:inline-block;background:linear-gradient(145deg,#be185d 0%,#9d174d 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(190,24,93,0.4);">HawaiiWeddingPlans.com</a></p>
 </div>
 </div>
@@ -822,7 +822,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 
 Hawaii Wedding Plans is the go-to wedding planning platform for Oahu, Maui, Kauai, and Big Island. We would love to feature your service or venue – photographers, videographers, caterers, florists, officiants, musicians/DJs, planners, venues, transportation, and more.
 
-Submit your business: https://hawaiiweddingplans.com/submit/index.php – we will review and get back to you. Or send your information to coralcrowntechnologies@gmail.com.
+Submit your business: https://hawaiiweddingplans.com/submit/index.php – we will review and get back to you. Or email us your information (coralcrowntechnologies@gmail.com).
 
 Categories we feature: Venues, photographers, videographers, caterers, florists, officiants, musicians/DJs, wedding planners, transportation, entertainment, themes (beach, underwater, mermaid, pirate). Couples use our interactive planner and AI chatbot to build packages – your listing gets in front of couples planning their dream Hawaii wedding.
 
@@ -845,9 +845,9 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <li style="margin-bottom:0;">Celebrity appearances, catering, specialty services – we want to grow our directory with quality vendors like you</li>
 </ul>
 <div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Submit your business:</strong> Use our quick submit form – we will review your listing and get back to you. Or send your business name, service type, contact info, website, location, and description to <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#15803d;">coralcrowntechnologies@gmail.com</a>. No obligation – we are building the go-to resource for Hawaii weddings and would love to include you.</p>
+<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Submit your business:</strong> Use our quick submit form – we will review your listing and get back to you. Or send your business name, service type, contact info, website, location, and description by <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#15803d;">email</a>. No obligation – we are building the go-to resource for Hawaii weddings and would love to include you.</p>
 <p style="margin:0 0 10px;"><a href="https://hawaiiweddingplans.com/submit/index.php" style="display:inline-block;background:linear-gradient(145deg,#15803d 0%,#166534 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(21,128,61,0.4);">Submit – Hawaii Wedding Plans</a></p>
-<p style="margin:0;font-size:13px;color:#166534;">Or email: coralcrowntechnologies@gmail.com | (808) 994-9034</p>
+<p style="margin:0;font-size:13px;color:#166534;">Or <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#15803d;">email us</a> | (808) 994-9034</p>
 </div>
 </div>
 </div>`,
@@ -923,7 +923,7 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 10px;font-size:14px;line-height:1.6;"><a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#a16207;">P48X page – book &amp; app</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#a16207;">Family Feud: Grand Prize article</a></p>
 <div style="background:#fff;border:2px solid #eab308;border-radius:18px;padding:24px 26px;margin:28px 0;">
 <p style="margin:0 0 14px;font-size:15px;color:#422006;line-height:1.55;"><strong>Next step:</strong> If you're interested in wholesale orders for your store, reply to this email and we'll send pricing, minimums, and order details. We typically respond within 24–48 hours.</p>
-<p style="margin:0;font-size:13px;color:#713f12;">Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+<p style="margin:0;font-size:13px;color:#713f12;">Coral Crown Solutions | <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#713f12;">Email us</a> | (808) 393-0153</p>
 </div>
 </div>
 </div>`,
@@ -956,71 +956,90 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#15803d;font-weight:600;">Direct link: P48X page (book &amp; app)</a></p>
 <div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;">
 <p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Next step:</strong> If you'd like to partner with us as an affiliate seller, reply to this email and we'll send you the exact terms and how to track referrals. We're building a team of people who believe in this book and want to spread it.</p>
-<p style="margin:0;font-size:13px;color:#166534;">Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+<p style="margin:0;font-size:13px;color:#166534;">Coral Crown Solutions | <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#166534;">Email us</a> | (808) 393-0153</p>
 </div>
 </div>
 </div>`,
   },
   "healing-herbals-smoke-shop": {
-    subject: "Healing Herbals – Wholesale for smoke shops: Blue Lotus & Kava Extract",
+    subject: "Healing Herbals Wholesale 2025 – Kava vapes, Blue Lotus, Kanna, Kratom | Smoke shop partner",
     text: `Hi {{Name}},
 
-Healing Herbals – wholesale for smoke shops. Our main sellers: Blue Lotus and Kava Extract. Botanical liquids that fit common vape cartridges (e.g. XROS model line) so your customers can replace nicotine with something smoother.
+Healing Herbals Wholesale – premium, lab-tested botanicals that sell fast in smoke shops.
 
-Wholesale: $27.50 per bottle. Suggested retail: $50. You keep the margin.
+Why partner: Kava vapes (#1 seller), Kanna sprays & extracts, Blue Lotus, Kratom extracts & powders, exclusive Korthal alcohol-free drinks. High margins (100–150% on wholesale), private labeling, custom blends, low MOQ, fast delivery.
 
-Products: Blue Lotus, Kava Extract (vape/cartridge), plus full botanical line – extracts, tinctures, disposables. Reply for wholesale pricing, minimums, and full product list.
+Wholesale offer: 50% OFF packaged retail at healingherbals.store – Code: Storefront3 (excludes bulk >1 oz/1 g). Extra 2.5% OFF with Zelle to (631) 871-7641. MOQ: $250 flexible / $500 for full discount.
 
-Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153`,
+Top sellers: Kava Extract Vape (1000mg Noble, half/full gram, Coconut/Orange/Pineapple) – retail $24.99–$39.99. Blue Lotus vape, gummies, flowers, extracts. Kanna nasal/mouth sprays & vapes. Kratom powders & extracts. Full catalog on request.
+
+To order: Robert "Robbie" Lattig (631) 871-7641 or Herbalhealingsmarketing@gmail.com. Local Oahu: Eric (808) 393-0153.
+
+Healing Herbals Team`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
-<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Healing Herbals</p>
-<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Wholesale for smoke shops</h1>
-<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Blue Lotus & Kava Extract – replace nicotine. Fit XROS and common vape cartridges.</p>
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Healing Herbals Wholesale 2025</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Premium botanicals for smoke shops</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Kava vapes · Blue Lotus · Kanna · Kratom · Korthal drinks. Lab-tested, high margins.</p>
 </div>
 <div style="padding:32px 28px;color:#14532d;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #86efac;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>Healing Herbals</strong> – botanical liquids that fit common vape cartridges (e.g. XROS model line) so your customers can replace nicotine with something smoother. Our main sellers: <strong>Blue Lotus</strong> and <strong>Kava Extract</strong>.</p>
-<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Wholesale & suggested retail</p>
-<table style="margin:0 auto 22px;border-collapse:collapse;font-size:14px;text-align:left;">
-<tr style="background:#dcfce7;"><th style="padding:12px 16px;border:1px solid #86efac;">Item</th><th style="padding:12px 16px;border:1px solid #86efac;">Wholesale</th><th style="padding:12px 16px;border:1px solid #86efac;">Suggested retail</th></tr>
-<tr><td style="padding:12px 16px;border:1px solid #86efac;">Blue Lotus</td><td style="padding:12px 16px;border:1px solid #86efac;">$27.50</td><td style="padding:12px 16px;border:1px solid #86efac;">$50</td></tr>
-<tr><td style="padding:12px 16px;border:1px solid #86efac;">Kava Extract</td><td style="padding:12px 16px;border:1px solid #86efac;">$27.50</td><td style="padding:12px 16px;border:1px solid #86efac;">$50</td></tr>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>Healing Herbals</strong> – premium, lab-tested botanicals and beverages that sell fast: <strong>Kava vapes</strong> (our #1 seller), <strong>Kanna</strong> sprays & extracts, <strong>Blue Lotus</strong>, <strong>Kratom</strong> extracts & powders, and exclusive <strong>Korthal</strong> alcohol-free THC/CBD/Kratom/Kava drinks. High margins (100–150% on wholesale), private labeling, custom blends, low MOQ, fast delivery.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Wholesale offer</p>
+<ul style="margin:0 auto 16px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
+<li style="margin-bottom:6px;"><strong>50% OFF</strong> packaged retail at healingherbals.store – Code: <strong>Storefront3</strong> (excludes bulk &gt;1 oz/1 g)</li>
+<li style="margin-bottom:6px;"><strong>Extra 2.5% OFF</strong> with Zelle to (631) 871-7641</li>
+<li style="margin-bottom:0;">MOQ: $250 flexible / $500 for full discount</li>
+</ul>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Top sellers (sample – request full catalog)</p>
+<table style="margin:0 auto 22px;border-collapse:collapse;font-size:13px;text-align:left;">
+<tr style="background:#dcfce7;"><th style="padding:10px 14px;border:1px solid #86efac;">Product</th><th style="padding:10px 14px;border:1px solid #86efac;">Suggested retail</th></tr>
+<tr><td style="padding:10px 14px;border:1px solid #86efac;">Kava Extract Vape (1000mg Noble, half/full g – Coconut, Orange, Pineapple)</td><td style="padding:10px 14px;border:1px solid #86efac;">$24.99 half – $39.99 full</td></tr>
+<tr><td style="padding:10px 14px;border:1px solid #86efac;">High Potency Blue Lotus Vape (half/gram)</td><td style="padding:10px 14px;border:1px solid #86efac;">$30 half – $50 gram</td></tr>
+<tr><td style="padding:10px 14px;border:1px solid #86efac;">Kanna nasal sprays / vapes / gummies</td><td style="padding:10px 14px;border:1px solid #86efac;">From $15–$90</td></tr>
+<tr><td style="padding:10px 14px;border:1px solid #86efac;">Kratom powders, extracts, shots, gummies</td><td style="padding:10px 14px;border:1px solid #86efac;">Full range</td></tr>
+<tr><td style="padding:10px 14px;border:1px solid #86efac;">Kava pastes, instant, liquid extract, shots, tinctures, gummies</td><td style="padding:10px 14px;border:1px solid #86efac;">Full catalog</td></tr>
 </table>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">You keep the margin. Same great fit for popular vape devices – customers switching from nicotine love the drop-in option.</p>
 <div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Next step:</strong> Reply to this email for wholesale pricing, minimums, and order details. We typically respond within 24 hours.</p>
-<p style="margin:0;font-size:13px;color:#166534;">coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+<p style="margin:0 0 10px;font-size:15px;color:#14532d;line-height:1.55;"><strong>To order wholesale:</strong> Robert "Robbie" Lattig <strong>(631) 871-7641</strong> or <a href="mailto:Herbalhealingsmarketing@gmail.com" style="color:#15803d;">Herbalhealingsmarketing@gmail.com</a></p>
+<p style="margin:0;font-size:14px;color:#166534;"><strong>Local Oahu:</strong> Eric (Healing Herbals) <strong>(808) 393-0153</strong></p>
 </div>
 <div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><img src="{{BASE_URL}}/promo/healingherbals-bluelotus.png" alt="Blue Lotus" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/healingherbals-kava.png" alt="Kava Extract" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
 </div>`,
   },
   "healing-herbals-individual": {
-    subject: "Healing Herbals – Blue Lotus & Kava Extract for your vape ($50)",
+    subject: "Healing Herbals – Kava & Blue Lotus for relaxation (vapes, shots, tinctures)",
     text: `Hi {{Name}},
 
-Healing Herbals – Blue Lotus and Kava Extract. Botanical liquids that fit common vape cartridges (e.g. XROS model line) so you can replace nicotine with something smoother.
+Healing Herbals – premium, lab-tested botanicals for relaxation and calm. Kava (Piper methysticum) and Blue Lotus from the South Pacific and Hawaii – used for centuries for relaxation, mood, and mental clarity without the dulling effects of alcohol.
 
-Retail: $50 per bottle. Same great fit for popular vape devices. Reply or call to order.
+What we offer: Kava Extract Vape (1000mg Noble, half/full gram) – retail $24.99–$39.99. Blue Lotus vapes, gummies, flowers, extracts. Kanna sprays & vapes. Kratom. Kava shots, tinctures, seltzers, instant mixes. Full catalog at healingherbals.store.
 
-Coral Crown Solutions | coralcrowntechnologies@gmail.com | (808) 393-0153`,
+Order: Herbalhealingsmarketing@gmail.com or Robbie (631) 871-7641. Local Oahu: Eric (808) 393-0153.
+
+Healing Herbals Team`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Healing Herbals</p>
-<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Blue Lotus & Kava Extract</h1>
-<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Replace nicotine. Fit XROS and common vape cartridges.</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Kava & Blue Lotus – relaxation, naturally</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Lab-tested botanicals from the Pacific. Vapes, shots, tinctures, gummies.</p>
 </div>
 <div style="padding:32px 28px;color:#14532d;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #86efac;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>Healing Herbals</strong> – botanical liquids that fit common vape cartridges (e.g. XROS model line) so you can replace nicotine with something smoother. <strong>Blue Lotus</strong>, <strong>Kava Extract</strong>, and more – extracts, tinctures, disposables.</p>
-<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Retail</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">$50 per bottle (main line). Same great fit for popular vape devices. Ask about our full product list.</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;"><strong>Healing Herbals</strong> – premium, lab-tested <strong>Kava</strong> (Piper methysticum) and <strong>Blue Lotus</strong> from Vanuatu, Fiji, Samoa, and Hawaii. Used for centuries for relaxation, decreased anxiety, and mental clarity. Kavalactones and botanical compounds work without the dulling effects of alcohol.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Retail highlights</p>
+<ul style="margin:0 auto 16px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
+<li style="margin-bottom:6px;"><strong>Kava Extract Vape</strong> (1000mg Noble, half/full gram – Coconut, Orange, Pineapple): $24.99–$39.99</li>
+<li style="margin-bottom:6px;"><strong>Blue Lotus</strong> vape, gummies, flowers, extracts</li>
+<li style="margin-bottom:6px;">Kava shots, seltzers, tinctures, instant mixes, gummies</li>
+<li style="margin-bottom:0;">Kanna, Kratom, full catalog at <strong>healingherbals.store</strong></li>
+</ul>
 <div style="background:linear-gradient(145deg,#dcfce7 0%,#bbf7d0 100%);border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Order:</strong> Reply to this email or call (808) 393-0153. We typically respond within 24 hours.</p>
-<p style="margin:0;font-size:13px;color:#166534;">coralcrowntechnologies@gmail.com | (808) 393-0153</p>
+<p style="margin:0 0 10px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Order:</strong> <a href="mailto:Herbalhealingsmarketing@gmail.com" style="color:#15803d;">Herbalhealingsmarketing@gmail.com</a> or Robbie (631) 871-7641</p>
+<p style="margin:0;font-size:14px;color:#166534;"><strong>Local Oahu:</strong> Eric (Healing Herbals) <strong>(808) 393-0153</strong></p>
 </div>
 <div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><img src="{{BASE_URL}}/promo/healingherbals-bluelotus.png" alt="Blue Lotus" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/healingherbals-kava.png" alt="Kava Extract" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
