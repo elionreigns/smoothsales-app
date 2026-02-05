@@ -7,17 +7,28 @@ const FROM_EMAIL = process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solution
 
 type Recipient = { email: string; name?: string; nameOfPerson?: string; nameOfOrganization?: string };
 
+function json500(message: string) {
+  return NextResponse.json({ success: false, error: message }, { status: 500 });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const apiKey = process.env.RESEND_API_KEY?.trim();
     if (!apiKey) {
-      return NextResponse.json(
-        { success: false, error: "RESEND_API_KEY is not set" },
-        { status: 500 }
+      return json500(
+        "RESEND_API_KEY is not set. Add it in Vercel: Project → Settings → Environment Variables, then redeploy."
       );
     }
 
-    const body = await request.json();
+    let body: Record<string, unknown>;
+    try {
+      body = (await request.json()) as Record<string, unknown>;
+    } catch {
+      return NextResponse.json(
+        { success: false, error: "Invalid request body (expected JSON)" },
+        { status: 400 }
+      );
+    }
     const templateId = body.templateId as TemplateId | undefined;
     const recipientsRaw = body.recipients as Recipient[] | undefined;
     const emailsRaw = body.emails; // legacy: still accept flat list
@@ -76,11 +87,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { subject, html, text } = getTemplate(templateId);
+    let subject: string;
+    let html: string;
+    let text: string;
+    try {
+      const template = getTemplate(templateId);
+      subject = template.subject;
+      html = template.html;
+      text = template.text;
+    } catch (e) {
+      console.error("getTemplate error:", e);
+      return json500("Template error: " + (e instanceof Error ? e.message : "unknown"));
+    }
     const baseUrl =
       process.env.NEXT_PUBLIC_APP_URL?.trim() ||
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
-    const htmlWithImages = html.replace(/\{\{BASE_URL\}\}/g, baseUrl);
+    const htmlWithImages = html.replace(/\{\{BASE_URL\}\}/g, baseUrl ?? "http://localhost:3000");
 
     const resend = new Resend(apiKey);
     const results: { to: string; ok: boolean; id?: string; error?: string }[] = [];
@@ -126,9 +148,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (err) {
     console.error("Send campaign error:", err);
-    return NextResponse.json(
-      { success: false, error: err instanceof Error ? err.message : "Server error" },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : "Server error";
+    return json500(message);
   }
 }

@@ -79,6 +79,17 @@ Service outreach and bulk email campaigns for Coral Crown Solutions. One dashboa
 
 3. **Redeploy** after adding env vars so the build uses them at runtime.
 
+### Why does the Vercel app say "RESEND_API_KEY is not set"?
+
+The **Vercel** deployment runs on Vercel’s servers. It does **not** use your local `.env` or `.env.local`. So even if the key works when you run the app locally (or when Claw talks to your local SmoothSales), the **Vercel** app will show that error until the key is set **in Vercel**:
+
+1. Open [Vercel Dashboard](https://vercel.com) → your SmoothSales project.
+2. Go to **Settings** → **Environment Variables**.
+3. Add **`RESEND_API_KEY`** with your Resend API key (e.g. `re_xxxx…`). Apply to **Production** (and Preview if you use preview URLs).
+4. **Redeploy**: Deployments tab → ⋮ on the latest deployment → **Redeploy** (or push a new commit). Env vars are baked in at deploy time, so a redeploy is required after adding or changing them.
+
+After that, “Send to all” on the Vercel app (and Claw calling that Vercel URL) will work.
+
 ---
 
 ## Resend setup (sending from sales@coralcrownsolutions.com)

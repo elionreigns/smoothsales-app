@@ -103,15 +103,21 @@ export default function SmoothSalesPage() {
           recipients: recipients.map((r) => ({ email: r.email, name: r.name || undefined })),
         }),
       });
-      const data = await res.json();
+      let data: { error?: string; sent?: number; total?: number; failed?: number; details?: unknown };
+      try {
+        data = await res.json();
+      } catch {
+        setError(res.status === 500 ? "Server error (500). If on Vercel, add RESEND_API_KEY in Project → Settings → Environment Variables and redeploy." : "Send failed");
+        return;
+      }
       if (!res.ok) {
         setError(data.error || "Send failed");
         return;
       }
       setResult({
-        sent: data.sent,
-        total: data.total,
-        failed: data.failed,
+        sent: data.sent ?? 0,
+        total: data.total ?? 0,
+        failed: data.failed ?? 0,
         details: data.details,
       });
     } catch (e) {
