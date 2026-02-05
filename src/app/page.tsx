@@ -103,7 +103,14 @@ export default function SmoothSalesPage() {
           recipients: recipients.map((r) => ({ email: r.email, name: r.name || undefined })),
         }),
       });
-      let data: { error?: string; sent?: number; total?: number; failed?: number; details?: unknown };
+      type SendResponse = {
+        error?: string;
+        sent?: number;
+        total?: number;
+        failed?: number;
+        details?: { to: string; ok: boolean; error?: string }[];
+      };
+      let data: SendResponse;
       try {
         data = await res.json();
       } catch {
