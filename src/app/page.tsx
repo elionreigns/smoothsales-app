@@ -288,6 +288,7 @@ export default function SmoothSalesPage() {
                     <option value="venue-church">Venue: Church</option>
                     <option value="venue-show">Venue: Show / festival</option>
                     <option value="venue-dj">Venue: DJ E Lion</option>
+                    <option value="venue-major">Venue: Major (opening for headliners)</option>
                   </select>
                 </div>
               )}

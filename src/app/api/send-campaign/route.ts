@@ -68,17 +68,81 @@ export async function POST(request: NextRequest) {
       "elion-fans",
       "elion-artists",
       "elion-brands",
+      "elion-fans-followup-1",
+      "elion-fans-followup-2",
+      "elion-fans-followup-3",
+      "elion-artists-followup-1",
+      "elion-artists-followup-2",
+      "elion-artists-followup-3",
+      "elion-brands-followup-1",
+      "elion-brands-followup-2",
+      "elion-brands-followup-3",
       "elion-producers",
+      "elion-producers-followup-1",
+      "elion-producers-followup-2",
+      "elion-producers-followup-3",
       "elion-venue-church",
+      "elion-venue-church-followup-1",
+      "elion-venue-church-followup-2",
+      "elion-venue-church-followup-3",
       "elion-venue-show",
+      "elion-venue-show-followup-1",
+      "elion-venue-show-followup-2",
+      "elion-venue-show-followup-3",
       "elion-venue-dj",
+      "elion-venue-dj-followup-1",
+      "elion-venue-dj-followup-2",
+      "elion-venue-dj-followup-3",
+      "elion-venue-major",
+      "elion-venue-major-followup-1",
+      "elion-venue-major-followup-2",
+      "elion-venue-major-followup-3",
       "wedding-couples",
+      "wedding-couples-followup-1",
+      "wedding-couples-followup-2",
+      "wedding-couples-followup-3",
       "wedding-contractors",
+      "wedding-contractors-followup-1",
+      "wedding-contractors-followup-2",
+      "wedding-contractors-followup-3",
       "p48x-personal",
+      "p48x-personal-followup-1",
+      "p48x-personal-followup-2",
+      "p48x-personal-followup-3",
       "p48x-physical-distributors",
+      "p48x-physical-distributors-followup-1",
+      "p48x-physical-distributors-followup-2",
+      "p48x-physical-distributors-followup-3",
       "p48x-affiliate-sellers",
+      "p48x-affiliate-sellers-followup-1",
+      "p48x-affiliate-sellers-followup-2",
+      "p48x-affiliate-sellers-followup-3",
       "healing-herbals-smoke-shop",
+      "healing-herbals-smoke-shop-followup-1",
+      "healing-herbals-smoke-shop-followup-2",
+      "healing-herbals-smoke-shop-followup-3",
       "healing-herbals-individual",
+      "healing-herbals-individual-followup-1",
+      "healing-herbals-individual-followup-2",
+      "healing-herbals-individual-followup-3",
+      "botox-followup-1",
+      "botox-followup-2",
+      "botox-followup-3",
+      "tech-followup-1",
+      "tech-followup-2",
+      "tech-followup-3",
+      "prayer-individual-followup-1",
+      "prayer-individual-followup-2",
+      "prayer-individual-followup-3",
+      "prayer-church-followup-1",
+      "prayer-church-followup-2",
+      "prayer-church-followup-3",
+      "tourism-hawaii-followup-1",
+      "tourism-hawaii-followup-2",
+      "tourism-hawaii-followup-3",
+      "tourism-usa-followup-1",
+      "tourism-usa-followup-2",
+      "tourism-usa-followup-3",
     ];
     if (!templateId || !validIds.includes(templateId)) {
       return NextResponse.json(
@@ -106,8 +170,10 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
     const results: { to: string; ok: boolean; id?: string; error?: string }[] = [];
+    const throttleMs = 520; // Resend limit: 2 requests/sec – wait between each send
 
-    for (const rec of recipients) {
+    for (let i = 0; i < recipients.length; i++) {
+      const rec = recipients[i];
       const vars = {
         Name: rec.name ?? "there",
         "Name of Person": rec.nameOfPerson ?? rec.name ?? "there",
@@ -133,6 +199,9 @@ export async function POST(request: NextRequest) {
           ok: false,
           error: err instanceof Error ? err.message : "Send failed",
         });
+      }
+      if (i < recipients.length - 1) {
+        await new Promise((r) => setTimeout(r, throttleMs));
       }
     }
 

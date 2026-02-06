@@ -1,27 +1,106 @@
 /**
  * Pre-made email templates for SmoothSales campaigns.
+ * E Lion follow-ups: elion-follow-up-templates.ts. All other follow-ups: all-follow-up-templates.ts.
  */
+import {
+  isElionFollowUpTemplateId,
+  getElionFollowUpTemplate,
+  type ElionFollowUpTemplateId,
+} from "./elion-follow-up-templates";
+import {
+  isOtherFollowUpTemplateId,
+  getOtherFollowUpTemplate,
+  type OtherFollowUpTemplateId,
+} from "./all-follow-up-templates";
+
 export type TemplateId =
   | "botox"
+  | "botox-followup-1"
+  | "botox-followup-2"
+  | "botox-followup-3"
   | "tech"
+  | "tech-followup-1"
+  | "tech-followup-2"
+  | "tech-followup-3"
   | "prayer-individual"
+  | "prayer-individual-followup-1"
+  | "prayer-individual-followup-2"
+  | "prayer-individual-followup-3"
   | "prayer-church"
+  | "prayer-church-followup-1"
+  | "prayer-church-followup-2"
+  | "prayer-church-followup-3"
   | "tourism-hawaii"
+  | "tourism-hawaii-followup-1"
+  | "tourism-hawaii-followup-2"
+  | "tourism-hawaii-followup-3"
   | "tourism-usa"
+  | "tourism-usa-followup-1"
+  | "tourism-usa-followup-2"
+  | "tourism-usa-followup-3"
   | "elion-fans"
   | "elion-artists"
   | "elion-brands"
+  | "elion-fans-followup-1"
+  | "elion-fans-followup-2"
+  | "elion-fans-followup-3"
+  | "elion-artists-followup-1"
+  | "elion-artists-followup-2"
+  | "elion-artists-followup-3"
+  | "elion-brands-followup-1"
+  | "elion-brands-followup-2"
+  | "elion-brands-followup-3"
   | "elion-producers"
+  | "elion-producers-followup-1"
+  | "elion-producers-followup-2"
+  | "elion-producers-followup-3"
   | "elion-venue-church"
+  | "elion-venue-church-followup-1"
+  | "elion-venue-church-followup-2"
+  | "elion-venue-church-followup-3"
   | "elion-venue-show"
+  | "elion-venue-show-followup-1"
+  | "elion-venue-show-followup-2"
+  | "elion-venue-show-followup-3"
   | "elion-venue-dj"
+  | "elion-venue-dj-followup-1"
+  | "elion-venue-dj-followup-2"
+  | "elion-venue-dj-followup-3"
+  | "elion-venue-major"
+  | "elion-venue-major-followup-1"
+  | "elion-venue-major-followup-2"
+  | "elion-venue-major-followup-3"
   | "wedding-couples"
+  | "wedding-couples-followup-1"
+  | "wedding-couples-followup-2"
+  | "wedding-couples-followup-3"
   | "wedding-contractors"
+  | "wedding-contractors-followup-1"
+  | "wedding-contractors-followup-2"
+  | "wedding-contractors-followup-3"
   | "p48x-personal"
+  | "p48x-personal-followup-1"
+  | "p48x-personal-followup-2"
+  | "p48x-personal-followup-3"
   | "p48x-physical-distributors"
+  | "p48x-physical-distributors-followup-1"
+  | "p48x-physical-distributors-followup-2"
+  | "p48x-physical-distributors-followup-3"
   | "p48x-affiliate-sellers"
+  | "p48x-affiliate-sellers-followup-1"
+  | "p48x-affiliate-sellers-followup-2"
+  | "p48x-affiliate-sellers-followup-3"
   | "healing-herbals-smoke-shop"
-  | "healing-herbals-individual";
+  | "healing-herbals-smoke-shop-followup-1"
+  | "healing-herbals-smoke-shop-followup-2"
+  | "healing-herbals-smoke-shop-followup-3"
+  | "healing-herbals-individual"
+  | "healing-herbals-individual-followup-1"
+  | "healing-herbals-individual-followup-2"
+  | "healing-herbals-individual-followup-3";
+
+/** Base templates only (no follow-up ids); follow-ups are in elion-follow-up-templates.ts and all-follow-up-templates.ts. */
+type BaseTemplateId = Exclude<TemplateId, ElionFollowUpTemplateId | OtherFollowUpTemplateId>;
 
 export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "botox", label: "Botox Oahu – Price sheet & specials" },
@@ -37,6 +116,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-venue-church", label: "E Lion Music – Venue: Church" },
   { value: "elion-venue-show", label: "E Lion Music – Venue: Show / festival" },
   { value: "elion-venue-dj", label: "E Lion Music – Venue: DJ E Lion" },
+  { value: "elion-venue-major", label: "E Lion Music – Venue: Major (opening for headliners)" },
   { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples planning a wedding" },
   { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors / vendors (submit to be featured)" },
   { value: "p48x-personal", label: "P48X – Personal (readers & listeners, book + app + audiobook)" },
@@ -50,6 +130,22 @@ const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top
 const CONTACT_LINE_TEXT = `\n\nReach us: Email us (coralcrowntechnologies@gmail.com) or (808) 393-0153 for any of these services.`;
 
 export function getTemplate(id: TemplateId): { subject: string; html: string; text: string } {
+  if (isElionFollowUpTemplateId(id as string)) {
+    const t = getElionFollowUpTemplate(id as ElionFollowUpTemplateId);
+    return {
+      subject: t.subject,
+      html: t.html + CONTACT_LINE_HTML,
+      text: t.text + CONTACT_LINE_TEXT,
+    };
+  }
+  if (isOtherFollowUpTemplateId(id as string)) {
+    const t = getOtherFollowUpTemplate(id as OtherFollowUpTemplateId);
+    return {
+      subject: t.subject,
+      html: t.html + CONTACT_LINE_HTML,
+      text: t.text + CONTACT_LINE_TEXT,
+    };
+  }
   const t = TEMPLATES[id];
   return {
     subject: t.subject,
@@ -102,7 +198,8 @@ export type ElionSub =
   | "producers"
   | "venue-church"
   | "venue-show"
-  | "venue-dj";
+  | "venue-dj"
+  | "venue-major";
 export type WeddingSub = "" | "couples" | "contractors";
 export type P48XSub = "" | "personal" | "physical-distributors" | "affiliate-sellers";
 export type HealingHerbalsSub = "" | "smoke-shop" | "individual";
@@ -115,6 +212,7 @@ const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   "venue-church": "elion-venue-church",
   "venue-show": "elion-venue-show",
   "venue-dj": "elion-venue-dj",
+  "venue-major": "elion-venue-major",
 };
 
 const WEDDING_TEMPLATE_MAP: Record<Exclude<WeddingSub, "">, TemplateId> = {
@@ -208,7 +306,7 @@ export function hasRequiredSelection(
   return false;
 }
 
-const TEMPLATES: Record<TemplateId, { subject: string; html: string; text: string }> = {
+const TEMPLATES: Record<BaseTemplateId, { subject: string; html: string; text: string }> = {
   botox: {
     subject: "Botox Oahu – Clear pricing, physician-led care & same-day availability",
     text: `Hi {{Name}},
@@ -566,14 +664,19 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 </div>`,
   },
   "elion-brands": {
-    subject: "E Lion Music – Sponsored brand partnership & reach",
+    subject: "E Lion Music – Sponsor partnership: we add you + link, you help with gear or apparel",
     text: `Hi {{Name}},
 
-We'd love to partner with a brand like yours – E Lion is open to wearing or using your products in exchange for store credit or items you choose. Your product deserves visibility with an audience that trusts the artist and watches at scale.
+E Lion is looking for sponsor partners in recording gear, music software, and apparel. In exchange for store credit or specific items, we add you as an official sponsor on elionmusic.com with a link to your website – real visibility in front of an artist with serious reach.
 
-Why E Lion: Proven, family-friendly reach. An estimated 115–145 million unique viewers have seen his Family Feud grand prize run (2016, 5 consecutive wins; 183–234M total views in syndication). Add 10M+ YouTube views, 1,000+ live performances, 30K+ CDs sold, and presence on every major music platform. First Hawaiian family to win Family Feud – high recall, positive association. We're not asking for a free ride – we're offering real exposure in exchange for product or credit, and we'll put your brand in front of people who pay attention.
+What we're looking for:
+• Recording: studio mics (Neumann U87-level), preamps (Avalon-style), music video cameras & lighting.
+• Software: DAWs and artist tools (Logic, Ableton, ACE Studio level), voice-cloning and song-creation (E Lion uses Suno and has 100+ songs on all major platforms – we want tools that help artists level up).
+• Apparel: Hawaii brands, full-face animal / graphic tees (The Mountain–style), premium looks (Skingraft, Robin's Jeans–type), and bold statement pieces (Ed Hardy–style bedazzled, leather blazers, etc.).
 
-Next step: Reply with what you have in mind (apparel, gear, etc.) and we'll get down to details – what E Lion would wear/use, how we'll tag and credit you, and where your brand appears.
+Why E Lion: 100+ songs on Spotify, Apple Music, Amazon, TikTok, Pandora, and more. Family Feud grand prize (2016, 5 wins) – an estimated 115–145M unique viewers saw the run. 10M+ YouTube views, 1,000+ live performances, 30K+ CDs sold. First Hawaiian family to win Family Feud. High traffic to elionmusic.com and proven fan base. We're not asking for a free ride – we're offering sponsor placement and a link to your site in exchange for product or store credit.
+
+Next step: Reply with what you have in mind (gear, software, apparel). We'll confirm how we'll add you as a sponsor and link to your website, and what E Lion would wear or use.
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
@@ -587,18 +690,22 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 <div style="padding:32px 28px;color:#1e3a8a;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #bfdbfe;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is open to <strong>sponsored brand partnerships</strong> – he'll wear or use your products in exchange for store credit or specific items from your site. We're not asking for a free ride – we're offering real exposure to a proven, family-friendly audience in exchange for product or credit.</p>
+<p style="margin:0 0 20px;font-size:15px;line-height:1.7;">E Lion is looking for <strong>sponsor partners</strong> in recording gear, music software, and apparel. In exchange for store credit or specific items, we add you as an <strong>official sponsor on elionmusic.com with a link to your website</strong> – real visibility in front of an artist with serious reach.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">What we're looking for</p>
+<p style="margin:0 0 10px;font-size:14px;line-height:1.65;"><strong>Recording:</strong> Studio mics (Neumann U87-level), preamps (Avalon-style), music video cameras & lighting.</p>
+<p style="margin:0 0 10px;font-size:14px;line-height:1.65;"><strong>Software:</strong> DAWs and artist tools (Logic, Ableton, ACE Studio level), voice-cloning and song-creation (E Lion uses Suno and has 100+ songs on all major platforms – we want tools that help artists level up).</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.65;"><strong>Apparel:</strong> Hawaii brands, full-face animal / graphic tees (The Mountain–style), premium looks (Skingraft, Robin's Jeans–type), bold statement pieces (Ed Hardy–style bedazzled, leather blazers, etc.).</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">Why E Lion</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Proven reach: an estimated <strong>115–145 million unique viewers</strong> have seen his Family Feud grand prize run (2016, 5 consecutive wins; 183–234M total views in syndication). Plus <strong>10M+ YouTube views</strong>, <strong>1,000+ live performances</strong>, <strong>30K+ CDs sold</strong>, and music on every major platform. First Hawaiian family to win Family Feud – high recall, positive association.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;"><strong>100+ songs</strong> on Spotify, Apple Music, Amazon, TikTok, Pandora, and more. <strong>Family Feud grand prize</strong> (2016, 5 wins) – an estimated <strong>115–145M unique viewers</strong> saw the run. <strong>10M+ YouTube views</strong>, <strong>1,000+ live performances</strong>, <strong>30K+ CDs sold</strong>. First Hawaiian family to win Family Feud. High traffic to elionmusic.com. We're offering sponsor placement and a link to your site in exchange for product or store credit.</p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">Family Feud articles</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#1d4ed8;">Family Feud: Grand Prize</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition" style="color:#1d4ed8;">Family Feud: Audition</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance" style="color:#1d4ed8;">Family Feud: Appearance</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-moves-next-round" style="color:#1d4ed8;">Family Feud: Next Round</a></p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">Interviews & press</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/bored-city-interview-e-lion" style="color:#1d4ed8;">Bored City Interview</a> · <a href="https://www.elionmusic.com/articles/spotlight-interview-e-lion" style="color:#1d4ed8;">Spotlight Interview</a> · <a href="https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music" style="color:#1d4ed8;">TBK247 Island Roots & Faith</a> · <a href="https://www.elionmusic.com/articles/running-multiple-businesses-crm" style="color:#1d4ed8;">Zoho CRM</a> · <a href="https://www.elionmusic.com/articles/elion-fatal-house-fire" style="color:#1d4ed8;">Fatal House Fire: A Turning Point</a> · <a href="https://www.elionmusic.com/articles/elion-radio-939" style="color:#1d4ed8;">93.9 The Beat Freestyle</a> · <a href="https://www.elionmusic.com/articles/elion-radio-1027" style="color:#1d4ed8;">102.7 Radio</a> · <a href="https://www.elionmusic.com/articles/hurricane-iselle-sale-day" style="color:#1d4ed8;">KHON2 Hurricane Iselle</a> · <a href="https://www.elionmusic.com/articles/popcandies-hollywood-club" style="color:#1d4ed8;">PopCandies TV</a> · <a href="https://www.elionmusic.com/wiki/" style="color:#1d4ed8;">E Lion Wiki</a></p>
 <div style="background:linear-gradient(145deg,#dbeafe 0%,#bfdbfe 100%);border:2px solid #1e40af;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(30,64,175,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#1e3a8a;line-height:1.55;"><strong>Next step:</strong> Reply with what you have in mind (apparel, gear, accessories, etc.). We'll get down to details – what E Lion would wear or use, how we'll tag and credit you on social and in content, and where your brand appears. We typically respond within 24–48 hours. No obligation – let's explore if we're a fit.</p>
+<p style="margin:0 0 14px;font-size:15px;color:#1e3a8a;line-height:1.55;"><strong>Next step:</strong> Reply with what you have in mind (gear, software, apparel). We'll confirm how we add you as a sponsor and link to your website, and what E Lion would wear or use. We typically respond within 24–48 hours. No obligation – let's explore if we're a fit.</p>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(37,99,235,0.4);">elionmusic.com</a></p>
 <p style="margin:0 0 10px;"><a href="https://www.elionmusic.com/lions" style="display:inline-block;background:rgba(37,99,235,0.15);color:#1d4ed8;border:2px solid #2563eb;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Learn More About Lions</a></p>
-<p style="margin:0;font-size:13px;color:#1d4ed8;font-style:italic;">P.S. 115M+ viewers saw the Family Feud run – your brand in front of people who pay attention.</p>
+<p style="margin:0;font-size:13px;color:#1d4ed8;font-style:italic;">P.S. 100+ songs live + Family Feud reach – we add you as a sponsor with a link. Your brand in front of people who pay attention.</p>
 </div>
 </div>
 </div>`,
@@ -642,14 +749,14 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 </div>`,
   },
   "elion-venue-church": {
-    subject: "E Lion – Book for your church: concert, keynote, P48X & Prayer Authority",
+    subject: "E Lion – Worship, DJ & youth rap for your church",
     text: `Hi {{Name}},
 
-We'd be honored to bring E Lion to your church – whether it's a full concert (1hr+ of Holy Hip-Hop plus speaking), a keynote (15–45 min with music and meet & greet), or a blend. Your congregation deserves worship that meets them where they are, and E Lion has been doing that for over 15 years.
+We'd be honored to bring E Lion to your church – worshiping God through music that meets people where they are. He has worship songs and Holy Hip-Hop, and he can also DJ at one of your events or do a rap set for your youth – flexible to fit your service or conference.
 
-Why E Lion: 1,000+ performances, 10M+ YouTube views, Family Feud grand prize (2016), first Hawaiian family to win 5 consecutive episodes. Prophetic endorsements from major Christian leaders; performed at Waikiki Shell, Blaisdell, HebrewFest, and churches nationwide. He brings P48X book promotion and Prayer Authority app demos – ministry and music in one package. Custom set list; you choose which songs fit your service.
+Options: full concert (1hr+ of worship and Holy Hip-Hop plus speaking), keynote (15–45 min with music and meet & greet), youth night rap, or DJ set for a church event. P48X book and Prayer Authority app demos available. 1,000+ performances, Family Feud grand prize, Waikiki Shell and Blaisdell; performed at churches nationwide. Custom set list – you choose which songs fit.
 
-Next step: Reply with your ideal date(s) and type of event (concert vs keynote). We'll send a set list, credentials, and get down to details – rate, rider, and how we can serve your people.
+Next step: Reply with your ideal date(s) and what you have in mind (worship set, youth rap, DJ, or concert). We'll send a set list and get down to details.
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
@@ -657,15 +764,15 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
     html: `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#fffbeb;border:2px solid #b45309;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(180,83,9,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b45309 0%,#92400e 50%,#78350f 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f59e0b;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
-<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Bring E Lion to your church</h1>
-<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Full concert, keynote, or a blend – your people deserve worship that meets them where they are.</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Worship, DJ & youth rap for your church</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Worship songs, Holy Hip-Hop, DJ at your event, or a rap set for your youth – flexible to fit your service.</p>
 </div>
 <div style="padding:32px 28px;color:#78350f;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#92400e;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fde68a;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is available for <strong>church events</strong> – full concert (1 hour+ of original Holy Hip-Hop, 15-minute speaking segments, P48X book promotion, Prayer Authority app demo) or conference keynote (15–45 min with musical segments and meet & greet). We'd love to partner with you for a service or conference.</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion would be honored to serve your church – <strong>worshiping God</strong> through music that meets people where they are. He has <strong>worship songs</strong> and Holy Hip-Hop, and can <strong>DJ at one of your events</strong> or do a <strong>rap set for your youth</strong>. Full concert, keynote (15–45 min), youth night, or DJ – you choose. P48X and Prayer Authority demos available.</p>
 <p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#92400e;text-transform:uppercase;">Why E Lion</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;"><strong>15+ years</strong> in ministry and music, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, Family Feud grand prize winner (2016 – first Hawaiian family to win 5 consecutive episodes). Prophetic endorsements from major Christian leaders; performed at Waikiki Shell, Blaisdell, HebrewFest, and churches nationwide. Custom set list – you choose which songs fit your service.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;"><strong>15+ years</strong> in ministry and music, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, Family Feud grand prize winner. Performed at Waikiki Shell, Blaisdell, HebrewFest, and churches nationwide. Custom set list – you choose which songs fit your service.</p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#92400e;text-transform:uppercase;">Family Feud articles</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#92400e;">Family Feud: Grand Prize</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition" style="color:#92400e;">Family Feud: Audition</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance" style="color:#92400e;">Family Feud: Appearance</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-moves-next-round" style="color:#92400e;">Family Feud: Next Round</a></p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#92400e;text-transform:uppercase;">Interviews & press</p>
@@ -684,14 +791,14 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 </div>`,
   },
   "elion-venue-show": {
-    subject: "E Lion – Book for festival or stage show",
+    subject: "E Lion – Perform at your venue (set list, fanbase, merch)",
     text: `Hi {{Name}},
 
-E Lion is available for your festival or stage show – full concert (1hr+ set, 15-min speaking, audience interaction), custom set list. Your stage deserves an artist who can draw and deliver, and E Lion has the numbers and the show to back it up.
+E Lion is interested in performing at your venue. What you can expect: he'll invite his local fanbase and promote the event so people show up; we're happy to discuss tickets at the door and whether he can bring merch (shirts, sunglasses, hats, USBs, CDs). Full set list available – original Holy Hip-Hop, 1hr+ set with speaking and audience interaction. Custom set list to fit your night.
 
-Why book E Lion: An estimated 115–145 million unique viewers have seen his Family Feud grand prize run (183–234M total views in syndication). Add 15+ years, 1,000+ performances, 10M+ YouTube views – first Hawaiian family to win 5 consecutive episodes. Performed at Waikiki Shell, Blaisdell, HebrewFest, and venues across the US and internationally. You pick the songs; he brings the energy. Music on every major platform.
+Why book E Lion: 15+ years, 1,000+ performances, 10M+ YouTube views, Family Feud grand prize. Performed at Waikiki Shell, Blaisdell, HebrewFest and venues across the US. You pick the songs; he brings the energy and the crowd.
 
-Next step: Reply with your event name, date(s), and slot – we'll send credentials, a set list, and get down to rider and rate. Let's make it happen.
+Next step: Reply with your venue, date(s), and slot – and let us know your policy on door tickets and merch. We'll send a set list and get down to rider and rate.
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
@@ -699,24 +806,55 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fef2f2;border:2px solid #b91c1c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(185,28,28,0.26),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b91c1c 0%,#991b1b 50%,#7f1d1d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f87171;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
-<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Book E Lion for your stage</h1>
-<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Full concert, custom set list – your stage deserves an artist who can draw and deliver.</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">E Lion – Perform at your venue</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Set list, local fanbase promo, door tickets &amp; merch – let's make it happen.</p>
 </div>
 <div style="padding:32px 28px;color:#7f1d1d;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fecaca;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is available for <strong>festivals and stage shows</strong> – full concert (1 hour+ of original Holy Hip-Hop, 15-minute speaking segments, audience interaction). Custom set list – you select which songs he performs at your venue.</p>
-<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Reach & credentials</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">An estimated <strong>115–145 million unique viewers</strong> have seen his Family Feud grand prize run (2016; 183–234M total views in syndication). <strong>15+ years</strong>, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>. First Hawaiian family to win 5 consecutive episodes. Performed at Waikiki Shell, Blaisdell, HebrewFest, and venues across the US and internationally.</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is interested in <strong>performing at your venue</strong>. What you can expect: he'll <strong>invite his local fanbase</strong> and promote the event so people show up. We're happy to discuss <strong>tickets at the door</strong> and whether he can <strong>bring merch</strong> – shirts, sunglasses, hats, USBs, CDs. Full set list available; custom to fit your night (1hr+ original Holy Hip-Hop, speaking, audience interaction).</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Reach &amp; credentials</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">An estimated <strong>115–145 million</strong> have seen his Family Feud grand prize run. <strong>15+ years</strong>, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>. Waikiki Shell, Blaisdell, HebrewFest and venues nationwide. You pick the songs; he brings the energy and the crowd.</p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Family Feud articles</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#b91c1c;">Family Feud: Grand Prize</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition" style="color:#b91c1c;">Family Feud: Audition</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance" style="color:#b91c1c;">Family Feud: Appearance</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-moves-next-round" style="color:#b91c1c;">Family Feud: Next Round</a></p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Interviews & press</p>
 <p style="margin:0 0 24px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/bored-city-interview-e-lion" style="color:#b91c1c;">Bored City Interview</a> · <a href="https://www.elionmusic.com/articles/spotlight-interview-e-lion" style="color:#b91c1c;">Spotlight Interview</a> · <a href="https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music" style="color:#b91c1c;">TBK247 Island Roots & Faith</a> · <a href="https://www.elionmusic.com/articles/running-multiple-businesses-crm" style="color:#b91c1c;">Zoho CRM</a> · <a href="https://www.elionmusic.com/articles/elion-fatal-house-fire" style="color:#b91c1c;">Fatal House Fire: A Turning Point</a> · <a href="https://www.elionmusic.com/articles/elion-radio-939" style="color:#b91c1c;">93.9 The Beat Freestyle</a> · <a href="https://www.elionmusic.com/articles/elion-radio-1027" style="color:#b91c1c;">102.7 Radio</a> · <a href="https://www.elionmusic.com/articles/hurricane-iselle-sale-day" style="color:#b91c1c;">KHON2 Hurricane Iselle</a> · <a href="https://www.elionmusic.com/articles/popcandies-hollywood-club" style="color:#b91c1c;">PopCandies TV</a> · <a href="https://www.elionmusic.com/wiki/" style="color:#b91c1c;">E Lion Wiki</a></p>
 <div style="background:linear-gradient(145deg,#fee2e2 0%,#fecaca 100%);border:2px solid #b91c1c;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(185,28,28,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#7f1d1d;line-height:1.55;"><strong>Next step:</strong> Reply with your event name, date(s), and slot. We'll send credentials, set list, and get down to rider and rate. We typically respond within 24–48 hours – let's make it happen.</p>
+<p style="margin:0 0 14px;font-size:15px;color:#7f1d1d;line-height:1.55;"><strong>Next step:</strong> Reply with your venue, date(s), and slot – and your policy on door tickets and merch. We'll send a set list and get down to rider and rate. Let's make it happen.</p>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#b91c1c 0%,#991b1b 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(185,28,28,0.4);">elionmusic.com</a></p>
 <p style="margin:0 0 10px;"><a href="https://www.elionmusic.com/lions" style="display:inline-block;background:rgba(185,28,28,0.15);color:#b91c1c;border:2px solid #b91c1c;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Learn More About Lions</a></p>
-<p style="margin:0;font-size:13px;color:#b91c1c;font-style:italic;">P.S. Waikiki Shell, Blaisdell, HebrewFest – your stage, his energy.</p>
+<p style="margin:0;font-size:13px;color:#b91c1c;font-style:italic;">P.S. Door tickets &amp; merch (shirts, hats, USBs, CDs) – just ask.</p>
+</div>
+</div>
+</div>`,
+  },
+  "elion-venue-major": {
+    subject: "E Lion – Interested in opening for major artists at your venue",
+    text: `Hi {{Name}},
+
+E Lion is interested in opening for major artists at your venue. If you book Blaisdell, Waikiki Shell, Republik, or other stages that host national headliners – he'd love to be considered for opening slots. Full set, local draw, professional on rider and load-in.
+
+Credentials: 15+ years, 1,000+ performances, 10M+ YouTube views, Family Feud grand prize. Already performed at Waikiki Shell and Blaisdell. Music on every major platform.
+
+Next step: If you have (or expect) opening slots for local/regional artists, reply and we'll send credentials and a set list. We'll stay in touch for the right fit.
+
+Coral Crown Solutions | sales@coralcrownsolutions.com`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#15803d 0%,#166534 50%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #86efac;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Opening for major artists</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Interested in opening slots at Blaisdell, Waikiki Shell, Republik &amp; stages that host national headliners.</p>
+</div>
+<div style="padding:32px 28px;color:#14532d;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #bbf7d0;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion is <strong>interested in opening for major artists</strong> at your venue. If you book Blaisdell, Waikiki Shell, Republik, or other stages that host national headliners – he'd love to be considered for opening slots. Full set, local draw, professional on rider and load-in.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;">Credentials</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;"><strong>15+ years</strong>, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>, Family Feud grand prize. Already performed at Waikiki Shell and Blaisdell. Music on every major platform.</p>
+<div style="background:#dcfce7;border:2px solid #15803d;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(21,128,61,0.15);">
+<p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Next step:</strong> If you have (or expect) opening slots for local/regional artists, reply and we'll send credentials and a set list. We'll stay in touch for the right fit.</p>
+<p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#15803d 0%,#166534 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(21,128,61,0.4);">elionmusic.com</a></p>
+<p style="margin:0;font-size:13px;color:#15803d;font-style:italic;">P.S. Your stage, his energy – ready when you have a slot.</p>
 </div>
 </div>
 </div>`,
