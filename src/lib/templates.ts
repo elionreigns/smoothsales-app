@@ -146,7 +146,7 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
       text: t.text + CONTACT_LINE_TEXT,
     };
   }
-  const t = TEMPLATES[id];
+  const t = TEMPLATES[id as BaseTemplateId];
   return {
     subject: t.subject,
     html: t.html + CONTACT_LINE_HTML,
