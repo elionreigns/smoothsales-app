@@ -37,11 +37,11 @@ export function getElionFollowUpTemplate(
 const CONTACT_FOOTER = "\n\nReach us: coralcrowntechnologies@gmail.com or (808) 393-0153.";
 const CONTACT_HTML = `<p style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;">Reach us: <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;">Email</a> or (808) 393-0153.</p>";
 const SOFT_CLOSE = " Thanks for your time. If you ever see this and it is a fit, we would love to hear from you. Take care.";
-const SOFT_CLOSE_HTML =
-  '<p style="margin:20px 0 0;font-size:14px;color:#475569;">Thanks for your time. If you ever see this and it is a fit, we would love to hear from you. Take care.</p>';
+const SOFT_CLOSE_HTML = "\u003Cp style=\"margin:20px 0 0;font-size:14px;color:#475569;\"\u003EThanks for your time. If you ever see this and it is a fit, we would love to hear from you. Take care.\u003C/p\u003E";
 
-const box = (color: string, content: string) =>
-  `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#eff6ff;border:2px solid ${color};border-radius:20px;padding:28px;color:#1e3a8a;"><p style="margin:0 0 16px;font-size:15px;">Hi {{Name}},</p>${content}${CONTACT_HTML}</div>`;
+function box(color: string, content: string): string {
+  return "<div style=\"font-family:sans-serif;max-width:600px;margin:0 auto;background:#eff6ff;border:2px solid " + color + ";border-radius:20px;padding:28px;color:#1e3a8a;\"><p style=\"margin:0 0 16px;font-size:15px;\">Hi {{Name}},</p>" + content + CONTACT_HTML + "</div>";
+}
 
 export const ELION_FOLLOW_UP_TEMPLATES: Record<
   ElionFollowUpTemplateId,
