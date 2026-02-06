@@ -8,9 +8,9 @@
 const CONTACT_FOOTER = "\n\nReach us: coralcrowntechnologies@gmail.com or (808) 393-0153.";
 const CONTACT_HTML = `<p style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;">Reach us: <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;">Email</a> or (808) 393-0153.</p>`;
 const SOFT_CLOSE =
-  " Thanks for your time. If you ever see this and it's a fit, we'd love to hear from you. Take care.";
+  ' Thanks for your time. If you ever see this and it\'s a fit, we\'d love to hear from you. Take care.';
 const SOFT_CLOSE_HTML =
-  "<p style=\"margin:24px 0 0;font-size:14px;color:#475569;\">Thanks for your time. If you ever see this and it's a fit, we'd love to hear from you. Take care.</p>";
+  '<p style="margin:24px 0 0;font-size:14px;color:#475569;">Thanks for your time. If you ever see this and it\'s a fit, we\'d love to hear from you. Take care.</p>';
 
 const box = (color: string, content: string) =>
   `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:2px solid ${color};border-radius:20px;padding:28px;color:#1e293b;"><p style="margin:0 0 16px;font-size:15px;">Hi {{Name}},</p>${content}${CONTACT_HTML}</div>`;
