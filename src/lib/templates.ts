@@ -97,10 +97,34 @@ export type TemplateId =
   | "healing-herbals-individual"
   | "healing-herbals-individual-followup-1"
   | "healing-herbals-individual-followup-2"
-  | "healing-herbals-individual-followup-3";
+  | "healing-herbals-individual-followup-3"
+  | "botox-v2"
+  | "tech-v2"
+  | "prayer-individual-v2"
+  | "prayer-church-v2"
+  | "tourism-hawaii-v2"
+  | "tourism-usa-v2"
+  | "elion-fans-v2"
+  | "elion-artists-v2"
+  | "elion-brands-v2"
+  | "elion-producers-v2"
+  | "elion-venue-church-v2"
+  | "elion-venue-show-v2"
+  | "elion-venue-dj-v2"
+  | "elion-venue-major-v2"
+  | "wedding-couples-v2"
+  | "wedding-contractors-v2"
+  | "p48x-personal-v2"
+  | "p48x-physical-distributors-v2"
+  | "p48x-affiliate-sellers-v2"
+  | "healing-herbals-smoke-shop-v2"
+  | "healing-herbals-individual-v2";
 
-/** Base templates only (no follow-up ids); follow-ups are in elion-follow-up-templates.ts and all-follow-up-templates.ts. */
-type BaseTemplateId = Exclude<TemplateId, ElionFollowUpTemplateId | OtherFollowUpTemplateId>;
+/** Base templates only (no follow-up ids, no v2); follow-ups and v2 are resolved in getTemplate. */
+type BaseTemplateId = Exclude<
+  Exclude<TemplateId, ElionFollowUpTemplateId | OtherFollowUpTemplateId>,
+  `${string}-v2`
+>;
 
 export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "botox", label: "Botox Oahu – Price sheet & specials" },
@@ -129,6 +153,50 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
 const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.9;">Reach us: <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Email us</a> or (808) 393-0153 for any of these services.</p>`;
 const CONTACT_LINE_TEXT = `\n\nReach us: Email us (coralcrowntechnologies@gmail.com) or (808) 393-0153 for any of these services.`;
 
+/** Optional enhanced (v2) content; only keys that have custom copy. elion-venue-show-v2 = more persuasive show/festival pitch. */
+const TEMPLATES_V2: Partial<Record<string, { subject: string; html: string; text: string }>> = {
+  "elion-venue-show-v2": {
+    subject: "E Lion – Book him for your stage (115M+ Family Feud reach, local draw, door + merch)",
+    text: `Hi {{Name}},
+
+You book the stage – we bring the crowd. E Lion has already packed Waikiki Shell, Blaisdell, and HebrewFest, and he wants to perform at your venue next. Here is why venues keep saying yes: he promotes every show to his local fanbase so people show up; he works with you on door tickets and merch (shirts, hats, USBs, CDs) so your night runs smooth; and he delivers a full set list – 1hr+ original Holy Hip-Hop, speaking, and audience interaction – custom to fit your night.
+
+Why book E Lion: An estimated 115–145 million viewers saw his Family Feud grand prize run. 15+ years, 1,000+ performances, 10M+ YouTube views. He has played Waikiki Shell, Blaisdell, Republik-style rooms and venues across the US. You pick the songs; he brings the energy and the crowd. Music on every major platform.
+
+What you get: He will invite his local fanbase and promote the event so people show up. We are happy to discuss tickets at the door and whether he can bring merch. Full set list available – original Holy Hip-Hop, 1hr+ set with speaking and audience interaction. Custom set list to fit your night.
+
+Next step (one reply and we move): Reply with your venue, date(s), and slot – and your policy on door tickets and merch. We will send a set list and get down to rider and rate. Limited opening slots this season – let us know and we will make it happen.
+
+Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
+
+Coral Crown Solutions | sales@coralcrowntechnologies@gmail.com`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fef2f2;border:2px solid #b91c1c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(185,28,28,0.26),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#b91c1c 0%,#991b1b 50%,#7f1d1d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f87171;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music – Venue booking</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">You book the stage. We bring the crowd.</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">115M+ Family Feud reach. Local fanbase promo. Door tickets &amp; merch. One reply and we send the set list and rider.</p>
+</div>
+<div style="padding:32px 28px;color:#7f1d1d;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fecaca;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">E Lion has already packed <strong>Waikiki Shell, Blaisdell, and HebrewFest</strong> – and he wants to perform at your venue next. Venues keep saying yes because he <strong>promotes every show to his local fanbase</strong> so people show up, works with you on <strong>door tickets and merch</strong> (shirts, hats, USBs, CDs), and delivers a <strong>full set</strong> – 1hr+ original Holy Hip-Hop, speaking, audience interaction – custom to fit your night.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Reach &amp; credentials</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">An estimated <strong>115–145 million</strong> have seen his Family Feud grand prize run. <strong>15+ years</strong>, <strong>1,000+ performances</strong>, <strong>10M+ YouTube views</strong>. Waikiki Shell, Blaisdell, Republik-style rooms and venues nationwide. You pick the songs; he brings the energy and the crowd.</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Family Feud articles</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#b91c1c;">Family Feud: Grand Prize</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition" style="color:#b91c1c;">Family Feud: Audition</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance" style="color:#b91c1c;">Family Feud: Appearance</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-moves-next-round" style="color:#b91c1c;">Family Feud: Next Round</a></p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#b91c1c;text-transform:uppercase;">Interviews &amp; press</p>
+<p style="margin:0 0 24px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/bored-city-interview-e-lion" style="color:#b91c1c;">Bored City Interview</a> · <a href="https://www.elionmusic.com/articles/spotlight-interview-e-lion" style="color:#b91c1c;">Spotlight Interview</a> · <a href="https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music" style="color:#b91c1c;">TBK247 Island Roots &amp; Faith</a> · <a href="https://www.elionmusic.com/articles/running-multiple-businesses-crm" style="color:#b91c1c;">Zoho CRM</a> · <a href="https://www.elionmusic.com/articles/elion-fatal-house-fire" style="color:#b91c1c;">Fatal House Fire: A Turning Point</a> · <a href="https://www.elionmusic.com/articles/elion-radio-939" style="color:#b91c1c;">93.9 The Beat Freestyle</a> · <a href="https://www.elionmusic.com/articles/elion-radio-1027" style="color:#b91c1c;">102.7 Radio</a> · <a href="https://www.elionmusic.com/articles/hurricane-iselle-sale-day" style="color:#b91c1c;">KHON2 Hurricane Iselle</a> · <a href="https://www.elionmusic.com/articles/popcandies-hollywood-club" style="color:#b91c1c;">PopCandies TV</a> · <a href="https://www.elionmusic.com/wiki/" style="color:#b91c1c;">E Lion Wiki</a></p>
+<div style="background:linear-gradient(145deg,#fee2e2 0%,#fecaca 100%);border:2px solid #b91c1c;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(185,28,28,0.2);">
+<p style="margin:0 0 14px;font-size:15px;color:#7f1d1d;line-height:1.55;"><strong>Next step (one reply and we move):</strong> Reply with your venue, date(s), and slot – and your policy on door tickets and merch. We will send a set list and get down to rider and rate. Limited opening slots this season – let us know and we will make it happen.</p>
+<p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#b91c1c 0%,#991b1b 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(185,28,28,0.4);">elionmusic.com</a></p>
+<p style="margin:0 0 10px;"><a href="https://www.elionmusic.com/lions" style="display:inline-block;background:rgba(185,28,28,0.15);color:#b91c1c;border:2px solid #b91c1c;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Learn More About Lions</a></p>
+<p style="margin:0;font-size:13px;color:#b91c1c;font-style:italic;">P.S. Door tickets &amp; merch – just ask. We want your night to run smooth.</p>
+</div>
+</div>
+</div>`,
+  },
+};
+
 export function getTemplate(id: TemplateId): { subject: string; html: string; text: string } {
   if (isElionFollowUpTemplateId(id as string)) {
     const t = getElionFollowUpTemplate(id as ElionFollowUpTemplateId);
@@ -145,6 +213,24 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
       html: t.html + CONTACT_LINE_HTML,
       text: t.text + CONTACT_LINE_TEXT,
     };
+  }
+  // Initial – Enhanced (v2): use TEMPLATES_V2 if defined, else same as base
+  if (typeof id === "string" && id.endsWith("-v2")) {
+    const v2 = TEMPLATES_V2[id];
+    if (v2)
+      return {
+        subject: v2.subject,
+        html: v2.html + CONTACT_LINE_HTML,
+        text: v2.text + CONTACT_LINE_TEXT,
+      };
+    const baseKey = id.slice(0, -3) as BaseTemplateId;
+    const t = TEMPLATES[baseKey];
+    if (t)
+      return {
+        subject: t.subject,
+        html: t.html + CONTACT_LINE_HTML,
+        text: t.text + CONTACT_LINE_TEXT,
+      };
   }
   const t = TEMPLATES[id as BaseTemplateId];
   return {
@@ -231,8 +317,24 @@ const HEALING_HERBALS_TEMPLATE_MAP: Record<Exclude<HealingHerbalsSub, "">, Templ
   individual: "healing-herbals-individual",
 };
 
+/** Build template dropdown: Initial, Initial – Enhanced, Follow Up 1, 2, 3 for a given base template id. */
+function templateOptionsWithFollowUps(baseId: TemplateId): { value: TemplateId; label: string }[] {
+  const initialLabel = TEMPLATE_OPTIONS.find((o) => o.value === baseId)?.label ?? "Initial";
+  const v2Id = (baseId + "-v2") as TemplateId;
+  const followUp1 = (baseId + "-followup-1") as TemplateId;
+  const followUp2 = (baseId + "-followup-2") as TemplateId;
+  const followUp3 = (baseId + "-followup-3") as TemplateId;
+  return [
+    { value: baseId, label: "Initial: " + initialLabel },
+    { value: v2Id, label: "Initial – Enhanced (sales-focused)" },
+    { value: followUp1, label: "Follow Up 1" },
+    { value: followUp2, label: "Follow Up 2" },
+    { value: followUp3, label: "Follow Up 3" },
+  ];
+}
+
 /**
- * Returns only the template options that match the current service (and sub-option).
+ * Returns template options for the current service (and sub): Initial + Follow Up 1, 2, 3 so you can view and send any variant.
  */
 export function getTemplatesForSelection(
   service: ServiceSelection,
@@ -246,38 +348,38 @@ export function getTemplatesForSelection(
   healingHerbalsSub: HealingHerbalsSub
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
-    if (botoxSub === "individual" || botoxSub === "corporate") return TEMPLATE_OPTIONS.filter((o) => o.value === "botox");
+    if (botoxSub === "individual" || botoxSub === "corporate") return templateOptionsWithFollowUps("botox");
     return [];
   }
   if (service === "tech") {
-    if (techSub === "individual" || techSub === "corporate") return TEMPLATE_OPTIONS.filter((o) => o.value === "tech");
+    if (techSub === "individual" || techSub === "corporate") return templateOptionsWithFollowUps("tech");
     return [];
   }
   if (service === "prayer") {
-    if (prayerSub === "individual") return TEMPLATE_OPTIONS.filter((o) => o.value === "prayer-individual");
-    if (prayerSub === "church") return TEMPLATE_OPTIONS.filter((o) => o.value === "prayer-church");
+    if (prayerSub === "individual") return templateOptionsWithFollowUps("prayer-individual");
+    if (prayerSub === "church") return templateOptionsWithFollowUps("prayer-church");
     return [];
   }
   if (service === "tourism") {
-    if (tourismSub === "hawaii") return TEMPLATE_OPTIONS.filter((o) => o.value === "tourism-hawaii");
-    if (tourismSub === "usa") return TEMPLATE_OPTIONS.filter((o) => o.value === "tourism-usa");
+    if (tourismSub === "hawaii") return templateOptionsWithFollowUps("tourism-hawaii");
+    if (tourismSub === "usa") return templateOptionsWithFollowUps("tourism-usa");
     return [];
   }
   if (service === "elion" && elionSub !== "") {
     const id = ELION_TEMPLATE_MAP[elionSub];
-    return TEMPLATE_OPTIONS.filter((o) => o.value === id);
+    return templateOptionsWithFollowUps(id);
   }
   if (service === "wedding" && weddingSub !== "") {
     const id = WEDDING_TEMPLATE_MAP[weddingSub];
-    return TEMPLATE_OPTIONS.filter((o) => o.value === id);
+    return templateOptionsWithFollowUps(id);
   }
   if (service === "p48x" && p48xSub !== "") {
     const id = P48X_TEMPLATE_MAP[p48xSub];
-    return TEMPLATE_OPTIONS.filter((o) => o.value === id);
+    return templateOptionsWithFollowUps(id);
   }
   if (service === "healing-herbals" && healingHerbalsSub !== "") {
     const id = HEALING_HERBALS_TEMPLATE_MAP[healingHerbalsSub];
-    return TEMPLATE_OPTIONS.filter((o) => o.value === id);
+    return templateOptionsWithFollowUps(id);
   }
   return [];
 }
