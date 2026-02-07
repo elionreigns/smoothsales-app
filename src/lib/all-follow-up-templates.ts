@@ -85,27 +85,27 @@ export const ALL_OTHER_FOLLOW_UP_TEMPLATES: Record<
     ),
   },
   "tech-followup-1": {
-    subject: "Re: Coral Crown Tech - Websites, chatbots, hosting (following up)",
-    text: `Hi {{Name}},\n\nFollowing up - we would still love to help you unlock your digital presence: websites, chatbots, hosting. Local team, clear communication. Reply with what you are looking for and we will send options.${CONTACT_FOOTER}`,
+    subject: "Re: Coral Crown Solutions – Websites & tech for Hawaii local businesses (following up)",
+    text: `Hi {{Name}},\n\nFollowing up – we would still love to help your business get found online: websites, online booking, Google Business & SEO for Hawaii local businesses. Local team, clear communication. Reply with what you need and we will send options.${CONTACT_FOOTER}`,
     html: box(
       "#0369a1",
-      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">Following up - we would still love to help with <strong>websites, chatbots, hosting</strong>. Local team, clear communication.</p><p style="margin:0 0 20px;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Tell us what you need</a></p>`
+      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">Following up – we would still love to help with <strong>websites, online booking, SEO</strong> for Hawaii local businesses. Get found online, book more jobs. Local team, clear communication.</p><p style="margin:0 0 20px;"><a href="mailto:sales@coralcrownsolutions.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Tell us what you need</a></p>`
     ),
   },
   "tech-followup-2": {
-    subject: "One more reason to go with Coral Crown Tech",
-    text: `Hi {{Name}},\n\nQuick nudge: we build sites and chatbots that actually get used - and we are here on the islands. No runaround, no jargon. One reply and we will send a short overview of what we can do for you.${CONTACT_FOOTER}`,
+    subject: "One more reason – Coral Crown Solutions (websites & booking for Hawaii businesses)",
+    text: `Hi {{Name}},\n\nQuick nudge: we build sites and online booking that actually get used – and we are here on the islands. Power washing, pool, detailing, cleaning, construction, food trucks, restaurants. No runaround, no jargon. One reply and we will send a short overview.${CONTACT_FOOTER}`,
     html: box(
       "#0369a1",
-      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We build sites and chatbots that actually get used - and we are here on the islands. No runaround, no jargon.</p><p style="margin:0 0 20px;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Get an overview</a></p>`
+      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We build websites and online booking that get used – and we are here on the islands. For local businesses: get found online, book more jobs. No runaround, no jargon.</p><p style="margin:0 0 20px;"><a href="mailto:sales@coralcrownsolutions.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Get an overview</a></p>`
     ),
   },
   "tech-followup-3": {
-    subject: "Last note - Coral Crown Tech",
-    text: `Hi {{Name}},\n\nLast note: if you ever want to explore a new site, chatbot, or hosting, we are here.${SOFT_CLOSE}${CONTACT_FOOTER}`,
+    subject: "Last note – Coral Crown Solutions (websites & tech for Hawaii local businesses)",
+    text: `Hi {{Name}},\n\nLast note: if you ever want a new site, online booking, or help getting found in Hawaii, we are here.${SOFT_CLOSE}${CONTACT_FOOTER}`,
     html: box(
       "#0369a1",
-      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">If you ever want to explore a new site, chatbot, or hosting, we are here.</p>${SOFT_CLOSE_HTML}<p style="margin:20px 0 0;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0369a1;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;">Reach out anytime</a></p>`
+      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">If you ever want a new site, online booking, or help getting found in Hawaii, we are here.</p>${SOFT_CLOSE_HTML}<p style="margin:20px 0 0;"><a href="mailto:sales@coralcrownsolutions.com" style="display:inline-block;background:#0369a1;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;">Reach out anytime</a></p>`
     ),
   },
   "prayer-individual-followup-1": {
