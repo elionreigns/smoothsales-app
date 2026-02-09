@@ -1,0 +1,54 @@
+Subject: Self-host Node.js app (move from Vercel/GitHub) – permissions and setup needed
+
+---
+
+Hi,
+
+I currently have a Node.js app (SmoothSales – email campaign tool) deployed on Vercel and hosted via GitHub. I want to stop using Vercel and GitHub for this app and fully self-host it on my Site5 WHM account instead, on a password-protected subdomain of coralcrownsolutions.com.
+
+Here is what I built and the repo (for your reference):
+
+GitHub project: https://github.com/elionreigns/smoothsales-app
+
+Stack: Next.js 14 (Node.js), React, Resend API for sending email. It runs with "npm run build" then "npm start" (Next.js standalone server). No database – just an API that sends templated emails.
+
+I need the following enabled on my account so I can run this app myself on your server:
+
+PERMISSIONS / FEATURES I NEED YOU TO ENABLE:
+
+1. Node.js 18 or newer (LTS)
+   - Required by Next.js. Please confirm Node 18+ is available and how to use it (e.g. via SSH, cPanel Node selector, or Passenger).
+   - Node.js: https://nodejs.org
+   - Next.js: https://nextjs.org
+
+2. Ability to run a long-running Node process
+   - The app runs as a persistent process ("npm start" or "next start", typically listening on port 3000). I need either:
+     - Passenger for Node (or your equivalent), so the web server runs the Node app, OR
+     - Permission to run a Node process (e.g. via pm2 or a persistent script) and have Apache/nginx proxy requests from the subdomain to that process (e.g. proxy to 127.0.0.1:3000).
+   - Please confirm which method you support and the steps (directory, command, proxy config).
+
+3. Subdomain for the app only
+   - I want a subdomain such as app.coralcrownsolutions.com (or smoothsales.coralcrownsolutions.com) that serves only this Node app – not PHP or the main site. I will deploy the built Next.js app to a folder you specify and need the subdomain to point to that app (via the proxy or Passenger setup above).
+   - Please confirm how to create the subdomain and point it to the Node app.
+
+4. Password protection for the entire subdomain
+   - I need the whole subdomain (e.g. app.coralcrownsolutions.com) behind HTTP authentication (username/password) so only I or my team can access it. Please confirm that you support "password protect" for a subdomain or the directory that serves it (cPanel/WHM), and the steps to enable it.
+
+5. SSL (HTTPS) for the subdomain
+   - I need the subdomain served over HTTPS. Please confirm SSL can be applied (shared cert or Let's Encrypt) for this subdomain.
+
+SUMMARY – WHAT TO ENABLE:
+
+- Node.js 18+ available and documented (how to run: which directory, which command).
+- Long-running Node process supported (Passenger or proxy to Node port).
+- Subdomain (app.coralcrownsolutions.com or similar) that points to my Node app only.
+- Password protection on that subdomain (HTTP auth).
+- SSL/HTTPS for the subdomain.
+
+Please review my GitHub project (https://github.com/elionreigns/smoothsales-app) if that helps. Tell me exactly what you can enable on my plan and the step-by-step I should follow to deploy the app and lock it down with password protection. I'm happy to follow your instructions.
+
+Thank you,
+
+[Your name]
+Domain: coralcrownsolutions.com
+Plan: WHM / $129 monthly
