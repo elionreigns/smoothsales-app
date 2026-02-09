@@ -208,6 +208,7 @@ export async function POST(request: NextRequest) {
           subject,
           html: personalHtml,
           text: personalText,
+          tags: [{ name: "template_id", value: templateId }],
         });
         if (error) {
           results.push({ to: rec.email, ok: false, error: error.message });
