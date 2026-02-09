@@ -5,11 +5,11 @@
  * Follow-up 3 (last) includes a soft close: thanks, take care, feel free to reach out if it is ever a fit.
  */
 
-const CONTACT_FOOTER = "\n\nReach us: coralcrowntechnologies@gmail.com or (808) 393-0153.";
-const CONTACT_HTML = `<p style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;">Reach us: <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;">Email</a> or (808) 393-0153.</p>`;
+const CONTACT_FOOTER = "\n\nWe're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153\nReply or call – we're happy to help.";
+const CONTACT_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:6px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Reply or call – we're happy to help.</p>`;
 const SOFT_CLOSE =
-  " Thanks for your time. If you ever see this and it is a fit, we would love to hear from you. Take care.";
-const SOFT_CLOSE_HTML = "\u003Cp style=\"margin:24px 0 0;font-size:14px;color:#475569;\"\u003EThanks for your time. If you ever see this and it is a fit, we would love to hear from you. Take care.\u003C/p\u003E";
+  " Thanks for your time. If this ever becomes a fit, we would love to hear from you. Take care.";
+const SOFT_CLOSE_HTML = "\u003Cp style=\"margin:24px 0 0;font-size:14px;color:#475569;\"\u003EThanks for your time. If this ever becomes a fit, we would love to hear from you. Take care.\u003C/p\u003E";
 
 function box(color: string, content: string): string {
   return "<div style=\"font-family:sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:2px solid " + color + ";border-radius:20px;padding:28px;color:#1e293b;\"><p style=\"margin:0 0 16px;font-size:15px;\">Hi {{Name}},</p>" + content + CONTACT_HTML + "</div>";
@@ -105,7 +105,7 @@ Following up: we reached out because your business deserves to be easy to find a
 When customers cannot find you or book you easily, they go to the next result. We are local, we speak plain English, and we build what actually gets used – no jargon, no runaround. One reply with what you need (new site, booking, SEO, or all of the above) and we will send you a short overview and next steps.${CONTACT_FOOTER}`,
     html: box(
       "#0369a1",
-      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We reached out so you can <strong>get found and get booked</strong> – websites, online booking, SEO for Hawaii local businesses. When customers cannot find you or book you easily, they go to the next result.</p><p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We are here on the islands, we speak plain English, and we build what gets used – no jargon, no runaround. One reply with what you need and we will send a short overview and next steps.</p><p style="margin:0 0 20px;"><a href="mailto:sales@coralcrownsolutions.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Tell us what you need</a></p>`
+      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We reached out so you can <strong>get found and get booked</strong> – websites, online booking, SEO for Hawaii local businesses. When customers cannot find you or book you easily, they go to the next result.</p><p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We are here on the islands, we speak plain English, and we build what gets used – no jargon, no runaround. One reply with what you need and we will send a short overview and next steps.</p><p style="margin:0 0 20px;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Tell us what you need</a></p>`
     ),
   },
   "tech-followup-2": {
@@ -117,7 +117,7 @@ Quick nudge: we build websites and online booking that actually get used – for
 The reason we are following up: every day your site or booking is unclear or hard to use is a day someone else gets the job. We have seen it over and over – businesses that get found and make booking simple see more leads and more closed jobs. One reply and we will send a short overview so you can see what is possible – no obligation, no jargon.${CONTACT_FOOTER}`,
     html: box(
       "#0369a1",
-      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We build sites and booking that <strong>get used</strong> – and we are here on the islands. The reason we are following up: every day your site or booking is unclear is a day someone else gets the job.</p><p style="margin:0 0 18px;font-size:15px;line-height:1.65;">Businesses that get found and make booking simple see more leads and more closed jobs. One reply and we will send a short overview so you can see what is possible – no obligation, no jargon.</p><p style="margin:0 0 20px;"><a href="mailto:sales@coralcrownsolutions.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Get an overview</a></p>`
+      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">We build sites and booking that <strong>get used</strong> – and we are here on the islands. The reason we are following up: every day your site or booking is unclear is a day someone else gets the job.</p><p style="margin:0 0 18px;font-size:15px;line-height:1.65;">Businesses that get found and make booking simple see more leads and more closed jobs. One reply and we will send a short overview so you can see what is possible – no obligation, no jargon.</p><p style="margin:0 0 20px;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0369a1;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;">Get an overview</a></p>`
     ),
   },
   "tech-followup-3": {
@@ -129,7 +129,7 @@ This is our last note. We offered to help with a new site, online booking, or ge
 When you are ready to make that happen, we are here. No pressure: just reply with what you need and we will send options. We would rather you have the info and reach out when the time is right.${SOFT_CLOSE}${CONTACT_FOOTER}`,
     html: box(
       "#0369a1",
-      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">This is our last note. We offered to help you get found and get booked in Hawaii – so your business can stop leaving leads on the table.</p><p style="margin:0 0 18px;font-size:15px;line-height:1.65;">When you are ready, we are here. Just reply with what you need and we will send options. No pressure.</p>${SOFT_CLOSE_HTML}<p style="margin:20px 0 0;"><a href="mailto:sales@coralcrownsolutions.com" style="display:inline-block;background:#0369a1;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;">Reach out anytime</a></p>`
+      `<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">This is our last note. We offered to help you get found and get booked in Hawaii – so your business can stop leaving leads on the table.</p><p style="margin:0 0 18px;font-size:15px;line-height:1.65;">When you are ready, we are here. Just reply with what you need and we will send options. No pressure.</p>${SOFT_CLOSE_HTML}<p style="margin:20px 0 0;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0369a1;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;">Reach out anytime</a></p>`
     ),
   },
   "prayer-individual-followup-1": {

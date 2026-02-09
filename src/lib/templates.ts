@@ -127,31 +127,31 @@ type BaseTemplateId = Exclude<
 >;
 
 export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
-  { value: "botox", label: "Botox Oahu – Price sheet & specials" },
-  { value: "tech", label: "Coral Crown Tech – Websites, chatbots, hosting" },
-  { value: "prayer-individual", label: "Prayer Authority – Individual member" },
-  { value: "prayer-church", label: "Prayer Authority – Church organization" },
-  { value: "tourism-hawaii", label: "Time for Fun Hawaii – Tours & webinar" },
-  { value: "tourism-usa", label: "Time for Fun USA – 4 complimentary vacations" },
-  { value: "elion-fans", label: "E Lion Music – Fans & listeners" },
-  { value: "elion-artists", label: "E Lion Music – Peer artists / collaboration" },
-  { value: "elion-brands", label: "E Lion Music – Sponsored brands" },
-  { value: "elion-producers", label: "E Lion Music – Producers (beats)" },
-  { value: "elion-venue-church", label: "E Lion Music – Venue: Church" },
-  { value: "elion-venue-show", label: "E Lion Music – Venue: Show / festival" },
+  { value: "botox", label: "Botox Oahu – Clear pricing, physician-led care & same-day availability" },
+  { value: "tech", label: "Coral Crown Tech – Websites, online booking & SEO for Hawaii businesses" },
+  { value: "prayer-individual", label: "Prayer Authority – Individual (free community + Dream Interpreter, Urim & Thummim, chatbots)" },
+  { value: "prayer-church", label: "Prayer Authority – Church (tools & community for your congregation)" },
+  { value: "tourism-hawaii", label: "Time for Fun Hawaii – Exclusive tour discounts & webinar (Oahu, Maui, Big Island)" },
+  { value: "tourism-usa", label: "Time for Fun USA – 1 of 4 complimentary vacations (H.I.E. Wholesale Travel)" },
+  { value: "elion-fans", label: "E Lion Music – Fans & listeners (Holy Hip-Hop, Family Feud, 10M+ views)" },
+  { value: "elion-artists", label: "E Lion Music – Peer artists & collaboration" },
+  { value: "elion-brands", label: "E Lion Music – Sponsored brands (your brand in front of his audience)" },
+  { value: "elion-producers", label: "E Lion Music – Producers (beats, your name on every release)" },
+  { value: "elion-venue-church", label: "E Lion Music – Venue: Church (worship, youth night, DJ)" },
+  { value: "elion-venue-show", label: "E Lion Music – Venue: Show / festival (door + merch, local draw)" },
   { value: "elion-venue-dj", label: "E Lion Music – Venue: DJ E Lion" },
   { value: "elion-venue-major", label: "E Lion Music – Venue: Major (opening for headliners)" },
-  { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples planning a wedding" },
-  { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors / vendors (submit to be featured)" },
-  { value: "p48x-personal", label: "P48X – Personal (readers & listeners, book + app + audiobook)" },
-  { value: "p48x-physical-distributors", label: "P48X – Physical distributors (wholesale, retail stores)" },
-  { value: "p48x-affiliate-sellers", label: "P48X – Affiliate sellers (15% on direct sales)" },
-  { value: "healing-herbals-smoke-shop", label: "Healing Herbals – Smoke Shop (wholesale + suggested retail)" },
-  { value: "healing-herbals-individual", label: "Healing Herbals – Individual (retail only)" },
+  { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples (one place to plan your dream Hawaiian wedding)" },
+  { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors & vendors (get featured, couples build packages)" },
+  { value: "p48x-personal", label: "P48X – Personal (book, app, 24+ hr audiobook & member chatbots)" },
+  { value: "p48x-physical-distributors", label: "P48X – Physical distributors (wholesale for retail stores)" },
+  { value: "p48x-affiliate-sellers", label: "P48X – Affiliate sellers (15% on sales, no inventory)" },
+  { value: "healing-herbals-smoke-shop", label: "Healing Herbals – Smoke Shop (wholesale + 40% suggested retail: Kava, Blue Lotus, Kanna, Kratom)" },
+  { value: "healing-herbals-individual", label: "Healing Herbals – Individual (Kava & Blue Lotus – vapes, shots, tinctures)" },
 ];
 
-const CONTACT_LINE_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.9;">Reach us: <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Email us</a> or (808) 393-0153 for any of these services.</p>`;
-const CONTACT_LINE_TEXT = `\n\nReach us: Email us (coralcrowntechnologies@gmail.com) or (808) 393-0153 for any of these services.`;
+const CONTACT_LINE_HTML = `<p style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:6px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Reply to this email or give us a call – we're happy to help with any of these services.</p>`;
+const CONTACT_LINE_TEXT = `\n\nWe're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153\nReply to this email or give us a call – we're happy to help with any of these services.`;
 
 /** Optional enhanced (v2) content; only keys that have custom copy. elion-venue-show-v2 = more persuasive show/festival pitch. */
 const TEMPLATES_V2: Partial<Record<string, { subject: string; html: string; text: string }>> = {
@@ -169,7 +169,7 @@ Next step (one reply and we move): Reply with your venue, date(s), and slot – 
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrowntechnologies@gmail.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fef2f2;border:2px solid #b91c1c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(185,28,28,0.26),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b91c1c 0%,#991b1b 50%,#7f1d1d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f87171;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music – Venue booking</p>
@@ -215,7 +215,7 @@ Demo: How to set up your daily P48X reflection schedule with Google Calendar: ht
 
 Book & app: https://www.prayerauthority.com/prayers/p48x.php | Barnes & Noble https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621 | Apple Books https://books.apple.com/us/book/p48x/id6746675717 | Smashwords https://www.smashwords.com/books/view/1780908 | Rakuten Kobo https://www.kobo.com/us/en/ebook/p48x
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:linear-gradient(180deg,#fefce8 0%,#fef9c3 100%);border:2px solid #ca8a04;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(202,138,4,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#a16207 0%,#854d0e 45%,#713f12 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #eab308;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">P48X · Philippians 4:8 Expounded</p>
@@ -467,7 +467,8 @@ Why patients choose us: Dr. Kathryn Schaefer, MD brings over 25 years of experie
 
 Getting you scheduled: 850 W Hind Dr, Suite 109, Honolulu. Mon, Tue, Thu, Fri 8am–5pm. Visit BotoxOahu.com or call/text (808) 261-1121 – we will get you on the books.
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:linear-gradient(180deg,#f0fdfa 0%,#ecfeff 100%);border:1px solid rgba(13,148,136,0.15);border-radius:24px;overflow:hidden;box-shadow:0 24px 48px -12px rgba(13,148,136,0.12),0 12px 24px -8px rgba(0,0,0,0.06);">
 <div style="background:linear-gradient(155deg,#0d9488 0%,#0f766e 35%,#115e59 100%);color:#fff;padding:40px 32px;border-bottom:4px solid rgba(255,255,255,0.25);text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.15);text-shadow:0 1px 3px rgba(0,0,0,0.2);">
 <p style="margin:0 0 10px;font-size:13px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;opacity:0.95;">Botox Oahu</p>
@@ -527,8 +528,9 @@ What we do for local businesses:
 We work with power washing, pool services, detailers, cleaners, contractors, food trucks, and restaurants across Oahu and the islands. One partner – no long-term lock-in. Quote based on what you need.
 
 
-Next step: Reply or visit CoralCrownSolutions.com. (808) 393-0153 | sales@coralcrownsolutions.com
+Next step: Reply or visit CoralCrownSolutions.com – tell us your business and goals and we'll put together a plan and quote. (808) 393-0153 · coralcrowntechnologies@gmail.com
 
+We're here when you're ready.
 Coral Crown Solutions`,
     html: `<div style="font-family:'Segoe UI',system-ui,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:1px solid #1e293b;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(30,41,59,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#1e293b 0%,#334155 45%,#475569 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #3b82f6;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
@@ -558,7 +560,7 @@ Coral Crown Solutions`,
 <p style="margin:26px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1e40af;text-transform:uppercase;">Pricing</p>
 <p style="margin:0 0 26px;font-size:14px;line-height:1.6;">Build from $800; hosting $20/mo with maintenance and free SSL. Online booking and SEO by scope. We quote based on what you need – no obligation.</p>
 <div style="background:linear-gradient(145deg,#dbeafe 0%,#e0f2fe 100%);border:2px solid #0ea5e9;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(14,165,233,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#0c4a6e;line-height:1.55;"><strong>Next step:</strong> Reply or visit the site below. Tell us your business and goals – we will put together a plan and quote. (808) 393-0153 | sales@coralcrownsolutions.com</p>
+<p style="margin:0 0 14px;font-size:15px;color:#0c4a6e;line-height:1.55;"><strong>Next step:</strong> Reply or visit the site below. Tell us your business and goals – we'll put together a plan and quote. (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
 <p style="margin:0 0 10px;"><a href="https://www.coralcrownsolutions.com" style="display:inline-block;background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(37,99,235,0.4);">CoralCrownSolutions.com</a></p>
 <p style="margin:0;font-size:13px;color:#1e40af;font-style:italic;">P.S. From website to online booking – one partner for Hawaii local businesses.</p>
 </div>
@@ -580,7 +582,8 @@ Getting you in: Sign up with Google at the link below for instant access. No for
 
 Join free: https://www.prayerauthority.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#fffbeb;border:1px solid #b45309;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(180,83,9,0.2),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b45309 0%,#92400e 45%,#78350f 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f59e0b;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Free to join</p>
@@ -624,9 +627,10 @@ Why churches love it: Free (Ruby) and premium (Diamond) tiers so you can scale. 
 
 Biblically trained chatbots (direct links): Dream Interpreter – https://prayerauthority.com/prayers/dreams.php | Spousal Translator – https://www.prayerauthority.com/translator/ | Urim & Thummim – https://www.prayerauthority.com/prayers/urim2.php | Biblical Counsel (12 advisors) – https://www.prayerauthority.com/counsel/
 
-Next step: Get your leadership and key volunteers signed up first, then roll out to your congregation. We're here to help you onboard – just reply or visit PrayerAuthority.com.
+Next step: Get your leadership and key volunteers signed up first, then roll out to your congregation. Reply or visit PrayerAuthority.com – we'll send a short guide and can schedule a quick call. No obligation.
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#fef9c3;border:1px solid #92400e;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(146,64,14,0.2),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#92400e 0%,#78350f 45%,#654321 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f59e0b;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">For your church</p>
@@ -668,9 +672,10 @@ Two ways to save:
 2) No time? Still book with us – add tours to your cart, we’ll call and help you set up your vacation.
 
 How-to video: https://www.youtube.com/watch?v=StNgZM1DuSg
-Call (808) 393-0153 | https://www.timeforfunhawaii.com
+Call (808) 393-0153 · https://www.timeforfunhawaii.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#dcfce7;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Time for Fun Hawaii</p>
@@ -704,11 +709,11 @@ Coral Crown Solutions | sales@coralcrownsolutions.com`,
 
 Time for Fun USA – Tour deals across the USA
 
-As a thank you for attending our educational webinar (60–75 min), choose ONE of 4 complimentary vacation packages: Carnival Cruise (3–5 nights), 7 Night Condo Stay, 7 Day Caribbean Cruise for Two, Mexico Getaway (8d/7n). You pay only required fees/taxes. Requirements: 25+, US/Canadian, $40k+ income. Register now – we’ll Hawaii residents: want to get off the rock? Watch one webinar and pick your complimentary trip. Details: Carnival 3–5 nights, 7 Night Condo, 7 Day Caribbean for Two, Mexico 8d/7n. Valid 18 months. If never used, no cost.
+As a thank you for attending our educational webinar (60–75 min), choose ONE of 4 complimentary vacation packages: Carnival Cruise (3–5 nights), 7 Night Condo Stay, 7 Day Caribbean Cruise for Two, Mexico Getaway (8d/7n). You pay only required fees/taxes. Requirements: 25+, US/Canadian, $40k+ income. Register at the link below. Hawaii residents: want to get off the rock? Watch one webinar and pick your complimentary trip: Carnival 3–5 nights, 7 Night Condo, 7 Day Caribbean for Two, or Mexico 8d/7n. Valid 18 months; if you never use it, there's no cost.
 
 https://www.timeforfunusa.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#e0f2fe;border:2px solid #0369a1;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(3,105,161,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#0369a1 0%,#0c4a6e 45%,#0e7490 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #0ea5e9;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Time for Fun USA</p>
@@ -750,7 +755,7 @@ Where to start: Pick your platform and hit follow. Full catalog, bio, and more a
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Spotify https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA | Apple Music https://music.apple.com/us/artist/e-lion/1111804063 | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#1c1917;border:2px solid #f59e0b;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(245,158,11,0.3),0 10px 28px -8px rgba(0,0,0,0.15);">
 <div style="background:linear-gradient(145deg,#f59e0b 0%,#d97706 45%,#b45309 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #fbbf24;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -798,7 +803,7 @@ Next step: Reply to this email or hit elionmusic.com and say you're in. We'll se
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f5f3ff;border:2px solid #7c3aed;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(124,58,237,0.28),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 50%,#4c1d95 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #a78bfa;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -843,7 +848,7 @@ Next step: Reply with what you have in mind (gear, software, apparel). We'll con
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#eff6ff;border:2px solid #1e40af;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(30,64,175,0.24),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#1e40af 0%,#1e3a8a 50%,#1d4ed8 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #3b82f6;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -885,7 +890,7 @@ Next step: If you're down to send beats for exclusive use, reply and we'll get i
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(234,88,12,0.24),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#ea580c 0%,#c2410c 50%,#9a3412 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #fb923c;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -923,7 +928,7 @@ Next step: Reply with your ideal date(s) and what you have in mind (worship set,
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#fffbeb;border:2px solid #b45309;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(180,83,9,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b45309 0%,#92400e 50%,#78350f 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f59e0b;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -965,7 +970,7 @@ Next step: Reply with your venue, date(s), and slot – and let us know your pol
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fef2f2;border:2px solid #b91c1c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(185,28,28,0.26),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#b91c1c 0%,#991b1b 50%,#7f1d1d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f87171;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -1001,7 +1006,7 @@ Credentials: 15+ years, 1,000+ performances, 10M+ YouTube views, Family Feud gra
 
 Next step: If you have (or expect) opening slots for local/regional artists, reply and we'll send credentials and a set list. We'll stay in touch for the right fit.
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#15803d 0%,#166534 50%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #86efac;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -1034,7 +1039,7 @@ Next step: Reply with your event type, date(s), and duration – we'll get into 
 
 Links: Full catalog https://www.elionmusic.com/rap/ | Family Feud: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Family Feud: Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Family Feud: Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Family Feud: Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | Zoho CRM https://www.elionmusic.com/articles/running-multiple-businesses-crm | Fatal House Fire https://www.elionmusic.com/articles/elion-fatal-house-fire | 93.9 The Beat https://www.elionmusic.com/articles/elion-radio-939 | 102.7 Radio https://www.elionmusic.com/articles/elion-radio-1027 | KHON2 Hurricane Iselle https://www.elionmusic.com/articles/hurricane-iselle-sale-day | PopCandies TV https://www.elionmusic.com/articles/popcandies-hollywood-club | E Lion Wiki https://www.elionmusic.com/wiki/ | Learn More About Lions https://www.elionmusic.com/lions | elionmusic.com https://www.elionmusic.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#1e1b4b;border:2px solid #a78bfa;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(167,139,250,0.35),0 10px 28px -8px rgba(0,0,0,0.12);">
 <div style="background:linear-gradient(145deg,#4c1d95 0%,#5b21b6 50%,#6d28d9 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #c4b5fd;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music</p>
@@ -1080,7 +1085,7 @@ Planning articles (full links):
 
 Start planning: HawaiiWeddingPlans.com | (808) 994-9034 | Email: coralcrowntechnologies@gmail.com
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fdf2f8;border:2px solid #be185d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(190,24,93,0.2),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#be185d 0%,#9d174d 45%,#831843 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #f472b6;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:14px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Hawaii Wedding Plans</p>
@@ -1127,7 +1132,7 @@ Submit your business: https://hawaiiweddingplans.com/submit/index.php – we wil
 
 Categories we feature: Venues, photographers, videographers, caterers, florists, officiants, musicians/DJs, wedding planners, transportation, entertainment, themes (beach, underwater, mermaid, pirate). Couples use our interactive planner and AI chatbot to build packages – your listing gets in front of couples planning their dream Hawaii wedding.
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
 <p style="margin:0 0 8px;font-size:14px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Hawaii Wedding Plans</p>
@@ -1173,7 +1178,7 @@ Demo: How to set up your daily P48X reflection schedule with Google Calendar: ht
 
 Book & app: https://www.prayerauthority.com/prayers/p48x.php | Barnes & Noble https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621 | Apple Books https://books.apple.com/us/book/p48x/id6746675717 | Smashwords https://www.smashwords.com/books/view/1780908 | Rakuten Kobo https://www.kobo.com/us/en/ebook/p48x
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:linear-gradient(180deg,#fefce8 0%,#fef9c3 100%);border:2px solid #ca8a04;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(202,138,4,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#a16207 0%,#854d0e 45%,#713f12 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #eab308;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">P48X · Philippians 4:8 Expounded</p>
@@ -1215,7 +1220,7 @@ Family Feud coverage: https://www.elionmusic.com/articles/hawaii-family-wins-gra
 
 If you're interested in wholesale orders for your store, reply to this email and we'll send pricing and order details.
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fefce8;border:2px solid #ca8a04;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(202,138,4,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#854d0e 0%,#713f12 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #eab308;text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">P48X · Wholesale for retailers</p>
@@ -1248,7 +1253,7 @@ Direct link to P48X page (book & app): https://www.prayerauthority.com/prayers/p
 
 If you'd like to partner with us as an affiliate seller, reply to this email and we'll send you the exact terms and how to track referrals.
 
-Coral Crown Solutions | sales@coralcrownsolutions.com`,
+We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #15803d;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(21,128,61,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#15803d 0%,#166534 45%,#14532d 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22c55e;text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">P48X · Affiliate sellers</p>
@@ -1279,7 +1284,7 @@ Why partner with Healing Herbals? Premium, lab-tested botanicals and beverages t
 
 Wholesale offers: 50% OFF at healingherbals.store – Code: Storefront3 (min $500 before discount). Code applies to packaged products and extracts under 1 g / herbs under 1 oz; for bulk see pricing doc below. Zelle to (631) 871-7641 for extra 2.5% off. We prefer $250 MOQ.
 
-Our two most popular nicotine replacement products (see images): Kava Extract Juice and Blue Lotus Extract Juice – vape-ready, replaceable tops, refillable. Wholesale $27.50 each, suggested retail $50 each.
+Our two most popular nicotine replacement products (see images): Kava Extract Juice and Blue Lotus Extract Juice – vape-ready, replaceable tops, refillable. Wholesale $27.50 each, suggested retail $50 each. For the full product list below, suggested retail for smoke shops is 40% markup on wholesale where not already specified.
 
 Catalogs: 2025 product catalog (packaged & finished goods) – https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f8168b99-2269-4e2b-8887-7781b959a710 | Bulk herbs & extracts (Kanna, Kava, Blue Lotus, Amanita, Kratom & more) – https://docs.google.com/document/d/1TB1pHCUEMJsMYjuiMs380r1Lly5bfE3UqCVKzxUZWB0/edit?usp=drivesdk | Korthal (exclusive wholesale) – https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a6d3213b-821e-4c3a-b6ae-506bd5fa1587
 
@@ -1309,7 +1314,8 @@ Mahalo nui loa! Eric & Robbie – Healing Herbals Team`,
 <tr><td style="padding:10px 14px;border:1px solid #86efac;">Kava Extract Juice (vape, replaceable top, refillable)</td><td style="padding:10px 14px;border:1px solid #86efac;">$27.50</td><td style="padding:10px 14px;border:1px solid #86efac;">$50</td></tr>
 <tr><td style="padding:10px 14px;border:1px solid #86efac;">Blue Lotus Extract Juice (vape, replaceable top, refillable)</td><td style="padding:10px 14px;border:1px solid #86efac;">$27.50</td><td style="padding:10px 14px;border:1px solid #86efac;">$50</td></tr>
 </table>
-<p style="margin:24px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#15803d;text-transform:uppercase;">Wholesale / smoke shop – full product list</p>
+<p style="margin:24px 0 6px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#15803d;text-transform:uppercase;">Wholesale / smoke shop – full product list</p>
+<p style="margin:0 0 12px;font-size:12px;color:#166534;">Suggested retail for smoke shops: 40% markup on wholesale where not already set (see Retail column below).</p>
 <table style="margin:0 auto 16px;border-collapse:collapse;font-size:12px;text-align:left;width:100%;max-width:560px;">
 <tr style="background:#dcfce7;"><th style="padding:8px 10px;border:1px solid #86efac;">Category / Product</th><th style="padding:8px 10px;border:1px solid #86efac;">Wholesale</th><th style="padding:8px 10px;border:1px solid #86efac;">Retail</th></tr>
 <tr><td style="padding:6px 10px;border:1px solid #86efac;font-weight:600;background:#ecfdf5;">Kanna</td><td colspan="2" style="padding:6px 10px;border:1px solid #86efac;"></td></tr>
