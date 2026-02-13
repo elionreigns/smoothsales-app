@@ -32,6 +32,7 @@ export async function POST(request: NextRequest) {
     const templateId = body.templateId as TemplateId | undefined;
     const recipientsRaw = body.recipients as Recipient[] | undefined;
     const emailsRaw = body.emails; // legacy: still accept flat list
+    const scheduledAt = typeof body.scheduledAt === "string" ? body.scheduledAt.trim() || undefined : undefined;
 
     let recipients: Recipient[] = [];
     if (Array.isArray(recipientsRaw) && recipientsRaw.length > 0) {
@@ -203,14 +204,16 @@ export async function POST(request: NextRequest) {
       };
       const { html: personalHtml, text: personalText } = substitutePlaceholders(htmlWithImages, text, vars);
       try {
-        const { data, error } = await resend.emails.send({
+        const payload: Parameters<Resend["emails"]["send"]>[0] = {
           from: FROM_EMAIL,
           to: rec.email,
           subject,
           html: personalHtml,
           text: personalText,
           tags: [{ name: "template_id", value: templateId }],
-        });
+        };
+        if (scheduledAt) payload.scheduledAt = scheduledAt;
+        const { data, error } = await resend.emails.send(payload);
         if (error) {
           results.push({ to: rec.email, ok: false, error: error.message });
         } else {
@@ -237,6 +240,7 @@ export async function POST(request: NextRequest) {
       total: recipients.length,
       failed: failed.length,
       details: results,
+      ...(scheduledAt && { scheduled: true, scheduledAt }),
     });
   } catch (err) {
     console.error("Send campaign error:", err);

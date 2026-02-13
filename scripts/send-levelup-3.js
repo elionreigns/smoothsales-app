@@ -5,6 +5,8 @@
  * Usage:
  *   SMOOTHSALES_URL=https://your-app.vercel.app node scripts/send-levelup-3.js
  *   node scripts/send-levelup-3.js https://your-app.vercel.app
+ *   node scripts/send-levelup-3.js https://your-app.vercel.app "in 24 hours"   # schedule for 24h from now
+ *   SCHEDULED_AT="in 24 hours" node scripts/send-levelup-3.js https://your-app.vercel.app
  *
  * Requires: RESEND_API_KEY set in Vercel (the API runs on the server). This script only
  * calls your deployed app's /api/send-campaign endpoint.
@@ -17,6 +19,7 @@ const baseUrl =
   process.env.SMOOTHSALES_URL ||
   process.argv[2] ||
   "http://localhost:3000";
+const scheduledAt = process.env.SCHEDULED_AT || process.argv[3] || null;
 const csvPath = path.join(__dirname, "..", "contacts", "levelup-3.csv");
 
 if (!fs.existsSync(csvPath)) {
@@ -48,23 +51,30 @@ if (recipients.length === 0) {
   process.exit(1);
 }
 
-console.log("Sending elion-levelup to", recipients.length, "recipients via", baseUrl);
+console.log(
+  scheduledAt
+    ? `Scheduling elion-levelup to ${recipients.length} recipients for ${scheduledAt} via ${baseUrl}`
+    : `Sending elion-levelup to ${recipients.length} recipients via ${baseUrl}`
+);
 
 async function run() {
+  const body = { templateId: "elion-levelup", recipients };
+  if (scheduledAt) body.scheduledAt = scheduledAt;
   const res = await fetch(`${baseUrl.replace(/\/$/, "")}/api/send-campaign`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      templateId: "elion-levelup",
-      recipients,
-    }),
+    body: JSON.stringify(body),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     console.error("Send failed:", res.status, data.error || data);
     process.exit(1);
   }
-  console.log("Sent:", data.sent, "| Failed:", data.failed, "| Total:", data.total);
+  if (data.scheduled) {
+    console.log("Scheduled:", data.sent, "| Failed:", data.failed, "| Total:", data.total, "| At:", data.scheduledAt);
+  } else {
+    console.log("Sent:", data.sent, "| Failed:", data.failed, "| Total:", data.total);
+  }
   if (data.details && data.failed > 0) {
     data.details.filter((d) => !d.ok).forEach((d) => console.error("  -", d.to, d.error));
   }
