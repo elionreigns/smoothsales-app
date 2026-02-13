@@ -70,6 +70,7 @@ export type TemplateId =
   | "elion-venue-major-followup-1"
   | "elion-venue-major-followup-2"
   | "elion-venue-major-followup-3"
+  | "elion-levelup"
   | "wedding-couples"
   | "wedding-couples-followup-1"
   | "wedding-couples-followup-2"
@@ -141,6 +142,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-venue-show", label: "E Lion Music – Venue: Show / festival (door + merch, local draw)" },
   { value: "elion-venue-dj", label: "E Lion Music – Venue: DJ E Lion" },
   { value: "elion-venue-major", label: "E Lion Music – Venue: Major (opening for headliners)" },
+  { value: "elion-levelup", label: "E Lion Music – A&R / Level Up (industry pitch: stats, links, festivals, label, collabs)" },
   { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples (one place to plan your dream Hawaiian wedding)" },
   { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors & vendors (get featured, couples build packages)" },
   { value: "p48x-personal", label: "P48X – Personal (book, app, 24+ hr audiobook & member chatbots)" },
@@ -1023,6 +1025,44 @@ We're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@g
 <p style="margin:0 0 14px;font-size:15px;color:#14532d;line-height:1.55;"><strong>Next step:</strong> If you have (or expect) opening slots for local/regional artists, reply and we'll send credentials and a set list. We'll stay in touch for the right fit.</p>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#15803d 0%,#166534 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(21,128,61,0.4);">elionmusic.com</a></p>
 <p style="margin:0;font-size:13px;color:#15803d;font-style:italic;">P.S. Your stage, his energy – ready when you have a slot.</p>
+</div>
+</div>
+</div>`,
+  },
+  "elion-levelup": {
+    subject: "E Lion – A&R / Industry pitch: 100+ songs, Family Feud winner, Hawaii → global (festivals, label, collabs)",
+    text: `Hi {{Name}},
+
+I'm E Lion – a Messianic rapper from Hawaii with 100+ songs out, Family Feud grand prize (2016), and a family I'm supporting with music (married, kid on the way). I'm reaching out because I want to do more: get funding to record in the studio, promote what I've got, get signed, work with major artists, get paid to perform at festivals, and break into a legit circuit. Hawaii's talent pool for management and promotion is slim; I want to expand globally and I'm looking for a hand.
+
+Stats & links: 10M+ YouTube views, 1,000+ performances, thousands of CDs sold hand-to-hand (see the zoomable mosaic and promo model testimonials at https://www.elionmusic.com/mosaic). Music on every major platform – Spotify, Apple Music, Pandora (station: E Lion), Amazon, TikTok, SoundCloud, iHeart, Deezer. I've been told I look like Justin Bieber more times than I can count; I'm super skilled at rapping and want to branch into other genres. I have a video guy in Hawaii and make new music all the time, including AI music (lyrics I write). Music videos: Judah's Tribe https://www.youtube.com/watch?v=8MfXAAdALAA | Eye of the Storm (AI) https://www.youtube.com/watch?v=2kDvBNKly5s.
+
+Articles: Family Feud Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Bored City Interview https://www.elionmusic.com/articles/bored-city-interview-e-lion | Spotlight Interview https://www.elionmusic.com/articles/spotlight-interview-e-lion | TBK247 Island Roots https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music | E Lion Wiki https://www.elionmusic.com/wiki/.
+
+I'm looking for: funding to record, promotion for existing releases, a record deal or distribution, collaborations with major artists, paid festival and concert slots, and management or mentorship to move forward. Whatever you can do – a reply, a call, or a next step – I'm ready.
+
+elionmusic.com | coralcrowntechnologies@gmail.com | (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f5f3ff;border:2px solid #7c3aed;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(124,58,237,0.28),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 50%,#4c1d95 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #a78bfa;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">E Lion Music – A&R / Level Up</p>
+<h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">100+ songs. Family Feud winner. Hawaii → global.</h1>
+<p style="margin:14px 0 0;font-size:14px;opacity:0.95;">Festivals, label, collabs, paid performances – I'm reaching out for a hand.</p>
+</div>
+<div style="padding:28px 26px;color:#4c1d95;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#6d28d9;text-transform:uppercase;">Hi {{Name}},</p>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.7;">I'm <strong>E Lion</strong> – a Messianic rapper from Hawaii. I won <strong>Family Feud's grand prize in 2016</strong>, I'm married with a family (and a kid on the way) I'm trying to support with music, and I've got <strong>100+ songs</strong> out. I'm living in Hawaii but I want to get out – I'm working on millions of streams, making AI music (lyrics I write), and I need help: <strong>funding to record in the studio</strong>, <strong>promotion</strong> for what I've got, <strong>getting signed</strong>, <strong>working with major artists</strong>, <strong>paid festival and concert slots</strong>, and getting into a legit circuit. Hawaii's talent pool for management and promotion is very low – I want to expand globally and I'm reaching out to see what you can do.</p>
+<p style="margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#6d28d9;text-transform:uppercase;">Stats &amp; proof</p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.65;"><strong>10M+ YouTube views</strong> · <strong>1,000+ performances</strong> · <strong>Thousands of CDs sold</strong> hand-to-hand (zoomable mosaic + promo model testimonials at <a href="https://www.elionmusic.com/mosaic" style="color:#6d28d9;">elionmusic.com/mosaic</a>). I've been told I look like Justin Bieber more times than I can count; I'm super skilled at rapping and want to branch into other genres.</p>
+<p style="margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#6d28d9;text-transform:uppercase;">Streaming &amp; catalog</p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.6;"><a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#6d28d9;">Spotify</a> · <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="color:#6d28d9;">Apple Music</a> · <a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="color:#6d28d9;">Pandora (E Lion)</a> · <a href="https://www.amazon.com/music/player/artists/B01GOGAW4W/e-lion" style="color:#6d28d9;">Amazon Music</a> · <a href="https://www.tiktok.com/@elionreigns" style="color:#6d28d9;">TikTok</a> · <a href="https://soundcloud.com/elionrapmusic" style="color:#6d28d9;">SoundCloud</a> · <a href="https://www.elionmusic.com/rap/" style="color:#6d28d9;">Full catalog</a></p>
+<p style="margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#6d28d9;text-transform:uppercase;">Music videos</p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.6;"><a href="https://www.youtube.com/watch?v=8MfXAAdALAA" style="color:#6d28d9;">Judah's Tribe</a> · <a href="https://www.youtube.com/watch?v=2kDvBNKly5s" style="color:#6d28d9;">Eye of the Storm (AI – lyrics by me)</a></p>
+<p style="margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#6d28d9;text-transform:uppercase;">Articles</p>
+<p style="margin:0 0 16px;font-size:14px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#6d28d9;">Family Feud Grand Prize</a> · <a href="https://www.elionmusic.com/articles/bored-city-interview-e-lion" style="color:#6d28d9;">Bored City Interview</a> · <a href="https://www.elionmusic.com/articles/spotlight-interview-e-lion" style="color:#6d28d9;">Spotlight Interview</a> · <a href="https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music" style="color:#6d28d9;">TBK247 Island Roots</a> · <a href="https://www.elionmusic.com/wiki/" style="color:#6d28d9;">E Lion Wiki</a></p>
+<div style="background:linear-gradient(145deg,#ede9fe 0%,#ddd6fe 100%);border:2px solid #7c3aed;border-radius:16px;padding:22px 24px;margin:20px 0;box-shadow:0 4px 16px rgba(124,58,237,0.2);">
+<p style="margin:0 0 10px;font-size:15px;color:#4c1d95;line-height:1.55;"><strong>What I'm looking for:</strong> Funding to record · Promotion for existing releases · Record deal or distribution · Collaborations with major artists · Paid festival &amp; concert slots · Management or mentorship. I have a video guy in Hawaii and make new music all the time – I just need a hand moving forward to all I can be.</p>
+<p style="margin:16px 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">elionmusic.com</a></p>
+<p style="margin:0;font-size:13px;color:#6d28d9;">Reply to this email or call (808) 393-0153 – coralcrowntechnologies@gmail.com. Whatever you can do, I'm ready.</p>
 </div>
 </div>
 </div>`,
