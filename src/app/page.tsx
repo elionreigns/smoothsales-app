@@ -15,7 +15,7 @@ type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
 type TechSub = "individual" | "corporate" | "";
-type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "";
+type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "venue-major" | "levelup" | "";
 type WeddingSub = "couples" | "contractors" | "";
 type P48XSub = "personal" | "physical-distributors" | "affiliate-sellers" | "";
 
@@ -289,6 +289,7 @@ export default function SmoothSalesPage() {
                     <option value="venue-show">Venue: Show / festival</option>
                     <option value="venue-dj">Venue: DJ E Lion</option>
                     <option value="venue-major">Venue: Major (opening for headliners)</option>
+                    <option value="levelup">A&R / Level Up (labels, management, industry)</option>
                   </select>
                 </div>
               )}
