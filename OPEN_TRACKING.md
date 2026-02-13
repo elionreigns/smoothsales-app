@@ -1,6 +1,6 @@
 # Email open tracking & alerts
 
-When someone **opens** a campaign email, you can get an alert at **coralcrowntechnologies@gmail.com** (or another address) with who opened it and the subject.
+When someone **opens** a campaign email, you get an alert at **elionreigns@gmail.com** (or set **OPEN_ALERT_TO** in Vercel to use another address) with who opened it and the subject.
 
 ## How it works
 
@@ -30,7 +30,7 @@ If you’re still using **onboarding@resend.dev**, open tracking may already be 
 ### 3. Environment variable (optional)
 
 - In Vercel (or your host): **Project → Settings → Environment Variables**
-- **OPEN_ALERT_TO** = `coralcrowntechnologies@gmail.com`  
+- **OPEN_ALERT_TO** = `elionreigns@gmail.com`  
   (omit to use that default; set to another address to get alerts there instead.)
 
 Redeploy after changing env vars.

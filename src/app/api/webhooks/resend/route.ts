@@ -3,7 +3,7 @@
  * Configure this URL in Resend Dashboard → Webhooks (e.g. https://your-app.vercel.app/api/webhooks/resend).
  * Subscribe to "email.opened" (and optionally "email.clicked") so Resend sends events when someone opens.
  *
- * When someone opens an email, we send an alert to OPEN_ALERT_TO (default coralcrowntechnologies@gmail.com).
+ * When someone opens an email, we send an alert to OPEN_ALERT_TO (default elionreigns@gmail.com).
  * Set RESEND_WEBHOOK_SECRET in Vercel to verify webhook requests (rejects forged opens).
  *
  * Open tracking must be enabled in Resend for your sending domain: Dashboard → Domains → [your domain] → Open tracking.
@@ -14,7 +14,7 @@ import { Webhook } from "svix";
 
 const FROM_EMAIL =
   process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
-const OPEN_ALERT_TO = process.env.OPEN_ALERT_TO?.trim() || "coralcrowntechnologies@gmail.com";
+const OPEN_ALERT_TO = process.env.OPEN_ALERT_TO?.trim() || "elionreigns@gmail.com";
 
 type ResendWebhookEvent = {
   type: string;
