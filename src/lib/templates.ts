@@ -34,6 +34,7 @@ export type TemplateId =
   | "tourism-hawaii-followup-1"
   | "tourism-hawaii-followup-2"
   | "tourism-hawaii-followup-3"
+  | "tourism-hawaii-featured-tour"
   | "tourism-usa"
   | "tourism-usa-followup-1"
   | "tourism-usa-followup-2"
@@ -133,6 +134,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "prayer-individual", label: "Prayer Authority – Individual (free community + Dream Interpreter, Urim & Thummim, chatbots)" },
   { value: "prayer-church", label: "Prayer Authority – Church (tools & community for your congregation)" },
   { value: "tourism-hawaii", label: "Time for Fun Hawaii – Exclusive tour discounts & webinar (Oahu, Maui, Big Island)" },
+  { value: "tourism-hawaii-featured-tour", label: "Time for Fun Hawaii – Featured tour (yacht/sailboat: we feature you, send referrals)" },
   { value: "tourism-usa", label: "Time for Fun USA – 1 of 4 complimentary vacations (H.I.E. Wholesale Travel)" },
   { value: "elion-fans", label: "E Lion Music – Fans & listeners (Holy Hip-Hop, Family Feud, 10M+ views)" },
   { value: "elion-artists", label: "E Lion Music – Peer artists & collaboration" },
@@ -322,7 +324,7 @@ export type ServiceSelection =
   | "wedding"
   | "p48x"
   | "healing-herbals";
-export type TourismSub = "" | "hawaii" | "usa";
+export type TourismSub = "" | "hawaii" | "usa" | "featured-tour";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
 export type TechSub = "" | "individual" | "corporate";
@@ -415,6 +417,11 @@ export function getTemplatesForSelection(
   if (service === "tourism") {
     if (tourismSub === "hawaii") return templateOptionsWithFollowUps("tourism-hawaii");
     if (tourismSub === "usa") return templateOptionsWithFollowUps("tourism-usa");
+    if (tourismSub === "featured-tour") {
+      const id = "tourism-hawaii-featured-tour";
+      const label = TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? "Featured tour (yacht/sailboat)";
+      return [{ value: id as TemplateId, label: "Initial: " + label }];
+    }
     return [];
   }
   if (service === "elion" && elionSub !== "") {
@@ -520,57 +527,56 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 </div>`,
   },
   tech: {
-    subject: "Coral Crown Solutions – Websites & tech for Hawaii local businesses",
+    subject: "Upgrade your Hawaii business – custom websites & shopping carts (808) 393-0153",
     text: `Hi {{Name}},
 
-Coral Crown Solutions helps Hawaii local businesses get found online and book more jobs. We build websites, set up online booking, and handle the tech so you can focus on your work – power washing, pool cleaning, car detailing, house cleaning, construction, food trucks, and restaurants.
+Your business deserves a website that actually brings in customers – and a way to take orders or bookings 24/7. Coral Crown Technologies builds custom websites, online booking, and shopping carts for Hawaii businesses so you stop losing leads to competitors with better tech.
 
-What we do for local businesses:
-• Websites: Custom build from $800, host $20/mo, your domain and contact form so customers can find you and request quotes
-• Online booking: Let customers book services or request estimates 24/7 – no missed calls
+What we do for owners and organizations:
+• Custom websites: Professional sites from $800 – your domain, clear info, contact forms so customers find you and request quotes
+• Custom shopping carts & e-commerce: Sell products or services online; we build the cart and checkout so you get paid without the hassle
+• Online booking: Let customers book appointments or request estimates 24/7 – no missed calls, no double-booking
 • Google Business & SEO: Get your business showing up when people search in Hawaii
-• Social & listings: Keep your Facebook, Instagram, or Yelp updated; get on the right directories
-• E-commerce: Sell online (Amazon, Etsy, or your own cart) if you have products or merch
-• AI chatbots: Answer common questions and capture leads on your site (optional)
+• Upgrades: Old site? We modernize it – faster, mobile-friendly, with booking or a store
 
-We work with power washing, pool services, detailers, cleaners, contractors, food trucks, and restaurants across Oahu and the islands. One partner – no long-term lock-in. Quote based on what you need.
+We work with restaurants, retail, tour operators, contractors, salons, and organizations across Oahu, Maui, and the Big Island. One partner – no long-term lock-in. We quote based on what you need.
 
+See what we do: https://www.coralcrownsolutions.com
 
-Next step: Reply or visit CoralCrownSolutions.com – tell us your business and goals and we'll put together a plan and quote. (808) 393-0153 · coralcrowntechnologies@gmail.com
+Call (808) 393-0153 or email coralcrowntechnologies@gmail.com – tell us your business and goals and we'll put together a plan and quote. No obligation.
 
 We're here when you're ready.
 Coral Crown Solutions`,
     html: `<div style="font-family:'Segoe UI',system-ui,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:1px solid #1e293b;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(30,41,59,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
 <div style="background:linear-gradient(145deg,#1e293b 0%,#334155 45%,#475569 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #3b82f6;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Coral Crown Solutions</p>
-<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Websites & tech for Hawaii local businesses</h1>
-<p style="margin:14px 0 0;font-size:14px;opacity:0.95;">Get found online. Book more jobs. We handle the tech so you can focus on your work.</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Custom websites &amp; shopping carts for Hawaii businesses</h1>
+<p style="margin:14px 0 0;font-size:14px;opacity:0.95;">Stop losing leads. Get a site that books and sells – we build it so you can focus on your business.</p>
 </div>
 <div style="padding:32px 28px;color:#334155;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1e40af;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #cbd5e1;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">We help Hawaii local businesses get found online and book more jobs – power washing, pool cleaning, car detailing, house cleaning, construction, food trucks, and restaurants. We build websites, set up online booking, and handle the tech so you can focus on your work.</p>
-<p style="margin:28px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1e40af;text-transform:uppercase;">What we do for local businesses</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">Your business deserves a website that actually brings in customers – and a way to take orders or bookings 24/7. We build custom websites, online booking, and <strong>custom shopping carts</strong> for Hawaii businesses so you stop losing leads to competitors with better tech.</p>
+<p style="margin:28px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1e40af;text-transform:uppercase;">What we do for owners &amp; organizations</p>
 <ul style="margin:0 auto 22px;padding-left:22px;font-size:14px;line-height:1.75;display:table;text-align:left;">
-<li style="margin-bottom:8px;"><strong>Websites:</strong> Custom build from $800, host $20/mo – your domain, contact form, and clear info so customers find you and request quotes</li>
-<li style="margin-bottom:8px;"><strong>Online booking:</strong> Let customers book services or request estimates 24/7 – no missed calls</li>
+<li style="margin-bottom:8px;"><strong>Custom websites:</strong> Professional sites from $800 – your domain, clear info, contact forms so customers find you</li>
+<li style="margin-bottom:8px;"><strong>Custom shopping carts &amp; e-commerce:</strong> Sell products or services online; we build the cart and checkout so you get paid without the hassle</li>
+<li style="margin-bottom:8px;"><strong>Online booking:</strong> Let customers book appointments or request estimates 24/7 – no missed calls</li>
 <li style="margin-bottom:8px;"><strong>Google Business &amp; SEO:</strong> Get your business showing up when people search in Hawaii</li>
-<li style="margin-bottom:8px;"><strong>Social &amp; listings:</strong> Keep Facebook, Instagram, or Yelp updated; get on the right directories</li>
-<li style="margin-bottom:8px;"><strong>E-commerce:</strong> Sell online (Amazon, Etsy, or your own cart) if you have products or merch</li>
-<li style="margin-bottom:0;"><strong>AI chatbots:</strong> Answer common questions and capture leads on your site (optional)</li>
+<li style="margin-bottom:0;"><strong>Upgrades:</strong> Old site? We modernize it – faster, mobile-friendly, with booking or a store</li>
 </ul>
 <p style="margin:26px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1e40af;text-transform:uppercase;">Why choose us</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">We work with local companies across Oahu and the islands. Custom solutions – no bloated themes, no long-term lock-in. One partner from website to booking to updates. We handle domain setup, SSL, and ongoing support so you can focus on your business.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">We work with restaurants, retail, tour operators, contractors, and organizations across Oahu, Maui, and the Big Island. One partner – no long-term lock-in. We handle domain setup, SSL, and ongoing support so you can focus on your business.</p>
 <div style="background:#eff6ff;border:2px solid #3b82f6;border-radius:18px;padding:20px 22px;margin:22px 0;box-shadow:0 4px 14px rgba(59,130,246,0.12);">
 <p style="margin:0 0 10px;font-size:13px;color:#1e3a8a;font-style:italic;">"They updated my website, helped with graphics, and made it easy for customers to book online."</p>
 <p style="margin:0;font-size:13px;color:#1e3a8a;font-style:italic;">"Coral Crown took my business to the next level with the best SEO and site upgrades. I recommend!"</p>
 </div>
 <p style="margin:26px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1e40af;text-transform:uppercase;">Pricing</p>
-<p style="margin:0 0 26px;font-size:14px;line-height:1.6;">Build from $800; hosting $20/mo with maintenance and free SSL. Online booking and SEO by scope. We quote based on what you need – no obligation.</p>
+<p style="margin:0 0 26px;font-size:14px;line-height:1.6;">Build from $800; hosting $20/mo with maintenance and free SSL. Shopping carts and booking by scope. We quote based on what you need – no obligation.</p>
 <div style="background:linear-gradient(145deg,#dbeafe 0%,#e0f2fe 100%);border:2px solid #0ea5e9;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(14,165,233,0.2);">
-<p style="margin:0 0 14px;font-size:15px;color:#0c4a6e;line-height:1.55;"><strong>Next step:</strong> Reply or visit the site below. Tell us your business and goals – we'll put together a plan and quote. (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
+<p style="margin:0 0 14px;font-size:15px;color:#0c4a6e;line-height:1.55;"><strong>Next step:</strong> Visit <strong>CoralCrownSolutions.com</strong> – then call <strong>(808) 393-0153</strong> or email <strong>coralcrowntechnologies@gmail.com</strong>. Tell us your business and goals and we'll put together a plan and quote.</p>
 <p style="margin:0 0 10px;"><a href="https://www.coralcrownsolutions.com" style="display:inline-block;background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(37,99,235,0.4);">CoralCrownSolutions.com</a></p>
-<p style="margin:0;font-size:13px;color:#1e40af;font-style:italic;">P.S. From website to online booking – one partner for Hawaii local businesses.</p>
+<p style="margin:0;font-size:13px;color:#1e40af;font-style:italic;">P.S. Call (808) 393-0153 or email coralcrowntechnologies@gmail.com – we're here when you're ready.</p>
 </div>
 <div style="margin-top:28px;padding-top:24px;border-top:2px solid #cbd5e1;"><img src="{{BASE_URL}}/promo/coralcrownfront.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/coralcrownback.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
 </div>
@@ -708,6 +714,40 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:10px 0 0;font-size:13px;color:#15803d;font-style:italic;">P.S. No time for the webinar? Add tours to your cart and we'll call you – you can still save.</p>
 </div>
 <div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><img src="{{BASE_URL}}/promo/timeforfunhawaii.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/timeforfunhawaiiback.jpg" alt="Time for Fun Hawaii" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
+</div>
+</div>`,
+  },
+  "tourism-hawaii-featured-tour": {
+    subject: "Feature your private yacht or sailboat tours on Time for Fun Hawaii – we send you referrals",
+    text: `Hi {{Name}},
+
+We'd like to feature your private yacht or sailboat adventures on Time for Fun Hawaii (timeforfunhawaii.com). We send travelers who want to book tours – and we'd love to list you and refer them to you.
+
+What we need from you: Email us at coralcrowntechnologies@gmail.com with your company name, island (Oahu, Maui, or Big Island), type of tours (private yacht, sailboat, sunset, snorkel, etc.), contact info, website, and any details you want visitors to see. We'll add you as a featured tour and send referrals when guests are looking to book.
+
+No cost to be featured – we're building the go-to resource for Hawaii tours and want to connect our audience with the best private charter and sail experiences.
+
+Reply or email coralcrowntechnologies@gmail.com with your information. Call (808) 393-0153 if you prefer to talk.
+
+Time for Fun Hawaii · coralcrowntechnologies@gmail.com · (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#ecfdf5;border:2px solid #059669;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(5,150,105,0.22),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#059669 0%,#047857 45%,#065f46 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #10b981;text-shadow:0 1px 2px rgba(0,0,0,0.15);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.9;">Time for Fun Hawaii</p>
+<h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Feature your yacht or sailboat tours – we send you referrals</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Get listed. Get booked. No cost to be featured.</p>
+</div>
+<div style="padding:32px 28px;color:#065f46;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#059669;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #6ee7b7;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 26px;font-size:15px;line-height:1.7;">We'd like to <strong>feature your private yacht or sailboat adventures</strong> on Time for Fun Hawaii. We send travelers who want to book tours – and we'd love to list you and refer them directly to you.</p>
+<p style="margin:28px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#059669;text-transform:uppercase;">What we need from you</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Email us at <strong>coralcrowntechnologies@gmail.com</strong> with: your company name, island (Oahu, Maui, or Big Island), type of tours (private yacht, sailboat, sunset, snorkel, etc.), contact info, website, and any details you want visitors to see. We'll add you as a featured tour and send referrals when guests are looking to book.</p>
+<p style="margin:0 0 24px;font-size:14px;line-height:1.7;"><strong>No cost to be featured</strong> – we're building the go-to resource for Hawaii tours and want to connect our audience with the best private charter and sail experiences.</p>
+<div style="background:linear-gradient(145deg,#d1fae5 0%,#a7f3d0 100%);border:2px solid #059669;border-radius:18px;padding:24px 26px;margin:28px 0;box-shadow:0 4px 16px rgba(5,150,105,0.2);">
+<p style="margin:0 0 14px;font-size:15px;color:#065f46;line-height:1.55;"><strong>Reply or email coralcrowntechnologies@gmail.com</strong> with your information. We'll list you and send referrals your way. Prefer to talk? Call <strong>(808) 393-0153</strong>.</p>
+<p style="margin:0 0 10px;"><a href="mailto:coralcrowntechnologies@gmail.com?subject=Featured%20Tour%20-%20Private%20Yacht%20%2F%20Sailboat" style="display:inline-block;background:linear-gradient(145deg,#059669 0%,#047857 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(5,150,105,0.4);">Email us your tour info</a></p>
+<p style="margin:10px 0 0;font-size:13px;color:#047857;font-style:italic;">Time for Fun Hawaii · (808) 393-0153</p>
+</div>
 </div>
 </div>`,
   },

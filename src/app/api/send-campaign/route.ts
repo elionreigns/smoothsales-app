@@ -65,6 +65,7 @@ export async function POST(request: NextRequest) {
       "prayer-individual",
       "prayer-church",
       "tourism-hawaii",
+      "tourism-hawaii-featured-tour",
       "tourism-usa",
       "elion-fans",
       "elion-artists",
@@ -193,7 +194,7 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
     const results: { to: string; ok: boolean; id?: string; error?: string }[] = [];
-    const throttleMs = 600; // Resend limit: 2 requests/sec – stay safely under
+    const throttleMs = 700; // Resend limit: 2 requests/sec – stay safely under
 
     for (let i = 0; i < recipients.length; i++) {
       const rec = recipients[i];

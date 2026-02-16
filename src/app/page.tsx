@@ -223,6 +223,7 @@ export default function SmoothSalesPage() {
                     <option value="">Select…</option>
                     <option value="hawaii">Hawaii</option>
                     <option value="usa">USA</option>
+                    <option value="featured-tour">Featured tour (yacht/sailboat – we feature you)</option>
                   </select>
                 </div>
               )}
