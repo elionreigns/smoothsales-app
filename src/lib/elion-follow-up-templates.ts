@@ -19,12 +19,14 @@ export type ElionBaseCampaignId =
   | "elion-venue-church"
   | "elion-venue-show"
   | "elion-venue-dj"
-  | "elion-venue-major";
+  | "elion-venue-major"
+  | "elion-record-label-mainstream"
+  | "elion-record-label-christian";
 
 export type ElionFollowUpTemplateId = `${ElionBaseCampaignId}-followup-${1 | 2 | 3}`;
 
 export function isElionFollowUpTemplateId(id: string): id is ElionFollowUpTemplateId {
-  return /^elion-(fans|artists|brands|producers|venue-church|venue-show|venue-dj|venue-major)-followup-[123]$/.test(id);
+  return /^elion-(fans|artists|brands|producers|venue-church|venue-show|venue-dj|venue-major|record-label-mainstream|record-label-christian)-followup-[123]$/.test(id);
 }
 
 export function getElionFollowUpTemplate(
@@ -238,6 +240,54 @@ export const ELION_FOLLOW_UP_TEMPLATES: Record<
     html: box(
       "#15803d",
       "<p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">This is our last note. E Lion is still interested in opening when the right slot comes up. Waikiki Shell and Blaisdell experience, full set, professional rider – local draw and Family Feud credibility.</p><p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">If you ever have an opening slot – this season or next – reply anytime and we will send credentials and set list. No pressure.</p>" + SOFT_CLOSE_HTML + "<p style=\"margin:16px 0 0;\"><a href=\"https://www.elionmusic.com\" style=\"display:inline-block;background:#166534;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;\">elionmusic.com</a></p>"
+    ),
+  },
+  "elion-record-label-mainstream-followup-1": {
+    subject: "E Lion – Record label pitch (100+ songs, Family Feud 115M+, Shine BTS – funding, festivals)",
+    text: "Hi {{Name}},\n\nQuick follow-up. E Lion – 100+ songs on every platform, Family Feud grand prize (115M+ saw), Shine behind-the-scenes – is still looking for a record label or partner. He needs funding to record in proper studios, travel and perform at festivals and conferences, and get out of Hawaii. Suno for some production, but he writes every lyric. 10M+ YouTube views, 1,000+ performances, 30K+ CDs sold.\n\nIf you have a second, watch the Shine BTS: https://www.youtube.com/watch?v=4Qqs7JSOHmA – then stream him on Spotify, Apple Music, or elionmusic.com. If there is a fit for funding, distribution, or a deal, reply and we will send a one-sheet and links. We typically respond within 24–48 hours." + CONTACT_FOOTER,
+    html: box(
+      "#b45309",
+      "<p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">Quick follow-up. E Lion – <strong>100+ songs</strong> on every platform, <strong>Family Feud grand prize (115M+ saw)</strong>, <strong>Shine BTS</strong> – is still looking for a label or partner. Funding for studios, travel, festivals, get him out of Hawaii. He writes every lyric; some tracks use Suno.</p><p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">Watch Shine BTS: <a href=\"https://www.youtube.com/watch?v=4Qqs7JSOHmA\" style=\"color:#b45309;\">YouTube</a>. Stream: Spotify, Apple Music, <a href=\"https://www.elionmusic.com\" style=\"color:#b45309;\">elionmusic.com</a>. If there is a fit for funding, distribution, or a deal, reply and we will send a one-sheet. We typically respond within 24–48 hours.</p><p style=\"margin:0 0 20px;\"><a href=\"https://www.youtube.com/watch?v=4Qqs7JSOHmA\" style=\"display:inline-block;background:rgba(180,83,9,0.2);color:#b45309;border:2px solid #d97706;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;\">Shine BTS</a> <a href=\"https://www.elionmusic.com\" style=\"display:inline-block;background:#d97706;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;\">elionmusic.com</a></p>"
+    ),
+  },
+  "elion-record-label-mainstream-followup-2": {
+    subject: "One more reason – E Lion (100+ songs, 115M+ Family Feud – label / funding / festivals)",
+    text: "Hi {{Name}},\n\nQuick nudge. E Lion has 100+ songs live, Family Feud reach (115–145M viewers), and a clear ask: funding to record in proper studios, travel and perform at festivals and conferences, and get out of Hawaii. He has a video guy, makes new music constantly (Suno + his lyrics), and has been compared to Justin Bieber. Shine behind-the-scenes: https://www.youtube.com/watch?v=4Qqs7JSOHmA\n\nIf your label is looking for an artist with catalog, proof, and hunger – reply and we will send a one-sheet, streaming links, and the BTS. No obligation; we just want you to have the option when the fit is right." + CONTACT_FOOTER,
+    html: box(
+      "#b45309",
+      "<p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">E Lion has <strong>100+ songs</strong>, <strong>Family Feud reach (115M+)</strong>, and a clear ask: funding, studios, travel, festivals – get him out of Hawaii. Video guy, new music constantly (Suno + his lyrics). <a href=\"https://www.youtube.com/watch?v=4Qqs7JSOHmA\" style=\"color:#b45309;\">Shine BTS</a>.</p><p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">If your label is looking for an artist with catalog, proof, and hunger – reply and we will send a one-sheet and links. No obligation.</p><p style=\"margin:0 0 20px;\"><a href=\"https://www.elionmusic.com\" style=\"display:inline-block;background:#d97706;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;\">elionmusic.com</a></p>"
+    ),
+  },
+  "elion-record-label-mainstream-followup-3": {
+    subject: "Last note – E Lion label pitch (100+ songs, Shine BTS – when you're ready)",
+    text: "Hi {{Name}},\n\nThis is our last note. E Lion – 100+ songs on every platform, Family Feud (115M+ saw), Shine behind-the-scenes – is still looking for a label or partner for funding, distribution, and festivals. We have sent the pitch twice; we do not want to fill your inbox.\n\nIf the fit is right – now or later – one reply and we will send a one-sheet, streaming links, and the BTS. No pressure." + SOFT_CLOSE + CONTACT_FOOTER,
+    html: box(
+      "#b45309",
+      "<p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">This is our last note. E Lion – 100+ songs, Family Feud (115M+), Shine BTS – still looking for a label or partner. If the fit is right – now or later – one reply and we will send a one-sheet and links. No pressure.</p>" + SOFT_CLOSE_HTML + "<p style=\"margin:16px 0 0;\"><a href=\"https://www.youtube.com/watch?v=4Qqs7JSOHmA\" style=\"display:inline-block;background:rgba(180,83,9,0.2);color:#b45309;border:2px solid #d97706;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;\">Shine BTS</a> <a href=\"https://www.elionmusic.com\" style=\"display:inline-block;background:#d97706;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;\">elionmusic.com</a></p>"
+    ),
+  },
+  "elion-record-label-christian-followup-1": {
+    subject: "E Lion – Christian label pitch (100+ songs, Family Feud 115M+, world tour vision)",
+    text: "Hi {{Name}},\n\nQuick follow-up. E Lion – Holy Hip-Hop from Hawaii, 100+ songs on every platform, Family Feud grand prize (115M+ saw) – is still looking for a Christian record label or partner. He put together a 2012 world tour video and would like to see it come to pass. Funding for studios, travel, festivals, get him out of Hawaii. He writes every lyric; some tracks use Suno. 10M+ views, 1,000+ performances, 30K+ CDs.\n\nWatch the world tour video: https://www.youtube.com/watch?v=2ZqlEh2ye4g – then stream on Spotify, Apple Music, or elionmusic.com. If there is a fit for funding, distribution, or a deal, reply and we will send a one-sheet. We typically respond within 24–48 hours." + CONTACT_FOOTER,
+    html: box(
+      "#6d28d9",
+      "<p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">Quick follow-up. E Lion – Holy Hip-Hop from Hawaii, <strong>100+ songs</strong>, <strong>Family Feud (115M+ saw)</strong> – is still looking for a Christian label or partner. He has a <strong>2012 world tour video</strong> and would like to see it come to pass. Funding, studios, travel, festivals.</p><p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">Watch: <a href=\"https://www.youtube.com/watch?v=2ZqlEh2ye4g\" style=\"color:#6d28d9;\">World Tour video</a>. Stream: <a href=\"https://www.elionmusic.com\" style=\"color:#6d28d9;\">elionmusic.com</a>. If there is a fit, reply and we will send a one-sheet. We typically respond within 24–48 hours.</p><p style=\"margin:0 0 20px;\"><a href=\"https://www.youtube.com/watch?v=2ZqlEh2ye4g\" style=\"display:inline-block;background:rgba(109,40,217,0.2);color:#6d28d9;border:2px solid #7c3aed;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;\">World Tour video</a> <a href=\"https://www.elionmusic.com\" style=\"display:inline-block;background:#7c3aed;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;\">elionmusic.com</a></p>"
+    ),
+  },
+  "elion-record-label-christian-followup-2": {
+    subject: "One more reason – E Lion (Holy Hip-Hop, 100+ songs, world tour – label / funding)",
+    text: "Hi {{Name}},\n\nQuick nudge. E Lion – Holy Hip-Hop from Hawaii, 100+ songs live, Family Feud reach – is still looking for a Christian label or partner. He put together a 2012 world tour video and would like to see it come to pass. Messianic rapper, Hawaiian and Hebrew fusion, broadcast-friendly. Funding for studios, travel, festivals.\n\nWorld tour video: https://www.youtube.com/watch?v=2ZqlEh2ye4g. Full catalog at elionmusic.com. If your label is looking for an artist with catalog, proof, and a clear vision – reply and we will send a one-sheet. No obligation." + CONTACT_FOOTER,
+    html: box(
+      "#6d28d9",
+      "<p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">E Lion – Holy Hip-Hop, <strong>100+ songs</strong>, <strong>Family Feud reach</strong>. He has a <strong>2012 world tour video</strong> and would like to see it come to pass. Messianic rapper, broadcast-friendly. Funding, studios, festivals.</p><p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\"><a href=\"https://www.youtube.com/watch?v=2ZqlEh2ye4g\" style=\"color:#6d28d9;\">World Tour video</a> · <a href=\"https://www.elionmusic.com\" style=\"color:#6d28d9;\">elionmusic.com</a>. If your label is looking for catalog, proof, and vision – reply and we will send a one-sheet. No obligation.</p><p style=\"margin:0 0 20px;\"><a href=\"https://www.elionmusic.com\" style=\"display:inline-block;background:#7c3aed;color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;\">elionmusic.com</a></p>"
+    ),
+  },
+  "elion-record-label-christian-followup-3": {
+    subject: "Last note – E Lion Christian label pitch (world tour vision – when you're ready)",
+    text: "Hi {{Name}},\n\nThis is our last note. E Lion – Holy Hip-Hop, 100+ songs, Family Feud (115M+ saw), 2012 world tour vision – is still looking for a Christian label or partner. We have sent the pitch twice; we do not want to fill your inbox.\n\nIf the fit is right – now or later – one reply and we will send a one-sheet and the world tour video link. No pressure." + SOFT_CLOSE + CONTACT_FOOTER,
+    html: box(
+      "#6d28d9",
+      "<p style=\"margin:0 0 18px;font-size:15px;line-height:1.65;\">This is our last note. E Lion – Holy Hip-Hop, 100+ songs, Family Feud, world tour vision – still looking for a Christian label or partner. If the fit is right – now or later – one reply and we will send a one-sheet and the world tour link. No pressure.</p>" + SOFT_CLOSE_HTML + "<p style=\"margin:16px 0 0;\"><a href=\"https://www.youtube.com/watch?v=2ZqlEh2ye4g\" style=\"display:inline-block;background:rgba(109,40,217,0.2);color:#6d28d9;border:2px solid #7c3aed;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;\">World Tour video</a> <a href=\"https://www.elionmusic.com\" style=\"display:inline-block;background:#7c3aed;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:600;\">elionmusic.com</a></p>"
     ),
   },
 };

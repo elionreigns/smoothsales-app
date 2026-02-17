@@ -15,7 +15,7 @@ type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
 type TechSub = "individual" | "corporate" | "";
-type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "venue-major" | "levelup" | "";
+type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "venue-major" | "levelup" | "record-label-mainstream" | "record-label-christian" | "";
 type WeddingSub = "couples" | "contractors" | "";
 type P48XSub = "personal" | "physical-distributors" | "affiliate-sellers" | "";
 
@@ -291,6 +291,8 @@ export default function SmoothSalesPage() {
                     <option value="venue-dj">Venue: DJ E Lion</option>
                     <option value="venue-major">Venue: Major (opening for headliners)</option>
                     <option value="levelup">A&R / Level Up (labels, management, industry)</option>
+                    <option value="record-label-mainstream">Record label (mainstream – Shine BTS)</option>
+                    <option value="record-label-christian">Record label (Christian – world tour vision)</option>
                   </select>
                 </div>
               )}
