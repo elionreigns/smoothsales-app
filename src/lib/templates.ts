@@ -108,6 +108,8 @@ export type TemplateId =
   | "healing-herbals-individual-followup-1"
   | "healing-herbals-individual-followup-2"
   | "healing-herbals-individual-followup-3"
+  | "yachts-contracts"
+  | "yachts-clients"
   | "botox-v2"
   | "tech-v2"
   | "prayer-individual-v2"
@@ -162,10 +164,12 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "p48x-affiliate-sellers", label: "P48X – Affiliate sellers (15% on sales, no inventory)" },
   { value: "healing-herbals-smoke-shop", label: "Healing Herbals – Smoke Shop (wholesale + 40% suggested retail: Kava, Blue Lotus, Kanna, Kratom)" },
   { value: "healing-herbals-individual", label: "Healing Herbals – Individual (Kava & Blue Lotus – vapes, shots, tinctures)" },
+  { value: "yachts-contracts", label: "Yachts – Contracts (charter operators: referral & commission agreement, get featured)" },
+  { value: "yachts-clients", label: "Yachts – Clients (Private Boat Charter Questionnaire)" },
 ];
 
-const CONTACT_LINE_HTML = `<p style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:6px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Reply to this email or give us a call – we're happy to help with any of these services.</p>`;
-const CONTACT_LINE_TEXT = `\n\nWe're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153\nReply to this email or give us a call – we're happy to help with any of these services.`;
+const CONTACT_LINE_HTML = `<p style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:12px 0 0;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0ea5e9;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Reply to the Email</a></p><p style="margin:10px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Click the button above to start a reply, or call – we're happy to help.</p>`;
+const CONTACT_LINE_TEXT = `\n\nWe're here when you're ready.\nReply to the Email: coralcrowntechnologies@gmail.com\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153\nClick to reply or call – we're happy to help.`;
 
 /** Optional enhanced (v2) content; only keys that have custom copy. elion-venue-show-v2 = more persuasive show/festival pitch. */
 const TEMPLATES_V2: Partial<Record<string, { subject: string; html: string; text: string }>> = {
@@ -333,7 +337,8 @@ export type ServiceSelection =
   | "elion"
   | "wedding"
   | "p48x"
-  | "healing-herbals";
+  | "healing-herbals"
+  | "yachts";
 export type TourismSub = "" | "hawaii" | "usa" | "featured-tour";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
@@ -354,6 +359,7 @@ export type ElionSub =
 export type WeddingSub = "" | "couples" | "contractors";
 export type P48XSub = "" | "personal" | "physical-distributors" | "affiliate-sellers";
 export type HealingHerbalsSub = "" | "smoke-shop" | "individual";
+export type YachtSub = "" | "contracts" | "clients";
 
 const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   fans: "elion-fans",
@@ -385,6 +391,11 @@ const HEALING_HERBALS_TEMPLATE_MAP: Record<Exclude<HealingHerbalsSub, "">, Templ
   individual: "healing-herbals-individual",
 };
 
+const YACHTS_TEMPLATE_MAP: Record<Exclude<YachtSub, "">, TemplateId> = {
+  contracts: "yachts-contracts",
+  clients: "yachts-clients",
+};
+
 /** Build template dropdown: Initial, Initial – Enhanced, Follow Up 1, 2, 3 for a given base template id. */
 function templateOptionsWithFollowUps(baseId: TemplateId): { value: TemplateId; label: string }[] {
   const initialLabel = TEMPLATE_OPTIONS.find((o) => o.value === baseId)?.label ?? "Initial";
@@ -413,7 +424,8 @@ export function getTemplatesForSelection(
   elionSub: ElionSub,
   weddingSub: WeddingSub,
   p48xSub: P48XSub,
-  healingHerbalsSub: HealingHerbalsSub
+  healingHerbalsSub: HealingHerbalsSub,
+  yachtSub: YachtSub
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return templateOptionsWithFollowUps("botox");
@@ -458,6 +470,11 @@ export function getTemplatesForSelection(
     const id = HEALING_HERBALS_TEMPLATE_MAP[healingHerbalsSub];
     return templateOptionsWithFollowUps(id);
   }
+  if (service === "yachts" && yachtSub !== "") {
+    const id = YACHTS_TEMPLATE_MAP[yachtSub];
+    const label = TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? (yachtSub === "contracts" ? "Contracts" : "Clients");
+    return [{ value: id, label: "Initial: " + label }];
+  }
   return [];
 }
 
@@ -471,7 +488,8 @@ export function hasRequiredSelection(
   elionSub: ElionSub,
   weddingSub: WeddingSub,
   p48xSub: P48XSub,
-  healingHerbalsSub: HealingHerbalsSub
+  healingHerbalsSub: HealingHerbalsSub,
+  yachtSub: YachtSub
 ): boolean {
   if (!service) return false;
   if (service === "prayer") return prayerSub !== "";
@@ -482,6 +500,7 @@ export function hasRequiredSelection(
   if (service === "wedding") return weddingSub !== "";
   if (service === "p48x") return p48xSub !== "";
   if (service === "healing-herbals") return healingHerbalsSub !== "";
+  if (service === "yachts") return yachtSub !== "";
   return false;
 }
 
@@ -761,6 +780,98 @@ Time for Fun Hawaii · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0 0 14px;font-size:15px;color:#065f46;line-height:1.55;"><strong>Reply or email coralcrowntechnologies@gmail.com</strong> with your information. We'll list you and send referrals your way. Prefer to talk? Call <strong>(808) 393-0153</strong>.</p>
 <p style="margin:0 0 10px;"><a href="mailto:coralcrowntechnologies@gmail.com?subject=Featured%20Tour%20-%20Private%20Yacht%20%2F%20Sailboat" style="display:inline-block;background:linear-gradient(145deg,#059669 0%,#047857 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 8px 24px -4px rgba(5,150,105,0.4);">Email us your tour info</a></p>
 <p style="margin:10px 0 0;font-size:13px;color:#047857;font-style:italic;">Time for Fun Hawaii · (808) 393-0153</p>
+</div>
+</div>
+</div>`,
+  },
+  "yachts-contracts": {
+    subject: "Private Yacht Charter – Referral & Commission Partnership (Hawaii)",
+    text: `Hi {{Name}},
+
+We'd like to promote your private yacht charter services and send you referrals from our existing clients and visitors planning trips to Hawaii.
+
+REFERRAL & COMMISSION AGREEMENT (Hawaii)
+Referring Agent: E Hans Schaefer (Coral Crown Solutions / Time for Fun Hawaii)
+Charter Operator: [Your company]
+
+We want to feature your private yacht, sailboat, and powered boat charters on our promotional website and pitch them to visitors. We're especially interested in private charters – but we're also happy to refer guests who want regular boat tours (whale watching, snorkeling, etc.) when they don't need a private charter.
+
+Commission options (we can keep on our records – no signatures needed):
+• Option A: Gross commission – you charge full retail; remit 10% to us after each completed charter.
+• Option B: Net rate – you give us a wholesale rate; we retain the markup when we charge retail.
+
+What we need from you: Reply to this email with your yachts/sailboats/powered boats that do private charters, plus any regular boat tours (whale watching, snorkel, sunset cruises). Include retail prices, net rates (if Option B), and total retail so we can see our commission structure.
+
+No cost to partner – we promote you, send clients, and earn commission or markup. Featured on Time for Fun Hawaii and pitched to travelers.
+
+Reply with your fleet, rates, and island(s). Email coralcrowntechnologies@gmail.com or call (808) 393-0153.
+
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0f9ff;border:2px solid #0284c7;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(2,132,199,0.22);">
+<div style="background:linear-gradient(145deg,#0284c7 0%,#0369a1 45%,#0c4a6e 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #38bdf8;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Private Yacht Charter · Referral Partnership</p>
+<h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Promote your charters & get referrals from Hawaii visitors</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">E Hans Schaefer · Coral Crown Solutions / Time for Fun Hawaii</p>
+</div>
+<div style="padding:32px 28px;color:#0c4a6e;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0284c7;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #bae6fd;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 20px;font-size:15px;line-height:1.7;">We'd like to <strong>promote your private yacht charter services</strong> and send you referrals from our existing clients and visitors planning trips to Hawaii.</p>
+<p style="margin:0 0 16px;font-size:14px;line-height:1.7;"><strong>Referring Agent:</strong> E Hans Schaefer (Coral Crown Solutions / Time for Fun Hawaii)<br><strong>Charter Operator:</strong> Your company</p>
+<p style="margin:24px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0284c7;text-transform:uppercase;">What we want</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">Feature your <strong>private yacht, sailboat, and powered boat charters</strong> on our promotional site and pitch them to visitors. We're especially interested in <strong>private charters</strong> – and we're also happy to refer guests for regular boat tours (whale watching, snorkeling, sunset cruises) when they don't need a private charter.</p>
+<p style="margin:24px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0284c7;text-transform:uppercase;">Commission options (kept on our records – no signatures)</p>
+<p style="margin:0 0 10px;font-size:14px;line-height:1.65;"><strong>Option A – Gross Commission:</strong> You charge full retail; remit 10% to us after each completed charter.</p>
+<p style="margin:0 0 20px;font-size:14px;line-height:1.65;"><strong>Option B – Net Rate:</strong> You give us a wholesale rate; we retain the markup when we charge retail.</p>
+<p style="margin:24px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0284c7;text-transform:uppercase;">Reply with</p>
+<p style="margin:0 0 20px;font-size:14px;line-height:1.7;">Your yachts/sailboats/powered boats for private charters + any regular boat tours. Include <strong>retail prices</strong>, <strong>net rates</strong> (if Option B), and <strong>total retail</strong> so we can see our commission structure.</p>
+<div style="background:linear-gradient(145deg,#e0f2fe 0%,#bae6fd 100%);border:2px solid #0284c7;border-radius:18px;padding:24px 26px;margin:28px 0;">
+<p style="margin:0 0 14px;font-size:15px;color:#0c4a6e;line-height:1.55;"><strong>No cost to partner</strong> – we promote you, send clients, and earn commission or markup. Featured on Time for Fun Hawaii.</p>
+<p style="margin:0 0 10px;"><a href="mailto:coralcrowntechnologies@gmail.com?subject=Private%20Yacht%20Charter%20Partnership%20-%20Rates%20%26%20Fleet" style="display:inline-block;background:linear-gradient(145deg,#0284c7 0%,#0369a1 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;">Reply with fleet & rates</a></p>
+<p style="margin:10px 0 0;font-size:13px;color:#0369a1;">coralcrowntechnologies@gmail.com · (808) 393-0153</p>
+</div>
+</div>
+</div>`,
+  },
+  "yachts-clients": {
+    subject: "Private Boat Charter Questionnaire – Hawaii",
+    text: `Hi {{Name}},
+
+To help us match you with the right private boat charter in Hawaii, please answer these questions:
+
+1. How many people are in your group? _______
+
+2. Which island would you like to go out from? (Oahu / Maui / Big Island / Kauai / other)
+
+3. What equipment or activities do you want? (e.g., snorkels, masks, fins, paddleboards, etc.)
+
+4. Would you like whale watching? (Yes / No – seasonal, typically December–April)
+
+5. Any other preferences? (duration, time of day, special occasions, etc.)
+
+Reply to this email with your answers, and we'll connect you with the best charter options for your trip.
+
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f0fdf4;border:2px solid #059669;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(5,150,105,0.22);">
+<div style="background:linear-gradient(145deg,#059669 0%,#047857 45%,#065f46 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #10b981;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Private Boat Charter</p>
+<h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;">Questionnaire – Hawaii</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Answer a few questions so we can match you with the right charter</p>
+</div>
+<div style="padding:32px 28px;color:#065f46;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#059669;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #6ee7b7;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 24px;font-size:15px;line-height:1.7;">To help us match you with the right <strong>private boat charter</strong> in Hawaii, please answer these questions:</p>
+<ol style="margin:0 0 24px;padding-left:24px;font-size:14px;line-height:2;">
+<li><strong>How many people are in your group?</strong></li>
+<li><strong>Which island would you like to go out from?</strong> (Oahu / Maui / Big Island / Kauai / other)</li>
+<li><strong>What equipment or activities do you want?</strong> (snorkels, masks, fins, paddleboards, etc.)</li>
+<li><strong>Would you like whale watching?</strong> (Yes / No – seasonal, typically December–April)</li>
+<li><strong>Any other preferences?</strong> (duration, time of day, special occasions, etc.)</li>
+</ol>
+<div style="background:#ecfdf5;border:2px solid #059669;border-radius:18px;padding:24px 26px;margin:28px 0;">
+<p style="margin:0 0 10px;font-size:15px;color:#065f46;"><strong>Reply to this email</strong> with your answers – we'll connect you with the best charter options for your trip.</p>
+<p style="margin:0;font-size:13px;color:#047857;">coralcrowntechnologies@gmail.com · (808) 393-0153</p>
 </div>
 </div>
 </div>`,

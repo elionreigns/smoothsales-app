@@ -66,6 +66,8 @@ export async function POST(request: NextRequest) {
       "prayer-church",
       "tourism-hawaii",
       "tourism-hawaii-featured-tour",
+      "yachts-contracts",
+      "yachts-clients",
       "tourism-usa",
       "elion-fans",
       "elion-artists",

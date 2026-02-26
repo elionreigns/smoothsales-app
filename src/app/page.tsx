@@ -8,9 +8,10 @@ import {
   substitutePlaceholders,
   type TemplateId,
   type HealingHerbalsSub,
+  type YachtSub,
 } from "@/lib/templates";
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
@@ -31,6 +32,7 @@ export default function SmoothSalesPage() {
   const [weddingSub, setWeddingSub] = useState<WeddingSub>("");
   const [p48xSub, setP48xSub] = useState<P48XSub>("");
   const [healingHerbalsSub, setHealingHerbalsSub] = useState<HealingHerbalsSub>("");
+  const [yachtSub, setYachtSub] = useState<YachtSub>("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [templateId, setTemplateId] = useState<string>("");
@@ -44,12 +46,12 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub]
   );
 
   useEffect(() => {
@@ -182,6 +184,7 @@ export default function SmoothSalesPage() {
                     setWeddingSub("");
                     setP48xSub("");
                     setHealingHerbalsSub("");
+                    setYachtSub("");
                   }}
                   className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
@@ -194,6 +197,7 @@ export default function SmoothSalesPage() {
                   <option value="wedding">Wedding Planner (Hawaii Wedding Plans)</option>
                   <option value="p48x">P48X (Philippians 4:8 Expounded)</option>
                   <option value="healing-herbals">Healing Herbals</option>
+                  <option value="yachts">Yachts (Private Charter)</option>
                 </select>
               </div>
 
@@ -291,7 +295,7 @@ export default function SmoothSalesPage() {
                     <option value="venue-dj">Venue: DJ E Lion</option>
                     <option value="venue-major">Venue: Major (opening for headliners)</option>
                     <option value="levelup">A&R / Level Up (labels, management, industry)</option>
-                    <option value="record-label-mainstream">Record label (mainstream – Shine BTS)</option>
+                    <option value="record-label-mainstream">Record label (mainstream – Behind the Scenes of Shine)</option>
                     <option value="record-label-christian">Record label (Christian – world tour vision)</option>
                   </select>
                 </div>
@@ -327,6 +331,21 @@ export default function SmoothSalesPage() {
                   </select>
                 </div>
               )}
+
+              {service === "yachts" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={yachtSub}
+                    onChange={(e) => setYachtSub(e.target.value as YachtSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="contracts">Contracts & Clients (charter operators – referral partnership)</option>
+                    <option value="clients">Clients (Private Boat Charter Questionnaire)</option>
+                  </select>
+                </div>
+              )}
             </div>
           </section>
 
@@ -359,6 +378,7 @@ export default function SmoothSalesPage() {
                 {service === "wedding" && <WeddingContent audience={weddingSub} />}
                 {service === "p48x" && <P48XContent audience={p48xSub} />}
                 {service === "healing-herbals" && <HealingHerbalsContent audience={healingHerbalsSub} />}
+                {service === "yachts" && <YachtsContent audience={yachtSub} />}
                 {/* Email preview */}
                 {templateId && (
                   <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-600/80">
@@ -419,7 +439,10 @@ export default function SmoothSalesPage() {
           {service === "healing-herbals" && !healingHerbalsSub && (
             <p className="text-slate-500 text-sm">Select Smoke Shop or Individual above to continue.</p>
           )}
-          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (service !== "healing-herbals" || healingHerbalsSub !== "") && (
+          {service === "yachts" && !yachtSub && (
+            <p className="text-slate-500 text-sm">Select Contracts & Clients or Clients above to continue.</p>
+          )}
+          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (service !== "healing-herbals" || healingHerbalsSub !== "") && (service !== "yachts" || yachtSub !== "") && (
             <p className="text-slate-500 text-sm">Select an option above to continue.</p>
           )}
         </div>
@@ -570,6 +593,21 @@ function HealingHerbalsContent({ audience }: { audience: HealingHerbalsSub }) {
         <p>Individual template: <strong>retail $50</strong> per bottle. Reply or call (808) 393-0153 to order.</p>
       )}
       <p><a href="mailto:coralcrowntechnologies@gmail.com" className="text-amber-400 hover:text-amber-300">Email us</a> | (808) 393-0153</p>
+    </div>
+  );
+}
+
+function YachtsContent({ audience }: { audience: YachtSub }) {
+  return (
+    <div className="prose prose-invert prose-sm max-w-none text-slate-300">
+      <p><strong className="text-slate-100">Private Yacht Charter</strong> – Hawaii. E Hans Schaefer / Coral Crown Solutions promote charter operators and send referrals.</p>
+      {audience === "contracts" && (
+        <p><strong>Contracts & Clients:</strong> Referral & commission pitch to charter operators. We feature their yachts/sailboats on our site and pitch to visitors. They reply with fleet, retail rates, and net rates. No signatures – kept on our records.</p>
+      )}
+      {audience === "clients" && (
+        <p><strong>Clients:</strong> Private Boat Charter Questionnaire – guests answer: group size, island, equipment (snorkels, etc.), whale watching (seasonal), preferences.</p>
+      )}
+      <p><a href="mailto:coralcrowntechnologies@gmail.com" className="text-amber-400 hover:text-amber-300">Reply to the Email</a> · coralcrowntechnologies@gmail.com · (808) 393-0153</p>
     </div>
   );
 }
