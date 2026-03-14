@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getTemplate, substitutePlaceholders, type TemplateId } from "@/lib/templates";
+import { isAuthenticated, isAuthRequired } from "@/lib/auth";
 
 // Use SMOOTHSALES_FROM once coralcrownsolutions.com is verified in Resend. For testing, use onboarding@resend.dev in Resend dashboard.
 const FROM_EMAIL = process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
@@ -13,6 +14,12 @@ function json500(message: string) {
 
 export async function POST(request: NextRequest) {
   try {
+    if (isAuthRequired() && !isAuthenticated(request)) {
+      return NextResponse.json(
+        { success: false, error: "Unauthorized. Enter the app password in the browser or use the bypass key." },
+        { status: 401 }
+      );
+    }
     const apiKey = process.env.RESEND_API_KEY?.trim();
     if (!apiKey) {
       return json500(

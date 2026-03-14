@@ -74,10 +74,21 @@ Service outreach and bulk email campaigns for Coral Crown Solutions. One dashboa
 
 2. **Environment variables** (Project → Settings → Environment Variables):
    - `RESEND_API_KEY` = your Resend API key (required for sending).
+   - `SMOOTHSALES_PASSWORD` = access password (e.g. `13lion$ales`). When set, visitors must enter it to use the app; **clawdbot** and API callers can bypass using the same value in URL `?access=...` or header `X-Smoothsales-Access`.
+   - `SMOOTHSALES_BYPASS_KEY` = optional; if set, only this value (not the password) works for `?access=...` and headers, so you can keep the human password out of URLs.
    - `SMOOTHSALES_FROM` = optional; e.g. `Coral Crown Solutions <sales@coralcrownsolutions.com>` (must verify that domain in Resend first).
    - `NEXT_PUBLIC_APP_URL` = optional; full app URL (e.g. `https://smoothsales-app.vercel.app`) so email templates can load business-card images from `/promo/`. If unset, the app uses Vercel’s `VERCEL_URL` automatically.
 
 3. **Redeploy** after adding env vars so the build uses them at runtime.
+
+### Password protection (optional)
+
+If you set **`SMOOTHSALES_PASSWORD`** in Vercel, the app shows a password screen before the dashboard. Humans enter the password there. **Clawdbot** (and direct API calls) can bypass the gate by:
+
+- **URL:** Open `https://smoothsales-app.vercel.app/?access=YOUR_PASSWORD` (or `?access=YOUR_BYPASS_KEY` if you set `SMOOTHSALES_BYPASS_KEY`). The app sets a cookie and redirects to the main page.
+- **API:** Send header `X-Smoothsales-Access: YOUR_PASSWORD` or `Authorization: Bearer YOUR_PASSWORD` on `POST /api/send-campaign`.
+
+In **realclawdbot**, set `SMOOTHSALES_BYPASS_KEY` or `SMOOTHSALES_PASSWORD` in your env (or in a `.env` file next to the Playwright script); the script will append `?access=...` to the SmoothSales URL so the browser session is unlocked automatically.
 
 ### Why does the Vercel app say "RESEND_API_KEY is not set"?
 

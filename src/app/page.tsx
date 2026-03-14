@@ -11,6 +11,91 @@ import {
   type YachtSub,
 } from "@/lib/templates";
 
+/** Password gate: show form until unlocked; ?access=KEY bypasses for clawdbot/AI. */
+function SmoothSalesGate({ children }: { children: React.ReactNode }) {
+  const [unlocked, setUnlocked] = useState<boolean | null>(null);
+  const [password, setPassword] = useState("");
+  const [gateError, setGateError] = useState("");
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const res = await fetch("/api/check-auth", { credentials: "include" });
+      if (cancelled) return;
+      const data = await res.json().catch(() => ({}));
+      if (data.unlocked) {
+        setUnlocked(true);
+        return;
+      }
+      const params = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+      const access = params?.get("access");
+      if (access) {
+        const unlockRes = await fetch(`/api/unlock?access=${encodeURIComponent(access)}`, { credentials: "include" });
+        if (cancelled) return;
+        if (unlockRes.ok) {
+          window.location.replace(window.location.pathname || "/");
+          return;
+        }
+      }
+      setUnlocked(false);
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setGateError("");
+    const res = await fetch("/api/unlock", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ password }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok && data.ok) {
+      window.location.reload();
+      return;
+    }
+    setGateError(data.error || "Incorrect password");
+  };
+
+  if (unlocked === null) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 flex items-center justify-center">
+        <p className="text-slate-400">Loading…</p>
+      </div>
+    );
+  }
+  if (unlocked === false) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 flex items-center justify-center p-4">
+        <div className="w-full max-w-sm bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-600/80 shadow-2xl p-6">
+          <h1 className="text-xl font-semibold text-amber-400 mb-1">SmoothSales</h1>
+          <p className="text-slate-400 text-sm mb-4">Enter the access password to continue.</p>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="w-full bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-amber-500/50"
+              autoFocus
+            />
+            <button
+              type="submit"
+              className="w-full min-h-[48px] bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-semibold py-3 rounded-xl hover:from-amber-400 hover:to-amber-500"
+            >
+              Continue
+            </button>
+          </form>
+          {gateError && <p className="mt-2 text-red-400 text-sm">{gateError}</p>}
+        </div>
+      </div>
+    );
+  }
+  return <>{children}</>;
+}
+
 type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
@@ -155,6 +240,7 @@ export default function SmoothSalesPage() {
   }, [templateId, previewName]);
 
   return (
+    <SmoothSalesGate>
     <div className="min-h-screen min-w-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-slate-100 overflow-x-hidden">
       <div className="max-w-7xl mx-auto py-5 sm:py-8 lg:py-10 px-3 sm:px-6 flex flex-col lg:flex-row gap-5 sm:gap-8">
         {/* Main column */}
@@ -482,6 +568,7 @@ export default function SmoothSalesPage() {
         )}
       </div>
     </div>
+    </SmoothSalesGate>
   );
 }
 
