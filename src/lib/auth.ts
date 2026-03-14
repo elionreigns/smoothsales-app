@@ -1,13 +1,15 @@
 /**
  * SmoothSales password gate: humans enter password; clawdbot/AI bypass via ?access=KEY or header.
- * Set SMOOTHSALES_PASSWORD (required) and optionally SMOOTHSALES_BYPASS_KEY (for URL/header bypass).
+ * Default password is 13lion$ales; override with SMOOTHSALES_PASSWORD in Vercel. Optionally set SMOOTHSALES_BYPASS_KEY for URL/header only.
  */
 
 export const AUTH_COOKIE_NAME = "smoothsales_ok";
 const AUTH_COOKIE_VALUE = "1";
+const DEFAULT_PASSWORD = "13lion$ales";
 
 function getPassword(): string {
-  return (process.env.SMOOTHSALES_PASSWORD ?? "").trim();
+  const env = (process.env.SMOOTHSALES_PASSWORD ?? "").trim();
+  return env || DEFAULT_PASSWORD;
 }
 
 function getBypassKey(): string | null {
@@ -63,7 +65,7 @@ export function authCookieOptions(maxAgeDays = 30): { name: string; value: strin
   };
 }
 
-/** Whether the app should require auth (if no password is set, gate is disabled for easier local dev). */
+/** Whether the app should require auth. Always true (default password 13lion$ales). */
 export function isAuthRequired(): boolean {
-  return getPassword().length > 0;
+  return true;
 }
