@@ -12,6 +12,7 @@ const path = require("path");
 const baseUrl = process.env.SMOOTHSALES_URL || process.argv[2] || "http://localhost:3000";
 const templateId = process.argv[3];
 const csvArg = process.argv[4];
+const accessKey = process.env.SMOOTHSALES_BYPASS_KEY || process.env.SMOOTHSALES_PASSWORD || "13lion$ales";
 
 if (!templateId || !csvArg) {
   console.error("Usage: node scripts/send-campaign.js <baseUrl> <templateId> <csvPath>");
@@ -53,7 +54,10 @@ console.log(`Sending ${templateId} to ${recipients.length} recipients via ${base
 async function run() {
   const res = await fetch(`${baseUrl.replace(/\/$/, "")}/api/send-campaign`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "X-Smoothsales-Access": accessKey,
+    },
     body: JSON.stringify({ templateId, recipients }),
   });
   const data = await res.json().catch(() => ({}));

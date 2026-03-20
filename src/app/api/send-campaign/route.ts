@@ -184,6 +184,9 @@ export async function POST(request: NextRequest) {
       "p48x-affiliate-sellers-v2",
       "healing-herbals-smoke-shop-v2",
       "healing-herbals-individual-v2",
+      "stella-brands",
+      "stella-media",
+      "stella-talent",
     ];
     if (!templateId || !validIds.includes(templateId)) {
       return NextResponse.json(

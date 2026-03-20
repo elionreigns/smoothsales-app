@@ -110,6 +110,9 @@ export type TemplateId =
   | "healing-herbals-individual-followup-3"
   | "yachts-contracts"
   | "yachts-clients"
+  | "stella-brands"
+  | "stella-media"
+  | "stella-talent"
   | "botox-v2"
   | "tech-v2"
   | "prayer-individual-v2"
@@ -166,6 +169,9 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "healing-herbals-individual", label: "Healing Herbals – Individual (Kava & Blue Lotus – vapes, shots, tinctures)" },
   { value: "yachts-contracts", label: "Yachts – Contracts (charter operators: referral & commission agreement, get featured)" },
   { value: "yachts-clients", label: "Yachts – Clients (Private Boat Charter Questionnaire)" },
+  { value: "stella-brands", label: "Stella the Cutest Corgi – Brand sponsors (healthy treats, supplements, product placement)" },
+  { value: "stella-media", label: "Stella the Cutest Corgi – Media features (magazines, commercials, TV, film)" },
+  { value: "stella-talent", label: "Stella the Cutest Corgi – Talent agencies & casting (paid bookings + appearances)" },
 ];
 
 const CONTACT_LINE_HTML = `<p style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:12px 0 0;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0ea5e9;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Reply to the Email</a></p><p style="margin:10px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Click the button above to start a reply, or call – we're happy to help.</p>`;
@@ -338,7 +344,8 @@ export type ServiceSelection =
   | "wedding"
   | "p48x"
   | "healing-herbals"
-  | "yachts";
+  | "yachts"
+  | "stella";
 export type TourismSub = "" | "hawaii" | "usa" | "featured-tour";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
@@ -360,6 +367,7 @@ export type WeddingSub = "" | "couples" | "contractors";
 export type P48XSub = "" | "personal" | "physical-distributors" | "affiliate-sellers";
 export type HealingHerbalsSub = "" | "smoke-shop" | "individual";
 export type YachtSub = "" | "contracts" | "clients";
+export type StellaSub = "" | "brands" | "media" | "talent";
 
 const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   fans: "elion-fans",
@@ -396,6 +404,12 @@ const YACHTS_TEMPLATE_MAP: Record<Exclude<YachtSub, "">, TemplateId> = {
   clients: "yachts-clients",
 };
 
+const STELLA_TEMPLATE_MAP: Record<Exclude<StellaSub, "">, TemplateId> = {
+  brands: "stella-brands",
+  media: "stella-media",
+  talent: "stella-talent",
+};
+
 /** Build template dropdown: Initial, Initial – Enhanced, Follow Up 1, 2, 3 for a given base template id. */
 function templateOptionsWithFollowUps(baseId: TemplateId): { value: TemplateId; label: string }[] {
   const initialLabel = TEMPLATE_OPTIONS.find((o) => o.value === baseId)?.label ?? "Initial";
@@ -425,7 +439,8 @@ export function getTemplatesForSelection(
   weddingSub: WeddingSub,
   p48xSub: P48XSub,
   healingHerbalsSub: HealingHerbalsSub,
-  yachtSub: YachtSub
+  yachtSub: YachtSub,
+  stellaSub: StellaSub
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return templateOptionsWithFollowUps("botox");
@@ -475,6 +490,11 @@ export function getTemplatesForSelection(
     const label = TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? (yachtSub === "contracts" ? "Contracts" : "Clients");
     return [{ value: id, label: "Initial: " + label }];
   }
+  if (service === "stella" && stellaSub !== "") {
+    const id = STELLA_TEMPLATE_MAP[stellaSub];
+    const label = TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? "Stella campaign";
+    return [{ value: id, label: "Initial: " + label }];
+  }
   return [];
 }
 
@@ -489,7 +509,8 @@ export function hasRequiredSelection(
   weddingSub: WeddingSub,
   p48xSub: P48XSub,
   healingHerbalsSub: HealingHerbalsSub,
-  yachtSub: YachtSub
+  yachtSub: YachtSub,
+  stellaSub: StellaSub
 ): boolean {
   if (!service) return false;
   if (service === "prayer") return prayerSub !== "";
@@ -501,6 +522,7 @@ export function hasRequiredSelection(
   if (service === "p48x") return p48xSub !== "";
   if (service === "healing-herbals") return healingHerbalsSub !== "";
   if (service === "yachts") return yachtSub !== "";
+  if (service === "stella") return stellaSub !== "";
   return false;
 }
 
@@ -1735,6 +1757,224 @@ Mahalo nui loa! Eric & Robbie – Healing Herbals Team`,
 <p style="margin:0;font-size:14px;color:#166534;"><strong>Local Oahu:</strong> Eric (Healing Herbals) <strong>(808) 393-0153</strong></p>
 </div>
 <div style="margin-top:28px;padding-top:24px;border-top:2px solid #86efac;"><p style="margin:0 0 10px;font-size:13px;color:#166534;">Our two most popular nicotine replacement products – Kava & Blue Lotus extract juices (vape-ready, replaceable tops, refillable). $50 each.</p><img src="{{BASE_URL}}/promo/healingherbals-bluelotus.png" alt="Blue Lotus Extract Juice" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /><img src="{{BASE_URL}}/promo/healingherbals-kava.png" alt="Kava Extract Juice" width="280" style="display:block;max-width:100%;height:auto;margin:12px auto 0;border:0;border-radius:20px;box-shadow:0 20px 52px -12px rgba(0,0,0,0.18);" /></div>
+</div>
+</div>`,
+  },
+  "stella-brands": {
+    subject: "Feature Stella the Cutest Corgi: brand sponsorship + healthy dog product placement",
+    text: `Hi {{Name}},
+
+I am reaching out with a sponsorship and product-placement opportunity for Stella the Cutest Corgi.
+
+Stella has an active fan response in public and online: people regularly stop us at the beach and in public spaces to ask for photos, videos, and meet-and-greets. She is healthy, calm in crowds, takes direction, and performs well for camera setups and repeated takes.
+
+Proof links:
+- Spotify single: Stella the Cutest Corgi https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w
+- Family Feud audition video: https://www.youtube.com/watch?v=Sq3to4XD7VY
+- Family Feud grand prize local news: https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/
+- News segment featuring Stella + audition story: https://www.youtube.com/watch?v=0GdFiJ51w4o
+- Music video with Stella and me: https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv
+- Song lyric reference (corgi bold with a coat of gold): https://www.youtube.com/watch?v=G5NC6GGVolM
+
+We are currently looking for:
+1) Paid sponsorships for healthy dog treats and supplements
+2) Product placement in social media content and music-related media
+3) Brand campaigns and ambassador relationships
+4) Support for veterinary expenses (including dental cleaning)
+5) Opportunities to feature our Corgi children's books on your platform
+
+If your team has any campaign where a standout, camera-ready corgi would increase engagement, this is the one to book. Passing on Stella would be a major missed opportunity for audience lift and brand warmth.
+
+Tap here to contact me directly: mailto:coralcrowntechnologies@gmail.com
+Phone: (808) 393-0153
+
+Reply to this email and we can send rates, audience details, media kit, and available dates.
+
+We're here when you're ready.
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(234,88,12,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#ea580c 0%,#c2410c 50%,#9a3412 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #fdba74;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Stella the Cutest Corgi</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Sponsorship + Product Placement Opportunity</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Healthy treats, supplements, social campaigns, and paid brand features.</p>
+</div>
+<div style="padding:32px 28px;color:#7c2d12;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#c2410c;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fed7aa;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 20px;font-size:15px;line-height:1.7;">I am reaching out with a sponsorship and product-placement opportunity for <strong>Stella the Cutest Corgi</strong>. She is healthy, calm in public, extremely photogenic, and very easy to direct on camera.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">People constantly stop us for photos at the beach and in public. If your team is looking for a high-engagement dog for brand content, Stella is a strong fit for immediate campaign impact.</p>
+<div style="background:#fff;border:2px solid #fb923c;border-radius:18px;padding:20px 22px;margin:22px 0;text-align:left;">
+<p style="margin:0 0 10px;font-size:13px;color:#9a3412;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Proof + media links</p>
+<p style="margin:0 0 8px;font-size:13px;line-height:1.6;"><a href="https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w" style="color:#c2410c;">Spotify: Stella the Cutest Corgi</a></p>
+<p style="margin:0 0 8px;font-size:13px;line-height:1.6;"><a href="https://www.youtube.com/watch?v=Sq3to4XD7VY" style="color:#c2410c;">Family Feud audition video</a></p>
+<p style="margin:0 0 8px;font-size:13px;line-height:1.6;"><a href="https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/" style="color:#c2410c;">KHON2: Grand prize article</a></p>
+<p style="margin:0 0 8px;font-size:13px;line-height:1.6;"><a href="https://www.youtube.com/watch?v=0GdFiJ51w4o" style="color:#c2410c;">News segment featuring Stella</a></p>
+<p style="margin:0 0 8px;font-size:13px;line-height:1.6;"><a href="https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv" style="color:#c2410c;">Music video with Stella</a></p>
+<p style="margin:0;font-size:13px;line-height:1.6;"><a href="https://www.youtube.com/watch?v=G5NC6GGVolM" style="color:#c2410c;">Song reference (corgi bold with a coat of gold)</a></p>
+</div>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;"><strong>Current focus:</strong> paid sponsorships, healthy treat/supplement partnerships, product placement, commercial features, and support funding for vet care (including teeth cleaning). We are also open to featuring our Corgi children's books on your platform.</p>
+<div style="background:linear-gradient(145deg,#ffedd5 0%,#fed7aa 100%);border:2px solid #c2410c;border-radius:16px;padding:18px 20px;margin:22px 0;">
+<p style="margin:0 0 10px;font-size:14px;color:#7c2d12;line-height:1.55;"><strong>Next step:</strong> Reply and we will send rates, media kit, audience fit, and availability.</p>
+<p style="margin:0;font-size:13px;color:#9a3412;font-style:italic;">Passing on Stella would be a major missed opportunity for engagement and brand warmth.</p>
+</div>
+<div style="background:linear-gradient(145deg,#ffedd5 0%,#fdba74 100%);border:2px solid #ea580c;border-radius:14px;padding:16px;margin:18px 0 20px;">
+<p style="margin:0 0 10px;font-size:14px;color:#7c2d12;"><strong>Contact me directly</strong></p>
+<p style="margin:0 0 12px;"><a href="mailto:coralcrowntechnologies@gmail.com?subject=Stella%20Sponsorship%20Inquiry" style="display:inline-block;background:#c2410c;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:700;">Email coralcrowntechnologies@gmail.com</a></p>
+<p style="margin:0;font-size:13px;color:#7c2d12;">Call/Text: <strong>(808) 393-0153</strong></p>
+</div>
+<div style="margin-top:8px;padding-top:18px;border-top:2px solid #fed7aa;">
+<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi cover" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured on the news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at the dog park" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella wearing hat and vest" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
+</div>
+<p style="margin:12px 0 0;font-size:13px;color:#7c2d12;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#c2410c;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
+</div>
+</div>`,
+  },
+  "stella-media": {
+    subject: "Stella the Cutest Corgi for magazines, commercials, TV, film, and featured media",
+    text: `Hi {{Name}},
+
+I am pitching Stella the Cutest Corgi for media placement, magazine features, commercial spots, and on-camera opportunities.
+
+Stella is extremely well-behaved in public, takes direction, and is consistently requested for photos by strangers when we are out. She handles busy environments and performs well in front of cameras.
+
+Media references:
+- Spotify single: https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w
+- Family Feud audition: https://www.youtube.com/watch?v=Sq3to4XD7VY
+- KHON2 grand prize article: https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/
+- News segment: https://www.youtube.com/watch?v=0GdFiJ51w4o
+- Music video: https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv
+
+We are open to:
+- Print + digital magazine shoots
+- Commercial and branded video work
+- Film/TV featured dog roles
+- Event appearances and social media collaborations
+
+If your publication or production team wants a standout, camera-friendly corgi that drives positive audience reaction, Stella is ready.
+
+Tap here to contact me directly: mailto:coralcrowntechnologies@gmail.com
+Phone: (808) 393-0153
+
+Reply for availability, media kit, and booking details.
+
+We're here when you're ready.
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:2px solid #2563eb;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(37,99,235,0.23),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#2563eb 0%,#1d4ed8 50%,#1e40af 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #93c5fd;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Stella the Cutest Corgi</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Media + Commercial Booking Inquiry</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Magazine features, commercials, TV/film roles, and social campaigns.</p>
+</div>
+<div style="padding:32px 28px;color:#1e3a8a;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #bfdbfe;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.7;">I am pitching <strong>Stella the Cutest Corgi</strong> for media placement and production opportunities. Stella is very well-behaved in public, follows direction, and is naturally camera-ready.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">She gets constant attention in public and is frequently requested for photos and interaction, especially at beach and event locations.</p>
+<div style="background:#fff;border:2px solid #60a5fa;border-radius:18px;padding:20px 22px;margin:22px 0;text-align:left;">
+<p style="margin:0 0 10px;font-size:13px;color:#1e40af;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Links</p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w" style="color:#1d4ed8;">Spotify single</a></p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://www.youtube.com/watch?v=Sq3to4XD7VY" style="color:#1d4ed8;">Family Feud audition video</a></p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/" style="color:#1d4ed8;">KHON2 grand prize article</a></p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://www.youtube.com/watch?v=0GdFiJ51w4o" style="color:#1d4ed8;">News segment</a></p>
+<p style="margin:0;font-size:13px;"><a href="https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv" style="color:#1d4ed8;">Music video</a></p>
+</div>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;"><strong>Open opportunities:</strong> print/digital editorial, commercials, branded content, TV/film dog roles, and social collaborations.</p>
+<div style="background:linear-gradient(145deg,#dbeafe 0%,#bfdbfe 100%);border:2px solid #1d4ed8;border-radius:16px;padding:18px 20px;margin:22px 0;">
+<p style="margin:0 0 8px;font-size:14px;color:#1e3a8a;line-height:1.55;"><strong>Next step:</strong> Reply for media kit, availability, and booking details.</p>
+<p style="margin:0;font-size:13px;color:#1e40af;font-style:italic;">If you need a standout corgi for visual impact, Stella is ready to go.</p>
+</div>
+<div style="background:linear-gradient(145deg,#dbeafe 0%,#93c5fd 100%);border:2px solid #1d4ed8;border-radius:14px;padding:16px;margin:18px 0 20px;">
+<p style="margin:0 0 10px;font-size:14px;color:#1e3a8a;"><strong>Contact me directly</strong></p>
+<p style="margin:0 0 12px;"><a href="mailto:coralcrowntechnologies@gmail.com?subject=Stella%20Media%20Feature%20Inquiry" style="display:inline-block;background:#1d4ed8;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:700;">Email coralcrowntechnologies@gmail.com</a></p>
+<p style="margin:0;font-size:13px;color:#1e3a8a;">Call/Text: <strong>(808) 393-0153</strong></p>
+</div>
+<div style="margin-top:8px;padding-top:18px;border-top:2px solid #bfdbfe;">
+<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi cover" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured on the news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at the dog park" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella wearing hat and vest" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
+</div>
+<p style="margin:12px 0 0;font-size:13px;color:#1e3a8a;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#1d4ed8;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
+</div>
+</div>`,
+  },
+  "stella-talent": {
+    subject: "Talent booking inquiry: Stella the Cutest Corgi (commercials, product shoots, paid appearances)",
+    text: `Hi {{Name}},
+
+I am reaching out to discuss talent representation and paid booking opportunities for Stella the Cutest Corgi.
+
+Stella is highly social, calm in public, and follows directions well. She is ideal for:
+- Commercials and ad campaigns
+- Product placement for healthy dog treats/supplements
+- Film/TV pet features
+- Event appearances and sponsored content
+
+Track record and proof:
+- Family Feud audition + national TV story
+- KHON2 grand prize local news coverage
+- Original Spotify single and music/video content centered on Stella
+
+Links:
+https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w
+https://www.youtube.com/watch?v=Sq3to4XD7VY
+https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/
+https://www.youtube.com/watch?v=0GdFiJ51w4o
+https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv
+
+We are seeking both paid placements and sponsor support (including vet/dental maintenance support). We also have Corgi children's books available for partner promotion and merchandising opportunities.
+
+Tap here to contact me directly: mailto:coralcrowntechnologies@gmail.com
+Phone: (808) 393-0153
+
+Please reply if your agency or casting team is open to discussing representation or direct bookings.
+
+We're here when you're ready.
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#faf5ff;border:2px solid #7e22ce;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(126,34,206,0.24),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#7e22ce 0%,#6b21a8 50%,#581c87 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #d8b4fe;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">Stella the Cutest Corgi</p>
+<h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Talent Agency + Casting Booking</h1>
+<p style="margin:14px 0 0;font-size:15px;opacity:0.95;">Commercials, paid appearances, product shoots, and sponsorship campaigns.</p>
+</div>
+<div style="padding:32px 28px;color:#581c87;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#6b21a8;text-transform:uppercase;">Hello</p>
+<p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #e9d5ff;padding-bottom:16px;">Hi {{Name}},</p>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.7;">I am reaching out to discuss representation and paid bookings for <strong>Stella the Cutest Corgi</strong>. She is calm, social, and highly responsive to direction on set.</p>
+<ul style="margin:0 auto 18px;padding-left:20px;font-size:14px;line-height:1.75;display:table;text-align:left;">
+<li>Commercial spots and ad campaigns</li>
+<li>Product placement for healthy pet treats and supplements</li>
+<li>Film and TV pet features</li>
+<li>Live event appearances and sponsored social content</li>
+</ul>
+<div style="background:#fff;border:2px solid #c084fc;border-radius:18px;padding:20px 22px;margin:22px 0;text-align:left;">
+<p style="margin:0 0 10px;font-size:13px;color:#6b21a8;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Proof + links</p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w" style="color:#7e22ce;">Spotify single</a></p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://www.youtube.com/watch?v=Sq3to4XD7VY" style="color:#7e22ce;">Family Feud audition</a></p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/" style="color:#7e22ce;">KHON2 grand prize article</a></p>
+<p style="margin:0 0 8px;font-size:13px;"><a href="https://www.youtube.com/watch?v=0GdFiJ51w4o" style="color:#7e22ce;">News segment</a></p>
+<p style="margin:0;font-size:13px;"><a href="https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv" style="color:#7e22ce;">Music video</a></p>
+</div>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;">We are open to paid placements and sponsor support (including veterinary and dental care support). We also have Corgi children's books available for partner promotions.</p>
+<div style="background:linear-gradient(145deg,#f3e8ff 0%,#e9d5ff 100%);border:2px solid #7e22ce;border-radius:16px;padding:18px 20px;margin:22px 0;">
+<p style="margin:0 0 8px;font-size:14px;color:#581c87;line-height:1.55;"><strong>Next step:</strong> Reply if your team is open to representation or direct booking discussion.</p>
+<p style="margin:0;font-size:13px;color:#6b21a8;font-style:italic;">Stella drives attention naturally and would be an immediate value-add on camera.</p>
+</div>
+<div style="background:linear-gradient(145deg,#f3e8ff 0%,#d8b4fe 100%);border:2px solid #7e22ce;border-radius:14px;padding:16px;margin:18px 0 20px;">
+<p style="margin:0 0 10px;font-size:14px;color:#581c87;"><strong>Contact me directly</strong></p>
+<p style="margin:0 0 12px;"><a href="mailto:coralcrowntechnologies@gmail.com?subject=Stella%20Talent%20Booking%20Inquiry" style="display:inline-block;background:#7e22ce;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:700;">Email coralcrowntechnologies@gmail.com</a></p>
+<p style="margin:0;font-size:13px;color:#581c87;">Call/Text: <strong>(808) 393-0153</strong></p>
+</div>
+<div style="margin-top:8px;padding-top:18px;border-top:2px solid #e9d5ff;">
+<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi cover" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured on the news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at the dog park" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella wearing hat and vest" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
+</div>
+<p style="margin:12px 0 0;font-size:13px;color:#581c87;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#7e22ce;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
 </div>
 </div>`,
   },

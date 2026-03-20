@@ -9,6 +9,7 @@ import {
   type TemplateId,
   type HealingHerbalsSub,
   type YachtSub,
+  type StellaSub,
 } from "@/lib/templates";
 
 /** Password gate: show form until unlocked; ?access=KEY bypasses for clawdbot/AI. */
@@ -96,7 +97,7 @@ function SmoothSalesGate({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "stella" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
@@ -118,6 +119,7 @@ export default function SmoothSalesPage() {
   const [p48xSub, setP48xSub] = useState<P48XSub>("");
   const [healingHerbalsSub, setHealingHerbalsSub] = useState<HealingHerbalsSub>("");
   const [yachtSub, setYachtSub] = useState<YachtSub>("");
+  const [stellaSub, setStellaSub] = useState<StellaSub>("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [templateId, setTemplateId] = useState<string>("");
@@ -131,12 +133,12 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub]
   );
 
   useEffect(() => {
@@ -249,7 +251,7 @@ export default function SmoothSalesPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-amber-300 to-amber-400 bg-clip-text text-transparent drop-shadow-sm" style={{ fontFamily: "var(--font-cormorant)" }}>
               SmoothSales
             </h1>
-            <p className="text-slate-400 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base px-1">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans, P48X, Healing Herbals</p>
+            <p className="text-slate-400 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base px-1">Coral Crown Solutions – Botox Oahu, Tech, Prayer Authority, Time for Fun, E Lion Music, Hawaii Wedding Plans, P48X, Healing Herbals, Stella the Cutest Corgi</p>
           </header>
 
           {/* Service selection card – always visible */}
@@ -271,6 +273,7 @@ export default function SmoothSalesPage() {
                     setP48xSub("");
                     setHealingHerbalsSub("");
                     setYachtSub("");
+                    setStellaSub("");
                   }}
                   className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
@@ -284,6 +287,7 @@ export default function SmoothSalesPage() {
                   <option value="p48x">P48X (Philippians 4:8 Expounded)</option>
                   <option value="healing-herbals">Healing Herbals</option>
                   <option value="yachts">Yachts (Private Charter)</option>
+                  <option value="stella">Stella the Cutest Corgi</option>
                 </select>
               </div>
 
@@ -432,6 +436,22 @@ export default function SmoothSalesPage() {
                   </select>
                 </div>
               )}
+
+              {service === "stella" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={stellaSub}
+                    onChange={(e) => setStellaSub(e.target.value as StellaSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="brands">Brands / sponsors (treats, supplements, paid placements)</option>
+                    <option value="media">Media features (magazines, commercials, TV/film)</option>
+                    <option value="talent">Talent agencies / casting (paid bookings)</option>
+                  </select>
+                </div>
+              )}
             </div>
           </section>
 
@@ -465,6 +485,7 @@ export default function SmoothSalesPage() {
                 {service === "p48x" && <P48XContent audience={p48xSub} />}
                 {service === "healing-herbals" && <HealingHerbalsContent audience={healingHerbalsSub} />}
                 {service === "yachts" && <YachtsContent audience={yachtSub} />}
+                {service === "stella" && <StellaContent audience={stellaSub} />}
                 {/* Email preview */}
                 {templateId && (
                   <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-600/80">
@@ -528,7 +549,10 @@ export default function SmoothSalesPage() {
           {service === "yachts" && !yachtSub && (
             <p className="text-slate-500 text-sm">Select Contracts & Clients or Clients above to continue.</p>
           )}
-          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (service !== "healing-herbals" || healingHerbalsSub !== "") && (service !== "yachts" || yachtSub !== "") && (
+          {service === "stella" && !stellaSub && (
+            <p className="text-slate-500 text-sm">Select Brands, Media, or Talent above to continue.</p>
+          )}
+          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (service !== "healing-herbals" || healingHerbalsSub !== "") && (service !== "yachts" || yachtSub !== "") && (service !== "stella" || stellaSub !== "") && (
             <p className="text-slate-500 text-sm">Select an option above to continue.</p>
           )}
         </div>
@@ -695,6 +719,19 @@ function YachtsContent({ audience }: { audience: YachtSub }) {
         <p><strong>Clients:</strong> Private Boat Charter Questionnaire – guests answer: group size, island, equipment (snorkels, etc.), whale watching (seasonal), preferences.</p>
       )}
       <p><a href="mailto:coralcrowntechnologies@gmail.com" className="text-amber-400 hover:text-amber-300">Reply to the Email</a> · coralcrowntechnologies@gmail.com · (808) 393-0153</p>
+    </div>
+  );
+}
+
+function StellaContent({ audience }: { audience: StellaSub }) {
+  return (
+    <div className="prose prose-invert prose-sm max-w-none text-slate-300">
+      <p><strong className="text-slate-100">Stella the Cutest Corgi</strong> – sponsorship-ready corgi for paid brand placements, media features, and talent bookings.</p>
+      <p>Proof links: <a href="https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Spotify single</a>, <a href="https://www.youtube.com/watch?v=Sq3to4XD7VY" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Family Feud audition</a>, <a href="https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">KHON2 article</a>, <a href="https://www.youtube.com/watch?v=0GdFiJ51w4o" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">news segment</a>, <a href="https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">music video</a>.</p>
+      {audience === "brands" && <p>Brands/sponsors audience: healthy treats, supplements, product placement, and paid ambassador partnerships. We are also open to sponsorship support for vet and dental care.</p>}
+      {audience === "media" && <p>Media audience: magazines, editorial features, commercials, TV and film opportunities where Stella can be featured on camera.</p>}
+      {audience === "talent" && <p>Talent audience: pet talent agencies, casting directors, producers, and campaign teams seeking a trained, camera-friendly corgi for paid work.</p>}
+      <p>Contact: <a href="mailto:coralcrowntechnologies@gmail.com" className="text-amber-400 hover:text-amber-300">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
     </div>
   );
 }
