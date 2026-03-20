@@ -1766,7 +1766,9 @@ Mahalo nui loa! Eric & Robbie – Healing Herbals Team`,
 
 I am reaching out with a sponsorship and product-placement opportunity for Stella the Cutest Corgi.
 
-Stella has an active fan response in public and online: people regularly stop us at the beach and in public spaces to ask for photos, videos, and meet-and-greets. She is healthy, calm in crowds, takes direction, and performs well for camera setups and repeated takes.
+Stella is 12 years old, healthy, and has an active fan response in public and online: people regularly stop us at the beach and in public spaces to ask for photos, videos, and meet-and-greets. She is calm in crowds, takes direction, and performs well for camera setups and repeated takes.
+
+She has been amazing in our lives, and we want the world to get to know her better.
 
 Proof links:
 - Spotify single: Stella the Cutest Corgi https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w
@@ -1776,12 +1778,12 @@ Proof links:
 - Music video with Stella and me: https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv
 - Song lyric reference (corgi bold with a coat of gold): https://www.youtube.com/watch?v=G5NC6GGVolM
 
-We are currently looking for:
+What we are hoping for from brand partners:
 1) Paid sponsorships for healthy dog treats and supplements
 2) Product placement in social media content and music-related media
 3) Brand campaigns and ambassador relationships
 4) Support for veterinary expenses (including dental cleaning)
-5) Opportunities to feature our Corgi children's books on your platform
+5) Opportunities to feature and sell our Corgi children's books
 
 If your team has any campaign where a standout, camera-ready corgi would increase engagement, this is the one to book. Passing on Stella would be a major missed opportunity for audience lift and brand warmth.
 
@@ -1801,8 +1803,8 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <div style="padding:32px 28px;color:#7c2d12;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#c2410c;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #fed7aa;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 20px;font-size:15px;line-height:1.7;">I am reaching out with a sponsorship and product-placement opportunity for <strong>Stella the Cutest Corgi</strong>. She is healthy, calm in public, extremely photogenic, and very easy to direct on camera.</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">People constantly stop us for photos at the beach and in public. If your team is looking for a high-engagement dog for brand content, Stella is a strong fit for immediate campaign impact.</p>
+<p style="margin:0 0 20px;font-size:15px;line-height:1.7;">I am reaching out with a sponsorship and product-placement opportunity for <strong>Stella the Cutest Corgi</strong>. Stella is <strong>12 years old</strong>, healthy, calm in public, extremely photogenic, and very easy to direct on camera.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">She has been amazing in our lives, and we want the world to get to know her better. People constantly stop us for photos at the beach and in public. If your team is looking for a high-engagement dog for brand content, Stella is a strong fit for immediate campaign impact.</p>
 <div style="background:#fff;border:2px solid #fb923c;border-radius:18px;padding:20px 22px;margin:22px 0;text-align:left;">
 <p style="margin:0 0 10px;font-size:13px;color:#9a3412;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Proof + media links</p>
 <p style="margin:0 0 8px;font-size:13px;line-height:1.6;"><a href="https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w" style="color:#c2410c;">Spotify: Stella the Cutest Corgi</a></p>
@@ -1812,7 +1814,7 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0 0 8px;font-size:13px;line-height:1.6;"><a href="https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv" style="color:#c2410c;">Music video with Stella</a></p>
 <p style="margin:0;font-size:13px;line-height:1.6;"><a href="https://www.youtube.com/watch?v=G5NC6GGVolM" style="color:#c2410c;">Song reference (corgi bold with a coat of gold)</a></p>
 </div>
-<p style="margin:0 0 14px;font-size:14px;line-height:1.7;"><strong>Current focus:</strong> paid sponsorships, healthy treat/supplement partnerships, product placement, commercial features, and support funding for vet care (including teeth cleaning). We are also open to featuring our Corgi children's books on your platform.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;"><strong>What we are hoping for:</strong> paid sponsorships, healthy treat/supplement partnerships, paid product placement, and ongoing brand ambassador campaigns. We are also looking for support funding for vet care (including teeth cleaning), and opportunities to feature/sell our Corgi children's books.</p>
 <div style="background:linear-gradient(145deg,#ffedd5 0%,#fed7aa 100%);border:2px solid #c2410c;border-radius:16px;padding:18px 20px;margin:22px 0;">
 <p style="margin:0 0 10px;font-size:14px;color:#7c2d12;line-height:1.55;"><strong>Next step:</strong> Reply and we will send rates, media kit, audience fit, and availability.</p>
 <p style="margin:0;font-size:13px;color:#9a3412;font-style:italic;">Passing on Stella would be a major missed opportunity for engagement and brand warmth.</p>
@@ -1823,10 +1825,14 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0;font-size:13px;color:#7c2d12;">Call/Text: <strong>(808) 393-0153</strong></p>
 </div>
 <div style="margin-top:8px;padding-top:18px;border-top:2px solid #fed7aa;">
-<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi cover" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured on the news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at the dog park" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella wearing hat and vest" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#7c2d12;font-weight:700;">1) Stella song cover - her official branding image</p>
+<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi song cover and branding image" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#7c2d12;font-weight:700;">2) Stella featured in local news coverage</p>
+<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured on local news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#7c2d12;font-weight:700;">3) Stella at the dog park socializing with another corgi</p>
+<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at the dog park with another corgi" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#7c2d12;font-weight:700;">4) Stella in her hat and vest on a platform</p>
+<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella wearing a hat and vest on a platform" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
 </div>
 <p style="margin:12px 0 0;font-size:13px;color:#7c2d12;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#c2410c;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
 </div>
@@ -1838,7 +1844,9 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 
 I am pitching Stella the Cutest Corgi for media placement, magazine features, commercial spots, and on-camera opportunities.
 
-Stella is extremely well-behaved in public, takes direction, and is consistently requested for photos by strangers when we are out. She handles busy environments and performs well in front of cameras.
+Stella is 12 years old, extremely well-behaved in public, takes direction, and is consistently requested for photos by strangers when we are out. She handles busy environments and performs well in front of cameras.
+
+She has been amazing in our lives, and we want the world to get to know her better.
 
 Media references:
 - Spotify single: https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w
@@ -1847,11 +1855,12 @@ Media references:
 - News segment: https://www.youtube.com/watch?v=0GdFiJ51w4o
 - Music video: https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv
 
-We are open to:
+What we are hoping for from media partners:
 - Print + digital magazine shoots
 - Commercial and branded video work
 - Film/TV featured dog roles
 - Event appearances and social media collaborations
+- Features that also mention support opportunities for vet care and our Corgi children's books
 
 If your publication or production team wants a standout, camera-friendly corgi that drives positive audience reaction, Stella is ready.
 
@@ -1871,8 +1880,8 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <div style="padding:32px 28px;color:#1e3a8a;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#1d4ed8;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #bfdbfe;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 16px;font-size:15px;line-height:1.7;">I am pitching <strong>Stella the Cutest Corgi</strong> for media placement and production opportunities. Stella is very well-behaved in public, follows direction, and is naturally camera-ready.</p>
-<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">She gets constant attention in public and is frequently requested for photos and interaction, especially at beach and event locations.</p>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.7;">I am pitching <strong>Stella the Cutest Corgi</strong> for media placement and production opportunities. Stella is <strong>12 years old</strong>, very well-behaved in public, follows direction, and is naturally camera-ready.</p>
+<p style="margin:0 0 18px;font-size:14px;line-height:1.7;">She has been amazing in our lives, and we want the world to get to know her better. She gets constant attention in public and is frequently requested for photos and interaction, especially at beach and event locations.</p>
 <div style="background:#fff;border:2px solid #60a5fa;border-radius:18px;padding:20px 22px;margin:22px 0;text-align:left;">
 <p style="margin:0 0 10px;font-size:13px;color:#1e40af;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Links</p>
 <p style="margin:0 0 8px;font-size:13px;"><a href="https://open.spotify.com/album/3XyAW4zKkR3ScrFiVvUEoN?si=UJ-q-jxoR2uFJBEw-9Hu4w" style="color:#1d4ed8;">Spotify single</a></p>
@@ -1881,7 +1890,7 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0 0 8px;font-size:13px;"><a href="https://www.youtube.com/watch?v=0GdFiJ51w4o" style="color:#1d4ed8;">News segment</a></p>
 <p style="margin:0;font-size:13px;"><a href="https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv" style="color:#1d4ed8;">Music video</a></p>
 </div>
-<p style="margin:0 0 14px;font-size:14px;line-height:1.7;"><strong>Open opportunities:</strong> print/digital editorial, commercials, branded content, TV/film dog roles, and social collaborations.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;"><strong>What we are hoping for:</strong> print/digital editorial, commercials, branded content, TV/film dog roles, and social collaborations. We also welcome partners willing to support vet care expenses (including teeth cleaning) and help feature our Corgi children's books.</p>
 <div style="background:linear-gradient(145deg,#dbeafe 0%,#bfdbfe 100%);border:2px solid #1d4ed8;border-radius:16px;padding:18px 20px;margin:22px 0;">
 <p style="margin:0 0 8px;font-size:14px;color:#1e3a8a;line-height:1.55;"><strong>Next step:</strong> Reply for media kit, availability, and booking details.</p>
 <p style="margin:0;font-size:13px;color:#1e40af;font-style:italic;">If you need a standout corgi for visual impact, Stella is ready to go.</p>
@@ -1892,10 +1901,14 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0;font-size:13px;color:#1e3a8a;">Call/Text: <strong>(808) 393-0153</strong></p>
 </div>
 <div style="margin-top:8px;padding-top:18px;border-top:2px solid #bfdbfe;">
-<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi cover" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured on the news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at the dog park" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella wearing hat and vest" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#1e3a8a;font-weight:700;">1) Stella song cover - official visual identity</p>
+<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi song cover and official visual identity" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#1e3a8a;font-weight:700;">2) Stella highlighted in local TV news</p>
+<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella highlighted in local TV news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#1e3a8a;font-weight:700;">3) Stella in social/public setting at dog park</p>
+<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella in social public setting at dog park" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#1e3a8a;font-weight:700;">4) Stella in wardrobe (hat + vest), camera-ready look</p>
+<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella in camera-ready wardrobe wearing hat and vest" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
 </div>
 <p style="margin:12px 0 0;font-size:13px;color:#1e3a8a;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#1d4ed8;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
 </div>
@@ -1907,11 +1920,13 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 
 I am reaching out to discuss talent representation and paid booking opportunities for Stella the Cutest Corgi.
 
-Stella is highly social, calm in public, and follows directions well. She is ideal for:
+Stella is 12 years old, highly social, calm in public, and follows directions well. She is ideal for:
 - Commercials and ad campaigns
 - Product placement for healthy dog treats/supplements
 - Film/TV pet features
 - Event appearances and sponsored content
+
+She has been amazing in our lives, and we want the world to get to know her better through meaningful bookings and exposure.
 
 Track record and proof:
 - Family Feud audition + national TV story
@@ -1925,7 +1940,12 @@ https://www.khon2.com/local-news/hawaii-family-wins-grand-prize-on-family-feud/
 https://www.youtube.com/watch?v=0GdFiJ51w4o
 https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv
 
-We are seeking both paid placements and sponsor support (including vet/dental maintenance support). We also have Corgi children's books available for partner promotion and merchandising opportunities.
+What we are hoping for from agencies/casting teams:
+- Representation or direct paid bookings
+- Commercial and film/TV casting opportunities
+- Product placement and sponsorship deals
+- Sponsor support for vet/dental maintenance (especially teeth cleaning)
+- Opportunities to feature and promote our Corgi children's books
 
 Tap here to contact me directly: mailto:coralcrowntechnologies@gmail.com
 Phone: (808) 393-0153
@@ -1943,7 +1963,7 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <div style="padding:32px 28px;color:#581c87;text-align:center;">
 <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#6b21a8;text-transform:uppercase;">Hello</p>
 <p style="margin:0 0 24px;font-size:18px;font-weight:600;line-height:1.4;border-bottom:2px solid #e9d5ff;padding-bottom:16px;">Hi {{Name}},</p>
-<p style="margin:0 0 16px;font-size:15px;line-height:1.7;">I am reaching out to discuss representation and paid bookings for <strong>Stella the Cutest Corgi</strong>. She is calm, social, and highly responsive to direction on set.</p>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.7;">I am reaching out to discuss representation and paid bookings for <strong>Stella the Cutest Corgi</strong>. Stella is <strong>12 years old</strong>, calm, social, and highly responsive to direction on set.</p>
 <ul style="margin:0 auto 18px;padding-left:20px;font-size:14px;line-height:1.75;display:table;text-align:left;">
 <li>Commercial spots and ad campaigns</li>
 <li>Product placement for healthy pet treats and supplements</li>
@@ -1958,7 +1978,7 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0 0 8px;font-size:13px;"><a href="https://www.youtube.com/watch?v=0GdFiJ51w4o" style="color:#7e22ce;">News segment</a></p>
 <p style="margin:0;font-size:13px;"><a href="https://youtu.be/i6fl1UcwlA8?si=cUP-dtYHeXH_Adzv" style="color:#7e22ce;">Music video</a></p>
 </div>
-<p style="margin:0 0 14px;font-size:14px;line-height:1.7;">We are open to paid placements and sponsor support (including veterinary and dental care support). We also have Corgi children's books available for partner promotions.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;">She has been amazing in our lives, and we want the world to know her better. We are open to representation, direct paid placements, and sponsor support (including veterinary and dental care support). We also have Corgi children's books available for partner promotions.</p>
 <div style="background:linear-gradient(145deg,#f3e8ff 0%,#e9d5ff 100%);border:2px solid #7e22ce;border-radius:16px;padding:18px 20px;margin:22px 0;">
 <p style="margin:0 0 8px;font-size:14px;color:#581c87;line-height:1.55;"><strong>Next step:</strong> Reply if your team is open to representation or direct booking discussion.</p>
 <p style="margin:0;font-size:13px;color:#6b21a8;font-style:italic;">Stella drives attention naturally and would be an immediate value-add on camera.</p>
@@ -1969,10 +1989,14 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0;font-size:13px;color:#581c87;">Call/Text: <strong>(808) 393-0153</strong></p>
 </div>
 <div style="margin-top:8px;padding-top:18px;border-top:2px solid #e9d5ff;">
-<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi cover" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured on the news" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at the dog park" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
-<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella wearing hat and vest" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#581c87;font-weight:700;">1) Stella song cover - core brand image</p>
+<img src="{{BASE_URL}}/promo/stella-cover.png" alt="Stella the Cutest Corgi song cover core brand image" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#581c87;font-weight:700;">2) Stella featured on local news coverage</p>
+<img src="{{BASE_URL}}/promo/stella-news.png" alt="Stella featured in local news coverage" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#581c87;font-weight:700;">3) Stella at dog park with another corgi (social temperament)</p>
+<img src="{{BASE_URL}}/promo/stella-dogpark.png" alt="Stella at dog park with another corgi showing social temperament" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:18px;" />
+<p style="margin:0 0 8px;font-size:12px;color:#581c87;font-weight:700;">4) Stella in hat + vest (wardrobe and set readiness)</p>
+<img src="{{BASE_URL}}/promo/stella-hat.png" alt="Stella in hat and vest showing wardrobe and set readiness" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:18px;" />
 </div>
 <p style="margin:12px 0 0;font-size:13px;color:#581c87;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#7e22ce;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
 </div>
