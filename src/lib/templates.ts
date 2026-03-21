@@ -1317,8 +1317,9 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0 0 8px;font-size:13px;color:#164e63;">Or call/text <strong>(808) 393-0153</strong> – tell me what product, credit, or membership you can offer and I'll outline the promo.</p>
 <p style="margin:0 0 20px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:rgba(8,145,178,0.12);color:#0e7490;border:2px solid #0891b2;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">elionmusic.com</a></p>
 <div style="margin-top:8px;padding-top:20px;border-top:2px solid #a5f3fc;">
-<img src="{{BASE_URL}}/promo/coralcrownfront.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:16px;box-shadow:0 12px 32px -8px rgba(0,0,0,0.15);" />
-<img src="{{BASE_URL}}/promo/coralcrownback.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:16px;box-shadow:0 12px 32px -8px rgba(0,0,0,0.15);" />
+<p style="margin:0 0 10px;font-size:12px;color:#155e75;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">E Lion – artist &amp; channel</p>
+<img src="{{BASE_URL}}/promo/elion-email-promo-1.png" alt="E Lion – Holy Hip-Hop from Hawaii, recording artist" width="320" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:16px;box-shadow:0 12px 32px -8px rgba(0,0,0,0.18);" />
+<p style="margin:12px 0 0;font-size:13px;color:#164e63;line-height:1.5;">More visuals &amp; 100+ songs: <a href="https://www.youtube.com/@elionreigns" style="color:#0e7490;font-weight:600;">youtube.com/@elionreigns</a></p>
 </div>
 </div>
 </div>`,
