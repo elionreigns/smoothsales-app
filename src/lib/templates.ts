@@ -72,6 +72,7 @@ export type TemplateId =
   | "elion-venue-major-followup-2"
   | "elion-venue-major-followup-3"
   | "elion-levelup"
+  | "elion-products-programs"
   | "elion-record-label-mainstream"
   | "elion-record-label-mainstream-followup-1"
   | "elion-record-label-mainstream-followup-2"
@@ -158,6 +159,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-venue-dj", label: "E Lion Music – Venue: DJ E Lion" },
   { value: "elion-venue-major", label: "E Lion Music – Venue: Major (opening for headliners)" },
   { value: "elion-levelup", label: "E Lion Music – A&R / Level Up (industry pitch: stats, links, festivals, label, collabs)" },
+  { value: "elion-products-programs", label: "E Lion Music – Products & programs (gear, AI tools, cameras, drones – creator partnership pitch)" },
   { value: "elion-record-label-mainstream", label: "E Lion Music – Record label (mainstream: Bruno Mars, Bieber, Jelly Roll type – Behind the Scenes of Shine)" },
   { value: "elion-record-label-christian", label: "E Lion Music – Record label (Christian: NF type – world tour vision)" },
   { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples (one place to plan your dream Hawaiian wedding)" },
@@ -361,6 +363,7 @@ export type ElionSub =
   | "venue-dj"
   | "venue-major"
   | "levelup"
+  | "products-programs"
   | "record-label-mainstream"
   | "record-label-christian";
 export type WeddingSub = "" | "couples" | "contractors";
@@ -379,6 +382,7 @@ const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   "venue-dj": "elion-venue-dj",
   "venue-major": "elion-venue-major",
   levelup: "elion-levelup",
+  "products-programs": "elion-products-programs",
   "record-label-mainstream": "elion-record-label-mainstream",
   "record-label-christian": "elion-record-label-christian",
 };
@@ -467,7 +471,7 @@ export function getTemplatesForSelection(
   }
   if (service === "elion" && elionSub !== "") {
     const id = ELION_TEMPLATE_MAP[elionSub];
-    if (elionSub === "levelup") {
+    if (elionSub === "levelup" || elionSub === "products-programs") {
       const label = TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? "A&R / Level Up";
       return [{ value: id, label: "Initial: " + label }];
     }
@@ -1263,6 +1267,58 @@ elionmusic.com | coralcrowntechnologies@gmail.com | (808) 393-0153`,
 <p style="margin:16px 0 10px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:linear-gradient(145deg,#7c3aed 0%,#5b21b6 100%);color:#fff;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">elionmusic.com</a></p>
 <p style="margin:0 0 10px;"><a href="https://www.elionmusic.com/lions" style="display:inline-block;background:rgba(124,58,237,0.2);color:#6d28d9;border:2px solid #7c3aed;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Learn More About Lions</a></p>
 <p style="margin:0;font-size:13px;color:#6d28d9;">Reply to this email or call (808) 393-0153 – coralcrowntechnologies@gmail.com. Whatever you can do, I'm ready.</p>
+</div>
+</div>
+</div>`,
+  },
+  "elion-products-programs": {
+    subject: "E Lion – Creator partnership: I promote your mic / AI / camera / drone brand on my channel (100+ songs, Family Feud)",
+    text: `Hi {{Name}},
+
+I'm E Lion – Holy Hip-Hop from Hawaii. I'm reaching out because your company fits exactly what I use (or want to use) to level up as a solo artist: AI-assisted recording tools, pro mics & preamps, studio hardware, cinema cameras, and follow-me drones – gear that lets one person emulate a full studio + music video crew.
+
+My YouTube channel is https://www.youtube.com/@elionreigns – I have 100+ songs and videos up there and I want to bring more attention to the channel by honestly featuring brands and products I believe in. In exchange, I'm looking for product sends, program/membership access, or store credit – and clarity on how much time or credit you can offer.
+
+Credibility snapshot: Family Feud grand prize (2016 – first Hawaiian family to win 5 in a row; an estimated 115–145M viewers saw the run). 10M+ YouTube views, 1,000+ live performances, 100+ songs on Spotify/Apple/Amazon/TikTok and more. Full catalog https://www.elionmusic.com/rap/
+
+Family Feud articles: Grand Prize https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize | Audition https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition | Appearance https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance | Next Round https://www.elionmusic.com/articles/hawaii-family-moves-next-round
+
+Music videos: Judah's Tribe https://www.youtube.com/watch?v=8MfXAAdALAA | Eye of the Storm (AI) https://www.youtube.com/watch?v=2kDvBNKly5s | Behind the Scenes of Shine https://www.youtube.com/watch?v=4Qqs7JSOHmA
+
+Stream: Spotify https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA | Apple Music https://music.apple.com/us/artist/e-lion/1111804063 | TikTok https://www.tiktok.com/@elionreigns | Full catalog https://www.elionmusic.com/rap/
+
+Please reply to coralcrowntechnologies@gmail.com with what you can offer (specific products, store credit amount, trial/membership length, or a call). I'll confirm how I'll feature you on YouTube, in descriptions, and across my socials.
+
+Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#ecfeff;border:2px solid #0891b2;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px rgba(8,145,178,0.25),0 10px 28px -8px rgba(0,0,0,0.1);">
+<div style="background:linear-gradient(145deg,#0e7490 0%,#155e75 50%,#164e63 100%);color:#fff;padding:32px 28px;border-bottom:4px solid #22d3ee;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.95;">E Lion Music · Products &amp; programs</p>
+<h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;">Let's partner: I promote your brand – you help with gear or credit</h1>
+<p style="margin:14px 0 0;font-size:14px;opacity:0.95;">AI recording · mics &amp; preamps · studio gear · cinema cameras · follow drones – built for artists who film themselves.</p>
+</div>
+<div style="padding:28px 26px;color:#164e63;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#0891b2;text-transform:uppercase;">Hi {{Name}},</p>
+<p style="margin:0 0 18px;font-size:15px;line-height:1.7;">I'm <strong>E Lion</strong> – a recording artist and rapper from Hawaii. I'm looking for partners whose <strong>AI software, microphones, preamps, studio equipment, cinema cameras, or follow-me drones</strong> help a solo creator look and sound like a full crew. I want to <strong>grow my YouTube channel</strong> (<a href="https://www.youtube.com/@elionreigns" style="color:#0e7490;">youtube.com/@elionreigns</a>) where I already have <strong>100+ songs and videos</strong> – and I'll <strong>feature your product honestly</strong> in exchange for <strong>gear, program access, membership, or store credit</strong>.</p>
+<p style="margin:0 0 16px;font-size:14px;line-height:1.65;"><strong>What I'm hoping you'll reply with:</strong> what's available (SKU or bundle), how much <strong>store credit</strong> you can extend, or <strong>how long</strong> I can use your software/service – plus any creator-program terms you need me to follow.</p>
+<div style="background:linear-gradient(145deg,#cffafe 0%,#a5f3fc 100%);border:2px solid #0891b2;border-radius:16px;padding:20px 22px;margin:20px 0;">
+<p style="margin:0 0 12px;font-size:14px;color:#164e63;line-height:1.55;"><strong>Why this is real reach:</strong> I won <strong>Family Feud's grand prize</strong> (2016 – first Hawaiian family to win 5 in a row). An estimated <strong>115–145 million viewers</strong> saw that run. I have <strong>10M+ YouTube views</strong>, <strong>1,000+ live performances</strong>, and <strong>100+ songs</strong> across Spotify, Apple Music, Amazon, TikTok, and more. I also create with <strong>AI-assisted workflows</strong> (I write every lyric) and shoot content constantly – your gear or software would show up where fans actually watch.</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#155e75;text-transform:uppercase;">YouTube &amp; releases</p>
+<p style="margin:0 0 8px;font-size:14px;line-height:1.6;"><a href="https://www.youtube.com/@elionreigns" style="color:#0e7490;">youtube.com/@elionreigns</a> · <a href="https://www.youtube.com/@elionreigns/releases" style="color:#0e7490;">All releases</a></p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#155e75;text-transform:uppercase;">Sample music videos</p>
+<p style="margin:0 0 12px;font-size:13px;line-height:1.6;"><a href="https://www.youtube.com/watch?v=8MfXAAdALAA" style="color:#0e7490;">Judah's Tribe</a> · <a href="https://www.youtube.com/watch?v=2kDvBNKly5s" style="color:#0e7490;">Eye of the Storm (AI)</a> · <a href="https://www.youtube.com/watch?v=4Qqs7JSOHmA" style="color:#0e7490;">Behind the Scenes of Shine</a></p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#155e75;text-transform:uppercase;">Family Feud (credibility)</p>
+<p style="margin:0 0 12px;font-size:13px;line-height:1.6;"><a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" style="color:#0e7490;">Grand Prize</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-audition" style="color:#0e7490;">Audition</a> · <a href="https://www.elionmusic.com/articles/hawaii-kai-family-feud-appearance" style="color:#0e7490;">Appearance</a> · <a href="https://www.elionmusic.com/articles/hawaii-family-moves-next-round" style="color:#0e7490;">Next Round</a></p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#155e75;text-transform:uppercase;">Stream &amp; catalog</p>
+<p style="margin:0;font-size:13px;line-height:1.6;"><a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#0e7490;">Spotify</a> · <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="color:#0e7490;">Apple Music</a> · <a href="https://www.tiktok.com/@elionreigns" style="color:#0e7490;">TikTok</a> · <a href="https://www.elionmusic.com/rap/" style="color:#0e7490;">elionmusic.com/rap</a> · <a href="https://www.elionmusic.com/mosaic" style="color:#0e7490;">Mosaic + testimonials</a></p>
+</div>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#0891b2;text-transform:uppercase;">Interviews &amp; press (same as other E Lion pitches)</p>
+<p style="margin:0 0 20px;font-size:12px;line-height:1.55;"><a href="https://www.elionmusic.com/articles/bored-city-interview-e-lion" style="color:#0e7490;">Bored City</a> · <a href="https://www.elionmusic.com/articles/spotlight-interview-e-lion" style="color:#0e7490;">Spotlight</a> · <a href="https://www.elionmusic.com/articles/tbk247-island-roots-faith-healing-music" style="color:#0e7490;">TBK247</a> · <a href="https://www.elionmusic.com/articles/elion-radio-939" style="color:#0e7490;">93.9 The Beat</a> · <a href="https://www.elionmusic.com/articles/elion-radio-1027" style="color:#0e7490;">102.7 Radio</a> · <a href="https://www.elionmusic.com/wiki/" style="color:#0e7490;">Wiki</a> · <a href="https://www.elionmusic.com/lions" style="color:#0e7490;">Lions</a></p>
+<p style="margin:0 0 14px;"><a href="mailto:coralcrowntechnologies@gmail.com?subject=E%20Lion%20%E2%80%93%20creator%20partnership%20%2F%20gear%20or%20credit" style="display:inline-block;background:linear-gradient(145deg,#0891b2 0%,#0e7490 100%);color:#fff;padding:16px 32px;text-decoration:none;border-radius:999px;font-weight:800;font-size:15px;box-shadow:0 8px 24px -4px rgba(8,145,178,0.45);">Email me: coralcrowntechnologies@gmail.com</a></p>
+<p style="margin:0 0 8px;font-size:13px;color:#164e63;">Or call/text <strong>(808) 393-0153</strong> – tell me what product, credit, or membership you can offer and I'll outline the promo.</p>
+<p style="margin:0 0 20px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:rgba(8,145,178,0.12);color:#0e7490;border:2px solid #0891b2;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">elionmusic.com</a></p>
+<div style="margin-top:8px;padding-top:20px;border-top:2px solid #a5f3fc;">
+<img src="{{BASE_URL}}/promo/coralcrownfront.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto 10px;border-radius:16px;box-shadow:0 12px 32px -8px rgba(0,0,0,0.15);" />
+<img src="{{BASE_URL}}/promo/coralcrownback.jpg" alt="Coral Crown Solutions" width="280" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:16px;box-shadow:0 12px 32px -8px rgba(0,0,0,0.15);" />
 </div>
 </div>
 </div>`,

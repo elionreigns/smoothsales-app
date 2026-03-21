@@ -66,6 +66,7 @@
 | Venue: DJ  | `elion-venue-dj`                  | autobot/contacts/elion-venue-dj.csv | `leads/elion-venue-dj-200-new.csv` |
 | Venue: Major | `elion-venue-major`              | autobot: venues-major*, elion-venue-major*.csv | `leads/elion-venue-major-200-new.csv` |
 | Level Up (A&R) | `elion-levelup`               | servicebot: levelup-3, levelup-4 (~61 sent) | `leads/elion-levelup-200-new.csv` |
+| Products & programs | `elion-products-programs`   | — | `leads/elion-products-programs-100.csv` (20×5: AI, mics/preamps, studio retail, cameras, drones) |
 | Record label (mainstream) | `elion-record-label-mainstream` | servicebot: elion-record-label-mainstream-50, -25-more, -retry (~77) | `leads/elion-record-label-mainstream-200-new.csv` |
 | Record label (Christian) | `elion-record-label-christian`  | servicebot: elion-record-label-christian-100, -25-more, -150-new, -retry, -retry-8 (~400+ sent) | `leads/elion-record-label-christian-200-new.csv` |
 
