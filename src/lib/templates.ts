@@ -178,14 +178,17 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
 
 const CONTACT_LINE_HTML = `<p style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:12px 0 0;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0ea5e9;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Reply to the Email</a></p><p style="margin:10px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Click the button above to start a reply, or call – we're happy to help.</p>`;
 const CONTACT_LINE_TEXT = `\n\nWe're here when you're ready.\nReply to the Email: coralcrowntechnologies@gmail.com\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153\nClick to reply or call – we're happy to help.`;
+const ELION_CONTACT_EMAIL = "elionreigns@gmail.com";
+const LEGACY_CONTACT_EMAIL = "coralcrowntechnologies@gmail.com";
 
 /** Prepended before CONTACT_LINE_* on all E Lion Music emails (initial, v2, follow-ups). Graphic: public/promo/elionmusic-press-kit.jpg */
+const ELION_PRESS_KIT_URL = "https://www.elionmusic.com/presskit/";
 const ELION_PRESS_KIT_HTML = `<div style="margin-top:24px;padding-top:20px;border-top:2px solid rgba(0,0,0,0.06);text-align:center;max-width:600px;margin-left:auto;margin-right:auto;">
-<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#64748b;text-transform:uppercase;">E Lion Music – Press kit</p>
-<img src="{{BASE_URL}}/promo/elionmusic-press-kit.jpg" alt="E Lion Music press kit" width="320" style="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:16px;box-shadow:0 12px 32px -8px rgba(0,0,0,0.15);" />
-<p style="margin:12px 0 0;font-size:12px;color:#64748b;line-height:1.5;"><a href="https://www.elionmusic.com" style="color:#475569;font-weight:600;">elionmusic.com</a> · <a href="https://www.youtube.com/@elionreigns" style="color:#475569;font-weight:600;">YouTube @elionreigns</a></p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;"><a href="${ELION_PRESS_KIT_URL}" style="color:#64748b;text-decoration:underline;">E Lion Music – Press kit</a></p>
+<p style="margin:0;"><a href="${ELION_PRESS_KIT_URL}" style="display:inline-block;text-decoration:none;line-height:0;border-radius:16px;"><img src="{{BASE_URL}}/promo/elionmusic-press-kit.jpg" alt="E Lion Music press kit – tap to open full press kit online" width="320" style="display:block;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:16px;box-shadow:0 12px 32px -8px rgba(0,0,0,0.15);" /></a></p>
+<p style="margin:12px 0 0;font-size:12px;color:#64748b;line-height:1.5;"><a href="${ELION_PRESS_KIT_URL}" style="color:#475569;font-weight:600;">elionmusic.com</a> · <a href="https://www.youtube.com/@elionreigns" style="color:#475569;font-weight:600;">YouTube @elionreigns</a></p>
 </div>`;
-const ELION_PRESS_KIT_TEXT = `\n\n— E Lion Music press kit & links: https://www.elionmusic.com · https://www.youtube.com/@elionreigns\n`;
+const ELION_PRESS_KIT_TEXT = `\n\n— E Lion Music full press kit: ${ELION_PRESS_KIT_URL}\n— elionmusic.com · https://www.youtube.com/@elionreigns\n`;
 
 function isElionMusicTemplateId(id: string): boolean {
   return id.startsWith("elion-");
@@ -198,6 +201,18 @@ function emailFooterForTemplate(id: TemplateId): { html: string; text: string } 
   return {
     html: ELION_PRESS_KIT_HTML + CONTACT_LINE_HTML,
     text: ELION_PRESS_KIT_TEXT + CONTACT_LINE_TEXT,
+  };
+}
+
+function applyElionContactOverrides(
+  id: TemplateId,
+  content: { subject: string; html: string; text: string }
+): { subject: string; html: string; text: string } {
+  if (!isElionMusicTemplateId(id as string)) return content;
+  return {
+    subject: content.subject.replaceAll(LEGACY_CONTACT_EMAIL, ELION_CONTACT_EMAIL),
+    html: content.html.replaceAll(LEGACY_CONTACT_EMAIL, ELION_CONTACT_EMAIL),
+    text: content.text.replaceAll(LEGACY_CONTACT_EMAIL, ELION_CONTACT_EMAIL),
   };
 }
 
@@ -297,11 +312,11 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
   const foot = emailFooterForTemplate(id);
   if (isElionFollowUpTemplateId(id as string)) {
     const t = getElionFollowUpTemplate(id as ElionFollowUpTemplateId);
-    return {
+    return applyElionContactOverrides(id, {
       subject: t.subject,
       html: t.html + foot.html,
       text: t.text + foot.text,
-    };
+    });
   }
   if (isOtherFollowUpTemplateId(id as string)) {
     const t = getOtherFollowUpTemplate(id as OtherFollowUpTemplateId);
@@ -315,26 +330,26 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
   if (typeof id === "string" && id.endsWith("-v2")) {
     const v2 = TEMPLATES_V2[id];
     if (v2)
-      return {
+      return applyElionContactOverrides(id, {
         subject: v2.subject,
         html: v2.html + foot.html,
         text: v2.text + foot.text,
-      };
+      });
     const baseKey = id.slice(0, -3) as BaseTemplateId;
     const t = TEMPLATES[baseKey];
     if (t)
-      return {
+      return applyElionContactOverrides(id, {
         subject: t.subject,
         html: t.html + foot.html,
         text: t.text + foot.text,
-      };
+      });
   }
   const t = TEMPLATES[id as BaseTemplateId];
-  return {
+  return applyElionContactOverrides(id, {
     subject: t.subject,
     html: t.html + foot.html,
     text: t.text + foot.text,
-  };
+  });
 }
 
 /** Placeholders: {{Name}}, {{Name of Person}}, {{Name of Organization}}. Pass a map of placeholder name -> value. */
