@@ -1600,7 +1600,7 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:620px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px -18px rgba(194,65,12,0.28),0 8px 22px -8px rgba(0,0,0,0.08);">
 <div style="background:linear-gradient(145deg,#c2410c 0%,#ea580c 55%,#fb923c 100%);color:#fff;padding:30px 26px;border-bottom:4px solid #fdba74;text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;opacity:0.95;">Eric Hans Schaefer (E Lion) Newsletter</p>
-<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.02em;line-height:1.25;">A personal update: new releases, new tools, and where life is headed</h1>
+<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.02em;line-height:1.25;text-transform:uppercase;">A personal update: new releases, new tools, and where life is headed</h1>
 <p style="margin:12px 0 0;font-size:14px;opacity:0.95;">Music, P48X, PrayerAuthority, HOPE Weekends, and practical next steps.</p>
 </div>
 <div style="padding:26px 24px;color:#431407;line-height:1.65;">
@@ -1634,30 +1634,47 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <a href="https://www.youtube.com/watch?v=bi8JI4A4lcY" style="display:inline-block;background:#b45309;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Memoir preview</a>
 <a href="https://www.youtube.com/watch?v=_zEtolAmKmI" style="display:inline-block;background:#9f1239;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Family Feud compilation</a>
 </p>
-<p style="margin:0 0 12px;">HebrewFest + campfire: <a href="https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s" style="color:#c2410c;">HebrewFest</a> · <a href="https://www.youtube.com/watch?v=GbOQlyGjh04" style="color:#c2410c;">Campfire after show</a></p>
+<p style="margin:0 0 12px;">
+<a href="https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">HebrewFest</a>
+<a href="https://www.youtube.com/watch?v=GbOQlyGjh04" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Campfire after show</a>
+</p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">Israel appearances (highlights)</p>
 <p style="margin:0 0 10px;line-height:1.7;">
-<a href="https://www.youtube.com/watch?v=7vYZRiulzHo" style="color:#c2410c;font-weight:800;">LIVE in Jerusalem (Old City)</a><br/>
-<a href="https://www.youtube.com/watch?v=sN67fJEhhOI&t=7s" style="color:#c2410c;">LIVE in Tel Aviv (Mike’s Place)</a><br/>
-<a href="https://www.youtube.com/watch?v=4lKsLd9D11k&t=16s" style="color:#c2410c;">Leonardo Club in Tiberias</a>
+<a href="https://www.youtube.com/watch?v=7vYZRiulzHo" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">LIVE in Jerusalem (Old City)</a><br/>
+<a href="https://www.youtube.com/watch?v=sN67fJEhhOI&t=7s" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">LIVE in Tel Aviv (Mike’s Place)</a><br/>
+<a href="https://www.youtube.com/watch?v=4lKsLd9D11k&t=16s" style="display:inline-block;background:#b45309;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Leonardo Club in Tiberias</a>
 </p>
 <p style="margin:0 0 10px;line-height:1.7;">
-<a href="https://www.youtube.com/watch?v=H1ue2MCDGmg" style="color:#c2410c;font-weight:800;">Snow Ball Dream (Jerusalem)</a><br/>
-<a href="https://www.youtube.com/watch?v=g6GB_KzQZII" style="color:#c2410c;">Peace in the Middle East</a><br/>
-<a href="https://www.youtube.com/watch?v=I6QTXH1-ffc" style="color:#c2410c;">Abraham</a>
+<a href="https://www.youtube.com/watch?v=H1ue2MCDGmg" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Snow Ball Dream (Jerusalem)</a><br/>
+<a href="https://www.youtube.com/watch?v=g6GB_KzQZII" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Peace in the Middle East</a><br/>
+<a href="https://www.youtube.com/watch?v=I6QTXH1-ffc" style="display:inline-block;background:#b45309;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Abraham</a>
 </p>
 <p style="margin:0 0 12px;line-height:1.7;">
-<a href="https://www.youtube.com/watch?v=ci_NsMejsYM" style="color:#c2410c;">LIVE at Elli’s (Haifa)</a><br/>
-<a href="https://www.youtube.com/watch?v=0RwB6cXkJ-A" style="color:#c2410c;">Windows Freestyle (Jerusalem)</a><br/>
-<a href="https://www.youtube.com/watch?v=urBRI8N9z-Q" style="color:#c2410c;">Shaloha from Jerusalem</a> · <a href="https://www.youtube.com/watch?v=JB6fgkBmt_8" style="color:#c2410c;">Adios en el Ciqar</a> · <a href="https://www.youtube.com/watch?v=9H_yrYzDlqU&t=30s" style="color:#c2410c;">Pure Pressure Band</a>
+<a href="https://www.youtube.com/watch?v=ci_NsMejsYM" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">LIVE at Elli’s (Haifa)</a><br/>
+<a href="https://www.youtube.com/watch?v=0RwB6cXkJ-A" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Windows Freestyle (Jerusalem)</a><br/>
+<a href="https://www.youtube.com/watch?v=urBRI8N9z-Q" style="display:inline-block;background:#b45309;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Shaloha from Jerusalem</a><br/>
+<a href="https://www.youtube.com/watch?v=JB6fgkBmt_8" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Adios en el Ciqar</a><br/>
+<a href="https://www.youtube.com/watch?v=9H_yrYzDlqU&t=30s" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">Pure Pressure Band</a>
 </p>
-<p style="margin:0 0 12px;">Family moment: my sister Amber recently had baby Blair (my niece). Here’s me rapping at Amber + Brett’s wedding: <a href="https://www.youtube.com/watch?v=32Ky2qZkmnw" style="color:#c2410c;font-weight:700;">Amber wedding rap</a></p>
+<p style="margin:0 0 12px;">Family moment: my sister Amber recently had baby Blair (my niece). Here’s me rapping at Amber + Brett’s wedding:</p>
+<p style="margin:0 0 12px;">
+<a href="https://www.youtube.com/watch?v=32Ky2qZkmnw" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Amber wedding rap</a>
+</p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">P48X (Philippians 4:8 Expounded)</p>
 <p style="margin:0 0 12px;line-height:1.7;">P48X is rooted in Philippians 4:8 and walks through nine anchor-virtues (Purity, Truth, Praiseworthy, Wholesome, Excellence, Admirable, Peace, Honorable, Lovely). It’s a challenge to build an unshakable mind and spirit in a shifting world—practical, Scripture-grounded, and meant to be lived.</p>
-<p style="margin:0 0 12px;"><a href="https://www.prayerauthority.com/prayers/p48x.php" style="color:#c2410c;font-weight:800;">Official P48X page</a> (overview + reflections).</p>
+<p style="margin:0 0 12px;"><a href="https://www.prayerauthority.com/prayers/p48x.php" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;">Official P48X page (overview + reflections)</a></p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">P48X book + audiobook</p>
-<p style="margin:0 0 12px;"><a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#c2410c;">Apple Books</a> · <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#c2410c;">Barnes &amp; Noble</a> · <a href="https://www.smashwords.com/books/view/1780908" style="color:#c2410c;">Smashwords</a> · <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#c2410c;">Kobo eBook</a></p>
-<p style="margin:0 0 12px;"><a href="https://www.kobo.com/us/en/audiobook/p48x-extreme-spiritual-fitness?sId=cc5e8a83-bdfa-48d0-ab84-3060a079e42b&ssId=jkhyG7sQSLoPfjDtXgmYj&cPos=1" style="color:#c2410c;">Kobo audiobook</a> · <a href="https://www.storytel.com/tv/books/p48x-extreme-spiritual-fitness-your-guide-to-complete-spiritual-health-13769448" style="color:#c2410c;">Storytel</a> · <a href="https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4" style="color:#c2410c;">Apple Books audiobook</a></p>
+<p style="margin:0 0 12px;">
+<a href="https://books.apple.com/us/book/p48x/id6746675717" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Apple Books</a>
+<a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Barnes &amp; Noble</a>
+<a href="https://www.smashwords.com/books/view/1780908" style="display:inline-block;background:#1e40af;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Smashwords</a>
+<a href="https://www.kobo.com/us/en/ebook/p48x" style="display:inline-block;background:#0f172a;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Kobo eBook</a>
+</p>
+<p style="margin:0 0 12px;">
+<a href="https://www.kobo.com/us/en/audiobook/p48x-extreme-spiritual-fitness?sId=cc5e8a83-bdfa-48d0-ab84-3060a079e42b&ssId=jkhyG7sQSLoPfjDtXgmYj&cPos=1" style="display:inline-block;background:#1d4ed8;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Kobo audiobook</a>
+<a href="https://www.storytel.com/tv/books/p48x-extreme-spiritual-fitness-your-guide-to-complete-spiritual-health-13769448" style="display:inline-block;background:#1e40af;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Storytel</a>
+<a href="https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4" style="display:inline-block;background:#0f172a;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Apple Books audiobook</a>
+</p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">Prayer Authority tools</p>
 <p style="margin:0 0 12px;">
 <a href="https://www.prayerauthority.com" style="display:inline-block;background:#9a3412;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Main site</a>
@@ -1671,12 +1688,39 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 </p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">HOPE Weekends (simple mercy rhythm)</p>
 <p style="margin:0 0 12px;line-height:1.7;">I’m encouraging believers to adopt a simple rhythm called <strong>H.O.P.E.</strong>: <strong>Hospitals · Orphanages · Prisons · Elderly homes</strong>. It’s a weekly commitment to show up for the overlooked—humble, consistent, face-to-face love.</p>
-<p style="margin:0 0 14px;line-height:1.7;"><a href="https://www.prayerauthority.com/hope/" style="color:#c2410c;font-weight:800;">Learn HOPE Weekends</a> · <a href="https://www.youtube.com/watch?v=lRd5l_xwPnM" style="color:#c2410c;">Hospital freestyle video</a></p>
+<p style="margin:0 0 14px;line-height:1.7;">
+<a href="https://www.prayerauthority.com/hope/" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Learn HOPE Weekends</a>
+<a href="https://www.youtube.com/watch?v=lRd5l_xwPnM" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Hospital freestyle video</a>
+</p>
 <p style="margin:0 0 14px;">Personal note: Ashley and I are preparing to try IVF soon. Family is close, Stella is still the star, and God has kept us moving forward. Today's verse for me was Joshua 8:1 — <strong>"Do not be afraid; do not be discouraged."</strong></p>
 <p style="margin:0 0 14px;">If you can support me this week: please purchase the book on Apple Books, grab the audiobook, follow Spotify + Apple Music, and share my press kit with one leader who might want me to come address their group.</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:900;letter-spacing:0.14em;text-transform:uppercase;color:#c2410c;">All-new snapshots (photos + screenshots)</p>
 <p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/p48x-cover.png" alt="P48X by Eric Hans Schaefer book cover" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com/presskit/" style="display:inline-block;text-decoration:none;line-height:0;border-radius:14px;"><img src="https://www.coralcrownsolutions.com/promo/elionmusic-press-kit.jpg" alt="E Lion Music press kit image" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></a></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/prayerauthorityfront.jpg" alt="PrayerAuthority screenshot (front)" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/prayerauthorityback.jpg" alt="PrayerAuthority screenshot (back)" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/stella-cover.png" alt="Stella the Cutest Corgi song cover" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/stella-dogpark.png" alt="Stella at the dog park" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/stella-hat.png" alt="Stella wearing a hat" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/stella-news.png" alt="Stella featured on local news" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/owner.png" alt="Owner portrait" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/botoxcard.png" alt="Botox Oahu promotional card" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/healingherbals-bluelotus.png" alt="Healing Herbals Blue Lotus promotional image" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/healingherbals-kava.png" alt="Healing Herbals Kava promotional image" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/coralcrownfront.jpg" alt="Coral Crown Solutions promotional image (front)" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/coralcrownback.jpg" alt="Coral Crown Solutions promotional image (back)" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-email-promo-1.png" alt="E Lion email promotional image" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/timeforfunhawaii.jpg" alt="Time for Fun Hawaii promotional image" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/timeforfunhawaiiback.jpg" alt="Time for Fun Hawaii promotional image (back)" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/timeforfunusa.jpg" alt="Time for Fun USA promotional image" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/timeforfunusaback.jpg" alt="Time for Fun USA promotional image (back)" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
 <p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-1.png" alt="E Lion family update photo" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-2.png" alt="E Lion family update photo 2" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-3.png" alt="E Lion family update photo 3" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-4.png" alt="E Lion family at Magic Island" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-5.png" alt="Prayer Authority screenshot" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-6.png" alt="Prayer Authority screenshot 2" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
+<p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-7.png" alt="Prayer Authority screenshot 3" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
 <p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-8.png" alt="SOAP Journal screenshot" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
 <p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-9.png" alt="David vs Goliath game screenshot" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
 <p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/elion-story-10.png" alt="E Lion Spotify screenshot" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
@@ -1684,7 +1728,11 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <p style="margin:0 0 12px;"><a href="https://books.apple.com/us/book/p48x/id6746675717" style="display:inline-block;background:#c2410c;color:#fff;padding:12px 20px;text-decoration:none;border-radius:999px;font-weight:700;">Buy P48X on Apple Books</a> <a href="https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4" style="display:inline-block;background:#7c2d12;color:#fff;padding:12px 20px;text-decoration:none;border-radius:999px;font-weight:700;">Get Audiobook</a></p>
 <p style="margin:0 0 12px;"><a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="display:inline-block;background:#166534;color:#fff;padding:12px 20px;text-decoration:none;border-radius:999px;font-weight:700;">Follow on Spotify</a> <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="display:inline-block;background:#be185d;color:#fff;padding:12px 20px;text-decoration:none;border-radius:999px;font-weight:700;">Follow on Apple Music</a></p>
 <p style="margin:0 0 14px;"><a href="https://www.prayerauthority.com/prayers/register.php" style="display:inline-block;background:linear-gradient(145deg,#ea580c 0%,#c2410c 100%);color:#fff;padding:14px 24px;text-decoration:none;border-radius:999px;font-weight:700;">Create Prayer Authority Account</a></p>
-<p style="margin:0;font-size:13px;color:#7c2d12;">E Lion (Eric Hans Schaefer) · <a href="https://www.elionmusic.com" style="color:#c2410c;">elionmusic.com</a> · <a href="mailto:elionreigns@gmail.com" style="color:#c2410c;">elionreigns@gmail.com</a> · (808) 393-0153</p>
+<p style="margin:0;font-size:13px;color:#7c2d12;">E Lion (Eric Hans Schaefer)</p>
+<p style="margin:0 0 14px;">
+<a href="https://www.elionmusic.com" style="display:inline-block;background:#1d4ed8;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">elionmusic.com</a>
+<a href="mailto:elionreigns@gmail.com" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:800;font-size:12px;margin:0 6px 8px 0;">elionreigns@gmail.com</a>
+</p>
 </div>
 </div>`,
   },
