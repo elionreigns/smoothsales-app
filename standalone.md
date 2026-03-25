@@ -51,6 +51,8 @@ General format:
 ## Using this for SMS
 - Call GET /api/sms-preview?templateId=<templateId> to get the exact **2-sentence** teaser + the correct standalone URL with your access key.
 - Then paste the resulting message into your SMS sender (or use POST /api/send-sms).
+- **Stable links in SMS:** Set **NEXT_PUBLIC_APP_URL** on Vercel to your canonical host (e.g. `https://smoothsales-app.vercel.app`). Otherwise the preview may use a one-off `*.vercel.app` deployment URL.
+- **Auth:** Send header `X-Smoothsales-Access` with `SMOOTHSALES_PASSWORD` or `SMOOTHSALES_BYPASS_KEY` (or default app password) when calling `/api/sms-preview` or `/api/send-sms`.
 
 ## Example (elion-leaders)
 - Teaser: Would you take 60 seconds to see what P48X + PrayerAuthority could add to your church or leaders group? If it resonates, click to view the exact pitch and I’ll tailor options + a setlist for your dates.
