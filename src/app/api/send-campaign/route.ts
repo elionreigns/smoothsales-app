@@ -106,6 +106,8 @@ export async function POST(request: NextRequest) {
       "elion-venue-dj-followup-3",
       "elion-venue-major",
       "elion-venue-major-followup-1",
+      "elion-leaders",
+      "elion-laymen",
       "elion-levelup",
       "elion-products-programs",
       "elion-record-label-mainstream",
