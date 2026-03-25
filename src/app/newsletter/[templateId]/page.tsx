@@ -45,7 +45,7 @@ export default function NewsletterTemplatePage({
   const baseUrl =
     process.env.NEXT_PUBLIC_APP_URL?.trim() ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
-    "https://smoothsales-app.vercel.app";
+    "https://www.coralcrownsolutions.com";
   let baseUrlOrigin = baseUrl;
   try {
     baseUrlOrigin = new URL(baseUrl).origin;
