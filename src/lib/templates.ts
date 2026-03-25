@@ -71,6 +71,8 @@ export type TemplateId =
   | "elion-venue-major-followup-1"
   | "elion-venue-major-followup-2"
   | "elion-venue-major-followup-3"
+  | "elion-leaders"
+  | "elion-laymen"
   | "elion-levelup"
   | "elion-products-programs"
   | "elion-record-label-mainstream"
@@ -158,6 +160,8 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-venue-show", label: "E Lion Music – Venue: Show / festival (door + merch, local draw)" },
   { value: "elion-venue-dj", label: "E Lion Music – Venue: DJ E Lion" },
   { value: "elion-venue-major", label: "E Lion Music – Venue: Major (opening for headliners)" },
+  { value: "elion-leaders", label: "Eric Hans Schaefer – Leaders (pastors, ministries, org leaders)" },
+  { value: "elion-laymen", label: "Eric Hans Schaefer – Laymen (friends, supporters, broader community)" },
   { value: "elion-levelup", label: "E Lion Music – A&R / Level Up (industry pitch: stats, links, festivals, label, collabs)" },
   { value: "elion-products-programs", label: "E Lion Music – Products & programs (gear, AI tools, cameras, drones – creator partnership pitch)" },
   { value: "elion-record-label-mainstream", label: "E Lion Music – Record label (mainstream: Bruno Mars, Bieber, Jelly Roll type – Behind the Scenes of Shine)" },
@@ -400,6 +404,8 @@ export type ElionSub =
   | "venue-show"
   | "venue-dj"
   | "venue-major"
+  | "leaders"
+  | "laymen"
   | "levelup"
   | "products-programs"
   | "record-label-mainstream"
@@ -419,6 +425,8 @@ const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   "venue-show": "elion-venue-show",
   "venue-dj": "elion-venue-dj",
   "venue-major": "elion-venue-major",
+  leaders: "elion-leaders",
+  laymen: "elion-laymen",
   levelup: "elion-levelup",
   "products-programs": "elion-products-programs",
   "record-label-mainstream": "elion-record-label-mainstream",
@@ -1306,6 +1314,162 @@ elionmusic.com | coralcrowntechnologies@gmail.com | (808) 393-0153`,
 <p style="margin:0 0 10px;"><a href="https://www.elionmusic.com/lions" style="display:inline-block;background:rgba(124,58,237,0.2);color:#6d28d9;border:2px solid #7c3aed;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Learn More About Lions</a></p>
 <p style="margin:0;font-size:13px;color:#6d28d9;">Reply to this email or call (808) 393-0153 – coralcrowntechnologies@gmail.com. Whatever you can do, I'm ready.</p>
 </div>
+</div>
+</div>`,
+  },
+  "elion-leaders": {
+    subject: "Eric Hans Schaefer update: P48X book + audiobook, 100+ songs, Prayer Authority tools, and HOPE Weekends",
+    text: `Hi {{Name}},
+
+I hope you're doing well. I'm reaching out with a real life and ministry update as Eric Hans Schaefer / E Lion, and I wanted to share what God has been helping me build.
+
+Quick update: I now have 100+ songs out on major platforms, my P48X book is live, and the P48X audiobook is out as well. I also released my memoir "Christ, My Best Friend" on YouTube for now while I prepare the official rollout.
+
+Book links:
+- Apple Books: https://books.apple.com/us/book/p48x/id6746675717
+- Barnes & Noble: https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621
+- Smashwords: https://www.smashwords.com/books/view/1780908
+- Kobo eBook: https://www.kobo.com/us/en/ebook/p48x
+
+Audiobook links:
+- Kobo audiobook: https://www.kobo.com/us/en/audiobook/p48x-extreme-spiritual-fitness?sId=cc5e8a83-bdfa-48d0-ab84-3060a079e42b&ssId=jkhyG7sQSLoPfjDtXgmYj&cPos=1
+- Storytel: https://www.storytel.com/tv/books/p48x-extreme-spiritual-fitness-your-guide-to-complete-spiritual-health-13769448
+- Apple Books audiobook: https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4
+
+Music and media:
+- Main site: https://www.elionmusic.com
+- Song promos: https://www.elionmusic.com/promo/
+- Spotify: https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA
+- Pandora: https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq
+- Family Feud compilation: https://www.youtube.com/watch?v=_zEtolAmKmI
+- HebrewFest with The Highway Band: https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s
+- Campfire after HebrewFest: https://www.youtube.com/watch?v=GbOQlyGjh04
+
+Prayer Authority and ministry tools:
+- PrayerAuthority: https://www.prayerauthority.com
+- Register: https://www.prayerauthority.com/prayers/register.php
+- Prophetic timeline: https://www.prayerauthority.com/prophecy/
+- SOAP Journal: https://www.prayerauthority.com/journal/
+- Urim & Thummim: https://www.prayerauthority.com/prayers/urim2.php
+- Belief Window: https://www.prayerauthority.com/belief/
+- Spiritual Vitamins: https://www.prayerauthority.com/vitamins/
+- Battle Sword: https://www.prayerauthority.com/battlesword/
+- David vs Goliath game: https://www.prayerauthority.com/prayers/games/davidvsgoliath/
+- David vs Giants sequel: https://prayerauthority.com/prayers/games/davidvsgoliath/level2/index.html
+
+I'm also encouraging believers to join HOPE Weekends:
+Hospitals, Orphanages, Prisons, and Elderly homes — simple face-to-face service for people who are often overlooked.
+https://www.prayerauthority.com/hope/
+Hospital freestyle video: https://www.youtube.com/watch?v=lRd5l_xwPnM
+
+Personal note: Ashley and I are preparing to try IVF soon. Family is doing well, and we're still gathering weekly on Sundays. Through setbacks and rebuilding seasons since Family Feud (2016), we're doing better than ever and pressing forward.
+
+Today's encouragement from my devotional was Joshua 8:1 — "Do not be afraid; do not be discouraged." I wanted to pass that forward and invite you to pray, connect, and share these tools with anyone who needs them.
+
+If this resonates with your church or organization, I'd be grateful for prayer, feedback, and help sharing with people who need encouragement.
+
+With gratitude,
+Eric Hans Schaefer (E Lion)
+elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:620px;margin:0 auto;background:#f8fafc;border:2px solid #1d4ed8;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px -18px rgba(30,58,138,0.28),0 8px 22px -8px rgba(0,0,0,0.08);">
+<div style="background:linear-gradient(145deg,#1e3a8a 0%,#1d4ed8 50%,#3b82f6 100%);color:#fff;padding:30px 26px;border-bottom:4px solid #93c5fd;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;opacity:0.95;">Eric Hans Schaefer update</p>
+<h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-0.02em;line-height:1.25;">Book + audiobook + music + ministry tools</h1>
+<p style="margin:12px 0 0;font-size:14px;opacity:0.95;">P48X, Prayer Authority, HOPE Weekends, and where things are headed next.</p>
+</div>
+<div style="padding:26px 24px;color:#0f172a;line-height:1.65;">
+<p style="margin:0 0 14px;">Hi {{Name}},</p>
+<p style="margin:0 0 14px;">I'm sending a quick personal + ministry update as <strong>Eric Hans Schaefer (E Lion)</strong>. God has helped me release a lot recently: <strong>100+ songs</strong>, the <strong>P48X book</strong>, a new <strong>P48X audiobook</strong>, and multiple Prayer Authority tools for believers.</p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Book links</p>
+<p style="margin:0 0 12px;"><a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#1d4ed8;">Apple Books</a> · <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#1d4ed8;">Barnes &amp; Noble</a> · <a href="https://www.smashwords.com/books/view/1780908" style="color:#1d4ed8;">Smashwords</a> · <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#1d4ed8;">Kobo eBook</a></p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Audiobook links</p>
+<p style="margin:0 0 12px;"><a href="https://www.kobo.com/us/en/audiobook/p48x-extreme-spiritual-fitness?sId=cc5e8a83-bdfa-48d0-ab84-3060a079e42b&ssId=jkhyG7sQSLoPfjDtXgmYj&cPos=1" style="color:#1d4ed8;">Kobo audiobook</a> · <a href="https://www.storytel.com/tv/books/p48x-extreme-spiritual-fitness-your-guide-to-complete-spiritual-health-13769448" style="color:#1d4ed8;">Storytel</a> · <a href="https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4" style="color:#1d4ed8;">Apple Books audiobook</a></p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Music + media</p>
+<p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="color:#1d4ed8;">elionmusic.com</a> · <a href="https://www.elionmusic.com/promo/" style="color:#1d4ed8;">Song promos</a> · <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#1d4ed8;">Spotify</a> · <a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="color:#1d4ed8;">Pandora</a> · <a href="https://www.youtube.com/watch?v=_zEtolAmKmI" style="color:#1d4ed8;">Family Feud compilation</a></p>
+<p style="margin:0 0 12px;">Highway Band moments: <a href="https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s" style="color:#1d4ed8;">HebrewFest</a> · <a href="https://www.youtube.com/watch?v=GbOQlyGjh04" style="color:#1d4ed8;">Campfire after show</a></p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Prayer Authority</p>
+<p style="margin:0 0 12px;"><a href="https://www.prayerauthority.com" style="color:#1d4ed8;">Main site</a> · <a href="https://www.prayerauthority.com/prophecy/" style="color:#1d4ed8;">Prophetic timeline</a> · <a href="https://www.prayerauthority.com/journal/" style="color:#1d4ed8;">SOAP Journal</a> · <a href="https://www.prayerauthority.com/prayers/urim2.php" style="color:#1d4ed8;">Urim &amp; Thummim</a> · <a href="https://www.prayerauthority.com/belief/" style="color:#1d4ed8;">Belief Window</a> · <a href="https://www.prayerauthority.com/vitamins/" style="color:#1d4ed8;">Spiritual Vitamins</a> · <a href="https://www.prayerauthority.com/battlesword/" style="color:#1d4ed8;">Battle Sword</a></p>
+<p style="margin:0 0 12px;">Games: <a href="https://www.prayerauthority.com/prayers/games/davidvsgoliath/" style="color:#1d4ed8;">David vs Goliath</a> · <a href="https://prayerauthority.com/prayers/games/davidvsgoliath/level2/index.html" style="color:#1d4ed8;">Sequel</a></p>
+<p style="margin:0 0 12px;"><strong>HOPE Weekends</strong> (Hospitals, Orphanages, Prisons, Elderly): <a href="https://www.prayerauthority.com/hope/" style="color:#1d4ed8;">Learn more</a> · <a href="https://www.youtube.com/watch?v=lRd5l_xwPnM" style="color:#1d4ed8;">Hospital freestyle video</a></p>
+<p style="margin:0 0 16px;">Personal note: Ashley and I are preparing to try IVF soon, and family is doing well. Through the ups and downs since 2016, God has kept us moving forward. Today's devotional reminder (Joshua 8:1): <strong>"Do not be afraid; do not be discouraged."</strong></p>
+<p style="margin:0 0 16px;">If you'd like to share these resources with your church or community, I'd be grateful.</p>
+<p style="margin:0 0 14px;"><a href="https://www.prayerauthority.com/prayers/register.php" style="display:inline-block;background:linear-gradient(145deg,#1d4ed8 0%,#1e40af 100%);color:#fff;padding:14px 24px;text-decoration:none;border-radius:999px;font-weight:700;">Create Prayer Authority Account</a></p>
+<p style="margin:0;font-size:13px;color:#334155;">Eric Hans Schaefer (E Lion) · <a href="https://www.elionmusic.com" style="color:#1d4ed8;">elionmusic.com</a> · <a href="mailto:elionreigns@gmail.com" style="color:#1d4ed8;">elionreigns@gmail.com</a> · (808) 393-0153</p>
+</div>
+</div>`,
+  },
+  "elion-laymen": {
+    subject: "Quick life update from E Lion: new book, audiobook, music, apps, and what God has been doing",
+    text: `Hi {{Name}},
+
+Hope you're doing well. I wanted to share a personal update and invite you to check out what I've been building lately.
+
+I've now got 100+ songs out on major platforms, my P48X book is published, and the audiobook is out too. I also uploaded "Christ, My Best Friend" (my memoir) on YouTube for now while I finish the wider release.
+
+Main links:
+- Website: https://www.elionmusic.com
+- Song promos: https://www.elionmusic.com/promo/
+- Spotify: https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA
+- Pandora: https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq
+- Family Feud compilation: https://www.youtube.com/watch?v=_zEtolAmKmI
+- Christ, My Best Friend (memoir preview): https://www.youtube.com/watch?v=bi8JI4A4lcY
+
+P48X book:
+- Apple Books: https://books.apple.com/us/book/p48x/id6746675717
+- Barnes & Noble: https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621
+- Smashwords: https://www.smashwords.com/books/view/1780908
+- Kobo eBook: https://www.kobo.com/us/en/ebook/p48x
+
+P48X audiobook:
+- Kobo: https://www.kobo.com/us/en/audiobook/p48x-extreme-spiritual-fitness?sId=cc5e8a83-bdfa-48d0-ab84-3060a079e42b&ssId=jkhyG7sQSLoPfjDtXgmYj&cPos=1
+- Storytel: https://www.storytel.com/tv/books/p48x-extreme-spiritual-fitness-your-guide-to-complete-spiritual-health-13769448
+- Apple Books audiobook: https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4
+
+Prayer Authority tools:
+- Main site: https://www.prayerauthority.com
+- Register: https://www.prayerauthority.com/prayers/register.php
+- Prophecy timeline: https://www.prayerauthority.com/prophecy/
+- SOAP Journal: https://www.prayerauthority.com/journal/
+- Urim & Thummim: https://www.prayerauthority.com/prayers/urim2.php
+- Belief Window: https://www.prayerauthority.com/belief/
+- Spiritual Vitamins: https://www.prayerauthority.com/vitamins/
+- Battle Sword: https://www.prayerauthority.com/battlesword/
+- David vs Goliath game: https://www.prayerauthority.com/prayers/games/davidvsgoliath/
+
+I'm also promoting HOPE Weekends:
+Hospitals · Orphanages · Prisons · Elderly homes
+https://www.prayerauthority.com/hope/
+
+Personal update: Ashley and I are preparing to try IVF soon. Family is close, we're still meeting on Sundays, Stella the corgi is doing great, and by God's grace I'm doing better than ever.
+
+Today's verse that encouraged me: Joshua 8:1 – "Do not be afraid; do not be discouraged."
+
+If you have a moment, check out the links, share with someone who needs encouragement, and feel free to reply.
+
+Much love,
+E Lion (Eric Hans Schaefer)
+elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
+    html: `<div style="font-family:sans-serif;max-width:620px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px -18px rgba(194,65,12,0.28),0 8px 22px -8px rgba(0,0,0,0.08);">
+<div style="background:linear-gradient(145deg,#c2410c 0%,#ea580c 55%,#fb923c 100%);color:#fff;padding:30px 26px;border-bottom:4px solid #fdba74;text-align:center;">
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;opacity:0.95;">E Lion life update</p>
+<h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-0.02em;line-height:1.25;">New book, audiobook, songs, apps, and good news</h1>
+<p style="margin:12px 0 0;font-size:14px;opacity:0.95;">What God has been doing and what I've been building.</p>
+</div>
+<div style="padding:26px 24px;color:#431407;line-height:1.65;">
+<p style="margin:0 0 14px;">Hi {{Name}},</p>
+<p style="margin:0 0 14px;">Quick life update: I now have <strong>100+ songs</strong> out, the <strong>P48X book</strong> is published, the <strong>P48X audiobook</strong> is out, and I posted my memoir preview <strong>Christ, My Best Friend</strong> on YouTube.</p>
+<p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="color:#c2410c;">elionmusic.com</a> · <a href="https://www.elionmusic.com/promo/" style="color:#c2410c;">Song promos</a> · <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#c2410c;">Spotify</a> · <a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="color:#c2410c;">Pandora</a></p>
+<p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=bi8JI4A4lcY" style="color:#c2410c;">Christ, My Best Friend (YouTube)</a> · <a href="https://www.youtube.com/watch?v=_zEtolAmKmI" style="color:#c2410c;">Family Feud compilation</a></p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">P48X book + audiobook</p>
+<p style="margin:0 0 12px;"><a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#c2410c;">Apple Books</a> · <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#c2410c;">Barnes &amp; Noble</a> · <a href="https://www.smashwords.com/books/view/1780908" style="color:#c2410c;">Smashwords</a> · <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#c2410c;">Kobo eBook</a></p>
+<p style="margin:0 0 12px;"><a href="https://www.kobo.com/us/en/audiobook/p48x-extreme-spiritual-fitness?sId=cc5e8a83-bdfa-48d0-ab84-3060a079e42b&ssId=jkhyG7sQSLoPfjDtXgmYj&cPos=1" style="color:#c2410c;">Kobo audiobook</a> · <a href="https://www.storytel.com/tv/books/p48x-extreme-spiritual-fitness-your-guide-to-complete-spiritual-health-13769448" style="color:#c2410c;">Storytel</a> · <a href="https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4" style="color:#c2410c;">Apple Books audiobook</a></p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">Prayer Authority tools</p>
+<p style="margin:0 0 12px;"><a href="https://www.prayerauthority.com" style="color:#c2410c;">Main site</a> · <a href="https://www.prayerauthority.com/prophecy/" style="color:#c2410c;">Prophetic timeline</a> · <a href="https://www.prayerauthority.com/journal/" style="color:#c2410c;">SOAP Journal</a> · <a href="https://www.prayerauthority.com/prayers/urim2.php" style="color:#c2410c;">Urim &amp; Thummim</a> · <a href="https://www.prayerauthority.com/belief/" style="color:#c2410c;">Belief Window</a> · <a href="https://www.prayerauthority.com/vitamins/" style="color:#c2410c;">Spiritual Vitamins</a> · <a href="https://www.prayerauthority.com/battlesword/" style="color:#c2410c;">Battle Sword</a> · <a href="https://www.prayerauthority.com/prayers/games/davidvsgoliath/" style="color:#c2410c;">David vs Goliath game</a></p>
+<p style="margin:0 0 14px;">I'm also encouraging <strong>HOPE Weekends</strong> (Hospitals, Orphanages, Prisons, Elderly): <a href="https://www.prayerauthority.com/hope/" style="color:#c2410c;">prayerauthority.com/hope</a></p>
+<p style="margin:0 0 14px;">Personal note: Ashley and I are preparing to try IVF soon. Family is close, Stella is still the star, and God has kept us moving forward. Today's verse for me was Joshua 8:1 — <strong>"Do not be afraid; do not be discouraged."</strong></p>
+<p style="margin:0 0 14px;">If you can, check out what I've built, share it with someone who needs encouragement, and send me a quick update too.</p>
+<p style="margin:0 0 14px;"><a href="https://www.prayerauthority.com/prayers/register.php" style="display:inline-block;background:linear-gradient(145deg,#ea580c 0%,#c2410c 100%);color:#fff;padding:14px 24px;text-decoration:none;border-radius:999px;font-weight:700;">Create Prayer Authority Account</a></p>
+<p style="margin:0;font-size:13px;color:#7c2d12;">E Lion (Eric Hans Schaefer) · <a href="https://www.elionmusic.com" style="color:#c2410c;">elionmusic.com</a> · <a href="mailto:elionreigns@gmail.com" style="color:#c2410c;">elionreigns@gmail.com</a> · (808) 393-0153</p>
 </div>
 </div>`,
   },

@@ -102,7 +102,7 @@ type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
 type TechSub = "individual" | "corporate" | "";
-type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "venue-major" | "levelup" | "products-programs" | "record-label-mainstream" | "record-label-christian" | "";
+type ElionSub = "fans" | "artists" | "brands" | "producers" | "venue-church" | "venue-show" | "venue-dj" | "venue-major" | "leaders" | "laymen" | "levelup" | "products-programs" | "record-label-mainstream" | "record-label-christian" | "";
 type WeddingSub = "couples" | "contractors" | "";
 type P48XSub = "personal" | "physical-distributors" | "affiliate-sellers" | "";
 
@@ -384,6 +384,8 @@ export default function SmoothSalesPage() {
                     <option value="venue-show">Venue: Show / festival</option>
                     <option value="venue-dj">Venue: DJ E Lion</option>
                     <option value="venue-major">Venue: Major (opening for headliners)</option>
+                    <option value="leaders">Leaders (pastors & organizations)</option>
+                    <option value="laymen">Laymen (friends & supporters)</option>
                     <option value="levelup">A&R / Level Up (labels, management, industry)</option>
                     <option value="products-programs">Products &amp; programs (gear, AI, cameras, drones – creator partnership)</option>
                     <option value="record-label-mainstream">Record label (mainstream – Behind the Scenes of Shine)</option>
@@ -666,6 +668,12 @@ function ElionContent({ audience }: { audience: ElionSub }) {
           <strong>Products &amp; programs:</strong> Pitch to brands selling AI recording tools, mics, preamps, studio gear, cinema cameras, and follow-me drones – barter-style partnership to grow{" "}
           <a href="https://www.youtube.com/@elionreigns" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">youtube.com/@elionreigns</a> (100+ songs/videos) in exchange for gear, credit, or memberships.
         </p>
+      )}
+      {audience === "leaders" && (
+        <p><strong>Leaders template:</strong> Full ministry + life update for pastors and organization leaders with P48X book/audiobook links, Prayer Authority tools, HOPE Weekends, and a clear invitation to share resources with their church/community.</p>
+      )}
+      {audience === "laymen" && (
+        <p><strong>Laymen template:</strong> Personal update for friends/supporters with music links, memoir preview, P48X links, Prayer Authority tools, family encouragement, and a simple call to connect and share.</p>
       )}
       <p>Stream: <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Spotify</a>, <a href="https://music.apple.com/us/artist/e-lion/1111804063" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Apple Music</a>, <a href="https://www.amazon.com/music/player/artists/B01GOGAW4W/e-lion" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Amazon Music</a>, <a href="https://www.tiktok.com/@elionreigns" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">TikTok</a>, <a href="https://www.elionmusic.com/rap/" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Full catalog</a>, <a href="https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">Family Feud</a>, <a href="https://www.elionmusic.com" target="_blank" rel="noreferrer" className="text-amber-400 hover:text-amber-300">elionmusic.com</a></p>
     </div>
