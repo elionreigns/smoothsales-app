@@ -1347,6 +1347,23 @@ Music and media:
 - Family Feud compilation: https://www.youtube.com/watch?v=_zEtolAmKmI
 - HebrewFest with The Highway Band: https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s
 - Campfire after HebrewFest: https://www.youtube.com/watch?v=GbOQlyGjh04
+- Christ, My Best Friend (memoir preview): https://www.youtube.com/watch?v=bi8JI4A4lcY
+
+Israel appearances (highlights):
+- https://www.youtube.com/watch?v=4lKsLd9D11k&t=16s
+- https://www.youtube.com/watch?v=7vYZRiulzHo&t=3s
+- https://www.youtube.com/watch?v=urBRI8N9z-Q
+- https://www.youtube.com/watch?v=sN67fJEhhOI&t=7s
+- https://www.youtube.com/watch?v=JB6fgkBmt_8
+- https://www.youtube.com/watch?v=0RwB6cXkJ-A
+- https://www.youtube.com/watch?v=ci_NsMejsYM
+- https://www.youtube.com/watch?v=H1ue2MCDGmg
+- https://www.youtube.com/watch?v=9H_yrYzDlqU&t=30s
+- https://www.youtube.com/watch?v=I6QTXH1-ffc
+- https://www.youtube.com/watch?v=g6GB_KzQZII
+
+Family moment video:
+- Amber wedding rap (my sister Amber’s wedding): https://www.youtube.com/watch?v=32Ky2qZkmnw
 
 Prayer Authority and ministry tools:
 - PrayerAuthority: https://www.prayerauthority.com
@@ -1375,7 +1392,9 @@ If this resonates with your church or organization, I'd love to serve your peopl
 - P48X book table after the event
 - QR sign-up station and live PrayerAuthority demo
 
-Setlist planning links:
+All of my songs are ready for you to pick from. What kind of gathering are you planning, and what energy do you want people to leave with? If you’d like, I can also DJ E Lion’s catalog on a Bumpboxx, or I can speak about my P48X book and audiobook and connect it to PrayerAuthority tools.
+
+Setlist planning:
 - Player: https://www.elionmusic.com/player/
 - Promos: https://www.elionmusic.com/promo/
 - Press kit: https://www.elionmusic.com/presskit/
@@ -1403,6 +1422,12 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Music + media</p>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="color:#1d4ed8;">elionmusic.com</a> · <a href="https://www.elionmusic.com/presskit/" style="color:#1d4ed8;">Press kit</a> · <a href="https://www.elionmusic.com/player/" style="color:#1d4ed8;">Player</a> · <a href="https://www.elionmusic.com/promo/" style="color:#1d4ed8;">Song promos</a> · <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#1d4ed8;">Spotify</a> · <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="color:#1d4ed8;">Apple Music</a> · <a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="color:#1d4ed8;">Pandora</a> · <a href="https://www.youtube.com/watch?v=_zEtolAmKmI" style="color:#1d4ed8;">Family Feud compilation</a></p>
 <p style="margin:0 0 12px;">Highway Band moments: <a href="https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s" style="color:#1d4ed8;">HebrewFest</a> · <a href="https://www.youtube.com/watch?v=GbOQlyGjh04" style="color:#1d4ed8;">Campfire after show</a></p>
+<p style="margin:0 0 12px;">Memoir preview: <a href="https://www.youtube.com/watch?v=bi8JI4A4lcY" style="color:#1d4ed8;">Christ, My Best Friend</a></p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Israel appearances</p>
+<p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=4lKsLd9D11k&t=16s" style="color:#1d4ed8;">1</a> · <a href="https://www.youtube.com/watch?v=7vYZRiulzHo&t=3s" style="color:#1d4ed8;">2</a> · <a href="https://www.youtube.com/watch?v=urBRI8N9z-Q" style="color:#1d4ed8;">3</a> · <a href="https://www.youtube.com/watch?v=sN67fJEhhOI&t=7s" style="color:#1d4ed8;">4</a></p>
+<p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=JB6fgkBmt_8" style="color:#1d4ed8;">5</a> · <a href="https://www.youtube.com/watch?v=0RwB6cXkJ-A" style="color:#1d4ed8;">6</a> · <a href="https://www.youtube.com/watch?v=ci_NsMejsYM" style="color:#1d4ed8;">7</a> · <a href="https://www.youtube.com/watch?v=H1ue2MCDGmg" style="color:#1d4ed8;">8</a></p>
+<p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=9H_yrYzDlqU&t=30s" style="color:#1d4ed8;">9</a> · <a href="https://www.youtube.com/watch?v=I6QTXH1-ffc" style="color:#1d4ed8;">10</a> · <a href="https://www.youtube.com/watch?v=g6GB_KzQZII" style="color:#1d4ed8;">11</a></p>
+<p style="margin:0 0 12px;">Family moment: <a href="https://www.youtube.com/watch?v=32Ky2qZkmnw" style="color:#1d4ed8;">Amber wedding rap</a></p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Prayer Authority</p>
 <p style="margin:0 0 12px;"><a href="https://www.prayerauthority.com" style="color:#1d4ed8;">Main site</a> · <a href="https://www.prayerauthority.com/prophecy/" style="color:#1d4ed8;">Prophetic timeline</a> · <a href="https://www.prayerauthority.com/journal/" style="color:#1d4ed8;">SOAP Journal</a> · <a href="https://www.prayerauthority.com/prayers/urim2.php" style="color:#1d4ed8;">Urim &amp; Thummim</a> · <a href="https://www.prayerauthority.com/belief/" style="color:#1d4ed8;">Belief Window</a> · <a href="https://www.prayerauthority.com/vitamins/" style="color:#1d4ed8;">Spiritual Vitamins</a> · <a href="https://www.prayerauthority.com/battlesword/" style="color:#1d4ed8;">Battle Sword</a></p>
 <p style="margin:0 0 12px;">Games: <a href="https://www.prayerauthority.com/prayers/games/davidvsgoliath/" style="color:#1d4ed8;">David vs Goliath</a> · <a href="https://prayerauthority.com/prayers/games/davidvsgoliath/level2/index.html" style="color:#1d4ed8;">Sequel</a></p>
@@ -1410,7 +1435,9 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <p style="margin:0 0 16px;">Personal note: Ashley and I are preparing to try IVF soon, and family is doing well. Through the ups and downs since 2016, God has kept us moving forward. Today's devotional reminder (Joshua 8:1): <strong>"Do not be afraid; do not be discouraged."</strong></p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Available for your venue / church</p>
 <p style="margin:0 0 12px;">From the press kit: <strong>full concert</strong>, <strong>conference keynote</strong>, or <strong>collaboration/features</strong>. I can also bring a <strong>P48X table</strong>, run a <strong>PrayerAuthority QR sign-up</strong>, and do a short <strong>live website demo</strong> at the end so people leave with practical tools.</p>
-<p style="margin:0 0 12px;">Build your setlist here: <a href="https://www.elionmusic.com/player/" style="color:#1d4ed8;">elionmusic.com/player</a> · <a href="https://www.elionmusic.com/promo/" style="color:#1d4ed8;">elionmusic.com/promo</a> · <a href="https://www.elionmusic.com/presskit/" style="color:#1d4ed8;">elionmusic.com/presskit</a></p>
+<p style="margin:0 0 12px;">All of my songs are available for you to pick from. What kind of gathering are you planning, and what energy do you want people to leave with? If you want a DJ-style vibe, I can also run E Lion’s music on a Bumpboxx. If you’d rather do teaching, I can speak about my P48X book and audiobook and connect it directly to PrayerAuthority tools for your group.</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Setlist planning links</p>
+<p style="margin:0 0 12px;"><a href="https://www.elionmusic.com/player/" style="color:#1d4ed8;">elionmusic.com/player</a> · <a href="https://www.elionmusic.com/promo/" style="color:#1d4ed8;">elionmusic.com/promo</a> · <a href="https://www.elionmusic.com/presskit/" style="color:#1d4ed8;">elionmusic.com/presskit</a></p>
 <p style="margin:0 0 16px;">If you'd like to share these resources with your church or community, I'd be grateful.</p>
 <p style="margin:0 0 14px;"><a href="https://twitter.com/intent/tweet?text=Check%20out%20Eric%20Hans%20Schaefer%27s%20new%20book%20P48X%2C%20audiobook%2C%20and%20Prayer%20Authority%20tools.%20Book%3A%20https%3A%2F%2Fbooks.apple.com%2Fus%2Fbook%2Fp48x%2Fid6746675717%20Audiobook%3A%20https%3A%2F%2Fbooks.apple.com%2Fus%2Faudiobook%2Fp48x-extreme-spiritual-fitness-your-guide-to-complete%2Fid1885081198%3Fuo%3D4%20Join%3A%20https%3A%2F%2Fwww.prayerauthority.com%2Fprayers%2Fregister.php" style="display:inline-block;background:#0f172a;color:#fff;padding:12px 20px;text-decoration:none;border-radius:999px;font-weight:700;font-size:13px;">Quick social post (X)</a> <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.prayerauthority.com%2Fprayers%2Fregister.php" style="display:inline-block;background:#1d4ed8;color:#fff;padding:12px 20px;text-decoration:none;border-radius:999px;font-weight:700;font-size:13px;">Quick social post (Facebook)</a></p>
 <p style="margin:0 0 12px;"><img src="{{BASE_URL}}/promo/elion-story-1.png" alt="E Lion family update photo" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #bfdbfe;margin:0 auto;" /></p>
@@ -1443,6 +1470,24 @@ Main links:
 - Pandora: https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq
 - Family Feud compilation: https://www.youtube.com/watch?v=_zEtolAmKmI
 - Christ, My Best Friend (memoir preview): https://www.youtube.com/watch?v=bi8JI4A4lcY
+- HebrewFest with The Highway Band: https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s
+- Campfire after HebrewFest: https://www.youtube.com/watch?v=GbOQlyGjh04
+
+Israel appearances (highlights):
+- https://www.youtube.com/watch?v=4lKsLd9D11k&t=16s
+- https://www.youtube.com/watch?v=7vYZRiulzHo&t=3s
+- https://www.youtube.com/watch?v=urBRI8N9z-Q
+- https://www.youtube.com/watch?v=sN67fJEhhOI&t=7s
+- https://www.youtube.com/watch?v=JB6fgkBmt_8
+- https://www.youtube.com/watch?v=0RwB6cXkJ-A
+- https://www.youtube.com/watch?v=ci_NsMejsYM
+- https://www.youtube.com/watch?v=H1ue2MCDGmg
+- https://www.youtube.com/watch?v=9H_yrYzDlqU&t=30s
+- https://www.youtube.com/watch?v=I6QTXH1-ffc
+- https://www.youtube.com/watch?v=g6GB_KzQZII
+
+Family moment video:
+- Amber wedding rap (my sister Amber’s wedding): https://www.youtube.com/watch?v=32Ky2qZkmnw
 
 P48X book:
 - Apple Books: https://books.apple.com/us/book/p48x/id6746675717
@@ -1495,6 +1540,12 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <p style="margin:0 0 14px;">Quick life update: I now have <strong>100+ songs</strong> out, the <strong>P48X book</strong> is published, the <strong>P48X audiobook</strong> is out, and I posted my memoir preview <strong>Christ, My Best Friend</strong> on YouTube.</p>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="color:#c2410c;">elionmusic.com</a> · <a href="https://www.elionmusic.com/presskit/" style="color:#c2410c;">Press kit</a> · <a href="https://www.elionmusic.com/player/" style="color:#c2410c;">Player</a> · <a href="https://www.elionmusic.com/promo/" style="color:#c2410c;">Song promos</a> · <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#c2410c;">Spotify</a> · <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="color:#c2410c;">Apple Music</a> · <a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="color:#c2410c;">Pandora</a></p>
 <p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=bi8JI4A4lcY" style="color:#c2410c;">Christ, My Best Friend (YouTube)</a> · <a href="https://www.youtube.com/watch?v=_zEtolAmKmI" style="color:#c2410c;">Family Feud compilation</a></p>
+<p style="margin:0 0 12px;">HebrewFest + campfire: <a href="https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s" style="color:#c2410c;">HebrewFest</a> · <a href="https://www.youtube.com/watch?v=GbOQlyGjh04" style="color:#c2410c;">Campfire after show</a></p>
+<p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">Israel appearances</p>
+<p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=4lKsLd9D11k&t=16s" style="color:#c2410c;">1</a> · <a href="https://www.youtube.com/watch?v=7vYZRiulzHo&t=3s" style="color:#c2410c;">2</a> · <a href="https://www.youtube.com/watch?v=urBRI8N9z-Q" style="color:#c2410c;">3</a> · <a href="https://www.youtube.com/watch?v=sN67fJEhhOI&t=7s" style="color:#c2410c;">4</a></p>
+<p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=JB6fgkBmt_8" style="color:#c2410c;">5</a> · <a href="https://www.youtube.com/watch?v=0RwB6cXkJ-A" style="color:#c2410c;">6</a> · <a href="https://www.youtube.com/watch?v=ci_NsMejsYM" style="color:#c2410c;">7</a> · <a href="https://www.youtube.com/watch?v=H1ue2MCDGmg" style="color:#c2410c;">8</a></p>
+<p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=9H_yrYzDlqU&t=30s" style="color:#c2410c;">9</a> · <a href="https://www.youtube.com/watch?v=I6QTXH1-ffc" style="color:#c2410c;">10</a> · <a href="https://www.youtube.com/watch?v=g6GB_KzQZII" style="color:#c2410c;">11</a></p>
+<p style="margin:0 0 12px;">Family moment: <a href="https://www.youtube.com/watch?v=32Ky2qZkmnw" style="color:#c2410c;">Amber wedding rap</a></p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">P48X book + audiobook</p>
 <p style="margin:0 0 12px;"><a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#c2410c;">Apple Books</a> · <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#c2410c;">Barnes &amp; Noble</a> · <a href="https://www.smashwords.com/books/view/1780908" style="color:#c2410c;">Smashwords</a> · <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#c2410c;">Kobo eBook</a></p>
 <p style="margin:0 0 12px;"><a href="https://www.kobo.com/us/en/audiobook/p48x-extreme-spiritual-fitness?sId=cc5e8a83-bdfa-48d0-ab84-3060a079e42b&ssId=jkhyG7sQSLoPfjDtXgmYj&cPos=1" style="color:#c2410c;">Kobo audiobook</a> · <a href="https://www.storytel.com/tv/books/p48x-extreme-spiritual-fitness-your-guide-to-complete-spiritual-health-13769448" style="color:#c2410c;">Storytel</a> · <a href="https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4" style="color:#c2410c;">Apple Books audiobook</a></p>

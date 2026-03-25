@@ -210,10 +210,16 @@ export async function POST(request: NextRequest) {
       console.error("getTemplate error:", e);
       return json500("Template error: " + (e instanceof Error ? e.message : "unknown"));
     }
-    const baseUrl =
+    const baseUrlRaw =
       process.env.NEXT_PUBLIC_APP_URL?.trim() ||
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
-    const htmlWithImages = html.replace(/\{\{BASE_URL\}\}/g, baseUrl ?? "http://localhost:3000");
+    let baseUrlOrigin = baseUrlRaw;
+    try {
+      baseUrlOrigin = new URL(baseUrlRaw).origin;
+    } catch {
+      // Keep raw if it already looks like an origin with scheme.
+    }
+    const htmlWithImages = html.replace(/\{\{BASE_URL\}\}/g, baseUrlOrigin);
 
     const resend = new Resend(apiKey);
     const results: { to: string; ok: boolean; id?: string; error?: string }[] = [];

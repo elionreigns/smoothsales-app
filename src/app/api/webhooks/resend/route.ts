@@ -15,6 +15,11 @@ import { Webhook } from "svix";
 const FROM_EMAIL =
   process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
 const OPEN_ALERT_TO = process.env.OPEN_ALERT_TO?.trim() || "elionreigns@gmail.com";
+const EXEMPT_ALERT_RECIPIENTS = new Set(
+  ["elionreigns@gmail.com", "coralcrowntechnologies@gmail.com", OPEN_ALERT_TO]
+    .map((s) => String(s || "").trim().toLowerCase())
+    .filter(Boolean)
+);
 
 type ResendWebhookEvent = {
   type: string;
@@ -100,6 +105,12 @@ export async function POST(request: NextRequest) {
       const templateId = getTemplateFromTags(data.tags);
       const timeStr = formatTime(created_at);
       console.log("[Resend] email.opened", data.email_id, who, subject);
+
+      // Prevent "opened your alert email" notification loops (and hide your own opens).
+      const openedByExempt = to.some((addr) => EXEMPT_ALERT_RECIPIENTS.has(String(addr || "").trim().toLowerCase()));
+      if (openedByExempt) {
+        return NextResponse.json({ received: true });
+      }
 
       const apiKey = process.env.RESEND_API_KEY?.trim();
       if (apiKey && OPEN_ALERT_TO) {

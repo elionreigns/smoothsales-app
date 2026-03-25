@@ -67,16 +67,70 @@ LEADER_HINTS = (
     "org",
 )
 
+EMAIL_RE = re.compile(r"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$", re.IGNORECASE)
+
+# Keep this conservative: block only obviously disposable / no-reply / test-like emails.
+DISPOSABLE_DOMAINS = {
+    "mailinator.com",
+    "guerrillamail.com",
+    "10minutemail.com",
+    "tempmail.com",
+    "yopmail.com",
+    "trashmail.com",
+    "fakeinbox.com",
+    "getairmail.com",
+    "spamgourmet.com",
+    "maildrop.cc",
+    "guerrillamailblock.com",
+}
+NO_REPLY_KEYWORDS = {"no-reply", "noreply", "do-not-reply", "donotreply", "no_reply"}
+SUSPICIOUS_LOCAL_PART_PREFIXES = {"test", "spam", "info", "support", "sales", "contact", "admin", "webmaster", "help", "hello"}
+
+
+def looks_spammy_email(email: str) -> bool:
+    email_l = email.lower().strip()
+    if email_l in {"", "unknown"}:
+        return True
+    if "@" not in email_l:
+        return True
+
+    if any(k in email_l.split("@", 1)[0] for k in NO_REPLY_KEYWORDS):
+        return True
+
+    local, domain = email_l.split("@", 1)
+    if domain.startswith(".") or domain.endswith("."):
+        return True
+    if "_" in domain:
+        return True
+    if domain in DISPOSABLE_DOMAINS:
+        return True
+
+    # Basic "fake/test" filtering: short/empty-ish local parts and common test strings.
+    if len(local) < 3:
+        return True
+    if local.startswith(tuple(SUSPICIOUS_LOCAL_PART_PREFIXES)):
+        # Allow common legitimate cases from real domains (gmail/yahoo/etc.) by only blocking if domain is not a personal provider.
+        personal_providers = ("gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "aol.com", "live.com")
+        if domain not in personal_providers:
+            return True
+
+    # Reject email patterns with consecutive dots in domain or local.
+    if ".." in email_l:
+        return True
+
+    return False
+
 
 def normalize_email(raw: Optional[str]) -> str:
     if not raw:
         return ""
     email = raw.strip().lower()
     email = email.strip("<>;,")
-    if "@" not in email:
+    email = email.replace("mailto:", "")
+    email = re.sub(r"\s+", "", email)
+    if not EMAIL_RE.match(email):
         return ""
-    # Very light sanity filter.
-    if " " in email or email.endswith("@") or email.startswith("@"):
+    if looks_spammy_email(email):
         return ""
     return email
 

@@ -24,7 +24,33 @@ MASTER = ROOT / "contacts" / "leads" / "elion-master-contacts.csv"
 
 def norm_email(v: str) -> str:
     v = (v or "").strip().lower()
-    return v if "@" in v else ""
+    v = v.strip("<>;,")
+    v = v.replace("mailto:", "")
+    v = re.sub(r"\s+", "", v)
+    if not re.match(r"^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$", v):
+        return ""
+    local, domain = v.split("@", 1)
+    if domain in {
+        "mailinator.com",
+        "guerrillamail.com",
+        "10minutemail.com",
+        "tempmail.com",
+        "yopmail.com",
+        "trashmail.com",
+        "fakeinbox.com",
+        "getairmail.com",
+        "spamgourmet.com",
+        "maildrop.cc",
+    }:
+        return ""
+    if "no-reply" in local or "noreply" in local or "do-not-reply" in local:
+        return ""
+    if len(local) < 3:
+        # Avoid accidentally keeping weird/placeholder addresses.
+        return ""
+    if ".." in v:
+        return ""
+    return v
 
 
 def norm_phone(v: str) -> str:
@@ -32,8 +58,8 @@ def norm_phone(v: str) -> str:
     return d if len(d) >= 7 else ""
 
 
-def guess_segment(name: str, org: str) -> str:
-    hay = f"{name} {org}".lower()
+def guess_segment(name: str, org: str, title: str = "") -> str:
+    hay = f"{name} {org} {title}".lower()
     hints = ("pastor", "church", "ministry", "bishop", "chaplain", "director", "president")
     return "leaders" if any(h in hay for h in hints) else "laymen"
 
@@ -59,7 +85,7 @@ def parse_csv(path: Path) -> List[Dict[str, str]]:
         org = (r.get("company") or r.get("Company") or r.get("organization") or r.get("nameOfOrganization") or "").strip()
         email = norm_email(r.get("email") or r.get("Email") or r.get("E-mail Address") or "")
         phone = norm_phone(r.get("phone") or r.get("Phone") or r.get("mobile") or r.get("Mobile Phone") or "")
-        if not email and not phone:
+        if not email:
             continue
         out.append(
             {
@@ -67,7 +93,7 @@ def parse_csv(path: Path) -> List[Dict[str, str]]:
                 "name": name,
                 "nameOfOrganization": org,
                 "phone": phone,
-                "segment": guess_segment(name, org),
+                "segment": guess_segment(name, org, r.get("title") or r.get("Job Title") or ""),
                 "source": f"phone-export:{path.name}",
                 "status": "unsent",
             }
@@ -85,6 +111,7 @@ def parse_vcf(path: Path) -> List[Dict[str, str]]:
         lines = [ln.strip() for ln in card.splitlines() if ln.strip()]
         name = ""
         org = ""
+        title = ""
         email = ""
         phone = ""
         for ln in lines:
@@ -93,11 +120,13 @@ def parse_vcf(path: Path) -> List[Dict[str, str]]:
                 name = ln.split(":", 1)[1].strip()
             elif u.startswith("ORG:"):
                 org = ln.split(":", 1)[1].strip()
+            elif u.startswith("TITLE:"):
+                title = ln.split(":", 1)[1].strip()
             elif "EMAIL" in u and ":" in ln and not email:
                 email = norm_email(ln.split(":", 1)[1].strip())
             elif "TEL" in u and ":" in ln and not phone:
                 phone = norm_phone(ln.split(":", 1)[1].strip())
-        if not email and not phone:
+        if not email:
             continue
         out.append(
             {
@@ -105,7 +134,7 @@ def parse_vcf(path: Path) -> List[Dict[str, str]]:
                 "name": name,
                 "nameOfOrganization": org,
                 "phone": phone,
-                "segment": guess_segment(name, org),
+                "segment": guess_segment(name, org, title),
                 "source": f"phone-export:{path.name}",
                 "status": "unsent",
             }

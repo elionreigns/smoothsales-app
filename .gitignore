@@ -23,3 +23,9 @@ yarn-error.log*
 # ide
 .idea
 .vscode
+
+# Local lead lists / exports (do not commit)
+contacts/**/*.csv
+contacts/**/*.vcf
+contacts/**/*.vcard
+contacts/**/*.json
