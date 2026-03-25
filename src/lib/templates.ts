@@ -1318,7 +1318,7 @@ elionmusic.com | coralcrowntechnologies@gmail.com | (808) 393-0153`,
 </div>`,
   },
   "elion-leaders": {
-    subject: "Pastors & leaders: book E Lion + share P48X (new audiobook, 100+ songs, Prayer Authority tools)",
+    subject: "Leaders & pastors: P48X + PrayerAuthority for your people (and setlist options for your next event)",
     text: `Hi {{Name}},
 
 I hope you're doing well. I'm reaching out with a real life and ministry update as Eric Hans Schaefer / E Lion, and I wanted to share what God has been helping me build.
@@ -1392,6 +1392,8 @@ If this resonates with your church or organization, I'd love to serve your peopl
 - P48X book table after the event
 - QR sign-up station and live PrayerAuthority demo
 
+If you want the fastest next step, reply with your venue and date(s). I will send 3 setlist options, and I will also include a simple plan to connect P48X + PrayerAuthority for your group.
+
 All of my songs are ready for you to pick from. What kind of gathering are you planning, and what energy do you want people to leave with? If you’d like, I can also DJ E Lion’s catalog on a Bumpboxx, or I can speak about my P48X book and audiobook and connect it to PrayerAuthority tools.
 
 Setlist planning:
@@ -1415,6 +1417,14 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <div style="padding:26px 24px;color:#0f172a;line-height:1.65;">
 <p style="margin:0 0 14px;">Hi {{Name}},</p>
 <p style="margin:0 0 14px;">I'm sending a quick personal + ministry update as <strong>Eric Hans Schaefer (E Lion)</strong>. God has helped me release a lot recently: <strong>100+ songs</strong>, the <strong>P48X book</strong>, a new <strong>P48X audiobook</strong>, and multiple Prayer Authority tools for believers.</p>
+
+<div style="margin:18px 0 18px;border-radius:18px;border:2px solid #93c5fd;background:linear-gradient(145deg,rgba(29,78,216,0.10) 0%,rgba(59,130,246,0.10) 100%);padding:16px 16px;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#1d4ed8;">Quick reply</p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.55;color:#0f172a;">What venue are you planning, and what date(s) are you considering? Reply with those details, and I will send 3 setlist options plus a simple plan to connect P48X + PrayerAuthority for your group.</p>
+<p style="margin:0 0 8px;">
+<a href="mailto:elionreigns@gmail.com?subject=E%20Lion%20%E2%80%93%20Setlist%20and%20event%20dates" style="display:inline-block;background:#0f172a;color:#fff;padding:12px 18px;text-decoration:none;border-radius:999px;font-weight:800;font-size:13px;">Reply with venue + date(s)</a>
+</p>
+</div>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Book links</p>
 <p style="margin:0 0 12px;"><a href="https://books.apple.com/us/book/p48x/id6746675717" style="color:#1d4ed8;">Apple Books</a> · <a href="https://www.barnesandnoble.com/w/p48x-eric-schaefer/1147510577?ean=2940181543621" style="color:#1d4ed8;">Barnes &amp; Noble</a> · <a href="https://www.smashwords.com/books/view/1780908" style="color:#1d4ed8;">Smashwords</a> · <a href="https://www.kobo.com/us/en/ebook/p48x" style="color:#1d4ed8;">Kobo eBook</a></p>
 <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#1d4ed8;text-transform:uppercase;">Audiobook links</p>
@@ -1453,12 +1463,14 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 </div>`,
   },
   "elion-laymen": {
-    subject: "I need your support this week: grab P48X on Apple Books + audiobook, follow my music, and share",
+    subject: "A 60-second favor: P48X + audiobook + PrayerAuthority tools (one click to start)",
     text: `Hi {{Name}},
 
 Hope you're doing well. I wanted to share a personal update and invite you to check out what I've been building lately.
 
 I've now got 100+ songs out on major platforms, my P48X book is published, and the audiobook is out too. I also uploaded "Christ, My Best Friend" (my memoir) on YouTube for now while I finish the wider release.
+
+If you want the easiest next step, would you take this three-part path in order? First, buy P48X on Apple Books. Second, get the audiobook. Third, create your PrayerAuthority account so the tools are ready for you right away.
 
 Main links:
 - Website: https://www.elionmusic.com
@@ -1538,6 +1550,18 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <div style="padding:26px 24px;color:#431407;line-height:1.65;">
 <p style="margin:0 0 14px;">Hi {{Name}},</p>
 <p style="margin:0 0 14px;">Quick life update: I now have <strong>100+ songs</strong> out, the <strong>P48X book</strong> is published, the <strong>P48X audiobook</strong> is out, and I posted my memoir preview <strong>Christ, My Best Friend</strong> on YouTube.</p>
+
+<div style="margin:18px 0 18px;border-radius:18px;border:2px solid rgba(194,65,12,0.25);background:linear-gradient(145deg,rgba(234,88,12,0.10) 0%,rgba(251,191,36,0.10) 100%);padding:16px 16px;text-align:center;">
+<p style="margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#b45309;">Start here (60 seconds)</p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.55;color:#431407;">If you want the easiest next step, would you take this three-part path? Buy P48X, then get the audiobook, then create your PrayerAuthority account so the tools are ready for you.</p>
+<p style="margin:0 0 8px;">
+<a href="https://books.apple.com/us/book/p48x/id6746675717" style="display:inline-block;background:#c2410c;color:#fff;padding:12px 18px;text-decoration:none;border-radius:999px;font-weight:800;font-size:13px;margin:0 6px 8px 0;">Buy P48X</a>
+<a href="https://books.apple.com/us/audiobook/p48x-extreme-spiritual-fitness-your-guide-to-complete/id1885081198?uo=4" style="display:inline-block;background:#7c2d12;color:#fff;padding:12px 18px;text-decoration:none;border-radius:999px;font-weight:800;font-size:13px;margin:0 6px 8px 0;">Get audiobook</a>
+</p>
+<p style="margin:0;">
+<a href="https://www.prayerauthority.com/prayers/register.php" style="display:inline-block;background:linear-gradient(145deg,#ea580c 0%,#c2410c 100%);color:#fff;padding:14px 22px;text-decoration:none;border-radius:999px;font-weight:900;font-size:13px;">Create PrayerAuthority Account</a>
+</p>
+</div>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com" style="color:#c2410c;">elionmusic.com</a> · <a href="https://www.elionmusic.com/presskit/" style="color:#c2410c;">Press kit</a> · <a href="https://www.elionmusic.com/player/" style="color:#c2410c;">Player</a> · <a href="https://www.elionmusic.com/promo/" style="color:#c2410c;">Song promos</a> · <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="color:#c2410c;">Spotify</a> · <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="color:#c2410c;">Apple Music</a> · <a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="color:#c2410c;">Pandora</a></p>
 <p style="margin:0 0 12px;"><a href="https://www.youtube.com/watch?v=bi8JI4A4lcY" style="color:#c2410c;">Christ, My Best Friend (YouTube)</a> · <a href="https://www.youtube.com/watch?v=_zEtolAmKmI" style="color:#c2410c;">Family Feud compilation</a></p>
 <p style="margin:0 0 12px;">HebrewFest + campfire: <a href="https://www.youtube.com/watch?v=zz0oX6FIcPU&t=22s" style="color:#c2410c;">HebrewFest</a> · <a href="https://www.youtube.com/watch?v=GbOQlyGjh04" style="color:#c2410c;">Campfire after show</a></p>
