@@ -38,6 +38,7 @@ LAYMEN_SENT = LEADS_DIR / "elion-laymen-sent.csv"
 LEADERS_UNSENT = LEADS_DIR / "elion-leaders-unsent.csv"
 LAYMEN_UNSENT = LEADS_DIR / "elion-laymen-unsent.csv"
 PHONE_ONLY = LEADS_DIR / "elion-phone-only.csv"
+MASTER_CONTACTS = LEADS_DIR / "elion-master-contacts.csv"
 
 
 LEADER_HINTS = (
@@ -303,12 +304,29 @@ def main() -> None:
         sorted(phone_only, key=lambda x: (x["name"].lower(), x["phone"])),
         ["name", "phone", "nameOfOrganization", "segment", "source"],
     )
+    write_csv(
+        MASTER_CONTACTS,
+        [
+            {
+                "email": lead.email,
+                "name": lead.name,
+                "nameOfOrganization": lead.name_of_organization,
+                "phone": lead.phone,
+                "segment": lead.segment,
+                "source": lead.source,
+                "status": "unsent",
+            }
+            for lead in sorted(unsent, key=lambda x: (x.segment, x.name.lower(), x.email))
+        ],
+        ["email", "name", "nameOfOrganization", "phone", "segment", "source", "status"],
+    )
 
     print(f"Total unique emails: {len(by_email)}")
     print(f"Suppressed sent emails: {len(sent_emails)}")
     print(f"Leaders unsent: {len(leaders)} -> {LEADERS_UNSENT}")
     print(f"Laymen unsent: {len(laymen)} -> {LAYMEN_UNSENT}")
     print(f"Phone-only queue: {len(phone_only)} -> {PHONE_ONLY}")
+    print(f"Master unsent CSV: {len(unsent)} -> {MASTER_CONTACTS}")
 
 
 if __name__ == "__main__":

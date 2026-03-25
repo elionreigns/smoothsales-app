@@ -108,6 +108,8 @@ To improve contact quality:
   - `segment` (`leaders` or `laymen`)
 - Merge with Rolodex SQLite rows, dedupe by email then phone
 
+Important: this workflow currently requires a manual export step from your phone/Phone Link UI. The automation here can ingest the export once it exists on disk, but cannot directly click through Phone Link UI.
+
 ## 8) Immediate Next Actions
 
 1. Finalize `leaders` and `laymen` templates (done in code).
@@ -116,6 +118,12 @@ To improve contact quality:
 4. Review inbox placement + spam score indicators.
 5. Launch small batch and monitor failures.
 6. Auto-move sent addresses from unsent list after successful send.
+
+Current generated files:
+- `contacts/leads/elion-master-contacts.csv`
+- `contacts/leads/elion-leaders-unsent.csv`
+- `contacts/leads/elion-laymen-unsent.csv`
+- `contacts/leads/elion-phone-only.csv`
 
 ## 9) Success Metrics
 
