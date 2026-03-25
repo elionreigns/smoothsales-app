@@ -212,7 +212,9 @@ export async function POST(request: NextRequest) {
     }
     const baseUrlRaw =
       process.env.NEXT_PUBLIC_APP_URL?.trim() ||
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+      // Hard fallback for production if VERCEL_URL isn't present for some reason.
+      "https://smoothsales-app.vercel.app";
     let baseUrlOrigin = baseUrlRaw;
     try {
       baseUrlOrigin = new URL(baseUrlRaw).origin;
