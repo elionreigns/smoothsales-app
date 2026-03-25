@@ -1,4 +1,6 @@
 import { getTemplate, substitutePlaceholders, type TemplateId } from "@/lib/templates";
+import { getSmsTeaser } from "@/lib/sms";
+import { sanitizeStandaloneName, sanitizeStandaloneOrg } from "@/lib/standalone-query";
 
 function isTemplateId(id: string): id is TemplateId {
   // Runtime guard: TemplateId is a union; we rely on getTemplate throwing if unknown.
@@ -33,8 +35,11 @@ export default function NewsletterTemplatePage({
     );
   }
 
-  const name = typeof searchParams?.name === "string" ? searchParams?.name : "there";
-  const org = typeof searchParams?.org === "string" ? searchParams?.org : "";
+  const name = sanitizeStandaloneName(
+    typeof searchParams?.name === "string" ? searchParams?.name : undefined,
+    "there",
+  );
+  const org = sanitizeStandaloneOrg(typeof searchParams?.org === "string" ? searchParams?.org : undefined);
 
   let t: { subject: string; html: string; text: string };
   try {
@@ -58,6 +63,12 @@ export default function NewsletterTemplatePage({
     Name: name,
     "Name of Organization": org,
   });
+
+  const teaser = getSmsTeaser(templateIdRaw);
+  const landingParams = new URLSearchParams({ access, name });
+  if (org) landingParams.set("org", org);
+  const landingUrl = `${baseUrlOrigin.replace(/\/$/, "")}/newsletter/${encodeURIComponent(templateIdRaw)}?${landingParams.toString()}`;
+  const smsBody = `${teaser} ${landingUrl}`;
 
   // Render as a standalone HTML "landing page" for SMS sharing.
   return (
@@ -101,6 +112,50 @@ export default function NewsletterTemplatePage({
               </a>
             </div>
           </div>
+        </div>
+
+        <div
+          style={{
+            background: "rgba(16,185,129,0.12)",
+            border: "1px solid rgba(16,185,129,0.35)",
+            borderRadius: 18,
+            padding: "16px 18px",
+            marginBottom: 16,
+            color: "#ecfdf5",
+            fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial",
+          }}
+        >
+          <div style={{ fontWeight: 900, fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10, color: "#6ee7b7" }}>
+            SMS preview (what recipients see)
+          </div>
+          <p style={{ margin: "0 0 10px", fontSize: 14, lineHeight: 1.65, color: "#d1fae5" }}>{teaser}</p>
+          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6ee7b7", marginBottom: 6 }}>
+            Standalone link in the text
+          </div>
+          <p style={{ margin: "0 0 12px", wordBreak: "break-all", fontSize: 13, lineHeight: 1.5 }}>
+            <a href={landingUrl} style={{ color: "#a7f3d0" }}>
+              {landingUrl}
+            </a>
+          </p>
+          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6ee7b7", marginBottom: 6 }}>
+            Full SMS (copy)
+          </div>
+          <pre
+            style={{
+              margin: 0,
+              padding: "12px 14px",
+              background: "rgba(0,0,0,0.35)",
+              borderRadius: 12,
+              fontSize: 12,
+              lineHeight: 1.55,
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+              color: "#e2e8f0",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            {smsBody}
+          </pre>
         </div>
 
         <style>{`
