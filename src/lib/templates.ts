@@ -1513,7 +1513,7 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 </div>`,
   },
   "elion-laymen": {
-    subject: "Personal update: P48X, audiobook, HOPE Weekends, and the tools I built (can you support one step today?)",
+    subject: "Look what I made for you: P48X + audiobook + HOPE Weekends + tools (will you be blessed today?)",
     text: `Hi {{Name}},
 
 Hope you're doing well. I wanted to share a full personal newsletter update and invite you to see what I’ve been building lately.
@@ -1579,20 +1579,25 @@ Prayer Authority tools I’m actively building and refining:
 - Battle Sword: https://www.prayerauthority.com/battlesword/
 - David vs Goliath game: https://www.prayerauthority.com/prayers/games/davidvsgoliath/
 
-I'm also promoting HOPE Weekends:
-Hospitals · Orphanages · Prisons · Elderly homes
-https://www.prayerauthority.com/hope/
+I’m encouraging believers to join HOPE Weekends (H.O.P.E.)—a simple rhythm of showing up where people are sick, alone, locked away, and forgotten.
+
+H.O.P.E. pillars: Hospitals · Orphanages · Prisons · Elderly homes
+
+Jesus ties mercy to Himself (Matthew 25:31–40), true religion shows up for the overlooked (James 1:27), and hope grows roots when we trust God (Jeremiah 17:7–8).
+
+Start here: https://www.prayerauthority.com/hope/
 
 Personal update: Ashley and I are preparing to try IVF soon. Family is close, we’re still meeting on Sundays, Stella the corgi is still the star, and by God’s grace I’m doing better than ever. My stepdaughter Olivia came out to visit, Bryson is doing well with school/training, and I’m continuing to build practical tools including Temple Transformation and PrayerAuthority apps.
 
 Today's verse that encouraged me: Joshua 8:1 – "Do not be afraid; do not be discouraged."
 
-If you can support me this week, here’s the simplest way:
-1) Purchase P48X on Apple Books
+Look what I made for you—will you be blessed by taking the next step today? Here’s the simplest path:
+1) Buy P48X on Apple Books
 2) Get the audiobook
-3) Follow my Spotify and Apple Music pages
-4) Sign up on PrayerAuthority
-5) Share my press kit with one leader who might want me to speak/perform
+3) Listen to “E Lion Radio” on Pandora (my station)
+4) Follow my Spotify + Apple Music
+5) Create your PrayerAuthority account (so the tools are ready for daily faith)
+6) Share this with one friend who needs encouragement
 
 Much love,
 E Lion (Eric Hans Schaefer)
@@ -1600,7 +1605,7 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:620px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px -18px rgba(194,65,12,0.28),0 8px 22px -8px rgba(0,0,0,0.08);">
 <div style="background:linear-gradient(145deg,#c2410c 0%,#ea580c 55%,#fb923c 100%);color:#fff;padding:30px 26px;border-bottom:4px solid #fdba74;text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;opacity:0.95;">Eric Hans Schaefer (E Lion) Newsletter</p>
-<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.02em;line-height:1.25;text-transform:uppercase;">A personal update: new releases, new tools, and where life is headed</h1>
+<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.02em;line-height:1.25;text-transform:uppercase;">Look what I made for you: P48X + audiobook + HOPE Weekends + the tools I’m building</h1>
 <p style="margin:12px 0 0;font-size:14px;opacity:0.95;">Music, P48X, PrayerAuthority, HOPE Weekends, and practical next steps.</p>
 </div>
 <div style="padding:26px 24px;color:#431407;line-height:1.65;">
@@ -1628,7 +1633,7 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <p style="margin:0 0 12px;">
 <a href="https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA" style="display:inline-block;background:#166534;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Spotify</a>
 <a href="https://music.apple.com/us/artist/e-lion/1111804063" style="display:inline-block;background:#be185d;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Apple Music</a>
-<a href="https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq" style="display:inline-block;background:#1d4ed8;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Pandora</a>
+<a href="https://www.pandora.com/station/play/193699866101160467" style="display:inline-block;background:#1d4ed8;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Pandora Radio</a>
 </p>
 <p style="margin:0 0 12px;">
 <a href="https://www.youtube.com/watch?v=bi8JI4A4lcY" style="display:inline-block;background:#b45309;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">Memoir preview</a>
@@ -1687,13 +1692,16 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <a href="https://www.prayerauthority.com/prayers/games/davidvsgoliath/" style="display:inline-block;background:#1d4ed8;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;margin:0 6px 8px 0;">David vs Goliath game</a>
 </p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:#c2410c;text-transform:uppercase;">HOPE Weekends (simple mercy rhythm)</p>
-<p style="margin:0 0 12px;line-height:1.7;">I’m encouraging believers to adopt a simple rhythm called <strong>H.O.P.E.</strong>: <strong>Hospitals · Orphanages · Prisons · Elderly homes</strong>. It’s a weekly commitment to show up for the overlooked—humble, consistent, face-to-face love.</p>
+<p style="margin:0 0 12px;line-height:1.7;">I’m encouraging believers to adopt a simple rhythm called <strong>H.O.P.E.</strong>: <strong>Hospitals · Orphanages · Prisons · Elderly homes</strong>. It’s not a program—it’s humble, consistent, face-to-face mercy. Jesus ties love to Himself (Matthew 25:31–40), true religion shows up (James 1:27), and hope grows roots (Jeremiah 17:7–8).</p>
 <p style="margin:0 0 14px;line-height:1.7;">
 <a href="https://www.prayerauthority.com/hope/" style="display:inline-block;background:#c2410c;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Learn HOPE Weekends</a>
 <a href="https://www.youtube.com/watch?v=lRd5l_xwPnM" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Hospital freestyle video</a>
 </p>
 <p style="margin:0 0 14px;">Personal note: Ashley and I are preparing to try IVF soon. Family is close, Stella is still the star, and God has kept us moving forward. Today's verse for me was Joshua 8:1 — <strong>"Do not be afraid; do not be discouraged."</strong></p>
-<p style="margin:0 0 14px;">If you can support me this week: please purchase the book on Apple Books, grab the audiobook, follow Spotify + Apple Music, and share my press kit with one leader who might want me to come address their group.</p>
+<p style="margin:0 0 14px;">Look what I made for you—will you be blessed by starting today? Grab P48X + the audiobook, then listen to my radio station on Pandora. If it encourages you, share this with one friend and follow me on Spotify/Apple Music.</p>
+<p style="margin:0 0 14px;">
+<a href="https://www.pandora.com/station/play/193699866101160467" style="display:inline-block;background:#1d4ed8;color:#fff;padding:12px 18px;text-decoration:none;border-radius:999px;font-weight:900;font-size:13px;margin:0 6px 8px 0;">Listen on Pandora Radio</a>
+</p>
 <p style="margin:0 0 10px;font-size:11px;font-weight:900;letter-spacing:0.14em;text-transform:uppercase;color:#c2410c;">All-new snapshots (photos + screenshots)</p>
 <p style="margin:0 0 12px;"><img src="https://www.coralcrownsolutions.com/promo/p48x-cover.png" alt="P48X by Eric Hans Schaefer book cover" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></p>
 <p style="margin:0 0 12px;"><a href="https://www.elionmusic.com/presskit/" style="display:inline-block;text-decoration:none;line-height:0;border-radius:14px;"><img src="https://www.coralcrownsolutions.com/promo/elionmusic-press-kit.jpg" alt="E Lion Music press kit image" width="560" style="display:block;max-width:100%;height:auto;border-radius:14px;border:1px solid #fed7aa;margin:0 auto;" /></a></p>
