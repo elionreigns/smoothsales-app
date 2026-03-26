@@ -30,7 +30,7 @@ Set `SMOOTHSALES_URL` if you prefer, e.g. `SMOOTHSALES_URL=https://smoothsales-a
 
 **Same as Level Up:** Use dedicated scripts that call the deployed app (like `send-levelup-3.js`).
 
-**Templates:** `elion-record-label-mainstream` (Shine BTS), `elion-record-label-christian` (world tour vision).
+**Templates:** `elion-record-label-mainstream` (Behind the Scenes of Shine), `elion-record-label-christian` (world tour vision).
 
 **Requirement:** Deploy the smoothsales app to Vercel so the new template IDs are live. Then run:
 
@@ -45,6 +45,21 @@ node scripts/send-record-label-christian.js https://smoothsales-app.vercel.app
 Or with env: `SMOOTHSALES_URL=https://smoothsales-app.vercel.app node scripts/send-record-label-mainstream.js`
 
 Or from the SmoothSales app UI: **E Lion Music** → **Record label (mainstream)** or **Record label (Christian)** → **Initial** → upload CSV → Send campaign.
+
+## Hawaii Wedding Plans – Contractors & vendors (Oahu)
+
+**Template:** `wedding-contractors` (get featured on Hawaii Wedding Plans; submit form + coralcrowntechnologies@gmail.com).
+
+**Sent:** 120 Oahu vendors (20 per category): special animals to venues, videographers, venues, entertainment, pastors & rabbis, wedding themes.
+
+**CSV:** `contacts/hawaii-wedding-plans-oahu-vendors-120.csv`
+
+**To send again or to a new list:**
+```bash
+node scripts/send-campaign.js https://smoothsales-app.vercel.app wedding-contractors contacts/hawaii-wedding-plans-oahu-vendors-120.csv
+```
+
+Or from the app: **Hawaii Wedding Plans** → **Contractors & vendors** → upload CSV → Send campaign.
 
 ## Bounces
 

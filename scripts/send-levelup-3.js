@@ -7,6 +7,7 @@
  *   node scripts/send-levelup-3.js https://your-app.vercel.app
  *   node scripts/send-levelup-3.js https://your-app.vercel.app "in 24 hours"   # schedule for 24h from now
  *   SCHEDULED_AT="in 24 hours" node scripts/send-levelup-3.js https://your-app.vercel.app
+ *   node scripts/send-levelup-3.js https://your-app.vercel.app null contacts/levelup-4.csv   # use different CSV
  *
  * Requires: RESEND_API_KEY set in Vercel (the API runs on the server). This script only
  * calls your deployed app's /api/send-campaign endpoint.
@@ -19,8 +20,13 @@ const baseUrl =
   process.env.SMOOTHSALES_URL ||
   process.argv[2] ||
   "http://localhost:3000";
-const scheduledAt = process.env.SCHEDULED_AT || process.argv[3] || null;
-const csvPath = path.join(__dirname, "..", "contacts", "levelup-3.csv");
+const rawScheduled = process.env.SCHEDULED_AT || process.argv[3];
+const scheduledAt =
+  rawScheduled && String(rawScheduled).trim().toLowerCase() !== "null" ? String(rawScheduled).trim() : null;
+const csvArg = process.env.LEVELUP_CSV || process.argv[4];
+const csvPath = csvArg
+  ? path.resolve(path.dirname(__dirname), csvArg)
+  : path.join(__dirname, "..", "contacts", "levelup-3.csv");
 
 if (!fs.existsSync(csvPath)) {
   console.error("CSV not found:", csvPath);

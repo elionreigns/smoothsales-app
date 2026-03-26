@@ -24,6 +24,9 @@ yarn-error.log*
 .idea
 .vscode
 
+# typescript build info (generated)
+*.tsbuildinfo
+
 # Local lead lists / exports (do not commit)
 contacts/**/*.csv
 contacts/**/*.vcf
