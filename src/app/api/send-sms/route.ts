@@ -9,6 +9,7 @@ type Body = {
   name?: string;
   org?: string;
   dryRun?: boolean;
+  fromOverride?: string;
 };
 
 function normalizeNumber(n: string): string {
@@ -70,7 +71,8 @@ export async function POST(request: NextRequest) {
 
   const apiKey = process.env.TEXTING_API_KEY?.trim() || "";
   const apiSecret = process.env.TEXTING_API_SECRET?.trim() || "";
-  const from = process.env.TEXTING_FROM?.trim() || "test";
+  const fromEnv = process.env.TEXTING_FROM?.trim() || "test";
+  const fromOverride = typeof body.fromOverride === "string" ? body.fromOverride.trim() : "";
   const providerUrl = process.env.TEXTING_BASE_URL?.trim() || "https://www.thetexting.com/rest/sms/json/Message/Send";
   if (!apiKey || !apiSecret) {
     return NextResponse.json(
@@ -81,37 +83,59 @@ export async function POST(request: NextRequest) {
 
   const results: Array<{ to: string; id?: string; error?: string; providerResponse?: unknown }> = [];
   for (const to of numbers) {
+    const senderCandidates = [fromOverride, fromEnv, "test", "sandbox", ""].filter((v, i, arr) => v !== "" ? arr.indexOf(v) === i : i === arr.indexOf(v));
+    let delivered = false;
+    let lastError = "";
     try {
-      const qs = new URLSearchParams({
-        api_key: apiKey,
-        api_secret: apiSecret,
-        from,
-        to: to.replace(/^\+/, ""),
-        text: messageBody,
-      });
-      const res = await fetch(`${providerUrl}?${qs.toString()}`, { method: "GET" });
-      const text = await res.text();
-      let parsed: unknown = text;
-      try {
-        parsed = JSON.parse(text);
-      } catch {
-        // keep raw response string
+      for (const sender of senderCandidates) {
+        const qs = new URLSearchParams({
+          api_key: apiKey,
+          api_secret: apiSecret,
+          to: to.replace(/^\+/, ""),
+          text: messageBody,
+        });
+        if (sender) qs.set("from", sender);
+
+        const res = await fetch(`${providerUrl}?${qs.toString()}`, { method: "GET" });
+        const text = await res.text();
+        let parsed: unknown = text;
+        try {
+          parsed = JSON.parse(text);
+        } catch {
+          // keep raw response string
+        }
+        if (!res.ok) {
+          lastError = `Provider HTTP ${res.status}: ${text}`;
+          continue;
+        }
+
+        const responseObj = parsed as {
+          id?: string;
+          message_id?: string;
+          status?: string | number;
+          Status?: string | number;
+          errors?: unknown;
+          ErrorMessage?: string;
+        };
+        const id = responseObj?.message_id || responseObj?.id;
+        const statusValue = String(responseObj?.status ?? responseObj?.Status ?? "").toLowerCase();
+        const hasError =
+          Boolean(responseObj?.errors) ||
+          Boolean(responseObj?.ErrorMessage) ||
+          statusValue === "error" ||
+          statusValue === "1";
+
+        if (!hasError || id) {
+          results.push({ to, id, providerResponse: { senderTried: sender || "(omitted)", raw: parsed } });
+          delivered = true;
+          break;
+        }
+        lastError = typeof parsed === "string" ? parsed : JSON.stringify(parsed);
       }
-      if (!res.ok) {
-        throw new Error(`Provider HTTP ${res.status}: ${text}`);
+
+      if (!delivered) {
+        throw new Error(lastError || "Send failed");
       }
-      const responseObj = parsed as { id?: string; message_id?: string; status?: string | number; Status?: string | number; errors?: unknown; ErrorMessage?: string };
-      const id = responseObj?.message_id || responseObj?.id;
-      const statusValue = String(responseObj?.status ?? responseObj?.Status ?? "").toLowerCase();
-      const hasError =
-        Boolean(responseObj?.errors) ||
-        Boolean(responseObj?.ErrorMessage) ||
-        statusValue === "error" ||
-        statusValue === "1";
-      if (hasError && !id) {
-        throw new Error(typeof parsed === "string" ? parsed : JSON.stringify(parsed));
-      }
-      results.push({ to, id, providerResponse: parsed });
     } catch (e) {
       results.push({ to, error: e instanceof Error ? e.message : String(e) });
     }
