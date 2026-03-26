@@ -100,9 +100,14 @@ export async function POST(request: NextRequest) {
       if (!res.ok) {
         throw new Error(`Provider HTTP ${res.status}: ${text}`);
       }
-      const responseObj = parsed as { id?: string; message_id?: string; status?: string; errors?: unknown };
+      const responseObj = parsed as { id?: string; message_id?: string; status?: string | number; Status?: string | number; errors?: unknown; ErrorMessage?: string };
       const id = responseObj?.message_id || responseObj?.id;
-      const hasError = Boolean(responseObj?.errors) || String(responseObj?.status || "").toLowerCase() === "error";
+      const statusValue = String(responseObj?.status ?? responseObj?.Status ?? "").toLowerCase();
+      const hasError =
+        Boolean(responseObj?.errors) ||
+        Boolean(responseObj?.ErrorMessage) ||
+        statusValue === "error" ||
+        statusValue === "1";
       if (hasError && !id) {
         throw new Error(typeof parsed === "string" ? parsed : JSON.stringify(parsed));
       }
