@@ -57,6 +57,15 @@ function getTemplateFromTags(tags: ResendWebhookEvent["data"]["tags"]): string {
   return (tags as Record<string, string>).template_id ?? (tags as Record<string, string>).category ?? "—";
 }
 
+function getBaseFromTags(tags: ResendWebhookEvent["data"]["tags"]): string | null {
+  if (!tags) return null;
+  if (Array.isArray(tags)) {
+    const t = tags.find((x) => x.name === "campaign_base");
+    return t?.value ?? null;
+  }
+  return (tags as Record<string, string>).campaign_base ?? null;
+}
+
 function formatTime(iso: string | undefined): string {
   if (!iso) return "—";
   try {
@@ -103,6 +112,7 @@ export async function POST(request: NextRequest) {
       const who = to.length ? to.join(", ") : "unknown";
       const subject = typeof data.subject === "string" ? data.subject : "(no subject)";
       const templateId = getTemplateFromTags(data.tags);
+      const baseId = getBaseFromTags(data.tags);
       const timeStr = formatTime(created_at);
       console.log("[Resend] email.opened", data.email_id, who, subject);
 
@@ -110,6 +120,26 @@ export async function POST(request: NextRequest) {
       const openedByExempt = to.some((addr) => EXEMPT_ALERT_RECIPIENTS.has(String(addr || "").trim().toLowerCase()));
       if (openedByExempt) {
         return NextResponse.json({ received: true });
+      }
+
+      // Persist open status for follow-up suppression.
+      if (baseId) {
+        try {
+          const { markOpened } = await import("@/lib/followups-store");
+          await Promise.all(
+            to.map((addr) =>
+              markOpened({
+                baseTemplateId: baseId,
+                email: String(addr || "").trim().toLowerCase(),
+                openedAt: created_at || new Date().toISOString(),
+                openedEmailId: typeof data.email_id === "string" ? data.email_id : undefined,
+                openedTemplateId: templateId !== "—" ? templateId : undefined,
+              })
+            )
+          );
+        } catch (e) {
+          console.error("[Resend] failed to mark opened", e);
+        }
       }
 
       const apiKey = process.env.RESEND_API_KEY?.trim();

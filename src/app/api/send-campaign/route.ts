@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getTemplate, substitutePlaceholders, type TemplateId } from "@/lib/templates";
 import { isAuthenticated, isAuthRequired } from "@/lib/auth";
+import { upsertFollowUpState } from "@/lib/followups-store";
 
 // Use SMOOTHSALES_FROM once coralcrownsolutions.com is verified in Resend. For testing, use onboarding@resend.dev in Resend dashboard.
 const FROM_EMAIL = process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
@@ -198,6 +199,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const validSet = new Set<string>(validIds);
+    const isFollowUp = /-followup-[123]$/.test(templateId);
+    const followUpBase = isFollowUp ? templateId.replace(/-followup-[123]$/, "") : templateId;
+    const followUpStep = isFollowUp ? Number(templateId.slice(-1)) : 0;
+    const hasFollowUps = !isFollowUp && validSet.has(`${templateId}-followup-1`);
+
     let subject: string;
     let html: string;
     let text: string;
@@ -242,7 +249,11 @@ export async function POST(request: NextRequest) {
           subject,
           html: personalHtml,
           text: personalText,
-          tags: [{ name: "template_id", value: templateId }],
+          tags: [
+            { name: "template_id", value: templateId },
+            { name: "campaign_base", value: followUpBase },
+            { name: "followup_step", value: String(followUpStep) },
+          ],
         };
         if (scheduledAt) payload.scheduledAt = scheduledAt;
         const { data, error } = await resend.emails.send(payload);
@@ -250,6 +261,22 @@ export async function POST(request: NextRequest) {
           results.push({ to: rec.email, ok: false, error: error.message });
         } else {
           results.push({ to: rec.email, ok: true, id: data?.id });
+
+          // Register follow-up state on initial send.
+          if (hasFollowUps) {
+            const nowIso = new Date().toISOString();
+            await upsertFollowUpState({
+              baseTemplateId: templateId,
+              email: rec.email,
+              name: rec.name ?? rec.nameOfPerson ?? undefined,
+              nameOfOrganization: rec.nameOfOrganization ?? undefined,
+              initialSentAt: nowIso,
+              initialEmailId: data?.id,
+              followUpsSent: 0,
+              lastSentAt: nowIso,
+              lastEmailId: data?.id,
+            });
+          }
         }
       } catch (err) {
         results.push({
