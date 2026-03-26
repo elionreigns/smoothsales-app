@@ -9,7 +9,9 @@
  * No template literals (backticks) - string concatenation only for SWC compatibility.
  */
 
-export const ELION_FOLLOW_UP_DAYS = [4, 5, 5] as const;
+// Unopened rebump schedule: +3 days, then +5 days, then +10 days from prior.
+// (i.e. day 3, day 8, day 18 from the initial send)
+export const ELION_FOLLOW_UP_DAYS = [3, 5, 10] as const;
 
 export type ElionBaseCampaignId =
   | "elion-fans"

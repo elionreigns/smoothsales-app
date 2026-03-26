@@ -1531,7 +1531,7 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 </div>`,
   },
   "elion-laymen": {
-    subject: "Personal Update: Look at what God has done in my life—where life is headed (P48X and audiobook and HOPE Weekends and tools)",
+    subject: "A Personal Update: Look what I made for you (New Songs, P48X, and Prayer Authority)",
     text: `Hi {{Name}},
 
 Hope you're doing well. I wanted to share a full personal newsletter update and invite you to see what I’ve been building lately.
@@ -1612,7 +1612,7 @@ Personal update: Ashley and I are preparing to try IVF soon. Family is close, we
 
 Today's verse that encouraged me: Joshua 8:1 – "Do not be afraid; do not be discouraged."
 
-Look what I made for you—will you be blessed by taking the next step today? Here’s the simplest path:
+Look what I made for you—New Songs, P48X, and Prayer Authority. Here’s the simplest path:
 1) Buy P48X on Apple Books
 2) Get the audiobook
 3) Listen to “E Lion Radio” on Pandora (my station)
@@ -1626,8 +1626,8 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
     html: `<div style="font-family:sans-serif;max-width:620px;margin:0 auto;background:#fff7ed;border:2px solid #ea580c;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px -18px rgba(194,65,12,0.28),0 8px 22px -8px rgba(0,0,0,0.08);">
 <div style="background:linear-gradient(145deg,#0b1220 0%,#1d4ed8 55%,#0f3a8a 100%);color:#ffffff;padding:30px 26px;border-bottom:4px solid #93c5fd;text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;opacity:0.95;">Eric Hans Schaefer (E Lion) Newsletter</p>
-<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.02em;line-height:1.25;text-transform:none;">Personal Update: Look at what God has done in my life<br/>Where life is headed<br/>P48X and audiobook and HOPE Weekends and the tools I’m building</h1>
-<p style="margin:12px 0 0;font-size:14px;opacity:0.95;">Music, P48X, PrayerAuthority, HOPE Weekends, and practical next steps.</p>
+<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.02em;line-height:1.25;text-transform:none;">A Personal Update<br/>Look what I made for you</h1>
+<p style="margin:12px 0 0;font-size:14px;opacity:0.95;">New songs, P48X, and Prayer Authority (plus HOPE Weekends and practical next steps).</p>
 </div>
 <div style="padding:26px 24px;color:#431407;line-height:1.65;font-size:14px;">
 <p style="margin:0 0 14px;">Hi {{Name}},</p>
@@ -1721,7 +1721,7 @@ elionmusic.com | elionreigns@gmail.com | (808) 393-0153`,
 <a href="https://www.youtube.com/watch?v=lRd5l_xwPnM" style="display:inline-block;background:#7c2d12;color:#fff;padding:10px 14px;text-decoration:none;border-radius:999px;font-weight:900;font-size:12px;margin:0 6px 8px 0;">Hospital freestyle video</a>
 </p>
 <p style="margin:0 0 14px;">Personal note: Ashley and I are preparing to try IVF soon. Family is close, Stella is still the star, and God has kept us moving forward. Today's verse for me was Joshua 8:1 — <strong>"Do not be afraid; do not be discouraged."</strong></p>
-<p style="margin:0 0 14px;">Look what I made for you—will you be blessed by starting today? Grab P48X and the audiobook, then listen to my radio station on Pandora. If it encourages you, share this with one friend and follow me on Spotify and Apple Music.</p>
+<p style="margin:0 0 14px;">Look what I made for you—<strong>new songs</strong>, <strong>P48X</strong>, and <strong>Prayer Authority</strong>. If you want the simplest next step, grab P48X and the audiobook, then create your PrayerAuthority account so the tools are ready for you. If it encourages you, share this with one friend and follow me on Spotify and Apple Music.</p>
 <p style="margin:0 0 14px;text-align:center;">
 <a href="https://www.pandora.com/station/play/193699866101160467" style="display:inline-block;background:#1d4ed8;color:#fff;padding:10px 16px;text-decoration:none;border-radius:999px;font-weight:700;font-size:12px;">Listen on Pandora</a>
 </p>

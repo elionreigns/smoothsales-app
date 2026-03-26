@@ -17,7 +17,7 @@ export function getSmsTeaser(templateId: TemplateId): string {
     case "elion-leaders":
       return "Would you take 60 seconds to see what P48X + PrayerAuthority could add to your church or leaders group? If it resonates, click to view the exact pitch and I’ll tailor options + a setlist for your dates.";
     case "elion-laymen":
-      return "Can I ask a quick favor and show you the P48X book + audiobook and my PrayerAuthority tools in one place? Click the link to read the full message and take the easiest next step.";
+      return "Want one place to see my new songs, P48X, and Prayer Authority tools? Click the link to read the full message and take the easiest next step.";
     case "elion-fans":
       return "Do you want more faith-forward music that actually hits, not just inspiration? Click to listen + follow and see what’s new from E Lion right now.";
     case "elion-artists":

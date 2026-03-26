@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated, isAuthRequired } from "@/lib/auth";
 import { type TemplateId } from "@/lib/templates";
 import { getSmsTeaser } from "@/lib/sms";
-import twilio from "twilio";
 
 type Body = {
   templateId: TemplateId;
@@ -69,42 +68,51 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, dryRun: true, templateId, count: numbers.length, messageBody, numbers });
   }
 
-  const accountSid = process.env.TWILIO_ACCOUNT_SID?.trim() || "";
-  const authToken = process.env.TWILIO_AUTH_TOKEN?.trim() || "";
-  const fromNumber = process.env.TWILIO_FROM_NUMBER?.trim() || "";
-  const messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID?.trim() || "";
-
-  if (!accountSid || !authToken) {
+  const apiKey = process.env.TEXTING_API_KEY?.trim() || "";
+  const apiSecret = process.env.TEXTING_API_SECRET?.trim() || "";
+  const from = process.env.TEXTING_FROM?.trim() || "test";
+  const providerUrl = process.env.TEXTING_BASE_URL?.trim() || "https://www.thetexting.com/rest/sms/json/Message/Send";
+  if (!apiKey || !apiSecret) {
     return NextResponse.json(
-      { ok: false, error: "Missing TWILIO_ACCOUNT_SID / TWILIO_AUTH_TOKEN (set env vars in Vercel)" },
-      { status: 400 }
-    );
-  }
-  if (!fromNumber && !messagingServiceSid) {
-    return NextResponse.json(
-      { ok: false, error: "Set TWILIO_FROM_NUMBER or TWILIO_MESSAGING_SERVICE_SID" },
+      { ok: false, error: "Missing TEXTING_API_KEY / TEXTING_API_SECRET (set env vars in Vercel)" },
       { status: 400 }
     );
   }
 
-  const client = twilio(accountSid, authToken);
-
-  const results: Array<{ to: string; sid?: string; error?: string }> = [];
+  const results: Array<{ to: string; id?: string; error?: string; providerResponse?: unknown }> = [];
   for (const to of numbers) {
     try {
-      const res = await client.messages.create({
-        to,
-        from: fromNumber || undefined,
-        messagingServiceSid: messagingServiceSid || undefined,
-        body: messageBody,
+      const qs = new URLSearchParams({
+        api_key: apiKey,
+        api_secret: apiSecret,
+        from,
+        to: to.replace(/^\+/, ""),
+        text: messageBody,
       });
-      results.push({ to, sid: res.sid });
+      const res = await fetch(`${providerUrl}?${qs.toString()}`, { method: "GET" });
+      const text = await res.text();
+      let parsed: unknown = text;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        // keep raw response string
+      }
+      if (!res.ok) {
+        throw new Error(`Provider HTTP ${res.status}: ${text}`);
+      }
+      const responseObj = parsed as { id?: string; message_id?: string; status?: string; errors?: unknown };
+      const id = responseObj?.message_id || responseObj?.id;
+      const hasError = Boolean(responseObj?.errors) || String(responseObj?.status || "").toLowerCase() === "error";
+      if (hasError && !id) {
+        throw new Error(typeof parsed === "string" ? parsed : JSON.stringify(parsed));
+      }
+      results.push({ to, id, providerResponse: parsed });
     } catch (e) {
       results.push({ to, error: e instanceof Error ? e.message : String(e) });
     }
   }
 
-  const sent = results.filter((r) => r.sid).length;
+  const sent = results.filter((r) => r.id || !r.error).length;
   const failed = results.length - sent;
   return NextResponse.json({ ok: true, templateId, count: results.length, sent, failed, messageBody, results });
 }

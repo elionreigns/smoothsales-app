@@ -204,6 +204,7 @@ export async function POST(request: NextRequest) {
     const followUpBase = isFollowUp ? templateId.replace(/-followup-[123]$/, "") : templateId;
     const followUpStep = isFollowUp ? Number(templateId.slice(-1)) : 0;
     const hasFollowUps = !isFollowUp && validSet.has(`${templateId}-followup-1`);
+    const isNewsletterRebumpBase = templateId === "elion-leaders" || templateId === "elion-laymen";
 
     let subject: string;
     let html: string;
@@ -263,7 +264,7 @@ export async function POST(request: NextRequest) {
           results.push({ to: rec.email, ok: true, id: data?.id });
 
           // Register follow-up state on initial send.
-          if (hasFollowUps) {
+          if (hasFollowUps || isNewsletterRebumpBase) {
             const nowIso = new Date().toISOString();
             await upsertFollowUpState({
               baseTemplateId: templateId,
