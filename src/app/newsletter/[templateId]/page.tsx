@@ -65,101 +65,43 @@ export default function NewsletterTemplatePage({
   });
 
   const teaser = getSmsTeaser(templateIdRaw);
-  const landingParams = new URLSearchParams({ access, name });
-  if (org) landingParams.set("org", org);
-  const landingUrl = `${baseUrlOrigin.replace(/\/$/, "")}/newsletter/${encodeURIComponent(templateIdRaw)}?${landingParams.toString()}`;
-  const smsBody = `${teaser} ${landingUrl}`;
+  const greeting =
+    name && name.toLowerCase() !== "there" ? `Hi ${name},` : null;
 
-  // Render as a standalone HTML "landing page" for SMS sharing.
+  // Polished standalone page: intro copy only (same words as the SMS hook), then the newsletter. No app links or admin tooling.
   return (
     <div style={{ background: "#0b1220", minHeight: "100vh", padding: "28px 14px" }}>
       <div style={{ maxWidth: 820, margin: "0 auto" }}>
         <div
           style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: 18,
-            padding: 14,
-            marginBottom: 14,
-            color: "#e2e8f0",
+            background: "linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)",
+            border: "1px solid rgba(255,255,255,0.14)",
+            borderRadius: 20,
+            padding: "22px 24px",
+            marginBottom: 20,
+            color: "#f1f5f9",
             fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial",
+            boxShadow: "0 12px 40px rgba(0,0,0,0.25)",
           }}
         >
-          <div style={{ display: "flex", gap: 10, justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
-            <div>
-              <div style={{ fontWeight: 900, letterSpacing: "-0.02em", fontSize: 14, textTransform: "uppercase", opacity: 0.9 }}>
-                Shareable page
-              </div>
-              <div style={{ fontSize: 13, color: "#94a3b8" }}>
-                <span style={{ color: "#e2e8f0", fontWeight: 700 }}>{t.subject}</span>
-                <span style={{ opacity: 0.7 }}> · </span>
-                <code style={{ color: "#e2e8f0" }}>{templateIdRaw}</code>
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <a
-                href="/"
-                style={{
-                  color: "#0b1220",
-                  background: "#f59e0b",
-                  textDecoration: "none",
-                  padding: "10px 14px",
-                  borderRadius: 999,
-                  fontWeight: 900,
-                }}
-              >
-                Open SmoothSales
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div
-          style={{
-            background: "rgba(16,185,129,0.12)",
-            border: "1px solid rgba(16,185,129,0.35)",
-            borderRadius: 18,
-            padding: "16px 18px",
-            marginBottom: 16,
-            color: "#ecfdf5",
-            fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial",
-          }}
-        >
-          <div style={{ fontWeight: 900, fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10, color: "#6ee7b7" }}>
-            SMS preview (what recipients see)
-          </div>
-          <p style={{ margin: "0 0 10px", fontSize: 14, lineHeight: 1.65, color: "#d1fae5" }}>{teaser}</p>
-          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6ee7b7", marginBottom: 6 }}>
-            Standalone link in the text
-          </div>
-          <p style={{ margin: "0 0 12px", wordBreak: "break-all", fontSize: 13, lineHeight: 1.5 }}>
-            <a href={landingUrl} style={{ color: "#a7f3d0" }}>
-              {landingUrl}
-            </a>
-          </p>
-          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6ee7b7", marginBottom: 6 }}>
-            Full SMS (copy)
-          </div>
-          <pre
+          {greeting ? (
+            <p style={{ margin: "0 0 12px", fontSize: 17, fontWeight: 600, letterSpacing: "-0.02em", color: "#fff" }}>{greeting}</p>
+          ) : null}
+          <p
             style={{
               margin: 0,
-              padding: "12px 14px",
-              background: "rgba(0,0,0,0.35)",
-              borderRadius: 12,
-              fontSize: 12,
-              lineHeight: 1.55,
-              whiteSpace: "pre-wrap",
-              wordBreak: "break-word",
-              color: "#e2e8f0",
-              border: "1px solid rgba(255,255,255,0.08)",
+              fontSize: 17,
+              lineHeight: 1.65,
+              fontWeight: 400,
+              color: "rgba(241,245,249,0.95)",
             }}
           >
-            {smsBody}
-          </pre>
+            {teaser}
+          </p>
         </div>
 
         <style>{`
-          /* Make standalone/mobile link rendering feel more like a readable web page. */
+          /* Standalone/mobile: readable links and images inside the newsletter HTML */
           a { text-decoration: underline; text-decoration-thickness: 1px; }
           img { max-width: 100%; height: auto; }
         `}</style>
