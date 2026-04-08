@@ -41,6 +41,8 @@ export async function POST(request: NextRequest) {
     const recipientsRaw = body.recipients as Recipient[] | undefined;
     const emailsRaw = body.emails; // legacy: still accept flat list
     const scheduledAt = typeof body.scheduledAt === "string" ? body.scheduledAt.trim() || undefined : undefined;
+    const subjectOverrideRaw = typeof body.subjectOverride === "string" ? body.subjectOverride.trim() : "";
+    const subjectOverride = subjectOverrideRaw.length > 0 ? subjectOverrideRaw.slice(0, 180) : undefined;
 
     let recipients: Recipient[] = [];
     if (Array.isArray(recipientsRaw) && recipientsRaw.length > 0) {
@@ -211,7 +213,7 @@ export async function POST(request: NextRequest) {
     let text: string;
     try {
       const template = getTemplate(templateId);
-      subject = template.subject;
+      subject = subjectOverride || template.subject;
       html = template.html;
       text = template.text;
     } catch (e) {
