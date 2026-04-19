@@ -75,6 +75,22 @@ export function getSmsTeaser(templateId: TemplateId): string {
       return "Media/press: want Stella the corgi featured in your story or campaign? Click to view the media pitch and tell me your outlet.";
     case "stella-talent":
       return "Are you casting and looking for a lovable, camera-ready talent? Click to view the talent pitch and reply with your booking request.";
+    case "apartments-individual":
+      return "Quick one – is your East Honolulu unit still available? Click to read 4 lines about us (couple, expecting, two well-trained dogs, ground-floor or elevator preferred).";
+    case "apartments-realtor":
+      return "Do you have anything that would fit a 3BR/2BA East Honolulu rental for an expecting couple at $2.4–$2.6k? Click to view our 1-page renter packet and forward to your team.";
+    case "corgi-care-hair":
+      return "Do you have an opening this month for a 13-year-old corgi who needs a deshed + blowout (no shaving)? Click to see exactly what we need.";
+    case "corgi-care-teeth":
+      return "Quick question – do you offer a $300–$500 anesthesia teeth-cleaning package for a senior corgi? Click to see what we are looking for.";
+    case "corgi-care-military":
+      return "Would you take 30 seconds to share your military-family rate for a senior corgi teeth cleaning? Click to view the request – my wife’s cousin is the dependent.";
+    case "luxury-resource-fareharbor":
+      return "Would you be open to having Hawaii Luxury Resource added as an individual affiliate on your FareHarbor (10%, terms transparent)? Click to view the 60-second how-to.";
+    case "luxury-resource-direct":
+      return "If you don’t use FareHarbor – would you be open to a simple referral agreement with Hawaii Luxury Resource (10% on tracked bookings)? Click to view the contract draft.";
+    case "rap-central-rappers":
+      return "Would you say no to more booking offers from vetted promoters for just 5%? Click to view the Rap Artist Booking Engine pitch and your requirements form.";
     default:
       return "Will you take 60 seconds to read this and reply with your thoughts? Click to open the full pitch and choose the next step.";
   }

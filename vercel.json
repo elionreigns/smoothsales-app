@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/cron/run-followups",
+      "schedule": "0 17 * * *"
+    }
+  ],
+  "functions": {
+    "src/app/api/cron/run-followups/route.ts": {
+      "maxDuration": 300
+    },
+    "src/app/api/send-campaign/route.ts": {
+      "maxDuration": 300
+    }
+  }
+}

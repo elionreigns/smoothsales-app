@@ -193,6 +193,48 @@ export async function POST(request: NextRequest) {
       "stella-brands",
       "stella-media",
       "stella-talent",
+      // ---- April 2026: new SmoothSales services (Apartments, Corgi Care, Luxury Resource, Rap Central) ----
+      // Each has 1 initial + 4 follow-ups.
+      "apartments-individual",
+      "apartments-individual-followup-1",
+      "apartments-individual-followup-2",
+      "apartments-individual-followup-3",
+      "apartments-individual-followup-4",
+      "apartments-realtor",
+      "apartments-realtor-followup-1",
+      "apartments-realtor-followup-2",
+      "apartments-realtor-followup-3",
+      "apartments-realtor-followup-4",
+      "corgi-care-hair",
+      "corgi-care-hair-followup-1",
+      "corgi-care-hair-followup-2",
+      "corgi-care-hair-followup-3",
+      "corgi-care-hair-followup-4",
+      "corgi-care-teeth",
+      "corgi-care-teeth-followup-1",
+      "corgi-care-teeth-followup-2",
+      "corgi-care-teeth-followup-3",
+      "corgi-care-teeth-followup-4",
+      "corgi-care-military",
+      "corgi-care-military-followup-1",
+      "corgi-care-military-followup-2",
+      "corgi-care-military-followup-3",
+      "corgi-care-military-followup-4",
+      "luxury-resource-fareharbor",
+      "luxury-resource-fareharbor-followup-1",
+      "luxury-resource-fareharbor-followup-2",
+      "luxury-resource-fareharbor-followup-3",
+      "luxury-resource-fareharbor-followup-4",
+      "luxury-resource-direct",
+      "luxury-resource-direct-followup-1",
+      "luxury-resource-direct-followup-2",
+      "luxury-resource-direct-followup-3",
+      "luxury-resource-direct-followup-4",
+      "rap-central-rappers",
+      "rap-central-rappers-followup-1",
+      "rap-central-rappers-followup-2",
+      "rap-central-rappers-followup-3",
+      "rap-central-rappers-followup-4",
     ];
     if (!templateId || !validIds.includes(templateId)) {
       return NextResponse.json(
@@ -202,8 +244,9 @@ export async function POST(request: NextRequest) {
     }
 
     const validSet = new Set<string>(validIds);
-    const isFollowUp = /-followup-[123]$/.test(templateId);
-    const followUpBase = isFollowUp ? templateId.replace(/-followup-[123]$/, "") : templateId;
+    // Accept follow-ups 1-4 (legacy services use 1-3, new April-2026 services use 1-4).
+    const isFollowUp = /-followup-[1-4]$/.test(templateId);
+    const followUpBase = isFollowUp ? templateId.replace(/-followup-[1-4]$/, "") : templateId;
     const followUpStep = isFollowUp ? Number(templateId.slice(-1)) : 0;
     const hasFollowUps = !isFollowUp && validSet.has(`${templateId}-followup-1`);
     const isNewsletterRebumpBase = templateId === "elion-leaders" || templateId === "elion-laymen";

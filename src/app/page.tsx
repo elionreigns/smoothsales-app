@@ -10,6 +10,10 @@ import {
   type HealingHerbalsSub,
   type YachtSub,
   type StellaSub,
+  type ApartmentsSub,
+  type CorgiCareSub,
+  type LuxuryResourceSub,
+  type RapCentralSub,
 } from "@/lib/templates";
 
 /** Password gate: show form until unlocked; ?access=KEY bypasses for clawdbot/AI. */
@@ -97,7 +101,7 @@ function SmoothSalesGate({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "stella" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "stella" | "apartments" | "corgi-care" | "luxury-resource" | "rap-central" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
@@ -120,6 +124,10 @@ export default function SmoothSalesPage() {
   const [healingHerbalsSub, setHealingHerbalsSub] = useState<HealingHerbalsSub>("");
   const [yachtSub, setYachtSub] = useState<YachtSub>("");
   const [stellaSub, setStellaSub] = useState<StellaSub>("");
+  const [apartmentsSub, setApartmentsSub] = useState<ApartmentsSub>("");
+  const [corgiCareSub, setCorgiCareSub] = useState<CorgiCareSub>("");
+  const [luxuryResourceSub, setLuxuryResourceSub] = useState<LuxuryResourceSub>("");
+  const [rapCentralSub, setRapCentralSub] = useState<RapCentralSub>("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [templateId, setTemplateId] = useState<string>("");
@@ -133,12 +141,12 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub]
   );
 
   useEffect(() => {
@@ -274,6 +282,10 @@ export default function SmoothSalesPage() {
                     setHealingHerbalsSub("");
                     setYachtSub("");
                     setStellaSub("");
+                    setApartmentsSub("");
+                    setCorgiCareSub("");
+                    setLuxuryResourceSub("");
+                    setRapCentralSub("");
                   }}
                   className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
@@ -288,6 +300,10 @@ export default function SmoothSalesPage() {
                   <option value="healing-herbals">Healing Herbals</option>
                   <option value="yachts">Yachts (Private Charter)</option>
                   <option value="stella">Stella the Cutest Corgi</option>
+                  <option value="apartments">Apartments (East Honolulu rental search)</option>
+                  <option value="corgi-care">Corgi Care (grooming + dental for Stella)</option>
+                  <option value="luxury-resource">Luxury Resource of Hawaii (vendor partnerships)</option>
+                  <option value="rap-central">Rap Central (Rap Artist Booking Engine)</option>
                 </select>
               </div>
 
@@ -452,6 +468,66 @@ export default function SmoothSalesPage() {
                     <option value="brands">Brands / sponsors (treats, supplements, paid placements)</option>
                     <option value="media">Media features (magazines, commercials, TV/film)</option>
                     <option value="talent">Talent agencies / casting (paid bookings)</option>
+                  </select>
+                </div>
+              )}
+
+              {service === "apartments" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={apartmentsSub}
+                    onChange={(e) => setApartmentsSub(e.target.value as ApartmentsSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="individual">Individual landlord (Craigslist / FB Marketplace / FSBO)</option>
+                    <option value="realtor">Realtor / property manager (multi-unit, lead lists)</option>
+                  </select>
+                </div>
+              )}
+
+              {service === "corgi-care" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={corgiCareSub}
+                    onChange={(e) => setCorgiCareSub(e.target.value as CorgiCareSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="hair">Hair maintenance (deshed + blowout, NO shaving)</option>
+                    <option value="teeth">Teeth cleaning ($300–$500 budget)</option>
+                    <option value="military">Military VTF (cousin&apos;s corgi – bottom-dollar rate)</option>
+                  </select>
+                </div>
+              )}
+
+              {service === "luxury-resource" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={luxuryResourceSub}
+                    onChange={(e) => setLuxuryResourceSub(e.target.value as LuxuryResourceSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="fareharbor">FareHarbor partner (add us as affiliate – 10%)</option>
+                    <option value="direct">Direct (non-FareHarbor – contract attached)</option>
+                  </select>
+                </div>
+              )}
+
+              {service === "rap-central" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={rapCentralSub}
+                    onChange={(e) => setRapCentralSub(e.target.value as RapCentralSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="rappers">Rappers + management (Rap Artist Booking Engine, 5%)</option>
                   </select>
                 </div>
               )}

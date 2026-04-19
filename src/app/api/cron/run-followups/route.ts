@@ -6,35 +6,64 @@ import { ELION_FOLLOW_UP_DAYS } from "@/lib/elion-follow-up-templates";
 
 const FROM_EMAIL = process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
 
-// Unopened rebump schedule: +3 days, then +5 days, then +10 days from prior.
-// (i.e. day 3, day 8, day 18 from the initial send)
+// Default unopened rebump schedule (legacy services, 3 follow-ups):
+// +3 days, then +5 days, then +10 days from prior.  (day 3, 8, 18 from initial)
 const DEFAULT_FOLLOW_UP_DAYS = [3, 5, 10] as const;
+
+// April 2026 services (Apartments, Corgi Care, Luxury Resource, Rap Central):
+// 4 follow-ups on a more spaced cadence.
+// Increments BETWEEN sends:
+//   FU1 = day 4   (4 days after initial)
+//   FU2 = day 7   (3 days after FU1 -> 7 days after initial)
+//   FU3 = day 10  (3 days after FU2 -> 10 days after initial)
+//   FU4 = day 14  (4 days after FU3 -> 14 days after initial)
+// Stored as gap-from-previous so the cron arithmetic stays additive.
+const NEW_SERVICES_FOLLOW_UP_DAYS = [4, 3, 3, 4] as const;
+
+const NEW_SERVICE_BASE_PREFIXES = [
+  "apartments-",
+  "corgi-care-",
+  "luxury-resource-",
+  "rap-central-",
+] as const;
 
 const NEWSLETTER_IDS = new Set(["elion-leaders", "elion-laymen"]);
 
 function isAuthorized(request: NextRequest) {
+  // Accept either the explicit X-Cron-Secret header (manual / external cron)
+  // OR the standard Vercel Cron Authorization: Bearer <CRON_SECRET> header
+  // that Vercel automatically attaches to scheduled cron invocations.
   const secret = process.env.CRON_SECRET?.trim();
   if (!secret) return false;
-  const got = request.headers.get("x-cron-secret")?.trim();
-  return got === secret;
+  const headerVal = request.headers.get("x-cron-secret")?.trim();
+  if (headerVal === secret) return true;
+  const auth = request.headers.get("authorization")?.trim();
+  if (auth && auth.toLowerCase() === `bearer ${secret.toLowerCase()}`) return true;
+  return false;
 }
 
 function daysToMs(days: number) {
   return days * 24 * 60 * 60 * 1000;
 }
 
-function getScheduleDaysForBase(baseTemplateId: string) {
-  // E Lion followups use ELION_FOLLOW_UP_DAYS; others use default.
+function isNewServiceBase(baseTemplateId: string): boolean {
+  return NEW_SERVICE_BASE_PREFIXES.some((p) => baseTemplateId.startsWith(p));
+}
+
+function getScheduleDaysForBase(baseTemplateId: string): readonly number[] {
+  if (isNewServiceBase(baseTemplateId)) return NEW_SERVICES_FOLLOW_UP_DAYS;
   if (baseTemplateId.startsWith("elion-")) return ELION_FOLLOW_UP_DAYS;
   return DEFAULT_FOLLOW_UP_DAYS;
 }
 
+function maxFollowUpsForBase(baseTemplateId: string): number {
+  return getScheduleDaysForBase(baseTemplateId).length;
+}
+
 function nextDueAtMs(state: FollowUpState): number | null {
   if (state.openedAt) return null;
-  // We currently support up to 3 rebumps by default (schedule length),
-  // but this can be expanded later.
-  if (state.followUpsSent >= 3) return null;
   const schedule = getScheduleDaysForBase(state.baseTemplateId);
+  if (state.followUpsSent >= schedule.length) return null;
   const initial = Date.parse(state.initialSentAt);
   if (!Number.isFinite(initial)) return null;
 
@@ -199,5 +228,12 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Vercel Cron always invokes scheduled jobs with HTTP GET, so we expose a GET
+// alias that delegates to POST. Authorization is handled identically (Vercel
+// attaches `Authorization: Bearer $CRON_SECRET` automatically on cron calls).
+export async function GET(request: NextRequest) {
+  return POST(request);
 }
 

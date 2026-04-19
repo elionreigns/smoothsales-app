@@ -12,6 +12,23 @@ import {
   getOtherFollowUpTemplate,
   type OtherFollowUpTemplateId,
 } from "./all-follow-up-templates";
+import {
+  isNewServiceTemplateId,
+  getNewServiceTemplate,
+  type NewServiceTemplateId,
+  type ApartmentsSub,
+  type CorgiCareSub,
+  type LuxuryResourceSub,
+  type RapCentralSub,
+  NEW_SERVICE_TEMPLATE_OPTIONS,
+} from "./new-service-templates";
+
+export type {
+  ApartmentsSub,
+  CorgiCareSub,
+  LuxuryResourceSub,
+  RapCentralSub,
+} from "./new-service-templates";
 
 export type TemplateId =
   | "botox"
@@ -136,11 +153,12 @@ export type TemplateId =
   | "p48x-physical-distributors-v2"
   | "p48x-affiliate-sellers-v2"
   | "healing-herbals-smoke-shop-v2"
-  | "healing-herbals-individual-v2";
+  | "healing-herbals-individual-v2"
+  | NewServiceTemplateId;
 
 /** Base templates only (no follow-up ids, no v2); follow-ups and v2 are resolved in getTemplate. */
 type BaseTemplateId = Exclude<
-  Exclude<TemplateId, ElionFollowUpTemplateId | OtherFollowUpTemplateId>,
+  Exclude<TemplateId, ElionFollowUpTemplateId | OtherFollowUpTemplateId | NewServiceTemplateId>,
   `${string}-v2`
 >;
 
@@ -178,6 +196,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "stella-brands", label: "Stella the Cutest Corgi – Brand sponsors (healthy treats, supplements, product placement)" },
   { value: "stella-media", label: "Stella the Cutest Corgi – Media features (magazines, commercials, TV, film)" },
   { value: "stella-talent", label: "Stella the Cutest Corgi – Talent agencies & casting (paid bookings + appearances)" },
+  ...NEW_SERVICE_TEMPLATE_OPTIONS,
 ];
 
 const CONTACT_LINE_HTML = `<p style="margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:12px 0 0;"><a href="mailto:coralcrowntechnologies@gmail.com" style="display:inline-block;background:#0ea5e9;color:#fff;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">Reply to the Email</a></p><p style="margin:10px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Click the button above to start a reply, or call – we're happy to help.</p>`;
@@ -338,6 +357,10 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
       text: t.text + foot.text,
     });
   }
+  if (isNewServiceTemplateId(id as string)) {
+    const t = getNewServiceTemplate(id as NewServiceTemplateId);
+    return finalize({ subject: t.subject, html: t.html, text: t.text });
+  }
   // Initial – Enhanced (v2): use TEMPLATES_V2 if defined, else same as base
   if (typeof id === "string" && id.endsWith("-v2")) {
     const v2 = TEMPLATES_V2[id];
@@ -403,7 +426,11 @@ export type ServiceSelection =
   | "p48x"
   | "healing-herbals"
   | "yachts"
-  | "stella";
+  | "stella"
+  | "apartments"
+  | "corgi-care"
+  | "luxury-resource"
+  | "rap-central";
 export type TourismSub = "" | "hawaii" | "usa" | "featured-tour";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
@@ -474,6 +501,38 @@ const STELLA_TEMPLATE_MAP: Record<Exclude<StellaSub, "">, TemplateId> = {
   talent: "stella-talent",
 };
 
+const APARTMENTS_TEMPLATE_MAP: Record<Exclude<ApartmentsSub, "">, TemplateId> = {
+  individual: "apartments-individual",
+  realtor: "apartments-realtor",
+};
+
+const CORGI_CARE_TEMPLATE_MAP: Record<Exclude<CorgiCareSub, "">, TemplateId> = {
+  hair: "corgi-care-hair",
+  teeth: "corgi-care-teeth",
+  military: "corgi-care-military",
+};
+
+const LUXURY_RESOURCE_TEMPLATE_MAP: Record<Exclude<LuxuryResourceSub, "">, TemplateId> = {
+  fareharbor: "luxury-resource-fareharbor",
+  direct: "luxury-resource-direct",
+};
+
+const RAP_CENTRAL_TEMPLATE_MAP: Record<Exclude<RapCentralSub, "">, TemplateId> = {
+  rappers: "rap-central-rappers",
+};
+
+/** Build dropdown for a new-service base id: Initial + Follow Up 1..4 (4 follow-ups, not 3). */
+function newServiceTemplateOptions(baseId: TemplateId): { value: TemplateId; label: string }[] {
+  const initialLabel = TEMPLATE_OPTIONS.find((o) => o.value === baseId)?.label ?? "Initial";
+  return [
+    { value: baseId, label: "Initial: " + initialLabel },
+    { value: (baseId + "-followup-1") as TemplateId, label: "Follow Up 1 (gentle nudge)" },
+    { value: (baseId + "-followup-2") as TemplateId, label: "Follow Up 2 (no-oriented question)" },
+    { value: (baseId + "-followup-3") as TemplateId, label: "Follow Up 3 (reciprocal offer / gratitude)" },
+    { value: (baseId + "-followup-4") as TemplateId, label: "Follow Up 4 (last note – soft close)" },
+  ];
+}
+
 /** Build template dropdown: Initial, Initial – Enhanced, Follow Up 1, 2, 3 for a given base template id. */
 function templateOptionsWithFollowUps(baseId: TemplateId): { value: TemplateId; label: string }[] {
   const initialLabel = TEMPLATE_OPTIONS.find((o) => o.value === baseId)?.label ?? "Initial";
@@ -504,7 +563,11 @@ export function getTemplatesForSelection(
   p48xSub: P48XSub,
   healingHerbalsSub: HealingHerbalsSub,
   yachtSub: YachtSub,
-  stellaSub: StellaSub
+  stellaSub: StellaSub,
+  apartmentsSub: ApartmentsSub = "",
+  corgiCareSub: CorgiCareSub = "",
+  luxuryResourceSub: LuxuryResourceSub = "",
+  rapCentralSub: RapCentralSub = ""
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return templateOptionsWithFollowUps("botox");
@@ -559,6 +622,18 @@ export function getTemplatesForSelection(
     const label = TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? "Stella campaign";
     return [{ value: id, label: "Initial: " + label }];
   }
+  if (service === "apartments" && apartmentsSub !== "") {
+    return newServiceTemplateOptions(APARTMENTS_TEMPLATE_MAP[apartmentsSub]);
+  }
+  if (service === "corgi-care" && corgiCareSub !== "") {
+    return newServiceTemplateOptions(CORGI_CARE_TEMPLATE_MAP[corgiCareSub]);
+  }
+  if (service === "luxury-resource" && luxuryResourceSub !== "") {
+    return newServiceTemplateOptions(LUXURY_RESOURCE_TEMPLATE_MAP[luxuryResourceSub]);
+  }
+  if (service === "rap-central" && rapCentralSub !== "") {
+    return newServiceTemplateOptions(RAP_CENTRAL_TEMPLATE_MAP[rapCentralSub]);
+  }
   return [];
 }
 
@@ -574,7 +649,11 @@ export function hasRequiredSelection(
   p48xSub: P48XSub,
   healingHerbalsSub: HealingHerbalsSub,
   yachtSub: YachtSub,
-  stellaSub: StellaSub
+  stellaSub: StellaSub,
+  apartmentsSub: ApartmentsSub = "",
+  corgiCareSub: CorgiCareSub = "",
+  luxuryResourceSub: LuxuryResourceSub = "",
+  rapCentralSub: RapCentralSub = ""
 ): boolean {
   if (!service) return false;
   if (service === "prayer") return prayerSub !== "";
@@ -587,6 +666,10 @@ export function hasRequiredSelection(
   if (service === "healing-herbals") return healingHerbalsSub !== "";
   if (service === "yachts") return yachtSub !== "";
   if (service === "stella") return stellaSub !== "";
+  if (service === "apartments") return apartmentsSub !== "";
+  if (service === "corgi-care") return corgiCareSub !== "";
+  if (service === "luxury-resource") return luxuryResourceSub !== "";
+  if (service === "rap-central") return rapCentralSub !== "";
   return false;
 }
 
