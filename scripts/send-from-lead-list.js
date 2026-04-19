@@ -101,8 +101,8 @@ function colIdx(...names) {
 const iEmail = colIdx("email", "contact_email", "manager_email", "booking_email", "artist_email");
 const iEmailFallback1 = colIdx("artist_email");
 const iEmailFallback2 = colIdx("booking_email");
-const iName = colIdx("contact_name", "business_name", "manager_name", "artist_stage_name", "title");
-const iOrg = colIdx("title", "business_name", "artist_stage_name");
+const iName = colIdx("contact_name", "business_name", "operator", "manager_name", "artist_stage_name", "title");
+const iOrg = colIdx("operator", "title", "business_name", "artist_stage_name");
 const iTemplateSent = colIdx("template_sent");
 
 if (iEmail < 0) {

@@ -993,6 +993,8 @@ Reply with one of these:
 [ ] "Call me first" – Ashley calls you at the number you give us
 [ ] "Not a fit / not now" – we will respect that and move on
 
+PS – if you actually do run on FareHarbor and would rather skip a contract entirely: open this 30-second guide and add Hawaii Luxury Resource as an individual affiliate (commission auto-tracked through your existing FareHarbor settlement). https://smoothsales-app.vercel.app/newsletter/luxury-resource-fareharbor?access=CROWN&name={{Name}}&org={{Name of Organization}}
+
 Thank you, {{Name}} – looking forward to working with you.
 
 Eric Schaefer
@@ -1034,6 +1036,9 @@ hawaiiluxuryresource.com · Ashley (vendor onboarding): (808) 994-9034 · Eric: 
 <p style="margin:6px 0;font-size:14px;color:#334155;">☐ <strong>"Send the contract"</strong> – Ashley sends within 1 business day</p>
 <p style="margin:6px 0;font-size:14px;color:#334155;">☐ <strong>"Call me first"</strong> – Ashley calls at the number you give us</p>
 <p style="margin:6px 0;font-size:14px;color:#334155;">☐ <strong>"Not a fit / not now"</strong> – we respect that and move on</p>
+</div>
+<div style="background:#eef2ff;border:1px solid rgba(67,56,202,0.25);border-radius:14px;padding:14px 16px;margin:14px 0;">
+<p style="margin:0;font-size:13px;color:#312e81;line-height:1.6;"><strong>PS – on FareHarbor already?</strong> If your bookings actually run through FareHarbor, you can skip the contract entirely – just add us as an individual affiliate (commission auto-tracked through your existing FareHarbor settlement). <a href="https://smoothsales-app.vercel.app/newsletter/luxury-resource-fareharbor?access=CROWN&amp;name={{Name}}&amp;org={{Name of Organization}}" style="color:#4338ca;font-weight:600;text-decoration:underline;">Open the 30-second guide →</a></p>
 </div>
 <p style="margin:0 0 8px;font-size:14px;font-weight:600;">Thank you, {{Name}}.</p>
 ${btn("tel:8089949034", "Call Ashley – (808) 994-9034", "#7c2d12")}`,
