@@ -41,6 +41,10 @@ const batchSize = Number(args.batch || 10);
 const dryRun = Boolean(args["dry-run"]);
 const templateId = String(args.template).trim();
 const csvPath = path.resolve(String(args.csv));
+// Optional natural-language or ISO scheduled time (passed straight through to
+// Resend's `scheduledAt`). Lets us queue sends for after the daily quota reset
+// without burning today's allotment, e.g.  --scheduled-at "in 65 minutes"
+const scheduledAt = args["scheduled-at"] ? String(args["scheduled-at"]).trim() : "";
 
 if (!fs.existsSync(csvPath)) {
   console.error(`CSV not found: ${csvPath}`);
@@ -186,7 +190,11 @@ async function sendBatch(batch) {
       "Content-Type": "application/json",
       "X-Smoothsales-Access": accessKey,
     },
-    body: JSON.stringify({ templateId, recipients: batch }),
+    body: JSON.stringify({
+      templateId,
+      recipients: batch,
+      ...(scheduledAt ? { scheduledAt } : {}),
+    }),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(`Send failed ${res.status}: ${data.error || JSON.stringify(data)}`);
