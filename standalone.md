@@ -147,6 +147,35 @@ General format:
   - Standalone: https://smoothsales-app.vercel.app/newsletter/stella-talent?access=CROWN&name=there&org=Casting
   - Preview API (JSON): `GET /api/sms-preview?templateId=stella-talent`
 
+## April 2026 — new services (Apartments, Corgi Care, Luxury Resource, Rap Central)
+
+Each base template below also has FU1, FU2, FU3, FU4 variants — append `-followup-1`, `-followup-2`, `-followup-3`, or `-followup-4` to the templateId.
+The Vercel cron at `/api/cron/run-followups` (daily 17:00 UTC / 07:00 HST) automatically fires the next follow-up if Resend has NOT reported `email.opened` for the prior message.
+
+### Apartments — for finding Ron + pregnant wife a 2-3BR in East Honolulu
+- **apartments-individual** (Craigslist + FB Marketplace direct landlords)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/apartments-individual?access=CROWN&name=there
+- **apartments-realtor** (realtors, AOAOs, brokerage rental desks)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/apartments-realtor?access=CROWN&name=there&org=BrokerageName
+
+### Corgi Care — Stella (13 yo double-coat corgi, no shave) + wife's cousin (military)
+- **corgi-care-hair** (groomers who hand-scissor / blow-out / no-shave double coats)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/corgi-care-hair?access=CROWN&name=there&org=GroomerName
+- **corgi-care-teeth** ($300–$500 budget for full dental)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/corgi-care-teeth?access=CROWN&name=there&org=VetClinic
+- **corgi-care-military** (base vet clinics — relayed via wife's cousin)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/corgi-care-military?access=CROWN&name=there&org=BaseClinic
+
+### Luxury Resource of Hawaii — affiliate program for the 208-item catalog
+- **luxury-resource-fareharbor** (operators already on FareHarbor — add LXR as individual affiliate, 10%)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/luxury-resource-fareharbor?access=CROWN&name=there&org=OperatorName
+- **luxury-resource-direct** (operators NOT on FareHarbor — direct referral contract, 10%)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/luxury-resource-direct?access=CROWN&name=there&org=OperatorName
+
+### Rap Central — Rap Artist Booking Engine (5% to LXR)
+- **rap-central-rappers** (artists + management — 5% commission booking engine)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/rap-central-rappers?access=CROWN&name=there&org=Artist
+
 ## Using this for SMS
 - Call GET /api/sms-preview?templateId=<templateId> to get the exact **2-sentence** teaser + the correct standalone URL with your access key.
 - Then paste the resulting message into your SMS sender (or use POST /api/send-sms).
