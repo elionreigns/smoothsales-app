@@ -29,6 +29,35 @@ const NEW_SERVICE_BASE_PREFIXES = [
 
 const NEWSLETTER_IDS = new Set(["elion-leaders", "elion-laymen"]);
 
+/**
+ * Drop any leftover {{...}} placeholders and rewrite the awkward
+ * "for your team" tail that appears when we had to fall back to the
+ * generic org name in the placeholder substitution step. Mirrors the
+ * sanitizer used in /api/send-campaign so initial + follow-up subjects
+ * stay consistent.
+ */
+function sanitizeFollowupSubject(subject: string, baseTemplateId: string): string {
+  let s = subject
+    .replace(/\{\{\s*[^}]+\s*\}\}/g, "")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([?.,!])/g, "$1")
+    .trim();
+  const lc = baseTemplateId.toLowerCase();
+  if (lc.startsWith("luxury-resource-direct")) {
+    s = s
+      .replace(/\bfor your team\b/gi, "with Hawaii Luxury Resource")
+      .replace(/\bat your team\b/gi, "on your end")
+      .replace(/\brespect to your team\b/gi, "respect either way");
+  } else if (lc.startsWith("rap-central")) {
+    s = s
+      .replace(/\bfor your team\b/gi, "for the artist")
+      .replace(/\bat your team\b/gi, "on the artist's side");
+  } else {
+    s = s.replace(/\s+for your team\b/gi, "");
+  }
+  return s.replace(/\s{2,}/g, " ").trim();
+}
+
 function isAuthorized(request: NextRequest) {
   // Accept either the explicit X-Cron-Secret header (manual / external cron)
   // OR the standard Vercel Cron Authorization: Bearer <CRON_SECRET> header
@@ -164,14 +193,23 @@ export async function POST(request: NextRequest) {
         continue;
       }
 
+      // Mirror the subject-personalization fix from /api/send-campaign so
+      // follow-ups never leak a literal "{{Name of Organization}}" either.
+      const orgFallback =
+        (state.nameOfOrganization && state.nameOfOrganization.trim()) ||
+        (state.name && state.name.trim() && state.name.trim().toLowerCase() !== "there"
+          ? state.name.trim()
+          : "your team");
       const vars = {
         Name: state.name ?? "there",
         "Name of Person": state.name ?? "there",
-        "Name of Organization": state.nameOfOrganization ?? "",
+        "Name of Organization": orgFallback,
       };
       const substituted = substitutePlaceholders(html, text, vars);
       let personalHtml = substituted.html;
       let personalText = substituted.text;
+      const subjectSubstituted = substitutePlaceholders(subject, "", vars).html;
+      let personalSubject = sanitizeFollowupSubject(subjectSubstituted, state.baseTemplateId);
 
       if (isNewsletter) {
         const standaloneUrl = makeStandaloneUrl({
@@ -183,14 +221,14 @@ export async function POST(request: NextRequest) {
         });
         personalHtml = wrapNewsletterRebumpHtml(personalHtml, standaloneUrl);
         personalText = wrapNewsletterRebumpText(personalText, standaloneUrl);
-        subject = `Here it is again: ${subject}`;
+        personalSubject = `Here it is again: ${personalSubject}`;
       }
 
       try {
         const payload: Parameters<Resend["emails"]["send"]>[0] = {
           from: FROM_EMAIL,
           to: state.email,
-          subject,
+          subject: personalSubject,
           html: personalHtml,
           text: personalText,
           tags: [

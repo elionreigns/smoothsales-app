@@ -13,6 +13,38 @@ function json500(message: string) {
   return NextResponse.json({ success: false, error: message }, { status: 500 });
 }
 
+/**
+ * Last-line-of-defense for subjects after placeholder substitution.
+ * If the source template still has a `for {{Name of Organization}}` style
+ * fragment AND we had to fall back to the generic "your team" string, the
+ * resulting subject can read awkwardly (e.g. "10% partnership for your team").
+ * This swaps in template-aware natural rewrites so the subject always reads
+ * like a human wrote it, even when we don't know the org by name.
+ */
+function sanitizeSubject(subject: string, templateId: string): string {
+  let s = subject
+    .replace(/\{\{\s*[^}]+\s*\}\}/g, "")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([?.,!])/g, "$1")
+    .trim();
+  // Family of luxury-resource direct outreach templates — keep wording aligned
+  // with the saved subject lines but drop the dangling "for your team" tail.
+  const lcId = templateId.toLowerCase();
+  if (lcId.startsWith("luxury-resource-direct")) {
+    s = s
+      .replace(/\bfor your team\b/gi, "with Hawaii Luxury Resource")
+      .replace(/\bat your team\b/gi, "on your end")
+      .replace(/\brespect to your team\b/gi, "respect either way");
+  } else if (lcId.startsWith("rap-central")) {
+    s = s
+      .replace(/\bfor your team\b/gi, "for the artist")
+      .replace(/\bat your team\b/gi, "on the artist's side");
+  } else {
+    s = s.replace(/\s+for your team\b/gi, "");
+  }
+  return s.replace(/\s{2,}/g, " ").trim();
+}
+
 export async function POST(request: NextRequest) {
   try {
     if (isAuthRequired() && !isAuthenticated(request)) {
@@ -282,17 +314,30 @@ export async function POST(request: NextRequest) {
 
     for (let i = 0; i < recipients.length; i++) {
       const rec = recipients[i];
+      // Resolve a natural fallback for the organization placeholder so it never
+      // leaks as a literal "{{Name of Organization}}" in subject lines or body.
+      // Order: explicit nameOfOrganization → recipient name → generic "your team".
+      const orgFallback =
+        (rec.nameOfOrganization && rec.nameOfOrganization.trim()) ||
+        (rec.name && rec.name.trim() && rec.name.trim().toLowerCase() !== "there"
+          ? rec.name.trim()
+          : "your team");
       const vars = {
         Name: rec.name ?? "there",
         "Name of Person": rec.nameOfPerson ?? rec.name ?? "there",
-        "Name of Organization": rec.nameOfOrganization ?? rec.name ?? "",
+        "Name of Organization": orgFallback,
       };
       const { html: personalHtml, text: personalText } = substitutePlaceholders(htmlWithImages, text, vars);
+      // Personalize the subject too — previously the subject was sent verbatim
+      // which is why some recipients saw the literal "{{Name of Organization}}"
+      // placeholder text in their inbox.
+      const { html: personalSubjectRaw } = substitutePlaceholders(subject, "", vars);
+      const personalSubject = sanitizeSubject(personalSubjectRaw, templateId);
       try {
         const payload: Parameters<Resend["emails"]["send"]>[0] = {
           from: FROM_EMAIL,
           to: rec.email,
-          subject,
+          subject: personalSubject,
           html: personalHtml,
           text: personalText,
           tags: [

@@ -129,7 +129,13 @@ for (const row of dataRows) {
   if (tplCell && tplCell !== templateId.toLowerCase()) continue;
 
   const nameCell = iName >= 0 ? String(row[iName] || "").trim() : "";
-  const orgCell = iOrg >= 0 && iOrg !== iName ? String(row[iOrg] || "").trim() : "";
+  // For vendor CSVs the "operator" column is BOTH the contact's name and the
+  // organization name (one-person shops or where the operator IS the brand).
+  // Previously we dropped the org when both indices resolved to the same column,
+  // which left {{Name of Organization}} as a literal placeholder in subjects.
+  // Now we always carry the operator/name string through as the org as well.
+  let orgCell = iOrg >= 0 && iOrg !== iName ? String(row[iOrg] || "").trim() : "";
+  if (!orgCell && nameCell) orgCell = nameCell;
   // Drop "Various individual landlords" / "various agents" — those are saved-search aggregator rows.
   if (/^various\b/i.test(nameCell)) continue;
 

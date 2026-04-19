@@ -964,7 +964,7 @@ ${SOFT_CLOSE_HTML}
 // LUXURY RESOURCE – DIRECT (non-FareHarbor operators – contract attached)
 // ─────────────────────────────────────────────────────────────────────────────
 const LUX_DIRECT = {
-  subject: "10% referral partnership for {{Name of Organization}} – contract ready, Ashley will close it",
+  subject: "Hawaii Luxury Resource – 10% referral partnership, contract ready (Ashley will close it)",
   text: `Hi {{Name}},
 
 I run Hawaii Luxury Resource – a curated booking and concierge layer for Hawaii's top tour and activity operators – and I would like to feature {{Name of Organization}} on our catalog and start sending you guests.
@@ -1046,7 +1046,7 @@ ${btn("tel:8089949034", "Call Ashley – (808) 994-9034", "#7c2d12")}`,
 };
 
 const LUX_DIRECT_FU1 = {
-  subject: "did the contract proposal reach the right person at {{Name of Organization}}?",
+  subject: "did the Hawaii Luxury Resource referral proposal reach the right person?",
   text: `Hi {{Name}},
 
 Quick follow-up on the direct-commission referral proposal for {{Name of Organization}}. Wanted to make sure it landed with the right person – sometimes operators have a separate sales / partnerships contact who handles new referral relationships.
@@ -1252,7 +1252,7 @@ ${btn("tel:8089949034", "Partnerships – (808) 994-9034", "#7e22ce")}`,
 };
 
 const RAP_RAPPERS_FU3 = {
-  subject: "small thing for {{Name of Organization}} – featured artist spotlight",
+  subject: "small thing for the artist – featured spotlight on rap.com",
   text: `Hi {{Name}},
 
 Small reciprocal offer to make joining the engine even more worth your team's time:
@@ -1274,7 +1274,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=rap.com%20spotlight%20-%2
 };
 
 const RAP_RAPPERS_FU4 = {
-  subject: "last note – respect to {{Name of Organization}} either way",
+  subject: "last note – respect either way, door stays open",
   text: `Hi {{Name}},
 
 Last note. We will keep building the engine and onboarding the artists who said yes. The door is open for {{Name of Organization}} whenever you (or your team) want to revisit.
