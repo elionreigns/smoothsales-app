@@ -434,7 +434,7 @@ const CORGI_HAIR = {
   subject: "double-coat corgi (13 yrs) – deshed + blowout (no shaving)",
   text: `Hi {{Name}},
 
-I would love to book {{Name of Organization}} for a grooming appointment for our 13-year-old corgi, Stella.
+I would love to book a grooming appointment for our 13-year-old corgi, Stella.
 
 ${STELLA_BLURB_TEXT}
 
@@ -463,7 +463,7 @@ Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
     "Grooming appointment request – senior corgi",
     "Stella, 13-year-old Pembroke corgi",
     "Deshed + high-velocity blowout · no shaving · gentle handling.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I would love to book <strong>{{Name of Organization}}</strong> for a grooming appointment for our 13-year-old corgi, Stella.</p>
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I would love to book a grooming appointment for our 13-year-old corgi, Stella.</p>
 ${STELLA_BLURB_HTML}
 <p style="margin:18px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#b45309;text-transform:uppercase;">What I am hoping you can quote</p>
 <ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
@@ -827,38 +827,40 @@ ${SOFT_CLOSE_HTML}
 // LUXURY RESOURCE – FAREHARBOR PARTNERS (already on FareHarbor)
 // ─────────────────────────────────────────────────────────────────────────────
 const LUX_FH = {
-  subject: "free FareHarbor traffic – add Hawaii Luxury Resource as your affiliate (10%, only goes up)",
+  subject: "Sign us on as Your Affiliate and Increase Your Bookings either direct or through FareHarbor",
   text: `Hi {{Name}},
 
-I run Hawaii Luxury Resource – a curated booking and concierge layer for Hawaii's top tour and activity operators (200+ live experiences across all four islands) – and I would love to feature {{Name of Organization}} and start sending you guests.
+I am launching Hawaii Luxury Resource, with over 20+ years in the tourism industry — from working with the top tourism companies, to introducing the Water Jetpack to Hawaii, to building countless websites along the way. We're working on a new luxury website which also carries some basic activities, but is more focused on the high-end clients who aren't necessarily on a budget and just want the best quality of service — and we thought of you and {{Name of Organization}}.
 
-The setup for FareHarbor partners is dead simple, totally free, and takes you about three minutes. We are asking to be added as your affiliate inside your FareHarbor dashboard. Once we are in, every booking we send you carries our affiliate code and FareHarbor pays out the commission you set – no invoicing, no chasing, no extra paperwork on your end.
+The ask is simple: sign us on as your affiliate so we can start sending guests your way. You can do that one of two ways, whichever your team prefers:
 
-Our defaults to make this an easy yes:
-- Commission: 10% (your standard FareHarbor affiliate rate)
-- Direction: rate can ONLY go up over time, never down – we have a written commission-review clause that says rates only increase based on volume / quality of leads
-- Reporting: handled entirely by FareHarbor
-- Cost to you: zero up front, zero ongoing
-- Cost if we send zero bookings: still zero
+1) As a FareHarbor affiliate (3-minute add in your dashboard — FareHarbor pays out, you never invoice us)
+2) Through a direct commission contract (10% on confirmed + completed bookings, NET-15 settlement)
 
-How to add us (your team has done this before – takes 3 min):
+Either way:
+- Commission: 10% to start (your standard FareHarbor affiliate rate)
+- Cost up front / ongoing / if we send zero bookings: zero
+- Reporting: handled entirely by FareHarbor (or by us, on a monthly statement, if direct)
+- We never increase your published price — the commission comes out of your proceeds
+
+How to add us on FareHarbor (~3 min):
 1. Sign in to FareHarbor → Help → "Add an affiliate" / "Manage affiliates"
 2. Select "Add affiliate" and enter:
      Name: Hawaii Luxury Resource (Eric Schaefer)
      Email: coralcrowntechnologies@gmail.com
      Type: Individual / Online Affiliate
-     Commission: 10% (default)
-3. FareHarbor will send us our affiliate code and lightboxes – we drop them on the right pages on hawaiiluxuryresource.com and we are live.
+     Commission: 10%
+3. FareHarbor will send us our affiliate code + lightboxes — we drop them on the right pages on hawaiiluxuryresource.com and we are live.
 
-If you would rather have us call your team and walk through it together, that is great too – Ashley on our side handles vendor onboarding and contracts. Reach her at 808-994-9034 (or text). She can have you up and running in one call.
+If you would rather have us call and walk through it together, Ashley on our side handles vendor onboarding. Reach her at 808-994-9034 (or text).
 
 What you get from us:
-- A featured placement on our curated catalog (we are doing real homework on every operator – we are NOT a spammy aggregator)
-- Targeted paid traffic from couples, group travel, luxury concierge searches
-- Pre-qualified guests (ours arrive expecting your premium price, not bargain-hunting)
-- Year-round visibility – not just one-off blasts
+- Featured placement on our curated catalog (we vet every operator — not a spammy aggregator)
+- Targeted paid traffic from couples, group travel, and luxury concierge searches
+- Pre-qualified guests who arrive expecting your premium price, not bargain-hunting
+- Year-round visibility, not just one-off blasts
 
-Thank you for considering it, {{Name}} – this is the easiest add you will say yes to all month.
+Thank you for considering it, {{Name}}.
 
 Eric Schaefer
 Hawaii Luxury Resource · Coral Crown Solutions
@@ -866,18 +868,23 @@ hawaiiluxuryresource.com · (808) 994-9034 (Ashley) · (808) 393-0153 (Eric)${NS
   html: card(
     "#a16207",
     "rgba(161,98,7,0.2)",
-    "FareHarbor affiliate request – Hawaii Luxury Resource",
-    "Add us as your affiliate. 10% – never down, only up.",
-    "Free, 3-minute add. Free traffic. Pre-qualified luxury guests.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I run <strong>Hawaii Luxury Resource</strong> – a curated booking and concierge layer for Hawaii's top tour and activity operators (200+ live experiences across all four islands) – and I would love to feature <strong>{{Name of Organization}}</strong> and start sending you guests.</p>
+    "Sign us on as your affiliate — Hawaii Luxury Resource",
+    "Increase your bookings — direct or through FareHarbor.",
+    "20+ years in Hawaii tourism. Water Jetpack intro. Countless websites.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I am launching <strong>Hawaii Luxury Resource</strong>, with over <strong>20+ years in the tourism industry</strong> — from working with the top tourism companies, to <strong>introducing the Water Jetpack to Hawaii</strong>, to building countless websites along the way. We're working on a new luxury website which also carries some basic activities, but is more focused on the <strong>high-end clients who aren't necessarily on a budget and just want the best quality of service</strong> — and we thought of you and <strong>{{Name of Organization}}</strong>.</p>
 ${LUXURY_BLURB_HTML}
+<p style="margin:14px 0;font-size:15px;line-height:1.7;">The ask is simple: sign us on as your affiliate so we can start sending guests your way. You can do that one of two ways — whichever your team prefers:</p>
+<ol style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.75;">
+<li><strong>As a FareHarbor affiliate</strong> (3-minute add in your dashboard — FareHarbor pays out, you never invoice us)</li>
+<li><strong>Through a direct commission contract</strong> (10% on confirmed + completed bookings, NET-15 settlement)</li>
+</ol>
 <div style="background:#fffbeb;border:1px solid rgba(161,98,7,0.3);border-radius:14px;padding:18px 20px;margin:18px 0;">
-<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#854d0e;text-transform:uppercase;">Defaults that make this an easy yes</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#854d0e;text-transform:uppercase;">Either way</p>
 <ul style="margin:0;padding-left:20px;font-size:14px;line-height:1.7;color:#451a03;">
-<li><strong>Commission:</strong> 10% (your standard FareHarbor affiliate rate)</li>
-<li><strong>Direction:</strong> rate can ONLY go up – never down – with a written commission-review clause</li>
-<li><strong>Reporting:</strong> handled entirely by FareHarbor</li>
+<li><strong>Commission:</strong> 10% to start (your standard FareHarbor affiliate rate)</li>
+<li><strong>Reporting:</strong> handled entirely by FareHarbor (or by us, monthly, if direct)</li>
 <li><strong>Cost up front / ongoing / if zero bookings:</strong> zero</li>
+<li>We never increase your published price — the commission comes out of your proceeds</li>
 </ul>
 </div>
 <p style="margin:18px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#a16207;text-transform:uppercase;">3-minute add (your team has done this before)</p>
@@ -1208,41 +1215,62 @@ ${SOFT_CLOSE_HTML}
 // ─────────────────────────────────────────────────────────────────────────────
 // RAP CENTRAL – RAPPERS + MANAGEMENT (booking engine onboarding)
 // ─────────────────────────────────────────────────────────────────────────────
+const RAP_CENTRAL_MANIFESTO_TEXT = `--- Thug's Mansion (why we're here) ---
+Rap.com is Thug's Mansion, and exists to meet every challenge those involved in the rap industry face today. We are determined to break the mold and forge a new path for artists. We are finding the best resources for you, interviewing experts, discovering new talent, bringing together rap artists from all over the globe, finding tours you can perform on, and endorsing cool brands. We welcome you to the family.
+
+"Ain't no place I'd rather be, chillin' with homies and family, sky high, iced out paradise in the sky, ain't no place I'd rather be, only place that's right for me, chromed out mansion in paradise in the sky." — Tupac
+
+Thug's Mansion tribute: https://youtu.be/sGN0N8Sz2mk
+Original Rap.com (2016 archive): https://web.archive.org/web/20160313071239/http://rap.com/`;
+
+const RAP_CENTRAL_MANIFESTO_HTML = `<div style="background:linear-gradient(135deg,rgba(126,34,206,0.08),rgba(0,0,0,0.04));border:1px solid rgba(126,34,206,0.28);border-radius:14px;padding:18px 20px;margin:22px 0 6px;">
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#7e22ce;text-transform:uppercase;">Thug's Mansion — why we're here</p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.65;color:#334155;">Rap.com is Thug's Mansion, and exists to meet every challenge those involved in the rap industry face today. We are determined to break the mold and forge a new path for artists. We are finding the best resources for you, interviewing experts, discovering new talent, bringing together rap artists from all over the globe, finding tours you can perform on, and endorsing cool brands. We welcome you to the family.</p>
+<blockquote style="margin:0 0 12px;padding:10px 14px;border-left:3px solid #7e22ce;font-style:italic;background:rgba(255,255,255,0.5);border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.6;color:#334155;">"Ain't no place I'd rather be, chillin' with homies and family, sky high, iced out paradise in the sky, ain't no place I'd rather be, only place that's right for me, chromed out mansion in paradise in the sky." <span style="display:block;margin-top:6px;font-style:normal;font-weight:700;color:#7e22ce;">— Tupac</span></blockquote>
+<a href="https://youtu.be/sGN0N8Sz2mk" style="display:block;position:relative;margin:10px 0;border-radius:10px;overflow:hidden;text-decoration:none;" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/sGN0N8Sz2mk/hqdefault.jpg" alt="Thug's Mansion tribute video thumbnail" width="480" height="270" style="display:block;width:100%;max-width:480px;height:auto;border-radius:10px;filter:brightness(0.82);" /><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;color:#fff;text-shadow:0 4px 14px rgba(0,0,0,0.5);pointer-events:none;">▶</span></a>
+<p style="margin:6px 0 0;font-size:12.5px;line-height:1.55;color:#475569;">Original Rap.com (2016 archive): <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">web.archive.org/rap.com</a> · Thug's Mansion tribute: <a href="https://youtu.be/sGN0N8Sz2mk" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">youtu.be/sGN0N8Sz2mk</a></p>
+</div>`;
+
 const RAP_RAPPERS = {
-  subject: "rap.com booking engine – 5% to route promoter offers directly to you",
+  subject: "Rap Central (formerly Rap.com) booking engine – 5% to route promoter offers to you",
   text: `Hi {{Name}},
 
-I run rap.com and the new Rap Artist Booking Engine. We are building a single coordination layer where event promoters from around the country submit structured booking requests, and our system routes them directly to artists (or their management) – with the deal terms, dates, riders, and budgets pre-filled and ready for you to accept, counter, or pass.
+I used to run Rap.com (here's the 2016 archive: https://web.archive.org/web/20160313071239/http://rap.com/) and we're relaunching 10 years later as Rap Central — the artist booking network that connects promoters directly with talent, with tools for lyricists, producers, and everyone else in the rap industry.
+
+The core of it is the Rap Artist Booking Engine: a single coordination layer where event promoters submit structured booking requests, and our system routes them directly to artists (or management) — with deal terms, dates, riders, and budgets pre-filled and ready to accept, counter, or pass.
 
 The pitch in one paragraph:
 - For artists: zero up-front cost, zero exclusivity, zero competing booking offers from us. We take 5% of the total payment ONLY when a deal closes through our engine. If a promoter you would have heard from anyway sends you an offer, we collect nothing.
 - For promoters: a single, vetted intake that gets a real response within 48–72 hours, with confirmed dates and an actual contract path.
 
 What we need from {{Name of Organization}} to get you on the engine (~5 minutes by email):
-1. Confirmed booking contact (your management, agent, or attorney) – name + email
-2. Show requirements / rider essentials (sound, stage, timing, sample length)
-3. Travel + accommodations standards (flights – class + city of origin, ground transport, hotel star rating + suite preference, per-diem)
-4. Min performance fee tiers you would consider (festival headline, opening, club / private)
-5. Restrictions (geography, calendar blackout, brand exclusivities, etc.)
+1. Confirmed booking contact (management, agent, or attorney) – name + email
+2. Show requirements / rider essentials – sound, stage, timing, set length
+3. Travel + accommodations standards – flights (class + city of origin), ground transport, hotel star rating + suite preference, per-diem
+4. Minimum performance fee tiers – festival headline, opening, club / private
+5. Restrictions – geography, calendar blackouts, brand exclusivities, etc.
 
-Once we have those, you can stay completely passive – the engine routes only requests that match your tiers and preferences directly to your designated booking contact, with our 5% built in to the gross. Your team replies "yes / no / counter" and the rest is paperwork.
+Once we have those, you can stay completely passive — the engine routes only requests that match your tiers and preferences directly to your designated booking contact, with our 5% built into the gross. Your team replies "yes / no / counter" and the rest is paperwork.
 
-This is built to be the fastest, lowest-friction way for serious promoters to reach serious artists – without the noise of cold DMs, scraped emails, or unverified "I have your number" pitches.
+This is built to be the fastest, lowest-friction way for serious promoters to reach serious artists — without the noise of cold DMs, scraped emails, or unverified pitches.
 
-If you (or whoever handles bookings for you) wants to chat first, my number is 808-393-0153 and our partnerships line for the rap engine is 808-994-9034. Or reply with the booking contact and we will reach out directly.
+If you (or whoever handles bookings for you) wants to chat first, my number is 808-393-0153 and our partnerships line is 808-994-9034. Or reply with the booking contact and we will reach out directly.
 
 Thank you for considering it.
 
 Eric Schaefer
-rap.com – Rap Artist Booking Engine
-coralcrowntechnologies@gmail.com${NS_FOOTER_TEXT}`,
+Rap Central (formerly Rap.com) – Rap Artist Booking Engine
+coralcrowntechnologies@gmail.com
+
+${RAP_CENTRAL_MANIFESTO_TEXT}${NS_FOOTER_TEXT}`,
   html: card(
     "#7e22ce",
     "rgba(126,34,206,0.22)",
-    "rap.com – Rap Artist Booking Engine",
+    "Rap Central — formerly Rap.com",
     "5% to route promoter offers directly to you",
     "Zero up-front. Zero exclusivity. Zero competing offers from us.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I run <strong>rap.com</strong> and the new <strong>Rap Artist Booking Engine</strong>. We are building a single coordination layer where event promoters submit structured booking requests, and our system routes them directly to artists (or management) – with deal terms, dates, riders, and budgets pre-filled and ready to accept, counter, or pass.</p>
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I used to run <strong>Rap.com</strong> — <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">here's the 2016 archive</a> — and we're relaunching 10 years later as <strong>Rap Central</strong>, the artist booking network that connects promoters directly with talent, with tools for lyricists, producers, and everyone else in the rap industry.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">The core of it is the <strong>Rap Artist Booking Engine</strong>: a single coordination layer where event promoters submit structured booking requests, and our system routes them directly to artists (or management) — with deal terms, dates, riders, and budgets pre-filled and ready to accept, counter, or pass.</p>
 <div style="background:#faf5ff;border:1px solid rgba(126,34,206,0.25);border-radius:14px;padding:18px 20px;margin:18px 0;">
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#581c87;text-transform:uppercase;">The pitch in one paragraph</p>
 <p style="margin:0 0 10px;font-size:14px;color:#581c87;line-height:1.7;"><strong>For artists:</strong> zero up-front cost, zero exclusivity, zero competing booking offers from us. We take <strong>5% of the total payment ONLY when a deal closes through our engine</strong>. If a promoter you would have heard from anyway sends you an offer, we collect nothing.</p>
@@ -1256,27 +1284,28 @@ coralcrowntechnologies@gmail.com${NS_FOOTER_TEXT}`,
 <li>Minimum <strong>performance fee tiers</strong> – festival headline, opening, club / private</li>
 <li>Restrictions – geography, calendar blackouts, brand exclusivities, etc.</li>
 </ol>
-<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">Once we have those, you can stay <strong>completely passive</strong> – the engine routes only requests that match your tiers and preferences directly to your designated booking contact, with our 5% built into the gross. Your team replies "yes / no / counter" and the rest is paperwork.</p>
-<p style="margin:0 0 14px;font-size:14px;line-height:1.7;">This is built to be the fastest, lowest-friction way for serious promoters to reach serious artists – without the noise of cold DMs, scraped emails, or unverified "I have your number" pitches.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">Once we have those, you can stay <strong>completely passive</strong> — the engine routes only requests that match your tiers and preferences directly to your designated booking contact, with our 5% built into the gross. Your team replies "yes / no / counter" and the rest is paperwork.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;">This is built to be the fastest, lowest-friction way for serious promoters to reach serious artists — without the noise of cold DMs, scraped emails, or unverified pitches.</p>
 <div style="background:#f3e8ff;border:1px solid rgba(126,34,206,0.3);border-radius:14px;padding:16px 18px;margin:18px 0;">
 <p style="margin:0;font-size:14px;color:#581c87;line-height:1.6;">Reply with the booking contact and we will reach out directly. Or call us first: <strong>(808) 393-0153</strong> Eric / <strong>(808) 994-9034</strong> partnerships.</p>
 </div>
-${btn("mailto:coralcrowntechnologies@gmail.com?subject=rap.com%20booking%20engine%20-%20{{Name of Organization}}", "Reply with booking contact", "#7e22ce")}`,
+${btn("mailto:coralcrowntechnologies@gmail.com?subject=Rap%20Central%20booking%20engine%20-%20{{Name of Organization}}", "Reply with booking contact", "#7e22ce")}
+${RAP_CENTRAL_MANIFESTO_HTML}`,
   ),
 };
 
 const RAP_RAPPERS_FU1 = {
-  subject: "did the rap.com booking engine note reach your team?",
+  subject: "did the Rap Central booking engine note reach your team?",
   text: `Hi {{Name}},
 
-Quick follow-up on the rap.com Rap Artist Booking Engine note. Wanted to make sure it landed with whoever handles {{Name of Organization}}'s bookings – sometimes the right person is a manager, agent, or attorney rather than the public-facing email.
+Quick follow-up on the Rap Central (formerly Rap.com — 2016 archive: https://web.archive.org/web/20160313071239/http://rap.com/) booking engine note. Wanted to make sure it landed with whoever handles {{Name of Organization}}'s bookings – sometimes the right person is a manager, agent, or attorney rather than the public-facing email.
 
 If you can forward to them (or send me their direct email), I will move it through quietly with no inbox flood for you. Or have them text/call our partnerships line at 808-994-9034.
 
 Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#7e22ce",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick follow-up on the rap.com booking engine note. Just making sure it landed with whoever handles bookings for <strong>{{Name of Organization}}</strong>.</p>
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick follow-up on the <strong>Rap Central</strong> (formerly Rap.com — <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">2016 archive</a>) booking engine note. Just making sure it landed with whoever handles bookings for <strong>{{Name of Organization}}</strong>.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">Forward to them (or send me their direct email) and I will move it through quietly. Or have them text/call partnerships at <strong>808-994-9034</strong>.</p>
 ${btn("tel:8089949034", "Partnerships line – (808) 994-9034", "#7e22ce")}`,
   ),
@@ -1286,7 +1315,7 @@ const RAP_RAPPERS_FU2 = {
   subject: "is 5% lower than what you currently pay for cold inbound?",
   text: `Hi {{Name}},
 
-Honest question, not a pitch. Most artists I have talked to either pay an agent 10–15% on cold inbound or eat the time-cost of sorting cold DMs themselves. The rap.com engine is 5% on closed deals only, with the lead-quality filter built in.
+Honest question, not a pitch. Most artists I have talked to either pay an agent 10–15% on cold inbound or eat the time-cost of sorting cold DMs themselves. The Rap Central (formerly Rap.com) engine is 5% on closed deals only, with the lead-quality filter built in.
 
 So the real question for you: is 5% with structured intake worth it vs. what you currently do for cold inbound? If yes – let us add you. If no – tell me why and I will respect it.
 
@@ -1295,7 +1324,7 @@ Either way, no exclusivity, no opt-in fee, no commitment until a deal actually c
 Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#7e22ce",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Honest question. Most artists either pay an agent <strong>10–15% on cold inbound</strong> or eat the time-cost of sorting cold DMs themselves. The rap.com engine is <strong>5% on closed deals only</strong>, with lead-quality filtering built in.</p>
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Honest question. Most artists either pay an agent <strong>10–15% on cold inbound</strong> or eat the time-cost of sorting cold DMs themselves. The <strong>Rap Central</strong> (formerly Rap.com) engine is <strong>5% on closed deals only</strong>, with lead-quality filtering built in.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Real question: is 5% with structured intake worth it vs. what you currently do for cold inbound? If yes – let us add you. If no – tell me why and I will respect it.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">No exclusivity, no opt-in fee, no commitment until a deal actually closes.</p>
 ${btn("tel:8089949034", "Partnerships – (808) 994-9034", "#7e22ce")}`,
@@ -1303,12 +1332,12 @@ ${btn("tel:8089949034", "Partnerships – (808) 994-9034", "#7e22ce")}`,
 };
 
 const RAP_RAPPERS_FU3 = {
-  subject: "small thing for the artist – featured spotlight on rap.com",
+  subject: "small thing for the artist – featured spotlight on Rap Central",
   text: `Hi {{Name}},
 
 Small reciprocal offer to make joining the engine even more worth your team's time:
 
-If you onboard this month, I will give {{Name of Organization}} a featured artist spotlight on rap.com – above-the-fold homepage rotation, dedicated artist page with your booking link (your team's email or your engine intake), and a journal article about your last project / current tour.
+If you onboard this month, I will give {{Name of Organization}} a featured artist spotlight on Rap Central (formerly Rap.com — here's the 2016 archive: https://web.archive.org/web/20160313071239/http://rap.com/) – above-the-fold homepage rotation, dedicated artist page with your booking link (your team's email or your engine intake), and a journal article about your last project / current tour.
 
 That is real organic traffic from a domain dedicated to rap, no extra cost, no exclusivity. Even if you never close a single engine booking through us, you keep the spotlight and the page.
 
@@ -1318,9 +1347,9 @@ Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#7e22ce",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Small reciprocal offer to make joining the engine even more worth your team's time:</p>
-<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If you onboard this month, I will give <strong>{{Name of Organization}}</strong> a <strong>featured artist spotlight on rap.com</strong> – above-the-fold homepage rotation, dedicated artist page with your booking link, and a journal article about your last project / current tour.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If you onboard this month, I will give <strong>{{Name of Organization}}</strong> a <strong>featured artist spotlight on Rap Central</strong> (formerly Rap.com — <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">2016 archive</a>) – above-the-fold homepage rotation, dedicated artist page with your booking link, and a journal article about your last project / current tour.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">Real organic traffic from a rap-dedicated domain, no extra cost, no exclusivity. Even if you never close an engine booking through us, you keep the spotlight and the page.</p>
-${btn("mailto:coralcrowntechnologies@gmail.com?subject=rap.com%20spotlight%20-%20{{Name of Organization}}", "Reply with booking contact", "#7e22ce")}`,
+${btn("mailto:coralcrowntechnologies@gmail.com?subject=Rap%20Central%20spotlight%20-%20{{Name of Organization}}", "Reply with booking contact", "#7e22ce")}`,
   ),
 };
 
