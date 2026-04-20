@@ -108,6 +108,7 @@ const iEmailFallback2 = colIdx("booking_email");
 const iName = colIdx("contact_name", "business_name", "operator", "manager_name", "artist_stage_name", "title");
 const iOrg = colIdx("operator", "title", "business_name", "artist_stage_name");
 const iTemplateSent = colIdx("template_sent");
+const iLastOutreach = colIdx("last_outreach_date");
 
 if (iEmail < 0) {
   console.error("Could not find an email column in CSV header:", header);
@@ -131,6 +132,14 @@ for (const row of dataRows) {
 
   const tplCell = String(row[iTemplateSent] || "").trim().toLowerCase();
   if (tplCell && tplCell !== templateId.toLowerCase()) continue;
+
+  // Idempotence: skip rows already marked as sent via last_outreach_date so
+  // re-running the same CSV does not double-send. Pass --force to override
+  // (useful when retrying after a send failure or when intentionally re-sending).
+  if (iLastOutreach >= 0 && !process.argv.includes("--force")) {
+    const lastOut = String(row[iLastOutreach] || "").trim();
+    if (lastOut && /\d{4}-\d{2}-\d{2}/.test(lastOut)) continue;
+  }
 
   const nameCell = iName >= 0 ? String(row[iName] || "").trim() : "";
   // For vendor CSVs the "operator" column is BOTH the contact's name and the
@@ -201,10 +210,65 @@ async function sendBatch(batch) {
   return data;
 }
 
+// Writes `last_outreach_date = YYYY-MM-DD` for every row whose email was
+// successfully delivered. Keeps CSVs truthful so re-running the same command
+// is a no-op. Opt out with --no-markback.
+// Simple quote-aware row parser for the mark-back pass. Works line-by-line
+// which is fine for our outreach CSVs (they do not embed newlines inside cells).
+function parseOneRow(line) {
+  const out = [];
+  let cur = "";
+  let inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') {
+      if (inQ && line[i + 1] === '"') { cur += '"'; i++; }
+      else inQ = !inQ;
+    } else if (c === "," && !inQ) { out.push(cur); cur = ""; }
+    else cur += c;
+  }
+  out.push(cur);
+  return out;
+}
+
+function markRowsSent(csvAbsPath, sentEmails) {
+  if (!sentEmails.length) return 0;
+  if (process.argv.includes("--no-markback")) return 0;
+  if (iLastOutreach < 0) return 0;
+
+  const fs2 = require("fs");
+  const raw = fs2.readFileSync(csvAbsPath, "utf8");
+  const eol = /\r\n/.test(raw) ? "\r\n" : "\n";
+  const lines = raw.split(/\r?\n/);
+  if (!lines.length) return 0;
+
+  const emailSet = new Set(sentEmails.map((e) => e.toLowerCase()));
+  const today = new Date().toISOString().slice(0, 10);
+  let marked = 0;
+
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line || line.startsWith("NOTE:")) continue;
+    const cells = parseOneRow(line);
+    if (cells.length < header.length) continue;
+    const e = String(cells[iEmail] || "").trim().toLowerCase();
+    if (!emailSet.has(e)) continue;
+    if (cells[iLastOutreach] && cells[iLastOutreach].trim()) continue;
+    cells[iLastOutreach] = today;
+    lines[i] = cells
+      .map((c) => (c != null && /[",\n]/.test(String(c)) ? `"${String(c).replace(/"/g, '""')}"` : String(c ?? "")))
+      .join(",");
+    marked++;
+  }
+  fs2.writeFileSync(csvAbsPath, lines.join(eol), "utf8");
+  return marked;
+}
+
 (async () => {
   let totalSent = 0;
   let totalFailed = 0;
   const allFailures = [];
+  const sentEmails = [];
   const tStart = Date.now();
 
   for (let i = 0; i < deduped.length; i += batchSize) {
@@ -216,7 +280,13 @@ async function sendBatch(batch) {
       totalSent += r.sent || 0;
       totalFailed += r.failed || 0;
       if (r.details) {
-        for (const d of r.details) if (!d.ok) allFailures.push(d);
+        for (const d of r.details) {
+          if (d.ok) sentEmails.push(d.to);
+          else allFailures.push(d);
+        }
+      } else if (r.sent && r.sent === batch.length) {
+        // API didn't return per-recipient details; assume all in this batch sent.
+        for (const rc of batch) sentEmails.push(rc.email);
       }
       console.log(`sent ${r.sent}/${r.total}`);
     } catch (e) {
@@ -228,6 +298,8 @@ async function sendBatch(batch) {
     await new Promise((r) => setTimeout(r, 1500));
   }
 
+  const marked = markRowsSent(csvPath, sentEmails);
+
   const elapsed = ((Date.now() - tStart) / 1000).toFixed(1);
   console.log("\n=== SUMMARY ===");
   console.log(JSON.stringify({
@@ -235,6 +307,7 @@ async function sendBatch(batch) {
     matchingRecipients: deduped.length,
     totalSent,
     totalFailed,
+    csvRowsMarkedSent: marked,
     elapsedSec: elapsed,
     autoFollowUps: "Vercel cron at /api/cron/run-followups will fire FU1-FU4 daily for unopened emails. See vercel.json.",
   }, null, 2));

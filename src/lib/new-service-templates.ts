@@ -60,6 +60,45 @@ ${NS_FOOTER_HTML}
 const HOUSING_NEEDS_TEXT =
   "We are an expecting couple (wife is pregnant – baby due summer 2026), 2 well-behaved dogs (corgi + corgi mix, hypoallergenic-shampoo trained), and we both work from home. We are looking in East Honolulu (Hawaii Kai / Aina Haina / Kahala / Niu Valley) for a 2BR/2BA at $1,900–$2,400/mo, with pool + gym, in-unit or building W/D, covered parking, ground floor or elevator (because of pregnancy), and pet-friendly (or ESA-acceptable). 12-month lease, move-in within 30–45 days, excellent rental history, full deposit + first month at signing.";
 
+// Family Feud credibility block — our family (the Schaefers) won 5 shows and
+// the grand prize ($67,000+ cash plus a new car) over Oct 27–Nov 3, 2016. This
+// is public record and a massive trust signal for landlords who get ignored or
+// ghosted constantly. We use a hosted Vercel URL for the photo so the image
+// auto-deploys with the servicebot app and never needs an FTP upload.
+const FAMILY_FEUD_IMG_URL =
+  "https://smoothsales-app.vercel.app/assets/team/eric-ashley-family-feud-2016.png";
+
+const FAMILY_FEUD_TEXT =
+  "A small thing that helps people trust us quickly: my family (the Schaefers) won Family Feud in 2016 — five shows in a row, the grand prize, $67,000+ cash and a brand-new car, filmed October 27 through November 3, 2016. It is easy to look up. I mention it not to brag, but because when we sign something (a lease, a loan, a handshake), we honor it — that is how we were raised and how we played on TV. We will be the same kind of tenant.";
+
+const FAMILY_FEUD_HTML = `<div style="background:#fffbeb;border:1px solid rgba(217,119,6,0.35);border-radius:16px;padding:18px 20px;margin:20px 0;">
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#b45309;">A small trust-builder</p>
+<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+<tr>
+<td style="vertical-align:top;padding-right:14px;width:140px;">
+<img src="${FAMILY_FEUD_IMG_URL}" alt="The Schaefer family — Family Feud grand-prize winners, Oct 27–Nov 3, 2016" width="140" style="display:block;border-radius:12px;border:1px solid rgba(217,119,6,0.25);max-width:140px;height:auto;" />
+</td>
+<td style="vertical-align:top;font-size:14px;line-height:1.6;color:#78350f;">
+<p style="margin:0 0 8px;">My family (the <strong>Schaefers</strong>) won <strong>Family Feud</strong> in 2016 — <strong>five shows in a row</strong>, grand prize, $67,000+ cash plus a brand-new car. Filmed <strong>Oct 27–Nov 3, 2016</strong>, easy to look up.</p>
+<p style="margin:0;">I mention it not to brag, but because it is a public, checkable signal of who we are: when we sign something (a lease, a handshake), we honor it. We will be the same kind of tenant.</p>
+</td>
+</tr>
+</table>
+</div>`;
+
+const FAMILY_FEUD_COMPACT_HTML = `<div style="background:#fffbeb;border:1px solid rgba(217,119,6,0.35);border-radius:14px;padding:14px 16px;margin:16px 0;">
+<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+<tr>
+<td style="vertical-align:middle;padding-right:12px;width:92px;">
+<img src="${FAMILY_FEUD_IMG_URL}" alt="Schaefer family — Family Feud 2016 grand-prize winners" width="92" style="display:block;border-radius:10px;border:1px solid rgba(217,119,6,0.25);max-width:92px;height:auto;" />
+</td>
+<td style="vertical-align:middle;font-size:13px;line-height:1.55;color:#78350f;">
+<p style="margin:0;"><strong>Quick context on trust:</strong> my family won <strong>Family Feud</strong> in 2016 — 5 shows, grand prize, $67k+ and a car (Oct 27–Nov 3, 2016, public record). We honor what we sign.</p>
+</td>
+</tr>
+</table>
+</div>`;
+
 const HOUSING_NEEDS_HTML =
   `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are an <strong>expecting couple</strong> (wife is pregnant – baby due summer 2026), 2 well-behaved dogs (corgi + corgi mix), and we both work from home. We are looking in <strong>East Honolulu (Hawaii Kai / Aina Haina / Kahala / Niu Valley)</strong> for a <strong>2BR/2BA at $1,900–$2,400/mo</strong>, with <strong>pool + gym</strong>, in-unit or building W/D, covered parking, <strong>ground floor or elevator</strong> (because of pregnancy), and pet-friendly (or ESA-acceptable).</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>About us as tenants:</strong> 12-month lease, move-in within 30–45 days, excellent rental history (references on request), full deposit + first month at signing, and we will take great care of the unit – we have lived in our current place 4+ years.</p>`;
@@ -136,10 +175,12 @@ export type RapCentralSub = "" | "rappers";
 // APARTMENTS – INDIVIDUAL (Craigslist / FB Marketplace / FSBO landlords)
 // ─────────────────────────────────────────────────────────────────────────────
 const APT_INDIVIDUAL = {
-  subject: "quick question – is your East Honolulu rental still available?",
+  subject: "serious East Honolulu tenant (Family Feud grand-prize family) – is your unit still open?",
   text: `Hi {{Name}},
 
 I saw your listing and wanted to reach out personally before someone else did. ${HOUSING_NEEDS_TEXT}
+
+${FAMILY_FEUD_TEXT}
 
 If your unit is still available and matches, I would love to set up a viewing this week. We can come during whatever time works best for you – evenings and weekends fine. References, proof of income, and a deposit are ready to go.
 
@@ -158,6 +199,7 @@ ${NS_FOOTER_TEXT}`,
     "Quiet, prepared, paid-in-full couple ready to view this week.",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I saw your listing and wanted to reach out personally before someone else did.</p>
 ${HOUSING_NEEDS_HTML}
+${FAMILY_FEUD_HTML}
 <div style="background:#ecfdf5;border:1px solid rgba(13,148,136,0.25);border-radius:14px;padding:16px 18px;margin:18px 0;">
 <p style="margin:0;font-size:14px;color:#065f46;line-height:1.6;"><strong>Next step:</strong> If your unit is still available and matches, I would love to set up a viewing this week. We can come during any time that works for you – evenings and weekends fine. <strong>References, proof of income, and full deposit are ready.</strong></p>
 </div>
@@ -196,6 +238,8 @@ I do not want to be a pest – this is the second nudge. I asked above on purpos
 
 That is exactly what we are trying to be. Quiet expecting couple, two well-mannered dogs, both working from home (so the place gets cared for, not abandoned), full deposit ready, references ready.
 
+${FAMILY_FEUD_TEXT}
+
 If your unit is taken – no problem. If it is still open and the issue is the dogs, the timing, or anything else – please just say so. We can usually work around it.
 
 Eric & Liana – (808) 393-0153${NS_FOOTER_TEXT}`,
@@ -203,6 +247,7 @@ Eric & Liana – (808) 393-0153${NS_FOOTER_TEXT}`,
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">I do not want to be a pest – this is the second nudge. I asked above on purpose: most landlords I have talked to say the hardest part of renting out their place is finding someone they actually <strong>trust</strong>.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">That is what we are trying to be. Quiet expecting couple, two well-mannered dogs, both working from home (so the place gets cared for, not abandoned), full deposit ready, references ready.</p>
+${FAMILY_FEUD_COMPACT_HTML}
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If it is taken – no problem. If it is still open and the issue is the dogs, the timing, or anything else, please just say so. We can usually work around it.</p>
 ${btn("tel:8083930153", "Talk it through – (808) 393-0153", "#0d9488")}`,
   ),
@@ -252,12 +297,14 @@ ${SOFT_CLOSE_HTML}
 // APARTMENTS – REALTOR / PROPERTY MANAGER
 // ─────────────────────────────────────────────────────────────────────────────
 const APT_REALTOR = {
-  subject: "qualified East Honolulu tenant – 2BR, $1.9–$2.4k, pool/gym, pets",
+  subject: "qualified East Honolulu tenant – 2BR, $1.9–$2.4k, pool/gym, pets, Family-Feud-grand-prize family",
   text: `Hi {{Name}},
 
 I am writing because your firm is well known for East Honolulu rentals, and I would like to be on your active prospects list.
 
 The lookup we are running is narrow on purpose so it is easy for you to filter. ${HOUSING_NEEDS_TEXT}
+
+${FAMILY_FEUD_TEXT}
 
 What we are asking from you:
 1. Match us against your current East Honolulu vacancies (Hawaii Kai, Aina Haina, Kahala, Niu Valley, Kuliouou, Portlock).
@@ -278,6 +325,7 @@ Coral Crown Solutions${NS_FOOTER_TEXT}`,
     "Quiet, paid-in-full, ready to apply same-day.",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Your firm is well known for East Honolulu rentals, and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.</p>
 ${HOUSING_NEEDS_HTML}
+${FAMILY_FEUD_HTML}
 <p style="margin:18px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#1d4ed8;text-transform:uppercase;">What we are asking</p>
 <ol style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.75;">
 <li>Match us against your current East Honolulu vacancies (Hawaii Kai, Aina Haina, Kahala, Niu Valley, Kuliouou, Portlock).</li>
@@ -321,6 +369,8 @@ Honest question – not a complaint. If East Honolulu 2BRs are not your firm's f
 
 We are a strong, narrow lead (qualified income, full deposit, narrow zip codes) and the time to move is now (lease signed within 30 days). If your firm's pipeline does not have units in that range, an introduction to whoever does would actually help us both.
 
+${FAMILY_FEUD_TEXT}
+
 Or, if it IS your focus and you just have not seen the right inventory yet – say the word and I will keep checking in.
 
 Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
@@ -328,6 +378,7 @@ Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
     "#1d4ed8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Honest question – not a complaint. If East Honolulu 2BRs are not your firm's focus right now, I would rather you tell me so I can route my search through someone else.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">We are a <strong>strong, narrow lead</strong> (qualified income, full deposit, narrow zip codes) and the time to move is <strong>now</strong> (lease signed within 30 days). If your pipeline does not have units in that range, an introduction to whoever does would actually help us both.</p>
+${FAMILY_FEUD_COMPACT_HTML}
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">Or if it IS your focus and you just have not seen the right inventory yet – say the word and I will keep checking in.</p>
 ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#1d4ed8")}`,
   ),
