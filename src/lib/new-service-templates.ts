@@ -105,6 +105,20 @@ const FAMILY_FEUD_COMPACT_HTML = `<div style="background:#fffbeb;border:1px soli
 </table>
 </div>`;
 
+// Realtor ("principal") variant of the housing-needs block — replaces the
+// "we both work from home" parenthetical with ministry / church lifestyle
+// credibility. Realtors pre-qualify tenants on lifestyle + reliability, so
+// this surfaces the actual signal earlier. Individual-landlord emails keep
+// the WFH framing (some landlords prefer less personal info up front).
+const HOUSING_NEEDS_REALTOR_TEXT =
+  "We are an expecting couple (wife is pregnant, baby due summer 2026) with two registered emotional support animals: Stella, our 13-year-old Pembroke corgi, and Mittens, our 2-year-old cat. Both are calm, clean, fully vetted, and home with us most of the day. Our work is ministry: we serve with the Christian church in East Honolulu, are active in weekly Bible studies, and in worship and service on Sundays and throughout the week. That rhythm keeps us home most evenings and weekends, and it is the backbone of how we honor our commitments. We are looking in East Honolulu (Hawaii Kai, Aina Haina, Kahala, or Niu Valley) for a 2BR/2BA at $1,900 to $2,400 per month, with a pool and gym, in-unit or building laundry, covered parking, and a ground floor or elevator access (because of the pregnancy). Twelve-month lease, move-in within 30 to 45 days, excellent rental history, full deposit plus first month at signing.";
+
+const HOUSING_NEEDS_REALTOR_HTML =
+  `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are an <strong>expecting couple</strong> (wife is pregnant, baby due summer 2026) with <strong>two registered emotional support animals</strong>: <strong>Stella</strong>, our 13-year-old Pembroke corgi, and <strong>Mittens</strong>, our 2-year-old cat. Both are calm, clean, fully vetted, and home with us most of the day.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;"><strong>Our work is ministry.</strong> We serve with the Christian church in East Honolulu, are active in weekly <strong>Bible studies</strong>, and in worship and service on Sundays and throughout the week. That rhythm keeps us home most evenings and weekends, and it is the backbone of how we honor our commitments — lease, payments, and caring for the place we live in.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are looking in <strong>East Honolulu (Hawaii Kai, Aina Haina, Kahala, or Niu Valley)</strong> for a <strong>2BR/2BA at $1,900 to $2,400 per month</strong>, with a <strong>pool and gym</strong>, in-unit or building laundry, covered parking, and <strong>ground floor or elevator access</strong> (because of the pregnancy). ESA paperwork on file and ready to share.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>About us as tenants:</strong> 12-month lease, move-in within 30–45 days, excellent rental history (references on request), full deposit + first month at signing, and we will take great care of the unit — we have lived in our current place 4+ years.</p>`;
+
 const HOUSING_NEEDS_HTML =
   `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are an <strong>expecting couple</strong> (wife is pregnant, baby due summer 2026) with <strong>two registered emotional support animals</strong>: <strong>Stella</strong>, our 13-year-old Pembroke corgi, and <strong>Mittens</strong>, our 2-year-old cat. Both are calm, clean, fully vetted, and home with us all day (we both work from home). We are looking in <strong>East Honolulu (Hawaii Kai, Aina Haina, Kahala, or Niu Valley)</strong> for a <strong>2BR/2BA at $1,900 to $2,400 per month</strong>, with a <strong>pool and gym</strong>, in-unit or building laundry, covered parking, and <strong>ground floor or elevator access</strong> (because of the pregnancy). ESA paperwork on file and ready to share.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>About us as tenants:</strong> 12-month lease, move-in within 30–45 days, excellent rental history (references on request), full deposit + first month at signing, and we will take great care of the unit – we have lived in our current place 4+ years.</p>`;
@@ -315,7 +329,7 @@ const APT_REALTOR = {
 
 I am writing as a principal (representing only my wife and myself, no outside agent) because your firm is well known for East Honolulu rentals and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.
 
-${HOUSING_NEEDS_TEXT}
+${HOUSING_NEEDS_REALTOR_TEXT}
 
 ${FAMILY_FEUD_TEXT}
 
@@ -336,7 +350,7 @@ Eric & Ashley Schaefer${APT_FOOTER_TEXT}`,
     "Add us to your prospects list",
     "Quiet, paid-in-full, ready to apply same day.",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I am writing as a <strong>principal</strong> (representing only my wife and myself, no outside agent) because your firm is well known for East Honolulu rentals and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.</p>
-${HOUSING_NEEDS_HTML}
+${HOUSING_NEEDS_REALTOR_HTML}
 ${FAMILY_FEUD_HTML}
 <p style="margin:18px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#1d4ed8;text-transform:uppercase;">What we are asking</p>
 <ol style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.75;">
