@@ -178,7 +178,7 @@ const APT_INDIVIDUAL = {
   subject: "Potential East Honolulu Tenant Searching for a Place",
   text: `Hi {{Name}},
 
-I am writing as a real tenant (not an agent) who saw your listing and wanted to reach out personally before someone else did. My wife Liana and I are looking for a place for our growing family, and yours looks like it could genuinely be the one.
+I am writing as a real tenant (not an agent) who saw your listing and wanted to reach out personally before someone else did. My wife Ashley and I are looking for a place for our growing family, and yours looks like it could genuinely be the one.
 
 ${HOUSING_NEEDS_TEXT}
 
@@ -190,7 +190,7 @@ If it is no longer available — no worries at all — I would just appreciate k
 
 Thank you for your time, {{Name}}. We are real, ready, and respectful, and we will treat the place like our own.
 
-Eric & Liana
+Eric & Ashley
 (808) 393-0153
 ${NS_FOOTER_TEXT}`,
   html: card(
@@ -199,7 +199,7 @@ ${NS_FOOTER_TEXT}`,
     "Tenant inquiry — East Honolulu",
     "Is your unit still available for our growing family?",
     "Quiet, prepared, paid-in-full couple ready to view this week.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I am writing as a <strong>real tenant</strong> (not an agent) who saw your listing and wanted to reach out personally before someone else did. My wife Liana and I are looking for a place for our growing family, and yours looks like it could genuinely be the one.</p>
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I am writing as a <strong>real tenant</strong> (not an agent) who saw your listing and wanted to reach out personally before someone else did. My wife Ashley and I are looking for a place for our growing family, and yours looks like it could genuinely be the one.</p>
 ${HOUSING_NEEDS_HTML}
 ${FAMILY_FEUD_HTML}
 <div style="background:#ecfdf5;border:1px solid rgba(13,148,136,0.25);border-radius:14px;padding:16px 18px;margin:18px 0;">
@@ -207,7 +207,7 @@ ${FAMILY_FEUD_HTML}
 </div>
 <p style="margin:0 0 12px;font-size:14px;line-height:1.7;color:#334155;">If it is no longer available – no worries – just a quick "taken" reply helps me stop checking. And if you happen to know other owners in the same building or neighborhood with similar units, an introduction would mean a lot.</p>
 <p style="margin:0 0 6px;font-size:14px;font-weight:700;">Thank you, {{Name}}.</p>
-<p style="margin:0 0 0;font-size:14px;color:#334155;">Eric &amp; Liana · (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
+<p style="margin:0 0 0;font-size:14px;color:#334155;">Eric &amp; Ashley · (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
 ${btn("tel:8083930153", "Call / text Eric – (808) 393-0153", "#0d9488")}`,
   ),
 };
@@ -222,7 +222,7 @@ If the unit is still open, we are still very interested and can view this week. 
 
 If there is anything we did not address (pet policy, lease length, deposit, anything) – please ask. We would rather talk it through than have you skip past us.
 
-Eric & Liana – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick follow-up on my message about your East Honolulu rental. I do not want to clutter your inbox – just want to make sure my first note did not get buried.</p>
@@ -244,7 +244,7 @@ ${FAMILY_FEUD_TEXT}
 
 If your unit is taken, no problem. If it is still open and the issue is the ESAs, the timing, or anything else, please just say so. We can usually work around it.
 
-Eric & Liana – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">I do not want to be a pest – this is the second nudge. I asked above on purpose: most landlords I have talked to say the hardest part of renting out their place is finding someone they actually <strong>trust</strong>.</p>
@@ -265,7 +265,7 @@ One small offer: if you ever rent out this or any other Hawaii unit and want a c
 
 If you happen to know any other owners in East Honolulu with similar units – an intro is the best gift you could give us right now, and we are happy to return the favor (referrals, fair Yelp/Google review, whatever helps).
 
-Eric & Liana – (808) 393-0153 · coralcrowntechnologies@gmail.com${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153 · coralcrowntechnologies@gmail.com${NS_FOOTER_TEXT}`,
   html: fbox(
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Thanks for hosting your listing – it is genuinely useful to renters like us. I will not keep emailing forever; this is the second-to-last note.</p>
@@ -285,13 +285,13 @@ If your unit ever becomes available again or if your timing changes, please reac
 
 Wishing you well with your rental, {{Name}}.${SOFT_CLOSE_TEXT}
 
-Eric & Liana – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#94a3b8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note. We have moved on to actively touring other places, but I wanted to close the loop rather than just disappear.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If your unit becomes available again or your timing changes, please reach out – my number and email are below and they will not change. We are the kind of tenants you wish you had: pay on time, quiet, take care of the place.</p>
 ${SOFT_CLOSE_HTML}
-<p style="margin:14px 0 0;font-size:14px;color:#334155;">Eric &amp; Liana – (808) 393-0153</p>`,
+<p style="margin:14px 0 0;font-size:14px;color:#334155;">Eric &amp; Ashley – (808) 393-0153</p>`,
   ),
 };
 
