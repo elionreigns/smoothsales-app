@@ -111,10 +111,10 @@ const STELLA_BLURB_HTML =
 <p style="margin:0 0 14px;font-size:15px;line-height:1.7;">What we want: a full deshedding bath, a proper <strong>high-velocity blowout</strong>, undercoat rake / Furminator pass, and a light tidy of feet, sanitary area, and skirt. <strong>Never shave the body</strong>. Hypoallergenic / oatmeal shampoo with a thorough rinse if you have it.</p>`;
 
 const LUXURY_BLURB_TEXT =
-  "Hawaii Luxury Resource is a curated booking and concierge layer for Hawaii's top tour and activity operators. We feature your business on our site, run paid traffic to your booking page, and send qualified guests directly to you – at zero cost to you up front. We carry 200+ Oahu/Maui/Big Island/Kauai experiences (FareHarbor + Peek + private operators) and we work two ways: as your FareHarbor affiliate (you add us in the FareHarbor dashboard, we earn the affiliate commission you set, default 10%, never going down – only up based on volume) OR through a direct commission contract (10% on confirmed and completed bookings, NET-15 settlement).";
+  "Hawaii Luxury Resource is a curated booking and concierge layer for Hawaii's top tour and activity operators. We feature your business on our site, run paid traffic to your booking page, and send qualified guests directly to you — at zero cost to you up front. We carry 200+ Oahu/Maui/Big Island/Kauai experiences (FareHarbor + Peek + private operators) and we work two ways: as your FareHarbor affiliate (you add us in the FareHarbor dashboard, default 10% affiliate commission, reviewed annually) OR through a direct commission contract (10% on confirmed and completed bookings, NET-15 settlement).";
 
 const LUXURY_BLURB_HTML =
-  `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;"><strong>Hawaii Luxury Resource</strong> is a curated booking + concierge layer for Hawaii's top tour and activity operators. We feature your business on our site, run paid traffic to your booking page, and send <strong>qualified guests</strong> directly to you – at <strong>zero cost up front</strong>. We carry 200+ Oahu / Maui / Big Island / Kauai experiences and we work two ways: <strong>as your FareHarbor affiliate</strong> (default 10%, never going down) <strong>or via a direct commission contract</strong> (10% on confirmed + completed bookings, NET-15).</p>`;
+  `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;"><strong>Hawaii Luxury Resource</strong> is a curated booking + concierge layer for Hawaii's top tour and activity operators. We feature your business on our site, run paid traffic to your booking page, and send <strong>qualified guests</strong> directly to you — at <strong>zero cost up front</strong>. We carry 200+ Oahu / Maui / Big Island / Kauai experiences and we work two ways: <strong>as your FareHarbor affiliate</strong> (default 10% affiliate commission, reviewed annually) <strong>or via a direct commission contract</strong> (10% on confirmed + completed bookings, NET-15).</p>`;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
@@ -175,18 +175,20 @@ export type RapCentralSub = "" | "rappers";
 // APARTMENTS – INDIVIDUAL (Craigslist / FB Marketplace / FSBO landlords)
 // ─────────────────────────────────────────────────────────────────────────────
 const APT_INDIVIDUAL = {
-  subject: "serious East Honolulu tenant (Family Feud grand-prize family) – is your unit still open?",
+  subject: "Potential East Honolulu Tenant Searching for a Place",
   text: `Hi {{Name}},
 
-I saw your listing and wanted to reach out personally before someone else did. ${HOUSING_NEEDS_TEXT}
+I am writing as a real tenant (not an agent) who saw your listing and wanted to reach out personally before someone else did. My wife Liana and I are looking for a place for our growing family, and yours looks like it could genuinely be the one.
+
+${HOUSING_NEEDS_TEXT}
 
 ${FAMILY_FEUD_TEXT}
 
-If your unit is still available and matches, I would love to set up a viewing this week. We can come during whatever time works best for you – evenings and weekends fine. References, proof of income, and a deposit are ready to go.
+If your unit is still available and matches, I would love to set up a viewing this week. We can come during whatever time works best for you — evenings and weekends are fine. References, proof of income, and a deposit are ready to go.
 
-If it is no longer available – no worries at all – I would just appreciate knowing so I can stop checking. And if you happen to know other landlords in the same building or neighborhood with similar units, I would be grateful for the introduction.
+If it is no longer available — no worries at all — I would just appreciate knowing so I can stop checking. And if you happen to know other landlords in the same building or neighborhood with similar units, I would be grateful for the introduction.
 
-Thank you for your time, {{Name}}. We are real, ready, and respectful – and we will treat the place like our own.
+Thank you for your time, {{Name}}. We are real, ready, and respectful, and we will treat the place like our own.
 
 Eric & Liana
 (808) 393-0153
@@ -194,10 +196,10 @@ ${NS_FOOTER_TEXT}`,
   html: card(
     "#0d9488",
     "rgba(13,148,136,0.18)",
-    "Tenant inquiry – East Honolulu",
-    "Is your unit still available?",
+    "Tenant inquiry — East Honolulu",
+    "Is your unit still available for our growing family?",
     "Quiet, prepared, paid-in-full couple ready to view this week.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I saw your listing and wanted to reach out personally before someone else did.</p>
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I am writing as a <strong>real tenant</strong> (not an agent) who saw your listing and wanted to reach out personally before someone else did. My wife Liana and I are looking for a place for our growing family, and yours looks like it could genuinely be the one.</p>
 ${HOUSING_NEEDS_HTML}
 ${FAMILY_FEUD_HTML}
 <div style="background:#ecfdf5;border:1px solid rgba(13,148,136,0.25);border-radius:14px;padding:16px 18px;margin:18px 0;">
@@ -211,7 +213,7 @@ ${btn("tel:8083930153", "Call / text Eric – (808) 393-0153", "#0d9488")}`,
 };
 
 const APT_INDIVIDUAL_FU1 = {
-  subject: "did i miss your reply about the unit?",
+  subject: "Checking In on Your East Honolulu Listing",
   text: `Hi {{Name}},
 
 Quick follow-up on my message about your East Honolulu rental. I do not want to clutter your inbox – just want to make sure my first email did not get buried.
@@ -231,7 +233,7 @@ ${btn("tel:8083930153", "Call / text – (808) 393-0153", "#0d9488")}`,
 };
 
 const APT_INDIVIDUAL_FU2 = {
-  subject: "have you given up on finding the right tenant?",
+  subject: "Still Looking for the Right Tenant for Your Unit?",
   text: `Hi {{Name}},
 
 I do not want to be a pest – this is the second nudge. I asked above on purpose: most landlords I have talked to say the hardest part of renting out their place is finding someone they actually trust.
@@ -254,7 +256,7 @@ ${btn("tel:8083930153", "Talk it through – (808) 393-0153", "#0d9488")}`,
 };
 
 const APT_INDIVIDUAL_FU3 = {
-  subject: "small thank you – and one offer",
+  subject: "A Small Thank You and an Easy Win for Your Property",
   text: `Hi {{Name}},
 
 Thanks for hosting your listing – it is genuinely useful to renters like us. I will not keep emailing forever; this is the second-to-last note.
@@ -274,7 +276,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Introducing%20a%20landlor
 };
 
 const APT_INDIVIDUAL_FU4 = {
-  subject: "last note – wishing you well either way",
+  subject: "Final Note on Your East Honolulu Listing and Wishing You Well",
   text: `Hi {{Name}},
 
 Last note. We have moved on to actively touring other places, but I wanted to close the loop properly rather than just disappear.
@@ -297,33 +299,33 @@ ${SOFT_CLOSE_HTML}
 // APARTMENTS – REALTOR / PROPERTY MANAGER
 // ─────────────────────────────────────────────────────────────────────────────
 const APT_REALTOR = {
-  subject: "qualified East Honolulu tenant – 2BR, $1.9–$2.4k, pool/gym, pets, Family-Feud-grand-prize family",
+  subject: "Qualified East Honolulu Tenant Searching Through Your Roster (2BR, $1,900 to $2,400, Pool and Gym, Pet Friendly)",
   text: `Hi {{Name}},
 
-I am writing because your firm is well known for East Honolulu rentals, and I would like to be on your active prospects list.
+I am writing as a principal (representing only my wife and myself, no outside agent) because your firm is well known for East Honolulu rentals and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.
 
-The lookup we are running is narrow on purpose so it is easy for you to filter. ${HOUSING_NEEDS_TEXT}
+${HOUSING_NEEDS_TEXT}
 
 ${FAMILY_FEUD_TEXT}
 
-What we are asking from you:
+What we are asking from your office:
 1. Match us against your current East Honolulu vacancies (Hawaii Kai, Aina Haina, Kahala, Niu Valley, Kuliouou, Portlock).
-2. Add us to any "coming-soon" or "off-market" notice list you keep – we are happy to pre-tour and pre-apply.
+2. Add us to any coming-soon or off-market notice list you maintain — we are happy to pre-tour and pre-apply.
 3. If we are not a fit for your firm, an introduction to a colleague who handles this profile would mean a lot.
 
-We have a one-page tenant resume (employment, income, references, vet records for the dogs, cosigners on standby) – happy to send the moment you ask. Application fees, deposits, first month – all standard, paid same day at signing.
+We have a one-page tenant resume (employment, income, references, vet records for the dogs, cosigners on standby) — happy to send the moment you ask. Application fees, deposits, first month — all standard, paid same day at signing.
 
-Best way to reach me is direct: (808) 393-0153 or this email. Thank you, {{Name}} – looking forward to working with you.
+Best way to reach me is direct: (808) 393-0153 or this email. Thank you, {{Name}} — looking forward to working with your office.
 
 Eric Schaefer
 Coral Crown Solutions${NS_FOOTER_TEXT}`,
   html: card(
     "#1d4ed8",
     "rgba(29,78,216,0.18)",
-    "Qualified renter intro – East Honolulu",
+    "Qualified renter intro — East Honolulu",
     "Add us to your prospects list",
-    "Quiet, paid-in-full, ready to apply same-day.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Your firm is well known for East Honolulu rentals, and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.</p>
+    "Quiet, paid-in-full, ready to apply same day.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I am writing as a <strong>principal</strong> (representing only my wife and myself, no outside agent) because your firm is well known for East Honolulu rentals and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.</p>
 ${HOUSING_NEEDS_HTML}
 ${FAMILY_FEUD_HTML}
 <p style="margin:18px 0 8px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#1d4ed8;text-transform:uppercase;">What we are asking</p>
@@ -342,7 +344,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Tenant%20packet%20request
 };
 
 const APT_REALTOR_FU1 = {
-  subject: "ready to view East Honolulu units this week – is your list refreshed?",
+  subject: "Ready to View East Honolulu Units This Week",
   text: `Hi {{Name}},
 
 Quick check-in. We are actively touring this week and into next, so if any East Honolulu units fitting our spec (2BR, $1.9–$2.4k, pool + gym, pet-friendly) hit your active list since my first email, please send them over.
@@ -362,7 +364,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Updated%20East%20Honolulu
 };
 
 const APT_REALTOR_FU2 = {
-  subject: "should we work with someone else for the East Honolulu search?",
+  subject: "Should We Work With Another Realtor for Our East Honolulu Search?",
   text: `Hi {{Name}},
 
 Honest question – not a complaint. If East Honolulu 2BRs are not your firm's focus right now, I would rather you tell me so I can route my search through someone else.
@@ -385,7 +387,7 @@ ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#1d4ed8")}`,
 };
 
 const APT_REALTOR_FU3 = {
-  subject: "free tenant resume + a small reciprocal offer",
+  subject: "Complete Tenant Packet and a Small Reciprocal Offer for Your Time",
   text: `Hi {{Name}},
 
 Two things:
@@ -408,7 +410,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Tenant%20resume%20%2B%20C
 };
 
 const APT_REALTOR_FU4 = {
-  subject: "last note – will not chase further",
+  subject: "Final Note to Your Office and We Will Not Chase Further",
   text: `Hi {{Name}},
 
 Last note from me. We are likely going to land somewhere within the next 2–3 weeks, so I will stop chasing after this.
@@ -431,7 +433,7 @@ ${SOFT_CLOSE_HTML}
 // CORGI CARE – HAIR (groomers / mobile groomers, Oahu)
 // ─────────────────────────────────────────────────────────────────────────────
 const CORGI_HAIR = {
-  subject: "double-coat corgi (13 yrs) – deshed + blowout (no shaving)",
+  subject: "Grooming Quote for Our 13 Year Old Double Coat Pembroke Corgi (Deshed and Blowout, No Shaving)",
   text: `Hi {{Name}},
 
 I would love to book a grooming appointment for our 13-year-old corgi, Stella.
@@ -490,7 +492,7 @@ ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#b45309")}`,
 };
 
 const CORGI_HAIR_FU1 = {
-  subject: "still trying to book Stella's appointment – any opening?",
+  subject: "Still Hoping to Book a Grooming Appointment for Stella",
   text: `Hi {{Name}},
 
 Quick follow-up on grooming for Stella – my 13-year-old corgi. I do not want to keep emailing if you are full or this is not the right ask – just a one-line reply ("booked out" / "not seniors" / etc.) and I will move on.
@@ -507,7 +509,7 @@ ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#b45309")}`,
 };
 
 const CORGI_HAIR_FU2 = {
-  subject: "would Stella be too much work?",
+  subject: "Would Stella Be Too Much Work for Your Grooming Schedule?",
   text: `Hi {{Name}},
 
 Asking the no-question on purpose. Sometimes groomers see "13-year-old double-coat" and quietly skip past – I would rather you just tell me if she is more than you want to take on.
@@ -527,7 +529,7 @@ ${btn("tel:8083930153", "Talk it through – (808) 393-0153", "#b45309")}`,
 };
 
 const CORGI_HAIR_FU3 = {
-  subject: "small thank-you + a fair Yelp/Google review on the table",
+  subject: "A Small Thank You and an Honest Yelp and Google Review From Our Family",
   text: `Hi {{Name}},
 
 Almost done with the chasing. Just wanted to add this:
@@ -546,7 +548,7 @@ Eric${NS_FOOTER_TEXT}`,
 };
 
 const CORGI_HAIR_FU4 = {
-  subject: "last note – Stella sends her tail-wag",
+  subject: "Final Note and Stella Sends Her Tail Wag Either Way",
   text: `Hi {{Name}},
 
 Last email, promise. We are going to keep looking for the right groomer for Stella – your shop was high on our list, but I do not want to be a nuisance.
@@ -567,7 +569,7 @@ ${SOFT_CLOSE_HTML}
 // CORGI CARE – TEETH (vet clinics + dental practices)
 // ─────────────────────────────────────────────────────────────────────────────
 const CORGI_TEETH = {
-  subject: "all-in price for a routine corgi dental cleaning – healthy 13-yr ~25 lb",
+  subject: "All Inclusive Quote Request for a Routine Corgi Dental Cleaning (Healthy 13 Year Old, About 25 Pounds)",
   text: `Hi {{Name}},
 
 I am pricing a full anesthesia dental cleaning for my dog, Stella – a 13-year-old, ~25-lb Pembroke corgi, generally healthy, no known extractions needed.
@@ -614,7 +616,7 @@ ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#0e7490")}`,
 };
 
 const CORGI_TEETH_FU1 = {
-  subject: "still hoping for that all-in dental quote",
+  subject: "Still Hoping to Get an All Inclusive Dental Cleaning Quote",
   text: `Hi {{Name}},
 
 Quick nudge on the dental quote for Stella (13-yr corgi, ~25 lb, healthy mouth). I know quote requests can pile up – just trying to make sure mine did not slip through.
@@ -631,7 +633,7 @@ ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#0e7490")}`,
 };
 
 const CORGI_TEETH_FU2 = {
-  subject: "is your healthy-mouth package over $500?",
+  subject: "Is Your Healthy Mouth Dental Package Above Five Hundred Dollars All In?",
   text: `Hi {{Name}},
 
 Asking the direct question on purpose so neither of us wastes time. If your typical all-in for a healthy 25-lb corgi dental (cleaning + bloodwork + X-rays + anesthesia) is over $500, I would rather know upfront so I can budget or look elsewhere.
@@ -651,7 +653,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Stella%20dental%20quote",
 };
 
 const CORGI_TEETH_FU3 = {
-  subject: "free thank-you – fair review + corgi-owner referrals",
+  subject: "An Honest Review and Referrals From Our Corgi Owner Network",
   text: `Hi {{Name}},
 
 If we end up booking Stella with you and the experience is good, I will leave a thoughtful Yelp + Google review (with photos and the actual price you quoted, so other owners can find you), and I will refer other dog owners I know on Oahu.
@@ -670,7 +672,7 @@ Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
 };
 
 const CORGI_TEETH_FU4 = {
-  subject: "last note – Stella's mouth thanks you anyway",
+  subject: "Final Note and Stella Thanks You Either Way",
   text: `Hi {{Name}},
 
 Last note. We will move forward with whichever clinic gets back to us first with a clear, all-in price. If your office wants to be in the running, even a quick range works.
@@ -690,7 +692,7 @@ ${SOFT_CLOSE_HTML}`,
 // CORGI CARE – MILITARY BASES (VTF / Schofield / JBPHH)
 // ─────────────────────────────────────────────────────────────────────────────
 const CORGI_MILITARY = {
-  subject: "VTF dental rates – helping my wife's cousin (military) book her corgi",
+  subject: "VTF Dental Cleaning Rates for a Military Family Member and Her Corgi",
   text: `Hi {{Name}},
 
 I am writing on behalf of my wife's cousin – she is an active-duty military member here on Oahu and she is trying to book a routine dental cleaning for her corgi. I am helping her gather quotes because she is on an unpredictable schedule.
@@ -745,7 +747,7 @@ ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#166534")}`,
 };
 
 const CORGI_MILITARY_FU1 = {
-  subject: "checking back on the VTF dental rate",
+  subject: "Checking Back on the VTF Dental Rate for Our Military Corgi Owner",
   text: `Hi {{Name}},
 
 Quick follow-up on my note last week. Just trying to confirm the bottom-dollar dental rate for my wife's cousin's corgi so she can book a date.
@@ -762,7 +764,7 @@ ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#166534")}`,
 };
 
 const CORGI_MILITARY_FU2 = {
-  subject: "are non-DoD-card transfers still allowed for VTF dental?",
+  subject: "Are Non Department of Defense Card Sponsorships Still Allowed for VTF Dental?",
   text: `Hi {{Name}},
 
 Asking specifically because we have heard from other military families that the rules around dependent vs. service-member ID, and whether a transferred-ownership dog still qualifies, change from time to time.
@@ -782,7 +784,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=VTF%20eligibility%20%2B%2
 };
 
 const CORGI_MILITARY_FU3 = {
-  subject: "small thank-you – we will recommend you to other corgi families",
+  subject: "A Small Thank You and Referrals to Other Military Corgi Families",
   text: `Hi {{Name}},
 
 Thanks for whatever you have time to share. If we land at your VTF for the cleaning and the experience is good, I will be happy to:
@@ -804,7 +806,7 @@ Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
 };
 
 const CORGI_MILITARY_FU4 = {
-  subject: "last note – mahalo for your service either way",
+  subject: "Final Note and Mahalo for Your Service Either Way",
   text: `Hi {{Name}},
 
 Last note. We will keep digging until she has a slot and an all-in number, but I do not want to keep filling your inbox.
@@ -827,7 +829,7 @@ ${SOFT_CLOSE_HTML}
 // LUXURY RESOURCE – FAREHARBOR PARTNERS (already on FareHarbor)
 // ─────────────────────────────────────────────────────────────────────────────
 const LUX_FH = {
-  subject: "Sign us on as Your Affiliate and Increase Your Bookings either direct or through FareHarbor",
+  subject: "Sign Us On as Your Affiliate and Increase Your Bookings Either Direct or Through FareHarbor",
   text: `Hi {{Name}},
 
 I am launching Hawaii Luxury Resource, with over 20+ years in the tourism industry — from working with the top tourism companies, to introducing the Water Jetpack to Hawaii, to building countless websites along the way. We're working on a new luxury website which also carries some basic activities, but is more focused on the high-end clients who aren't necessarily on a budget and just want the best quality of service — and we thought of you and {{Name of Organization}}.
@@ -838,7 +840,7 @@ The ask is simple: sign us on as your affiliate so we can start sending guests y
 2) Through a direct commission contract (10% on confirmed + completed bookings, NET-15 settlement)
 
 Either way:
-- Commission: 10% to start (your standard FareHarbor affiliate rate)
+- Commission: 10% (your standard FareHarbor affiliate rate)
 - Cost up front / ongoing / if we send zero bookings: zero
 - Reporting: handled entirely by FareHarbor (or by us, on a monthly statement, if direct)
 - We never increase your published price — the commission comes out of your proceeds
@@ -881,7 +883,7 @@ ${LUXURY_BLURB_HTML}
 <div style="background:#fffbeb;border:1px solid rgba(161,98,7,0.3);border-radius:14px;padding:18px 20px;margin:18px 0;">
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#854d0e;text-transform:uppercase;">Either way</p>
 <ul style="margin:0;padding-left:20px;font-size:14px;line-height:1.7;color:#451a03;">
-<li><strong>Commission:</strong> 10% to start (your standard FareHarbor affiliate rate)</li>
+<li><strong>Commission:</strong> 10% (your standard FareHarbor affiliate rate)</li>
 <li><strong>Reporting:</strong> handled entirely by FareHarbor (or by us, monthly, if direct)</li>
 <li><strong>Cost up front / ongoing / if zero bookings:</strong> zero</li>
 <li>We never increase your published price — the commission comes out of your proceeds</li>
@@ -915,7 +917,7 @@ ${btn("tel:8089949034", "Call Ashley – (808) 994-9034", "#a16207")}
 };
 
 const LUX_FH_FU1 = {
-  subject: "did the FareHarbor affiliate request reach the right person?",
+  subject: "Did Our Affiliate Partnership Request Reach the Right Person on Your Team?",
   text: `Hi {{Name}},
 
 Quick follow-up on my note about adding Hawaii Luxury Resource as a FareHarbor affiliate for {{Name of Organization}}.
@@ -935,7 +937,7 @@ ${btn("tel:8089949034", "Call Ashley – (808) 994-9034", "#a16207")}`,
 };
 
 const LUX_FH_FU2 = {
-  subject: "is there a reason to NOT add a free 10% affiliate?",
+  subject: "Is There a Reason Not to Add a Free Affiliate Driving High End Bookings to Your Operation?",
   text: `Hi {{Name}},
 
 Honest no-question. Most FareHarbor operators add affiliates without a second thought because there is literally no risk: you set a default 10% rate, FareHarbor pays it out only on real bookings, and your gross-per-guest stays positive. So I want to ask the obvious: is there a reason your team would not want to add us?
@@ -961,7 +963,7 @@ ${btn("tel:8089949034", "Call Ashley – (808) 994-9034", "#a16207")}`,
 };
 
 const LUX_FH_FU3 = {
-  subject: "small reciprocal offer – free placement + a featured slot",
+  subject: "A Reciprocal Offer to Make the Affiliate Partnership Easy to Say Yes To",
   text: `Hi {{Name}},
 
 A small reciprocal offer to make this even more worth your team's time:
@@ -991,14 +993,14 @@ ${btn("tel:8089949034", "Call Ashley to lock it in – (808) 994-9034", "#a16207
 };
 
 const LUX_FH_FU4 = {
-  subject: "last note – door is open whenever you are ready",
+  subject: "Final Note and Our Affiliate Door Stays Open Whenever You Are Ready",
   text: `Hi {{Name}},
 
 Last touch. We will keep building out the catalog and routing guests through the operators who said yes. The door is always open if you change your mind – nothing we are setting up today expires the offer.
 
 If you ever want to revisit:
-- Default 10% commission, only goes up
-- Featured slot on first month
+- Default 10% affiliate commission, reviewed annually
+- Featured placement on our curated catalog
 - Ashley (vendor onboarding): 808-994-9034
 - Eric (founder): 808-393-0153 / coralcrowntechnologies@gmail.com${SOFT_CLOSE_TEXT}
 
@@ -1008,8 +1010,8 @@ Wishing you a strong season, {{Name}}.${NS_FOOTER_TEXT}`,
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last touch. We will keep building the catalog and routing guests through operators who said yes. The door is always open – nothing about today's offer expires.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If you ever want to revisit:</p>
 <ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
-<li>Default 10% commission, only goes up</li>
-<li>Featured slot on first month</li>
+<li>Default 10% affiliate commission, reviewed annually</li>
+<li>Featured placement on our curated catalog</li>
 <li>Ashley (vendor onboarding): <strong>808-994-9034</strong></li>
 <li>Eric (founder): 808-393-0153 / coralcrowntechnologies@gmail.com</li>
 </ul>
@@ -1022,19 +1024,19 @@ ${SOFT_CLOSE_HTML}
 // LUXURY RESOURCE – DIRECT (non-FareHarbor operators – contract attached)
 // ─────────────────────────────────────────────────────────────────────────────
 const LUX_DIRECT = {
-  subject: "Hawaii Luxury Resource – 10% referral partnership, contract ready (Ashley will close it)",
+  subject: "Sign Us On as Your Direct Affiliate and Increase Your Bookings (Hawaii Luxury Resource, Contract Ready)",
   text: `Hi {{Name}},
 
-I run Hawaii Luxury Resource – a curated booking and concierge layer for Hawaii's top tour and activity operators – and I would like to feature {{Name of Organization}} on our catalog and start sending you guests.
+I am launching Hawaii Luxury Resource, with over 20+ years in the tourism industry — from working with the top tourism companies, to introducing the Water Jetpack to Hawaii, to building countless websites along the way. We're working on a new luxury website which also carries some basic activities, but is more focused on the high-end clients who aren't necessarily on a budget and just want the best quality of service — and we thought of you and {{Name of Organization}}.
 
-Because you are not on FareHarbor (or your guests book direct with you), we use a clean direct-commission referral agreement so this is fast and clear:
+Because {{Name of Organization}} books direct (not on FareHarbor), the cleanest way to sign us on as your affiliate is a one-page direct commission referral agreement. That lets us start sending you pre-qualified luxury guests immediately, with settlement and reporting handled without either of us guessing.
 
-The deal:
-- Commission: 10% on confirmed AND completed bookings sent by us (we eat refunds and no-shows)
-- Tracking: Each guest carries a UTM tag (utm_source=hawaiiluxuryresource, utm_campaign=YOUR_NAME, ref=HLR) – you will see it on the inquiry, in form fields, or in the email subject we send when we route a guest to you
-- Settlement: NET-15 from the date the guest's tour completes – ACH or check, your call
-- Reporting: We send a monthly ledger (PDF + CSV) listing every booking we credited to you, the guest name, dates, and amount – you sign-off, we cash out
-- Direction: This rate can ONLY go up over time, never down (written into the contract – § 6.6 Annual Commission Review)
+The terms:
+- Commission: 10% on confirmed AND completed bookings we send you (we eat refunds and no-shows)
+- Tracking: Each guest carries a UTM tag (utm_source=hawaiiluxuryresource, utm_campaign=YOUR_NAME, ref=HLR) — visible on the inquiry, in form fields, or in the email subject when we route a guest to you
+- Settlement: NET-15 from the date the guest's tour completes — ACH or check, your call
+- Reporting: We send a monthly ledger (PDF + CSV) listing every booking we credited to you, the guest name, dates, and amount — you sign off, we cash out
+- Branding: your name, your photos, your booking flow. We never present {{Name of Organization}} as our own product
 - Cost to you: zero up front, zero ongoing, zero if we send zero bookings
 
 The contract is already drafted (one page, plain English, attorney-reviewed). Ashley on our side handles vendor onboarding and contract close-outs – she will email it over the moment you tell us "send it." She is at 808-994-9034 (call or text) and she will set it up with you, no back-and-forth.
@@ -1061,19 +1063,19 @@ hawaiiluxuryresource.com · Ashley (vendor onboarding): (808) 994-9034 · Eric: 
   html: card(
     "#7c2d12",
     "rgba(124,45,18,0.2)",
-    "Direct referral partnership – Hawaii Luxury Resource",
-    "10% referral. Contract ready. Ashley will close it.",
-    "Pre-qualified luxury guests. Paid traffic. Zero risk to you.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I run <strong>Hawaii Luxury Resource</strong> – a curated booking and concierge layer for Hawaii's top tour and activity operators – and I would like to feature <strong>{{Name of Organization}}</strong> on our catalog and start sending you guests.</p>
-<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Because you are not on FareHarbor (or your guests book direct with you), we use a clean <strong>direct-commission referral agreement</strong> so this is fast and clear.</p>
+    "Sign us on as your direct affiliate — Hawaii Luxury Resource",
+    "10% direct commission, one-page contract ready to sign.",
+    "20+ years in Hawaii tourism. Water Jetpack intro. Countless websites.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I am launching <strong>Hawaii Luxury Resource</strong>, with over <strong>20+ years in the tourism industry</strong> — from working with the top tourism companies, to <strong>introducing the Water Jetpack to Hawaii</strong>, to building countless websites along the way. We're working on a new luxury website which also carries some basic activities, but is more focused on the <strong>high-end clients who aren't necessarily on a budget and just want the best quality of service</strong> — and we thought of you and <strong>{{Name of Organization}}</strong>.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Because <strong>{{Name of Organization}}</strong> books direct (not on FareHarbor), the cleanest way to sign us on as your affiliate is a one-page <strong>direct commission referral agreement</strong>. That lets us start sending you pre-qualified luxury guests immediately, with settlement and reporting handled without either of us guessing.</p>
 <div style="background:#fef2f2;border:1px solid rgba(124,45,18,0.3);border-radius:14px;padding:18px 20px;margin:18px 0;">
-<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#7c2d12;text-transform:uppercase;">The deal</p>
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#7c2d12;text-transform:uppercase;">The terms</p>
 <ul style="margin:0;padding-left:20px;font-size:14px;line-height:1.7;color:#7f1d1d;">
 <li><strong>Commission:</strong> 10% on <strong>confirmed AND completed</strong> bookings (we eat refunds + no-shows)</li>
-<li><strong>Tracking:</strong> UTM tag on every guest (<code>utm_source=hawaiiluxuryresource</code>, <code>utm_campaign=YOUR_NAME</code>, <code>ref=HLR</code>) – visible in inquiry, form fields, or email subject</li>
+<li><strong>Tracking:</strong> UTM tag on every guest (<code>utm_source=hawaiiluxuryresource</code>, <code>utm_campaign=YOUR_NAME</code>, <code>ref=HLR</code>) — visible in inquiry, form fields, or email subject</li>
 <li><strong>Settlement:</strong> NET-15 from tour completion · ACH or check</li>
-<li><strong>Reporting:</strong> Monthly ledger (PDF + CSV) listing every credited booking – sign-off, cash out</li>
-<li><strong>Direction:</strong> Rate can ONLY go up – never down (written § 6.6 Annual Commission Review)</li>
+<li><strong>Reporting:</strong> Monthly ledger (PDF + CSV) listing every credited booking — sign off, cash out</li>
+<li><strong>Branding:</strong> your name, your photos, your booking flow. We never present <strong>{{Name of Organization}}</strong> as our own product</li>
 <li><strong>Cost to you up front / ongoing / if zero bookings:</strong> zero</li>
 </ul>
 </div>
@@ -1104,7 +1106,7 @@ ${btn("tel:8089949034", "Call Ashley – (808) 994-9034", "#7c2d12")}`,
 };
 
 const LUX_DIRECT_FU1 = {
-  subject: "did the Hawaii Luxury Resource referral proposal reach the right person?",
+  subject: "Did Our Direct Affiliate Proposal Reach the Right Person on Your Team?",
   text: `Hi {{Name}},
 
 Quick follow-up on the direct-commission referral proposal for {{Name of Organization}}. Wanted to make sure it landed with the right person – sometimes operators have a separate sales / partnerships contact who handles new referral relationships.
@@ -1124,7 +1126,7 @@ ${btn("tel:8089949034", "Call Ashley – (808) 994-9034", "#7c2d12")}`,
 };
 
 const LUX_DIRECT_FU2 = {
-  subject: "what is in the contract that gives you pause?",
+  subject: "Anything in the Direct Affiliate Contract Giving Your Team Pause?",
   text: `Hi {{Name}},
 
 Honest direct question. Most operators say yes within a few days because the structure is genuinely zero-risk. If something in the proposal is giving you pause, I would rather know what it is so we can adjust or remove it.
@@ -1153,7 +1155,7 @@ ${btn("tel:8089949034", "Talk it out with Ashley – (808) 994-9034", "#7c2d12")
 };
 
 const LUX_DIRECT_FU3 = {
-  subject: "small reciprocal offer to lock in the partnership",
+  subject: "A Reciprocal Offer to Lock In the Direct Affiliate Partnership",
   text: `Hi {{Name}},
 
 To make saying yes even easier, here is a small reciprocal offer:
@@ -1183,13 +1185,13 @@ ${btn("tel:8089949034", "Lock in with Ashley – (808) 994-9034", "#7c2d12")}`,
 };
 
 const LUX_DIRECT_FU4 = {
-  subject: "last note – door open, terms locked",
+  subject: "Final Note and Our Direct Affiliate Terms Stay Locked",
   text: `Hi {{Name}},
 
 Last touch. We have moved on to actively building partnerships with the operators who said yes, but the offer for {{Name of Organization}} stays good until you tell us otherwise.
 
 For your records:
-- Default 10% commission, only goes up over time (§ 6.6 of the contract)
+- Default 10% commission, reviewed annually (§ 6.6 of the contract)
 - NET-15 settlement, monthly ledger
 - No exclusivity
 - Ashley (vendor onboarding): 808-994-9034
@@ -1201,7 +1203,7 @@ Best of luck with your season, {{Name}}.${NS_FOOTER_TEXT}`,
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last touch. We have moved on to actively building partnerships with the operators who said yes, but the offer for <strong>{{Name of Organization}}</strong> stays good until you tell us otherwise.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">For your records:</p>
 <ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
-<li>Default 10% commission, only goes up over time (§ 6.6)</li>
+<li>Default 10% commission, reviewed annually (§ 6.6)</li>
 <li>NET-15 settlement, monthly ledger</li>
 <li>No exclusivity</li>
 <li>Ashley (vendor onboarding): <strong>808-994-9034</strong></li>
@@ -1232,7 +1234,7 @@ const RAP_CENTRAL_MANIFESTO_HTML = `<div style="background:linear-gradient(135de
 </div>`;
 
 const RAP_RAPPERS = {
-  subject: "Rap Central (formerly Rap.com) booking engine – 5% to route promoter offers to you",
+  subject: "Rap Central Artist Booking Engine (Formerly Rap.com) and a Five Percent Flat Fee to Route Promoter Offers Directly to You",
   text: `Hi {{Name}},
 
 I used to run Rap.com (here's the 2016 archive: https://web.archive.org/web/20160313071239/http://rap.com/) and we're relaunching 10 years later as Rap Central — the artist booking network that connects promoters directly with talent, with tools for lyricists, producers, and everyone else in the rap industry.
@@ -1295,7 +1297,7 @@ ${RAP_CENTRAL_MANIFESTO_HTML}`,
 };
 
 const RAP_RAPPERS_FU1 = {
-  subject: "did the Rap Central booking engine note reach your team?",
+  subject: "Did Our Rap Central Booking Engine Note Reach the Right Person on Your Team?",
   text: `Hi {{Name}},
 
 Quick follow-up on the Rap Central (formerly Rap.com — 2016 archive: https://web.archive.org/web/20160313071239/http://rap.com/) booking engine note. Wanted to make sure it landed with whoever handles {{Name of Organization}}'s bookings – sometimes the right person is a manager, agent, or attorney rather than the public-facing email.
@@ -1312,7 +1314,7 @@ ${btn("tel:8089949034", "Partnerships line – (808) 994-9034", "#7e22ce")}`,
 };
 
 const RAP_RAPPERS_FU2 = {
-  subject: "is 5% lower than what you currently pay for cold inbound?",
+  subject: "Is a Five Percent Flat Fee Lower Than What You Currently Pay for Cold Inbound Booking Inquiries?",
   text: `Hi {{Name}},
 
 Honest question, not a pitch. Most artists I have talked to either pay an agent 10–15% on cold inbound or eat the time-cost of sorting cold DMs themselves. The Rap Central (formerly Rap.com) engine is 5% on closed deals only, with the lead-quality filter built in.
@@ -1332,7 +1334,7 @@ ${btn("tel:8089949034", "Partnerships – (808) 994-9034", "#7e22ce")}`,
 };
 
 const RAP_RAPPERS_FU3 = {
-  subject: "small thing for the artist – featured spotlight on Rap Central",
+  subject: "A Featured Spotlight on Rap Central for Every Artist Who Onboards This Month",
   text: `Hi {{Name}},
 
 Small reciprocal offer to make joining the engine even more worth your team's time:
@@ -1354,7 +1356,7 @@ ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Rap%20Central%20spotlight
 };
 
 const RAP_RAPPERS_FU4 = {
-  subject: "last note – respect either way, door stays open",
+  subject: "Final Note and the Rap Central Door Stays Open",
   text: `Hi {{Name}},
 
 Last note. We will keep building the engine and onboarding the artists who said yes. The door is open for {{Name of Organization}} whenever you (or your team) want to revisit.
