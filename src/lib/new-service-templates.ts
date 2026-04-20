@@ -58,7 +58,7 @@ ${NS_FOOTER_HTML}
 // SHARED CONSTANTS
 // ─────────────────────────────────────────────────────────────────────────────
 const HOUSING_NEEDS_TEXT =
-  "We are an expecting couple (wife is pregnant – baby due summer 2026), 2 well-behaved dogs (corgi + corgi mix, hypoallergenic-shampoo trained), and we both work from home. We are looking in East Honolulu (Hawaii Kai / Aina Haina / Kahala / Niu Valley) for a 2BR/2BA at $1,900–$2,400/mo, with pool + gym, in-unit or building W/D, covered parking, ground floor or elevator (because of pregnancy), and pet-friendly (or ESA-acceptable). 12-month lease, move-in within 30–45 days, excellent rental history, full deposit + first month at signing.";
+  "We are an expecting couple (wife is pregnant, baby due summer 2026) with two registered emotional support animals: Stella, our 13-year-old Pembroke corgi, and Mittens, our 2-year-old cat. Both are calm, clean, fully vetted, and home all day with us (we both work from home). We are looking in East Honolulu (Hawaii Kai, Aina Haina, Kahala, or Niu Valley) for a 2BR/2BA at $1,900 to $2,400 per month, with a pool and gym, in-unit or building laundry, covered parking, and a ground floor or elevator access (because of the pregnancy). Twelve-month lease, move-in within 30 to 45 days, excellent rental history, full deposit plus first month at signing.";
 
 // Family Feud credibility block — our family (the Schaefers) won 5 shows and
 // the grand prize ($67,000+ cash plus a new car) over Oct 27–Nov 3, 2016. This
@@ -100,7 +100,7 @@ const FAMILY_FEUD_COMPACT_HTML = `<div style="background:#fffbeb;border:1px soli
 </div>`;
 
 const HOUSING_NEEDS_HTML =
-  `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are an <strong>expecting couple</strong> (wife is pregnant – baby due summer 2026), 2 well-behaved dogs (corgi + corgi mix), and we both work from home. We are looking in <strong>East Honolulu (Hawaii Kai / Aina Haina / Kahala / Niu Valley)</strong> for a <strong>2BR/2BA at $1,900–$2,400/mo</strong>, with <strong>pool + gym</strong>, in-unit or building W/D, covered parking, <strong>ground floor or elevator</strong> (because of pregnancy), and pet-friendly (or ESA-acceptable).</p>
+  `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are an <strong>expecting couple</strong> (wife is pregnant, baby due summer 2026) with <strong>two registered emotional support animals</strong>: <strong>Stella</strong>, our 13-year-old Pembroke corgi, and <strong>Mittens</strong>, our 2-year-old cat. Both are calm, clean, fully vetted, and home with us all day (we both work from home). We are looking in <strong>East Honolulu (Hawaii Kai, Aina Haina, Kahala, or Niu Valley)</strong> for a <strong>2BR/2BA at $1,900 to $2,400 per month</strong>, with a <strong>pool and gym</strong>, in-unit or building laundry, covered parking, and <strong>ground floor or elevator access</strong> (because of the pregnancy). ESA paperwork on file and ready to share.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>About us as tenants:</strong> 12-month lease, move-in within 30–45 days, excellent rental history (references on request), full deposit + first month at signing, and we will take great care of the unit – we have lived in our current place 4+ years.</p>`;
 
 const STELLA_BLURB_TEXT =
@@ -238,19 +238,19 @@ const APT_INDIVIDUAL_FU2 = {
 
 I do not want to be a pest – this is the second nudge. I asked above on purpose: most landlords I have talked to say the hardest part of renting out their place is finding someone they actually trust.
 
-That is exactly what we are trying to be. Quiet expecting couple, two well-mannered dogs, both working from home (so the place gets cared for, not abandoned), full deposit ready, references ready.
+That is exactly what we are trying to be. A quiet, expecting couple with two registered ESAs (Stella, our 13-year-old Pembroke corgi, and Mittens, our 2-year-old cat), both of us working from home (so the place gets cared for, not abandoned), full deposit ready, references ready.
 
 ${FAMILY_FEUD_TEXT}
 
-If your unit is taken – no problem. If it is still open and the issue is the dogs, the timing, or anything else – please just say so. We can usually work around it.
+If your unit is taken, no problem. If it is still open and the issue is the ESAs, the timing, or anything else, please just say so. We can usually work around it.
 
 Eric & Liana – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">I do not want to be a pest – this is the second nudge. I asked above on purpose: most landlords I have talked to say the hardest part of renting out their place is finding someone they actually <strong>trust</strong>.</p>
-<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">That is what we are trying to be. Quiet expecting couple, two well-mannered dogs, both working from home (so the place gets cared for, not abandoned), full deposit ready, references ready.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">That is what we are trying to be. A quiet, expecting couple with two registered ESAs (<strong>Stella</strong>, our 13-year-old Pembroke corgi, and <strong>Mittens</strong>, our 2-year-old cat), both of us working from home (so the place gets cared for, not abandoned), full deposit ready, references ready.</p>
 ${FAMILY_FEUD_COMPACT_HTML}
-<p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If it is taken – no problem. If it is still open and the issue is the dogs, the timing, or anything else, please just say so. We can usually work around it.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If it is taken, no problem. If it is still open and the issue is the ESAs, the timing, or anything else, please just say so. We can usually work around it.</p>
 ${btn("tel:8083930153", "Talk it through – (808) 393-0153", "#0d9488")}`,
   ),
 };
@@ -299,7 +299,7 @@ ${SOFT_CLOSE_HTML}
 // APARTMENTS – REALTOR / PROPERTY MANAGER
 // ─────────────────────────────────────────────────────────────────────────────
 const APT_REALTOR = {
-  subject: "Qualified East Honolulu Tenant Searching Through Your Roster (2BR, $1,900 to $2,400, Pool and Gym, Pet Friendly)",
+  subject: "Qualified East Honolulu Tenant Searching Through Your Roster (2BR, $1,900 to $2,400, Pool and Gym, Two Registered ESAs)",
   text: `Hi {{Name}},
 
 I am writing as a principal (representing only my wife and myself, no outside agent) because your firm is well known for East Honolulu rentals and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.
@@ -313,7 +313,7 @@ What we are asking from your office:
 2. Add us to any coming-soon or off-market notice list you maintain — we are happy to pre-tour and pre-apply.
 3. If we are not a fit for your firm, an introduction to a colleague who handles this profile would mean a lot.
 
-We have a one-page tenant resume (employment, income, references, vet records for the dogs, cosigners on standby) — happy to send the moment you ask. Application fees, deposits, first month — all standard, paid same day at signing.
+We have a one-page tenant resume (employment, income, references, ESA letters and vet records for Stella and Mittens, cosigners on standby) — happy to send the moment you ask. Application fees, deposits, first month — all standard, paid same day at signing.
 
 Best way to reach me is direct: (808) 393-0153 or this email. Thank you, {{Name}} — looking forward to working with your office.
 
@@ -335,7 +335,7 @@ ${FAMILY_FEUD_HTML}
 <li>If we are not a fit for your firm, an introduction to a colleague who handles this profile would mean a lot.</li>
 </ol>
 <div style="background:#eff6ff;border:1px solid rgba(29,78,216,0.25);border-radius:14px;padding:16px 18px;margin:18px 0;">
-<p style="margin:0;font-size:14px;color:#1e3a8a;line-height:1.6;"><strong>Tenant packet ready on request:</strong> employment, income, references, vet records for the dogs, cosigners on standby. Application fees, deposits, first month – paid same day at signing.</p>
+<p style="margin:0;font-size:14px;color:#1e3a8a;line-height:1.6;"><strong>Tenant packet ready on request:</strong> employment, income, references, ESA letters and vet records for <strong>Stella</strong> (13-year-old Pembroke corgi) and <strong>Mittens</strong> (2-year-old cat), cosigners on standby. Application fees, deposits, first month — paid same day at signing.</p>
 </div>
 <p style="margin:0 0 14px;font-size:14px;color:#334155;">Direct line: (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
 <p style="margin:0;font-size:14px;font-weight:600;">Thank you, {{Name}} – looking forward to working with you.</p>
@@ -347,7 +347,7 @@ const APT_REALTOR_FU1 = {
   subject: "Ready to View East Honolulu Units This Week",
   text: `Hi {{Name}},
 
-Quick check-in. We are actively touring this week and into next, so if any East Honolulu units fitting our spec (2BR, $1.9–$2.4k, pool + gym, pet-friendly) hit your active list since my first email, please send them over.
+Quick check-in. We are actively touring this week and into next, so if any East Honolulu units fitting our spec (2BR at $1,900 to $2,400 per month, pool and gym, ESA-friendly) hit your active list since my first email, please send them over.
 
 We can move on a unit within 24 hours of seeing it – tenant packet ready, deposit ready, lease ready to sign.
 
@@ -356,7 +356,7 @@ If nothing new yet – also fine. Just a quick "still nothing" reply lets me pri
 Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     "#1d4ed8",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick check-in. We are actively touring this week and into next, so if any East Honolulu units fitting our spec (2BR, $1.9–$2.4k, pool + gym, pet-friendly) hit your active list since my first email, please send them over.</p>
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick check-in. We are actively touring this week and into next, so if any East Honolulu units fitting our spec (2BR at $1,900 to $2,400 per month, pool and gym, ESA-friendly) hit your active list since my first email, please send them over.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>We can move on a unit within 24 hours</strong> of seeing it – tenant packet ready, deposit ready, lease ready to sign.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If nothing new yet – also fine. Just a quick "still nothing" reply lets me prioritize.</p>
 ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Updated%20East%20Honolulu%20list", "Send your updated list", "#1d4ed8")}`,
@@ -392,7 +392,7 @@ const APT_REALTOR_FU3 = {
 
 Two things:
 
-1. Attached/below is our one-page tenant resume so you have it on file – feel free to forward to colleagues. It includes income, references, dog vet records, and what we are looking for.
+1. Attached/below is our one-page tenant resume so you have it on file — feel free to forward to colleagues. It includes income, references, ESA letters and vet records for Stella and Mittens, and what we are looking for.
 
 2. A small reciprocal offer: I run Coral Crown Solutions (websites, online booking, SEO for Hawaii businesses). If your firm ever needs a fresh listing landing page, an inbound lead form, or simple SEO tune-up, I am happy to do it at cost in exchange for being on your active prospects list. No obligation.
 
@@ -402,7 +402,7 @@ Eric – (808) 393-0153 · coralcrowntechnologies@gmail.com${NS_FOOTER_TEXT}`,
   html: fbox(
     "#1d4ed8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Two things:</p>
-<p style="margin:0 0 12px;font-size:15px;line-height:1.65;"><strong>1. Tenant resume ready on request</strong> – one page, income, references, dog vet records, and what we are looking for. Reply and I will send.</p>
+<p style="margin:0 0 12px;font-size:15px;line-height:1.65;"><strong>1. Tenant resume ready on request</strong> — one page, income, references, ESA letters and vet records for Stella and Mittens, and what we are looking for. Reply and I will send.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>2. A small reciprocal offer</strong> – I run Coral Crown Solutions (websites, online booking, SEO for Hawaii businesses). If your firm needs a fresh listing landing page, an inbound lead form, or simple SEO tune-up, I am happy to do it <strong>at cost</strong> in exchange for being on your active prospects list. No obligation.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">Either way, thank you for considering us. The narrow box is hard to fill – we will be the easy yes when it does.</p>
 ${btn("mailto:coralcrowntechnologies@gmail.com?subject=Tenant%20resume%20%2B%20Coral%20Crown%20offer", "Request tenant resume", "#1d4ed8")}`,
