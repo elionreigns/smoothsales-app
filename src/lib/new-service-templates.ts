@@ -19,13 +19,19 @@
 const NS_FOOTER_TEXT = `\n\nWe're here when you're ready.\nCoral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153\nReply or call – we're happy to help.`;
 const NS_FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">We're here when you're ready</p><p style="margin:6px 0 0;font-size:14px;color:#334155;">Coral Crown Solutions · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#0ea5e9;text-decoration:none;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Reply or call – we're happy to help.</p>`;
 
+// Apartment footer — we write these as a couple (not a company). Different
+// reply address and label on purpose so landlords/realtors see a real
+// household instead of a business entity.
+const APT_FOOTER_TEXT = `\n\nA Hawaii couple looking for a spot to call home.\nEric & Ashley Schaefer · elionreigns@gmail.com · (808) 393-0153\nReply or call – easiest, fastest, no middleman.`;
+const APT_FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">A Hawaii couple looking for a spot to call home</p><p style="margin:6px 0 0;font-size:14px;color:#334155;"><strong>Eric &amp; Ashley Schaefer</strong> · <a href="mailto:elionreigns@gmail.com" style="color:#0d9488;text-decoration:none;font-weight:600;">elionreigns@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Reply or call – easiest, fastest, no middleman.</p>`;
+
 const SOFT_CLOSE_TEXT =
   " Thanks for your time. If this ever becomes a fit, we would love to hear from you. Take care.";
 const SOFT_CLOSE_HTML =
   `<p style="margin:24px 0 0;font-size:14px;color:#475569;">Thanks for your time. If this ever becomes a fit, we would love to hear from you. Take care.</p>`;
 
 /** Card wrapper used by every new template. `accent` is a hex color for header + buttons. */
-function card(accent: string, accentSoft: string, kicker: string, headline: string, sub: string, body: string): string {
+function card(accent: string, accentSoft: string, kicker: string, headline: string, sub: string, body: string, footerHtml: string = NS_FOOTER_HTML): string {
   return `<div style="font-family:'Segoe UI',system-ui,-apple-system,sans-serif;max-width:600px;margin:0 auto;background:#ffffff;border:1px solid ${accentSoft};border-radius:24px;overflow:hidden;box-shadow:0 20px 50px -15px ${accentSoft},0 10px 28px -8px rgba(0,0,0,0.08);">
 <div style="background:linear-gradient(145deg,${accent} 0%,${accent} 60%,${accent} 100%);color:#fff;padding:30px 26px;text-align:center;">
 <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;opacity:0.95;">${kicker}</p>
@@ -35,7 +41,7 @@ function card(accent: string, accentSoft: string, kicker: string, headline: stri
 <div style="padding:30px 26px;color:#1e293b;">
 <p style="margin:0 0 18px;font-size:15px;font-weight:600;color:#0f172a;">Hi {{Name}},</p>
 ${body}
-${NS_FOOTER_HTML}
+${footerHtml}
 </div>
 </div>`;
 }
@@ -46,11 +52,11 @@ function btn(href: string, label: string, accent: string): string {
 }
 
 /** Followup card – simpler box, with accent. */
-function fbox(accent: string, body: string): string {
+function fbox(accent: string, body: string, footerHtml: string = NS_FOOTER_HTML): string {
   return `<div style="font-family:'Segoe UI',system-ui,-apple-system,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;border:2px solid ${accent};border-radius:20px;padding:26px;color:#1e293b;">
 <p style="margin:0 0 16px;font-size:15px;font-weight:600;">Hi {{Name}},</p>
 ${body}
-${NS_FOOTER_HTML}
+${footerHtml}
 </div>`;
 }
 
@@ -175,7 +181,7 @@ export type RapCentralSub = "" | "rappers";
 // APARTMENTS – INDIVIDUAL (Craigslist / FB Marketplace / FSBO landlords)
 // ─────────────────────────────────────────────────────────────────────────────
 const APT_INDIVIDUAL = {
-  subject: "Potential East Honolulu Tenant Searching for a Place",
+  subject: "Couple Searching for a 2BR in East Honolulu (Pool and Gym Priorities)",
   text: `Hi {{Name}},
 
 I am writing as a real tenant (not an agent) who saw your listing and wanted to reach out personally before someone else did. My wife Ashley and I are looking for a place for our growing family, and yours looks like it could genuinely be the one.
@@ -192,7 +198,7 @@ Thank you for your time, {{Name}}. We are real, ready, and respectful, and we wi
 
 Eric & Ashley
 (808) 393-0153
-${NS_FOOTER_TEXT}`,
+${APT_FOOTER_TEXT}`,
   html: card(
     "#0d9488",
     "rgba(13,148,136,0.18)",
@@ -207,8 +213,9 @@ ${FAMILY_FEUD_HTML}
 </div>
 <p style="margin:0 0 12px;font-size:14px;line-height:1.7;color:#334155;">If it is no longer available – no worries – just a quick "taken" reply helps me stop checking. And if you happen to know other owners in the same building or neighborhood with similar units, an introduction would mean a lot.</p>
 <p style="margin:0 0 6px;font-size:14px;font-weight:700;">Thank you, {{Name}}.</p>
-<p style="margin:0 0 0;font-size:14px;color:#334155;">Eric &amp; Ashley · (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
+<p style="margin:0 0 0;font-size:14px;color:#334155;">Eric &amp; Ashley · (808) 393-0153 · elionreigns@gmail.com</p>
 ${btn("tel:8083930153", "Call / text Eric – (808) 393-0153", "#0d9488")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -222,13 +229,14 @@ If the unit is still open, we are still very interested and can view this week. 
 
 If there is anything we did not address (pet policy, lease length, deposit, anything) – please ask. We would rather talk it through than have you skip past us.
 
-Eric & Ashley – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153${APT_FOOTER_TEXT}`,
   html: fbox(
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick follow-up on my message about your East Honolulu rental. I do not want to clutter your inbox – just want to make sure my first note did not get buried.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If the unit is still open, we are still very interested and can view <strong>this week</strong>. If it is gone, no problem – a one-word reply ("gone") and I will stop reaching out.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">Anything we did not address (pet policy, lease length, deposit) – please ask. We would rather talk it through than have you skip past us.</p>
 ${btn("tel:8083930153", "Call / text – (808) 393-0153", "#0d9488")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -244,7 +252,7 @@ ${FAMILY_FEUD_TEXT}
 
 If your unit is taken, no problem. If it is still open and the issue is the ESAs, the timing, or anything else, please just say so. We can usually work around it.
 
-Eric & Ashley – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153${APT_FOOTER_TEXT}`,
   html: fbox(
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">I do not want to be a pest – this is the second nudge. I asked above on purpose: most landlords I have talked to say the hardest part of renting out their place is finding someone they actually <strong>trust</strong>.</p>
@@ -252,6 +260,7 @@ Eric & Ashley – (808) 393-0153${NS_FOOTER_TEXT}`,
 ${FAMILY_FEUD_COMPACT_HTML}
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If it is taken, no problem. If it is still open and the issue is the ESAs, the timing, or anything else, please just say so. We can usually work around it.</p>
 ${btn("tel:8083930153", "Talk it through – (808) 393-0153", "#0d9488")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -265,13 +274,14 @@ One small offer: if you ever rent out this or any other Hawaii unit and want a c
 
 If you happen to know any other owners in East Honolulu with similar units – an intro is the best gift you could give us right now, and we are happy to return the favor (referrals, fair Yelp/Google review, whatever helps).
 
-Eric & Ashley – (808) 393-0153 · coralcrowntechnologies@gmail.com${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153 · elionreigns@gmail.com${APT_FOOTER_TEXT}`,
   html: fbox(
     "#0d9488",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Thanks for hosting your listing – it is genuinely useful to renters like us. I will not keep emailing forever; this is the second-to-last note.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>One small offer:</strong> if you ever rent out this or any other Hawaii unit and want a clean, paying tenant on file, we can be that. No pressure, no expiration.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If you know any other owners in East Honolulu with similar units, an introduction would mean a lot – and we are happy to return the favor (fair Yelp/Google review, referrals, whatever helps).</p>
-${btn("mailto:coralcrowntechnologies@gmail.com?subject=Introducing%20a%20landlord", "Send an introduction", "#0d9488")}`,
+${btn("mailto:elionreigns@gmail.com?subject=Introducing%20a%20landlord", "Send an introduction", "#0d9488")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -285,13 +295,14 @@ If your unit ever becomes available again or if your timing changes, please reac
 
 Wishing you well with your rental, {{Name}}.${SOFT_CLOSE_TEXT}
 
-Eric & Ashley – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric & Ashley – (808) 393-0153${APT_FOOTER_TEXT}`,
   html: fbox(
     "#94a3b8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note. We have moved on to actively touring other places, but I wanted to close the loop rather than just disappear.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If your unit becomes available again or your timing changes, please reach out – my number and email are below and they will not change. We are the kind of tenants you wish you had: pay on time, quiet, take care of the place.</p>
 ${SOFT_CLOSE_HTML}
 <p style="margin:14px 0 0;font-size:14px;color:#334155;">Eric &amp; Ashley – (808) 393-0153</p>`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -299,7 +310,7 @@ ${SOFT_CLOSE_HTML}
 // APARTMENTS – REALTOR / PROPERTY MANAGER
 // ─────────────────────────────────────────────────────────────────────────────
 const APT_REALTOR = {
-  subject: "Qualified East Honolulu Tenant Searching Through Your Roster (2BR, $1,900 to $2,400, Pool and Gym, Two Registered ESAs)",
+  subject: "East Honolulu 2BR Search — Qualified Couple Ready to Apply Same Day",
   text: `Hi {{Name}},
 
 I am writing as a principal (representing only my wife and myself, no outside agent) because your firm is well known for East Honolulu rentals and I would like to be on your active prospects list. The search we are running is narrow on purpose so it is easy for you to filter.
@@ -317,8 +328,7 @@ We have a one-page tenant resume (employment, income, references, ESA letters an
 
 Best way to reach me is direct: (808) 393-0153 or this email. Thank you, {{Name}} — looking forward to working with your office.
 
-Eric Schaefer
-Coral Crown Solutions${NS_FOOTER_TEXT}`,
+Eric & Ashley Schaefer${APT_FOOTER_TEXT}`,
   html: card(
     "#1d4ed8",
     "rgba(29,78,216,0.18)",
@@ -337,9 +347,10 @@ ${FAMILY_FEUD_HTML}
 <div style="background:#eff6ff;border:1px solid rgba(29,78,216,0.25);border-radius:14px;padding:16px 18px;margin:18px 0;">
 <p style="margin:0;font-size:14px;color:#1e3a8a;line-height:1.6;"><strong>Tenant packet ready on request:</strong> employment, income, references, ESA letters and vet records for <strong>Stella</strong> (13-year-old Pembroke corgi) and <strong>Mittens</strong> (2-year-old cat), cosigners on standby. Application fees, deposits, first month — paid same day at signing.</p>
 </div>
-<p style="margin:0 0 14px;font-size:14px;color:#334155;">Direct line: (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
+<p style="margin:0 0 14px;font-size:14px;color:#334155;">Direct line: (808) 393-0153 · elionreigns@gmail.com</p>
 <p style="margin:0;font-size:14px;font-weight:600;">Thank you, {{Name}} – looking forward to working with you.</p>
-${btn("mailto:coralcrowntechnologies@gmail.com?subject=Tenant%20packet%20request", "Request our tenant packet", "#1d4ed8")}`,
+${btn("mailto:elionreigns@gmail.com?subject=Tenant%20packet%20request", "Request our tenant packet", "#1d4ed8")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -353,13 +364,14 @@ We can move on a unit within 24 hours of seeing it – tenant packet ready, depo
 
 If nothing new yet – also fine. Just a quick "still nothing" reply lets me prioritize who to chase.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${APT_FOOTER_TEXT}`,
   html: fbox(
     "#1d4ed8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick check-in. We are actively touring this week and into next, so if any East Honolulu units fitting our spec (2BR at $1,900 to $2,400 per month, pool and gym, ESA-friendly) hit your active list since my first email, please send them over.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>We can move on a unit within 24 hours</strong> of seeing it – tenant packet ready, deposit ready, lease ready to sign.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If nothing new yet – also fine. Just a quick "still nothing" reply lets me prioritize.</p>
-${btn("mailto:coralcrowntechnologies@gmail.com?subject=Updated%20East%20Honolulu%20list", "Send your updated list", "#1d4ed8")}`,
+${btn("mailto:elionreigns@gmail.com?subject=Updated%20East%20Honolulu%20list", "Send your updated list", "#1d4ed8")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -375,7 +387,7 @@ ${FAMILY_FEUD_TEXT}
 
 Or, if it IS your focus and you just have not seen the right inventory yet – say the word and I will keep checking in.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${APT_FOOTER_TEXT}`,
   html: fbox(
     "#1d4ed8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Honest question – not a complaint. If East Honolulu 2BRs are not your firm's focus right now, I would rather you tell me so I can route my search through someone else.</p>
@@ -383,6 +395,7 @@ Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
 ${FAMILY_FEUD_COMPACT_HTML}
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">Or if it IS your focus and you just have not seen the right inventory yet – say the word and I will keep checking in.</p>
 ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#1d4ed8")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -394,18 +407,19 @@ Two things:
 
 1. Attached/below is our one-page tenant resume so you have it on file — feel free to forward to colleagues. It includes income, references, ESA letters and vet records for Stella and Mittens, and what we are looking for.
 
-2. A small reciprocal offer: I run Coral Crown Solutions (websites, online booking, SEO for Hawaii businesses). If your firm ever needs a fresh listing landing page, an inbound lead form, or simple SEO tune-up, I am happy to do it at cost in exchange for being on your active prospects list. No obligation.
+2. A small reciprocal offer: when we sign, we will drop a fair, public 5-star review of your office on Google or Yelp (we have a 10-year Hawaii network and actually move the needle there), and we will send every friend or family member moving to Oahu your way first. No ask, no strings.
 
 Either way, thank you for considering us. The narrow box (East Honolulu, 2BR, $1.9–$2.4k, pool + gym, pets) is hard to fill – we will be the easy yes when it does.
 
-Eric – (808) 393-0153 · coralcrowntechnologies@gmail.com${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153 · elionreigns@gmail.com${APT_FOOTER_TEXT}`,
   html: fbox(
     "#1d4ed8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Two things:</p>
 <p style="margin:0 0 12px;font-size:15px;line-height:1.65;"><strong>1. Tenant resume ready on request</strong> — one page, income, references, ESA letters and vet records for Stella and Mittens, and what we are looking for. Reply and I will send.</p>
-<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>2. A small reciprocal offer</strong> – I run Coral Crown Solutions (websites, online booking, SEO for Hawaii businesses). If your firm needs a fresh listing landing page, an inbound lead form, or simple SEO tune-up, I am happy to do it <strong>at cost</strong> in exchange for being on your active prospects list. No obligation.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>2. A small reciprocal offer</strong> – when we sign, we will drop a fair, public 5-star review of your office on Google or Yelp, and we will send every friend or family member moving to Oahu your way first. We have a 10-year Hawaii network that actually moves the needle. No ask, no strings.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">Either way, thank you for considering us. The narrow box is hard to fill – we will be the easy yes when it does.</p>
-${btn("mailto:coralcrowntechnologies@gmail.com?subject=Tenant%20resume%20%2B%20Coral%20Crown%20offer", "Request tenant resume", "#1d4ed8")}`,
+${btn("mailto:elionreigns@gmail.com?subject=Tenant%20resume", "Request tenant resume", "#1d4ed8")}`,
+    APT_FOOTER_HTML,
   ),
 };
 
@@ -419,13 +433,14 @@ If anything that fits the box (East Honolulu, 2BR, $1.9–$2.4k, pool + gym, pet
 
 Wishing you a great month, {{Name}}.${SOFT_CLOSE_TEXT}
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${APT_FOOTER_TEXT}`,
   html: fbox(
     "#94a3b8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note. We are likely landing somewhere within the next 2–3 weeks, so I will stop chasing after this.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If anything fitting the box (East Honolulu, 2BR, $1.9–$2.4k, pool + gym, pets) lands on your desk before then, my line is open. After that, please keep us on file – we know plenty of people who rent in Hawaii and we are happy to refer good agents.</p>
 ${SOFT_CLOSE_HTML}
 <p style="margin:14px 0 0;font-size:14px;color:#334155;">Eric – (808) 393-0153</p>`,
+    APT_FOOTER_HTML,
   ),
 };
 
