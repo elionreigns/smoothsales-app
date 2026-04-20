@@ -1217,8 +1217,15 @@ ${SOFT_CLOSE_HTML}
 // ─────────────────────────────────────────────────────────────────────────────
 // RAP CENTRAL – RAPPERS + MANAGEMENT (booking engine onboarding)
 // ─────────────────────────────────────────────────────────────────────────────
+const RAP_CENTRAL_BRAND_IMG_BASE = "https://smoothsales-app.vercel.app/assets/rap";
+
+const RAP_CENTRAL_BRAND_HTML = `<div style="text-align:center;margin:0 0 18px;">
+<img src="${RAP_CENTRAL_BRAND_IMG_BASE}/rap-booking-engine-banner.png" alt="The Premiere Rap Artist Booking Engine" width="560" style="display:block;margin:0 auto 10px;max-width:100%;height:auto;border-radius:8px;" />
+<img src="${RAP_CENTRAL_BRAND_IMG_BASE}/rap-com-logo.png" alt="Rap Central (formerly Rap.com)" width="96" height="96" style="display:inline-block;margin:0 auto;width:96px;height:96px;border-radius:14px;" />
+</div>`;
+
 const RAP_CENTRAL_MANIFESTO_TEXT = `--- Thug's Mansion (why we're here) ---
-Rap.com is Thug's Mansion, and exists to meet every challenge those involved in the rap industry face today. We are determined to break the mold and forge a new path for artists. We are finding the best resources for you, interviewing experts, discovering new talent, bringing together rap artists from all over the globe, finding tours you can perform on, and endorsing cool brands. We welcome you to the family.
+Rap Central is Thug's Mansion, and exists to meet every challenge those involved in the rap industry face today. We are determined to break the mold and forge a new path for artists. We are finding the best resources for you, interviewing experts, discovering new talent, bringing together rap artists from all over the globe, finding tours you can perform on, and endorsing cool brands. We welcome you to the family.
 
 "Ain't no place I'd rather be, chillin' with homies and family, sky high, iced out paradise in the sky, ain't no place I'd rather be, only place that's right for me, chromed out mansion in paradise in the sky." — Tupac
 
@@ -1227,7 +1234,7 @@ Original Rap.com (2016 archive): https://web.archive.org/web/20160313071239/http
 
 const RAP_CENTRAL_MANIFESTO_HTML = `<div style="background:linear-gradient(135deg,rgba(126,34,206,0.08),rgba(0,0,0,0.04));border:1px solid rgba(126,34,206,0.28);border-radius:14px;padding:18px 20px;margin:22px 0 6px;">
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#7e22ce;text-transform:uppercase;">Thug's Mansion — why we're here</p>
-<p style="margin:0 0 12px;font-size:14px;line-height:1.65;color:#334155;">Rap.com is Thug's Mansion, and exists to meet every challenge those involved in the rap industry face today. We are determined to break the mold and forge a new path for artists. We are finding the best resources for you, interviewing experts, discovering new talent, bringing together rap artists from all over the globe, finding tours you can perform on, and endorsing cool brands. We welcome you to the family.</p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.65;color:#334155;">Rap Central is Thug's Mansion, and exists to meet every challenge those involved in the rap industry face today. We are determined to break the mold and forge a new path for artists. We are finding the best resources for you, interviewing experts, discovering new talent, bringing together rap artists from all over the globe, finding tours you can perform on, and endorsing cool brands. We welcome you to the family.</p>
 <blockquote style="margin:0 0 12px;padding:10px 14px;border-left:3px solid #7e22ce;font-style:italic;background:rgba(255,255,255,0.5);border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.6;color:#334155;">"Ain't no place I'd rather be, chillin' with homies and family, sky high, iced out paradise in the sky, ain't no place I'd rather be, only place that's right for me, chromed out mansion in paradise in the sky." <span style="display:block;margin-top:6px;font-style:normal;font-weight:700;color:#7e22ce;">— Tupac</span></blockquote>
 <a href="https://youtu.be/sGN0N8Sz2mk" style="display:block;position:relative;margin:10px 0;border-radius:10px;overflow:hidden;text-decoration:none;" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/sGN0N8Sz2mk/hqdefault.jpg" alt="Thug's Mansion tribute video thumbnail" width="480" height="270" style="display:block;width:100%;max-width:480px;height:auto;border-radius:10px;filter:brightness(0.82);" /><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;color:#fff;text-shadow:0 4px 14px rgba(0,0,0,0.5);pointer-events:none;">▶</span></a>
 <p style="margin:6px 0 0;font-size:12.5px;line-height:1.55;color:#475569;">Original Rap.com (2016 archive): <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">web.archive.org/rap.com</a> · Thug's Mansion tribute: <a href="https://youtu.be/sGN0N8Sz2mk" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">youtu.be/sGN0N8Sz2mk</a></p>
@@ -1271,7 +1278,8 @@ ${RAP_CENTRAL_MANIFESTO_TEXT}${NS_FOOTER_TEXT}`,
     "Rap Central — formerly Rap.com",
     "5% to route promoter offers directly to you",
     "Zero up-front. Zero exclusivity. Zero competing offers from us.",
-    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I used to run <strong>Rap.com</strong> — <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">here's the 2016 archive</a> — and we're relaunching 10 years later as <strong>Rap Central</strong>, the artist booking network that connects promoters directly with talent, with tools for lyricists, producers, and everyone else in the rap industry.</p>
+    `${RAP_CENTRAL_BRAND_HTML}
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I used to run <strong>Rap.com</strong> — <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:#7e22ce;font-weight:600;">here's the 2016 archive</a> — and we're relaunching 10 years later as <strong>Rap Central</strong>, the artist booking network that connects promoters directly with talent, with tools for lyricists, producers, and everyone else in the rap industry.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.7;">The core of it is the <strong>Rap Artist Booking Engine</strong>: a single coordination layer where event promoters submit structured booking requests, and our system routes them directly to artists (or management) — with deal terms, dates, riders, and budgets pre-filled and ready to accept, counter, or pass.</p>
 <div style="background:#faf5ff;border:1px solid rgba(126,34,206,0.25);border-radius:14px;padding:18px 20px;margin:18px 0;">
 <p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#581c87;text-transform:uppercase;">The pitch in one paragraph</p>
