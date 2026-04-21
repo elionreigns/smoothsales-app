@@ -510,6 +510,7 @@ const CORGI_CARE_TEMPLATE_MAP: Record<Exclude<CorgiCareSub, "">, TemplateId> = {
   hair: "corgi-care-hair",
   teeth: "corgi-care-teeth",
   military: "corgi-care-military",
+  sponsor: "corgi-care-sponsor",
 };
 
 const LUXURY_RESOURCE_TEMPLATE_MAP: Record<Exclude<LuxuryResourceSub, "">, TemplateId> = {
@@ -519,6 +520,8 @@ const LUXURY_RESOURCE_TEMPLATE_MAP: Record<Exclude<LuxuryResourceSub, "">, Templ
 
 const RAP_CENTRAL_TEMPLATE_MAP: Record<Exclude<RapCentralSub, "">, TemplateId> = {
   rappers: "rap-central-rappers",
+  managers: "rap-central-managers",
+  promoters: "rap-central-promoters",
 };
 
 /** Build dropdown for a new-service base id: Initial + Follow Up 1..4 (4 follow-ups, not 3). */

@@ -184,12 +184,28 @@ export type NewServiceTemplateId =
   | "rap-central-rappers-followup-1"
   | "rap-central-rappers-followup-2"
   | "rap-central-rappers-followup-3"
-  | "rap-central-rappers-followup-4";
+  | "rap-central-rappers-followup-4"
+  | "rap-central-managers"
+  | "rap-central-managers-followup-1"
+  | "rap-central-managers-followup-2"
+  | "rap-central-managers-followup-3"
+  | "rap-central-managers-followup-4"
+  | "rap-central-promoters"
+  | "rap-central-promoters-followup-1"
+  | "rap-central-promoters-followup-2"
+  | "rap-central-promoters-followup-3"
+  | "rap-central-promoters-followup-4"
+  // Corgi Care sponsor (Stella brand pitch)
+  | "corgi-care-sponsor"
+  | "corgi-care-sponsor-followup-1"
+  | "corgi-care-sponsor-followup-2"
+  | "corgi-care-sponsor-followup-3"
+  | "corgi-care-sponsor-followup-4";
 
 export type ApartmentsSub = "" | "individual" | "realtor";
-export type CorgiCareSub = "" | "hair" | "teeth" | "military";
+export type CorgiCareSub = "" | "hair" | "teeth" | "military" | "sponsor";
 export type LuxuryResourceSub = "" | "fareharbor" | "direct";
-export type RapCentralSub = "" | "rappers";
+export type RapCentralSub = "" | "rappers" | "managers" | "promoters";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // APARTMENTS – INDIVIDUAL (Craigslist / FB Marketplace / FSBO landlords)
@@ -1423,6 +1439,527 @@ ${SOFT_CLOSE_HTML}
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
+// RAP CENTRAL – MANAGERS / BOOKING AGENTS (Contract #5, 3%/2% split)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const RAP_MGR_ACCENT = "#0e7490";
+const RAP_MGR_ACCENT_SOFT = "rgba(14,116,144,0.18)";
+const RAP_MGR_CONTRACT_URL = "https://www.prayerauthority.com/rap.com-static/contracts/booking-agent-agreement.html";
+const RAP_MGR_ROLODEX_URL = "https://www.prayerauthority.com/rap.com-static/rolodex.html#managers";
+const RAP_MGR_PARTNERS_URL = "https://www.prayerauthority.com/rap.com-static/partners/managers.html";
+
+const RAP_MGR = {
+  subject: "Would 3% extra on Rap-Central-sourced bookings be useful at {{Name of Organization}}?",
+  text: `Hi {{Name}},
+
+I run Rap Central (formerly Rap.com — here's the 2016 archive so you know we are not new to this: https://web.archive.org/web/20160313071239/http://rap.com/). We are relaunching as a curated artist-to-promoter booking network ten years later.
+
+We already have your firm listed in our public routing rolodex because we know your roster well and the artists we pitch regularly come through teams like yours. I wanted to send a heads up on Contract #5, which is specifically written so routing through us does not touch your existing deal with your artist.
+
+How it works for a manager / booking agent:
+- Your management or agency commission with your artist stays 100 percent the way you have it today.
+- On any show Rap Central sources, the artist pays a flat 5 percent booking fee — split 3 percent to you for the routing / approval layer, 2 percent to us for vetted promoter infrastructure.
+- Shows you source on your own owe us nothing. Written intro records decide what is ours.
+- Non-exclusive, month to month, 30-day out, symmetric 18-month anti-circumvention so nobody gets cut out either way.
+
+Why we added the 3 percent: your approval layer is real work (contract review, production, settlement). Most routing networks ignore that and just take a flat cut on top of the artist. We wanted a structure a veteran manager would actually sign.
+
+The full contract is here (v1.0, e-signable, no DocuSign account needed): ${RAP_MGR_CONTRACT_URL}
+
+No rush. If it is interesting, sign it at your pace and we start feeding vetted promoter briefs that match your artists' Base Fee Floor.
+
+Eric Schaefer
+Coral Crown Solutions, LLC — Rap Central partnerships
+(808) 393-0153${NS_FOOTER_TEXT}`,
+  html: card(
+    RAP_MGR_ACCENT,
+    RAP_MGR_ACCENT_SOFT,
+    "Rap Central · Contract #5 — Manager / agent routing",
+    "Would 3% on Rap-Central-sourced bookings be useful at {{Name of Organization}}?",
+    "Your artist deal stays untouched. We route vetted promoter briefs, you keep approval, fee split is 3/2.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">I run <strong>Rap Central</strong> (formerly Rap.com — <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:${RAP_MGR_ACCENT};font-weight:600;">2016 archive</a>). We are relaunching as a curated artist-to-promoter booking network ten years later, and your firm is already listed in our public routing rolodex because we know your roster.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>How Contract #5 works for you:</strong></p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li>Your management / agency commission with your artist stays <strong>100% untouched</strong>.</li>
+<li>On shows <em>we</em> source, the artist pays a flat <strong>5% booking fee</strong>, split <strong>3% to you</strong> (routing / approval layer) + 2% to us (vetted promoter infra).</li>
+<li>Shows <em>you</em> source owe us nothing. Written intro records decide what's ours.</li>
+<li>Non-exclusive, month-to-month, 30-day out, symmetric 18-month anti-circumvention.</li>
+</ul>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>Why the 3%:</strong> your approval layer is real work. Most routing networks ignore that and just stack a fee on top of the artist. We wanted a structure a veteran manager would actually sign.</p>
+${btn(RAP_MGR_CONTRACT_URL, "Read &amp; e-sign Contract #5 →", RAP_MGR_ACCENT)}
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#64748b;">No rush. Sign at your pace and we start feeding vetted promoter briefs that match your artists' Base Fee Floor.</p>`,
+  ),
+};
+
+const RAP_MGR_FU1 = {
+  subject: "Quick clarification on the 3/2 split for {{Name of Organization}}",
+  text: `Hi {{Name}},
+
+Following up on the Contract #5 note. Two questions we get from most managers, in case they are yours:
+
+1) "Does this touch my artist deal?"
+   No. Your commission with your artist flows exactly the way it does today. Rap Central's 5 percent comes out of the artist's gross performance fee on its own line. Your 3 percent referral comes out of that 5 — not out of your management cut, not out of the artist's take-home.
+
+2) "What if I book them somewhere we found on our own?"
+   You owe us nothing. Rap Central only earns on shows we introduced via written intro. Ambiguous cases default to no fee to us.
+
+If the structure still feels interesting, the contract is still here: ${RAP_MGR_CONTRACT_URL}
+Live rolodex (your firm is already listed): ${RAP_MGR_ROLODEX_URL}
+
+Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    RAP_MGR_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Two questions we get from most managers, in case they're yours:</p>
+<p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#0f172a;">1) Does this touch my artist deal?</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">No. Your commission with your artist flows exactly as it does today. Rap Central's 5% comes out of the artist's gross performance fee on its own line. Your 3% routing share comes out of that 5 — not out of your management cut and not out of the artist's take-home.</p>
+<p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#0f172a;">2) What if I book them somewhere we found on our own?</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">You owe us nothing. Rap Central only earns on shows we introduced in writing. Ambiguous cases default to no fee to us.</p>
+${btn(RAP_MGR_CONTRACT_URL, "Re-read the contract →", RAP_MGR_ACCENT)}
+<p style="margin:14px 0 0;font-size:13px;color:#64748b;">Live rolodex (your firm is already listed): <a href="${RAP_MGR_ROLODEX_URL}" style="color:${RAP_MGR_ACCENT};font-weight:600;">rap-central-static/rolodex#managers</a>.</p>`,
+  ),
+};
+
+const RAP_MGR_FU2 = {
+  subject: "Three promoter briefs on the desk this week — any of your artists a fit?",
+  text: `Hi {{Name}},
+
+Concrete instead of abstract: three promoter briefs that cleared vetting this week:
+
+- CHH college + chapel tour, Mountain West circuit, spring 2026, sub-$35k ask per date
+- Mid-size club, Pacific NW, late-night hip-hop showcase, sub-$50k per headliner
+- Hawai'i tour stop (Oahu + Maui), summer 2026, 3,000 cap venue, $75-$120k band
+
+These are routed through Contract #4 promoters (license + insurance verified, no wage-claim history on record). If any of your artists on {{Name of Organization}}'s roster would be a fit, reply and I will pull the full brief on your side of the wall.
+
+If Contract #5 is not on your radar yet, no problem — you can read or sign it here without committing to any of the three briefs above: ${RAP_MGR_CONTRACT_URL}
+
+Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    RAP_MGR_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Concrete instead of abstract — three promoter briefs that cleared Contract #4 vetting this week:</p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li>CHH <strong>college + chapel tour</strong>, Mountain West circuit, spring 2026, sub-$35k per date.</li>
+<li><strong>Mid-size club</strong>, Pacific NW, late-night hip-hop showcase, sub-$50k per headliner.</li>
+<li><strong>Hawai'i tour stop</strong> (Oahu + Maui), summer 2026, 3,000 cap, $75-$120k band.</li>
+</ul>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If anyone on the <strong>{{Name of Organization}}</strong> roster fits, reply and I'll pull the full brief on your side of the wall.</p>
+${btn(RAP_MGR_CONTRACT_URL, "Read Contract #5 →", RAP_MGR_ACCENT)}`,
+  ),
+};
+
+const RAP_MGR_FU3 = {
+  subject: "Small reciprocal: a featured manager / agency card on our rolodex this month",
+  text: `Hi {{Name}},
+
+Small reciprocal offer to make signing Contract #5 easier to say yes to:
+
+If {{Name of Organization}} onboards this month, I'll give the firm a featured card on our Managers, Agents and Labels rolodex (${RAP_MGR_ROLODEX_URL}) — bumped above-the-fold, your roster highlighted, and a line about your signature work. That is real organic exposure from a rap-dedicated domain, cost to you: zero.
+
+Even if we never close a routed show through Contract #5, the feature stays up for 90 days on the house.
+
+The contract: ${RAP_MGR_CONTRACT_URL}
+Reply with a good email or a time and I will walk it end to end in 10 minutes.
+
+Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    RAP_MGR_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Small reciprocal to make signing Contract #5 easier to say yes to:</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If <strong>{{Name of Organization}}</strong> onboards this month, I'll give the firm a <strong>featured card on our Managers, Agents &amp; Labels rolodex</strong> — bumped above the fold, your roster highlighted, a line about your signature work. Real organic exposure from a rap-dedicated domain, <strong>cost to you: zero</strong>.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">Even if we never close a routed show through Contract #5, the feature stays up for 90 days on the house.</p>
+${btn("mailto:coralcrowntechnologies@gmail.com?subject=Rap%20Central%20%E2%80%94%20Contract%20%235%20walkthrough%20for%20{{Name of Organization}}", "Reply with a time — 10 min walkthrough", RAP_MGR_ACCENT)}`,
+  ),
+};
+
+const RAP_MGR_FU4 = {
+  subject: "Final note — the door stays open for {{Name of Organization}}",
+  text: `Hi {{Name}},
+
+Last note on this thread. We will keep building and onboarding the firms that said yes. The door is open for {{Name of Organization}} whenever you or your team want to revisit.
+
+For the file:
+- Contract #5 (routing agreement): ${RAP_MGR_CONTRACT_URL}
+- 3 percent to you + 2 percent to us on Rap-Central-sourced shows only
+- Your artist deal: untouched
+- Non-exclusive, 30-day out, symmetric 18-month anti-circumvention
+- Partnerships: (808) 994-9034 · coralcrowntechnologies@gmail.com
+- Me: (808) 393-0153${SOFT_CLOSE_TEXT}
+
+Respect to {{Name of Organization}}.
+
+Eric${NS_FOOTER_TEXT}`,
+  html: fbox(
+    "#94a3b8",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note on this thread. We'll keep building and onboarding the firms that said yes. The door is open for <strong>{{Name of Organization}}</strong> whenever you or your team want to revisit.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">For the file:</p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
+<li><a href="${RAP_MGR_CONTRACT_URL}" style="color:${RAP_MGR_ACCENT};font-weight:600;">Contract #5 (routing agreement)</a></li>
+<li>3% to you + 2% to us on Rap-Central-sourced shows only</li>
+<li>Your artist deal: untouched</li>
+<li>Non-exclusive, 30-day out, symmetric 18-month anti-circumvention</li>
+<li>Partnerships: <strong>(808) 994-9034</strong> · coralcrowntechnologies@gmail.com</li>
+<li>Eric: (808) 393-0153</li>
+</ul>
+${SOFT_CLOSE_HTML}
+<p style="margin:14px 0 0;font-size:14px;color:#334155;">Respect to <strong>{{Name of Organization}}</strong>.</p>`,
+  ),
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RAP CENTRAL – PROMOTERS / VENUES (Contract #4, $0 promoter fee)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const RAP_PROM_ACCENT = "#b8860b";
+const RAP_PROM_ACCENT_SOFT = "rgba(184,134,11,0.18)";
+const RAP_PROM_CONTRACT_URL = "https://www.prayerauthority.com/rap.com-static/contracts/promoter-agreement.html";
+const RAP_PROM_PARTNERS_URL = "https://www.prayerauthority.com/rap.com-static/partners/promoters.html";
+
+const RAP_PROMOTERS = {
+  subject: "A vetted rap-artist brief pipeline for {{Name of Organization}} — $0 fee on your side",
+  text: `Hi {{Name}},
+
+I run Rap Central (formerly Rap.com — here's the 2016 archive so you know we are not new to this: https://web.archive.org/web/20160313071239/http://rap.com/). We are relaunching as a curated artist-to-promoter booking network ten years later.
+
+{{Name of Organization}} is exactly the kind of buyer we built Contract #4 for — serious mid-market and festival-tier rooms with real production, real settlements, and a history of booking hip-hop. I wanted to send a heads up on what Contract #4 (Promoter / Venue Booking Agreement v1.0) actually does for you.
+
+How it works for a promoter / venue / festival:
+- Zero routing fee from you. Ever. The Rap Central 5 percent is paid by the artist out of their gross performance fee — it never sits on top of your ask.
+- Every artist we route has a signed Contract #3 on file, Base Fee Floor we can share in the brief, and a designated booking contact who replies inside 48-72 hours.
+- License and insurance check on intake. Nothing sketchy goes to an artist.
+- 30-day out clause and non-exclusive. You keep every promoter relationship you already have.
+
+What we need from you to send you vetted artist briefs:
+- A signed Contract #4 (v1.0, e-signable, no DocuSign account required): ${RAP_PROM_CONTRACT_URL}
+- Your 2026 target windows, room capacity tiers, and the rap / CHH lanes {{Name of Organization}} actually books.
+
+If there is a good window on your calendar for 2026 and you tell me the ask, I will pull 3 matched artists back to you within a week — no commitment until a brief lands you want to run.
+
+Eric Schaefer
+Coral Crown Solutions, LLC — Rap Central partnerships
+(808) 393-0153${NS_FOOTER_TEXT}`,
+  html: card(
+    RAP_PROM_ACCENT,
+    RAP_PROM_ACCENT_SOFT,
+    "Rap Central · Contract #4 — Promoter / venue routing",
+    "A vetted rap-artist brief pipeline for {{Name of Organization}} — $0 fee on your side",
+    "Every artist routed: signed Contract #3 on file, Base Fee Floor disclosed, 48-72 hour response SLA.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">I run <strong>Rap Central</strong> (formerly Rap.com — <a href="https://web.archive.org/web/20160313071239/http://rap.com/" target="_blank" rel="noopener" style="color:${RAP_PROM_ACCENT};font-weight:600;">2016 archive</a>). We are relaunching as a curated artist-to-promoter booking network ten years later.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>How Contract #4 works for you:</strong></p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li><strong>Zero routing fee from you.</strong> Ever. The 5% is paid by the artist out of gross — it never sits on top of your ask.</li>
+<li>Every artist we route has a <strong>signed Contract #3</strong> on file, Base Fee Floor disclosed, and a designated booking contact.</li>
+<li>License + insurance check on intake. <strong>48-72 hour response SLA</strong> from artist teams.</li>
+<li>Non-exclusive, 30-day out clause, symmetric 18-month anti-circumvention.</li>
+</ul>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>What we need from you:</strong> a signed Contract #4 and your 2026 target windows, cap tiers, and rap / CHH lanes you actually book.</p>
+${btn(RAP_PROM_CONTRACT_URL, "Read &amp; e-sign Contract #4 →", RAP_PROM_ACCENT)}
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#64748b;">Tell me the window and ask — I'll pull 3 matched artists inside a week. No commitment until a brief lands you want to run.</p>`,
+  ),
+};
+
+const RAP_PROMOTERS_FU1 = {
+  subject: "Two questions most promoters ask us about the 5% artist-side fee",
+  text: `Hi {{Name}},
+
+Following up on the Contract #4 note. Two questions we get from most promoters, in case they are yours:
+
+1) "Is the 5% actually coming off my ask, or off the artist's take?"
+   Off the artist's take. The Rap Central 5 percent is a line inside the artist's settlement, not a markup on top of your offer. Your deal-memo number is the deal-memo number.
+
+2) "What if the artist's agent or manager is already involved?"
+   Then Contract #5 is also in play on the artist's side — the agent takes 3 percent, we take 2 percent, all out of the same 5 percent the artist agreed to. From your side, nothing changes. One deal memo, one settlement, one wire.
+
+If the structure still feels interesting, the contract is still here: ${RAP_PROM_CONTRACT_URL}
+Promoter pitch page with the full model: ${RAP_PROM_PARTNERS_URL}
+
+Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    RAP_PROM_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Two questions we get from most promoters, in case they're yours:</p>
+<p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#0f172a;">1) Is the 5% actually coming off my ask?</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">No. The 5% is a line <em>inside</em> the artist's settlement — not a markup on top of your offer. Your deal-memo number is the deal-memo number.</p>
+<p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#0f172a;">2) What if the artist's agent or manager is already involved?</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">Then Contract #5 runs on the artist's side: 3% to the agent, 2% to us, all out of the same 5% the artist already agreed to. From your side, <strong>nothing changes</strong>. One deal memo, one settlement, one wire.</p>
+${btn(RAP_PROM_CONTRACT_URL, "Re-read Contract #4 →", RAP_PROM_ACCENT)}
+<p style="margin:14px 0 0;font-size:13px;color:#64748b;">Promoter pitch page with the full model: <a href="${RAP_PROM_PARTNERS_URL}" style="color:${RAP_PROM_ACCENT};font-weight:600;">partners/promoters</a>.</p>`,
+  ),
+};
+
+const RAP_PROMOTERS_FU2 = {
+  subject: "Four artists we could route to {{Name of Organization}} right now",
+  text: `Hi {{Name}},
+
+Concrete instead of abstract — four artists on the current Rap Central rolodex who would be a realistic fit for a {{Name of Organization}} 2026 booking window, sorted by tier:
+
+- Headline / theater-tier: Lecrae, Andy Mineo, Tobe Nwigwe — arena-tier market reach, disciplined production riders, 48-72 hour response SLA through their teams.
+- Mid-market / club-tier: KB, Hulvey, Wande, Marty — 1k-2.5k cap rooms, strong regional college pull, flexible routing.
+- Indie / hungry-tier: nobigdyl., WHATUPRG, Big Lou (Hawai'i), Island Reign (Hawai'i) — 500-1,200 cap, low-risk first bookings for a new Contract #4 relationship.
+- Festival & church-tour: Social Club Misfits, Trip Lee, GAWVI — full-production festival sets, CHH crossover.
+
+Each one is already on Contract #3 with us, Base Fee Floor disclosed, and routed through their actual manager / agent (not cold DMs).
+
+If any of these tiers match a hold on your calendar, reply with the window and I will pull the full brief inside a week. Contract #4 here: ${RAP_PROM_CONTRACT_URL}
+
+Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    RAP_PROM_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Four artists on the Rap Central rolodex we could route to <strong>{{Name of Organization}}</strong> right now:</p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li><strong>Headline / theater-tier:</strong> Lecrae, Andy Mineo, Tobe Nwigwe.</li>
+<li><strong>Mid-market / club-tier:</strong> KB, Hulvey, Wande, Marty.</li>
+<li><strong>Indie / hungry-tier:</strong> nobigdyl., WHATUPRG, Big Lou (Hawai&#699;i), Island Reign (Hawai&#699;i).</li>
+<li><strong>Festival &amp; church-tour:</strong> Social Club Misfits, Trip Lee, GAWVI.</li>
+</ul>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">Each one is on <strong>Contract #3</strong> with us, Base Fee Floor disclosed, routed through their actual manager / agent.</p>
+${btn(RAP_PROM_CONTRACT_URL, "Read Contract #4 →", RAP_PROM_ACCENT)}
+<p style="margin:14px 0 0;font-size:13px;color:#64748b;">Tell me which tier and window and I'll pull the full brief inside a week.</p>`,
+  ),
+};
+
+const RAP_PROMOTERS_FU3 = {
+  subject: "Small reciprocal: featured venue card on the Rap Central rolodex",
+  text: `Hi {{Name}},
+
+Small reciprocal offer to make signing Contract #4 easier to say yes to:
+
+If {{Name of Organization}} signs Contract #4 this month, I'll give your venue / festival a featured card on the Rap Central rolodex — bumped above the fold, your room capacity + technical sheet highlighted, and a direct link to your booking team. That's real organic exposure from a rap-dedicated domain in front of every manager and agent we work with, cost to you: zero.
+
+Even if we never close a routed show together through Contract #4, the feature stays up for 90 days on the house.
+
+The contract: ${RAP_PROM_CONTRACT_URL}
+Reply with a good time and I will walk it end to end in 10 minutes.
+
+Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    RAP_PROM_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Small reciprocal to make signing Contract #4 easier to say yes to:</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If <strong>{{Name of Organization}}</strong> signs this month, I'll give your venue / festival a <strong>featured card on the Rap Central rolodex</strong> — bumped above the fold, your room cap + tech sheet highlighted, direct link to your booking team. Real organic exposure from a rap-dedicated domain in front of every manager and agent we work with, <strong>cost to you: zero</strong>.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">Even if we never close a routed show together, the feature stays up for 90 days on the house.</p>
+${btn("mailto:coralcrowntechnologies@gmail.com?subject=Rap%20Central%20%E2%80%94%20Contract%20%234%20walkthrough%20for%20{{Name of Organization}}", "Reply with a time — 10 min walkthrough", RAP_PROM_ACCENT)}`,
+  ),
+};
+
+const RAP_PROMOTERS_FU4 = {
+  subject: "Final note — the door stays open for {{Name of Organization}}",
+  text: `Hi {{Name}},
+
+Last note on this thread. We will keep building the rolodex and signing rooms that said yes. The door is open for {{Name of Organization}} whenever you or your team want to revisit.
+
+For the file:
+- Contract #4 (promoter / venue agreement): ${RAP_PROM_CONTRACT_URL}
+- $0 routing fee from your side — ever. The 5% is paid by the artist out of gross.
+- Every artist routed: signed Contract #3, designated booking contact, 48-72 hour SLA.
+- Non-exclusive, 30-day out, symmetric 18-month anti-circumvention.
+- Partnerships: (808) 994-9034 · coralcrowntechnologies@gmail.com
+- Me: (808) 393-0153${SOFT_CLOSE_TEXT}
+
+Respect to {{Name of Organization}}.
+
+Eric${NS_FOOTER_TEXT}`,
+  html: fbox(
+    "#94a3b8",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note on this thread. We'll keep building the rolodex and signing rooms that said yes. The door is open for <strong>{{Name of Organization}}</strong> whenever you or your team want to revisit.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">For the file:</p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
+<li><a href="${RAP_PROM_CONTRACT_URL}" style="color:${RAP_PROM_ACCENT};font-weight:600;">Contract #4 (promoter / venue agreement)</a></li>
+<li>$0 routing fee from your side — ever. The 5% is paid by the artist out of gross.</li>
+<li>Every artist routed: signed Contract #3, designated booking contact, 48-72 hour SLA.</li>
+<li>Non-exclusive, 30-day out, symmetric 18-month anti-circumvention.</li>
+<li>Partnerships: <strong>(808) 994-9034</strong> · coralcrowntechnologies@gmail.com</li>
+<li>Eric: (808) 393-0153</li>
+</ul>
+${SOFT_CLOSE_HTML}
+<p style="margin:14px 0 0;font-size:14px;color:#334155;">Respect to <strong>{{Name of Organization}}</strong>.</p>`,
+  ),
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CORGI CARE – BRAND SPONSORS (Stella, 13yo corgi, product placement)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const CORGI_SPONSOR_ACCENT = "#b45309";
+const CORGI_SPONSOR_ACCENT_SOFT = "rgba(180,83,9,0.18)";
+
+const CORGI_SPONSOR_FOOTER_TEXT = `\n\nEric & Ashley Schaefer · Stella (corgi) + Mittens (ESA cat)\nHonolulu, HI · elionreigns@gmail.com · (808) 393-0153\nHonest reviews, honest posture — we'll tell you if it doesn't vibe.`;
+const CORGI_SPONSOR_FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">For Stella — a high-maintenance dog with an honest family</p><p style="margin:6px 0 0;font-size:14px;color:#334155;"><strong>Eric &amp; Ashley Schaefer</strong> · Stella (corgi) + Mittens (ESA cat) · <a href="mailto:elionreigns@gmail.com" style="color:${CORGI_SPONSOR_ACCENT};text-decoration:none;font-weight:600;">elionreigns@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Honest reviews, honest posture — we'll tell you if it doesn't vibe.</p>`;
+
+const CORGI_SPONSOR = {
+  subject: "Hi from Stella — a 13-year-old corgi in Honolulu who'd love to feature your brand",
+  text: `Hi {{Name}},
+
+I'm reaching out on behalf of Stella, our 13-year-old Pembroke Welsh Corgi in Honolulu. She has a double coat and sensitive skin, which makes her a pretty honest test bed for the senior / coat-care / nutrition side of the pet world — and I've had {{Name of Organization}} on my shortlist of brands we'd love to work with.
+
+Full disclosure up front: Stella is a high-maintenance dog. Her coat needs hand-scissoring (never a shave), she has a sensitive stomach, she's at the age where joints, dental, kidneys and cognition all matter, and she lives in Hawai'i so we have the tropical-climate angle a lot of creators on the mainland cannot offer. We are totally willing to work with all of that in exchange for authentic product placement and sponsorship.
+
+Quick context so you know whether this is even worth a reply:
+- We have Stella (13yo corgi) plus Mittens our ESA cat (2yo) — multi-pet household content is available if that's relevant to your line.
+- In-home photo + short-video setup: Reels, TikTok, YouTube Shorts, plus lifestyle stills (beach, hike, lanai, couch).
+- We are Honolulu-based at 688 Kalanipuu Street, 96825 — so shipping to Hawai'i takes a beat, but the content geography is very distinctive.
+- Honest reviews only. If Stella doesn't vibe with the product we say so — which actually makes the good ones land harder.
+- We are actively saving up for her teeth cleaning this year (~$400-$600 at a local vet) and ongoing coat maintenance — so dental, dental chews, oral care, coat tools, shampoos, and senior-nutrition brands are especially good fits.
+
+My actual ask: does {{Name of Organization}} have an existing creator / ambassador / seed program we can apply to? If yes, great — point me at the application link. If not, I'd love to put together a small custom placement where you send Stella something from your line and she shows up on our channels with the product in use over 30 days, with full rights to repurpose the content for your own feeds.
+
+Either way — no rush, no pressure. Even a "not right now" is a fine answer.
+
+Thanks so much for reading,
+
+Eric & Ashley Schaefer
+Stella (corgi) + Mittens (ESA cat)
+Honolulu, HI — elionreigns@gmail.com · (808) 393-0153${CORGI_SPONSOR_FOOTER_TEXT}`,
+  html: card(
+    CORGI_SPONSOR_ACCENT,
+    CORGI_SPONSOR_ACCENT_SOFT,
+    "Corgi Care · Brand sponsorship — Stella (13yo corgi)",
+    "Hi from Stella — a 13-year-old corgi in Honolulu who'd love to feature your brand",
+    "Honest posture: she's high-maintenance, we're 100% willing to work with it for authentic product placement + sponsorship.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">I'm writing on behalf of <strong>Stella</strong>, our 13-year-old Pembroke Welsh Corgi in Honolulu. Double coat, sensitive skin, which makes her a pretty honest test bed for the senior / coat / nutrition side of the pet world — and <strong>{{Name of Organization}}</strong> has been on my shortlist of brands we'd love to work with.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>Full disclosure up front.</strong> Stella is a high-maintenance dog. Hand-scissor only (never a shave), sensitive stomach, 13-year-old joints / dental / kidneys / cognition story, and she lives in Hawai'i — so the content geography is distinctive. We're fully willing to work with all of that in exchange for authentic product placement and sponsorship.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>Quick context:</strong></p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li>Stella (13yo corgi) + Mittens (our 2yo ESA cat) — multi-pet content available.</li>
+<li>In-home Reel / TikTok / YouTube Short + lifestyle stills (beach, hike, lanai, couch).</li>
+<li>Honolulu-based (688 Kalanipuu St, 96825) — Hawai'i shipping is a beat, the content is distinctive.</li>
+<li>Honest reviews only — if Stella doesn't vibe with a product, we say so.</li>
+<li>Currently saving up for her teeth cleaning (~$400-$600 local vet) + ongoing coat maintenance — dental / oral / coat / senior-nutrition / joint / bed / cooling brands are the cleanest fits.</li>
+</ul>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>The ask:</strong> does <strong>{{Name of Organization}}</strong> have an existing creator / ambassador / seed program we can apply to? Point me at the link if so. If not, I'd love to put together a small custom placement.</p>
+${btn("mailto:elionreigns@gmail.com?subject=Re%3A%20Stella%20the%20Corgi%20%E2%80%94%20{{Name of Organization}}%20program", "Reply with your seeds program link →", CORGI_SPONSOR_ACCENT)}
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#64748b;">Either way — no rush, no pressure. A "not right now" is a fine answer.</p>
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#64748b;">Thanks — Eric &amp; Ashley Schaefer · Stella (corgi) + Mittens (ESA cat) · Honolulu HI</p>`,
+    CORGI_SPONSOR_FOOTER_HTML,
+  ),
+};
+
+const CORGI_SPONSOR_FU1 = {
+  subject: "Quick follow-up on the Stella pitch — open to any seed program you run",
+  text: `Hi {{Name}},
+
+Just a gentle bump on the last note about Stella (our 13-year-old corgi in Honolulu).
+
+If reviewing pitches isn't your lane, I totally get it — would you be willing to just forward my email to whoever on your team runs seeding, creator programs, or pet-parent partnerships? That usually gets the right person in two clicks.
+
+Quick reminders of what we're offering:
+- 30-day real-use review (photo + short video), honest angle, senior-dog + double-coat perspective.
+- Full rights to repurpose everything we make for your own channels.
+- Hawai'i-based content geography if that's a distinctive fit for your brand.
+
+Thanks for the help —
+
+Eric & Ashley Schaefer (for Stella)
+elionreigns@gmail.com · (808) 393-0153${CORGI_SPONSOR_FOOTER_TEXT}`,
+  html: fbox(
+    CORGI_SPONSOR_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Just a gentle bump on the last note about <strong>Stella</strong> (our 13-year-old corgi in Honolulu).</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If reviewing pitches isn't your lane, totally fine — would you forward to whoever on your team runs <strong>seeding, creator programs, or pet-parent partnerships</strong>? That usually gets to the right person in two clicks.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>Quick reminders of what we're offering:</strong></p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li>30-day real-use review (photo + short video), senior-dog + double-coat perspective.</li>
+<li>Full rights to repurpose everything we make for your own channels.</li>
+<li>Hawai'i-based content geography if that fits your marketing calendar.</li>
+</ul>
+${btn("mailto:elionreigns@gmail.com?subject=Re%3A%20Stella%20the%20Corgi%20%E2%80%94%20{{Name of Organization}}%20program", "Point me at the right person →", CORGI_SPONSOR_ACCENT)}`,
+    CORGI_SPONSOR_FOOTER_HTML,
+  ),
+};
+
+const CORGI_SPONSOR_FU2 = {
+  subject: "Three pieces of Stella content I can send you as proof of posture",
+  text: `Hi {{Name}},
+
+Still here — thought it might help to be concrete instead of abstract.
+
+If you reply "yes show me," I'll send back three pieces of ready-to-go Stella content within the week:
+
+1) A short Reel of her coat-brush routine (featuring whatever tool / shampoo / chew you'd want placed — or a neutral stand-in if we don't have product yet).
+2) A senior-dog lanai lifestyle still (good for brand-feed repost).
+3) A 60-second "a day with our 13-year-old corgi in Honolulu" voiceover-style clip.
+
+No strings. Worst case you see what the baseline deliverable looks like and you file it away for later. Best case we start a real conversation about a seed + posting cycle this quarter.
+
+Totally understand if it's a no from your side — a one-word reply is a gift.
+
+Eric & Ashley (for Stella)
+elionreigns@gmail.com · (808) 393-0153${CORGI_SPONSOR_FOOTER_TEXT}`,
+  html: fbox(
+    CORGI_SPONSOR_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Being concrete instead of abstract — if you reply <em>"yes show me,"</em> I'll send three pieces of ready-to-go Stella content within the week:</p>
+<ol style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li>Short Reel of her coat-brush routine (featuring whatever tool / shampoo / chew you want placed — or a neutral stand-in if we don't have product yet).</li>
+<li>Senior-dog lanai lifestyle still (good for brand-feed repost).</li>
+<li>60-second "a day with our 13-year-old corgi in Honolulu" voiceover-style clip.</li>
+</ol>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">No strings. Worst case, you see what the baseline deliverable looks like and file it for later.</p>
+${btn("mailto:elionreigns@gmail.com?subject=Yes%20show%20me%20Stella%27s%20sample%20content", "Yes — send me the samples →", CORGI_SPONSOR_ACCENT)}`,
+    CORGI_SPONSOR_FOOTER_HTML,
+  ),
+};
+
+const CORGI_SPONSOR_FU3 = {
+  subject: "Small reciprocal offer for {{Name of Organization}} — tagged Hawai'i feature",
+  text: `Hi {{Name}},
+
+Small reciprocal offer to make it easier to say yes.
+
+If {{Name of Organization}} sends us a seed package this month, Stella will:
+- Post a dedicated unboxing (Reel or TikTok) tagged with your brand and linked in our bio for 30 days.
+- Do a 30-day honest-use follow-up post with before / during / after angle (especially powerful for dental, coat, joint, or sensitive-skin lines given Stella's age + coat type).
+- Give you permanent permission to repost all of that content to your own channels with brand-specific captioning.
+
+And — because we're a Honolulu household and most creators are mainland — we can attach a Hawai'i-lifestyle angle (beach, lanai, hike, hula-adjacent settings) if your marketing calendar has a summer / island / tropical push planned.
+
+If none of that fits, I'll stop reaching out after one more short note. Appreciate you reading this far.
+
+Eric & Ashley (for Stella)
+elionreigns@gmail.com · (808) 393-0153${CORGI_SPONSOR_FOOTER_TEXT}`,
+  html: fbox(
+    CORGI_SPONSOR_ACCENT,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Small reciprocal offer to make it easier to say yes.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>If {{Name of Organization}} sends a seed package this month, Stella will:</strong></p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;color:#1e293b;">
+<li>Dedicated unboxing (Reel or TikTok), tagged + linked in bio for 30 days.</li>
+<li>30-day honest-use follow-up post with before / during / after angle — especially strong for <strong>dental, coat, joint, or sensitive-skin</strong> lines given Stella's age + coat type.</li>
+<li>Permanent permission to repost all of that content to your own channels with brand-specific captioning.</li>
+</ul>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">Because we're a Honolulu household and most creators are mainland, we can attach a <strong>Hawai'i-lifestyle angle</strong> (beach, lanai, hike) if your calendar has a summer / island / tropical push planned.</p>
+${btn("mailto:elionreigns@gmail.com?subject=Yes%20%E2%80%94%20send%20a%20seed%20package%20for%20Stella", "Send a seed package →", CORGI_SPONSOR_ACCENT)}`,
+    CORGI_SPONSOR_FOOTER_HTML,
+  ),
+};
+
+const CORGI_SPONSOR_FU4 = {
+  subject: "Last note on Stella — door stays open for {{Name of Organization}}",
+  text: `Hi {{Name}},
+
+Last note on this thread. I'll stop clogging your inbox here — the door stays open for {{Name of Organization}} whenever it's useful.
+
+For the file, in case it comes up in a brand-planning meeting down the road:
+- Stella — 13yo Pembroke Welsh Corgi, double coat, sensitive skin, Honolulu HI.
+- Mittens — 2yo ESA cat (available for multi-pet placements).
+- In-home Reel / TikTok / YouTube Short setup. Full content rights to the brand. Honest senior-dog perspective.
+- Saving up for teeth cleaning + ongoing coat maintenance — dental / oral / coat / senior-nutrition / joint / bed / cooling brands are the best fit.
+- Contact: Eric & Ashley Schaefer — elionreigns@gmail.com · (808) 393-0153 · 688 Kalanipuu St, Honolulu HI 96825.${SOFT_CLOSE_TEXT}
+
+Thanks for reading,
+
+Eric & Ashley (for Stella)${CORGI_SPONSOR_FOOTER_TEXT}`,
+  html: fbox(
+    "#94a3b8",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note on this thread. I'll stop clogging your inbox — the door stays open for <strong>{{Name of Organization}}</strong> whenever it's useful.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.65;"><strong>For the file:</strong></p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
+<li><strong>Stella</strong> — 13yo Pembroke Welsh Corgi, double coat, sensitive skin, Honolulu HI.</li>
+<li><strong>Mittens</strong> — 2yo ESA cat (multi-pet placement option).</li>
+<li>In-home Reel / TikTok / YouTube Short setup. Full content rights to the brand.</li>
+<li>Priority categories: dental / oral / coat / senior-nutrition / joint / bed / cooling.</li>
+<li>Contact: Eric &amp; Ashley Schaefer — <a href="mailto:elionreigns@gmail.com" style="color:${CORGI_SPONSOR_ACCENT};font-weight:600;">elionreigns@gmail.com</a> · (808) 393-0153 · 688 Kalanipuu St, Honolulu HI 96825.</li>
+</ul>
+${SOFT_CLOSE_HTML}
+<p style="margin:14px 0 0;font-size:14px;color:#334155;">Thanks for reading — Eric &amp; Ashley (for Stella).</p>`,
+    CORGI_SPONSOR_FOOTER_HTML,
+  ),
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 // REGISTRY
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -1471,6 +2008,22 @@ export const NEW_SERVICE_TEMPLATES: Record<NewServiceTemplateId, { subject: stri
   "rap-central-rappers-followup-2": RAP_RAPPERS_FU2,
   "rap-central-rappers-followup-3": RAP_RAPPERS_FU3,
   "rap-central-rappers-followup-4": RAP_RAPPERS_FU4,
+  "rap-central-managers": RAP_MGR,
+  "rap-central-managers-followup-1": RAP_MGR_FU1,
+  "rap-central-managers-followup-2": RAP_MGR_FU2,
+  "rap-central-managers-followup-3": RAP_MGR_FU3,
+  "rap-central-managers-followup-4": RAP_MGR_FU4,
+  "rap-central-promoters": RAP_PROMOTERS,
+  "rap-central-promoters-followup-1": RAP_PROMOTERS_FU1,
+  "rap-central-promoters-followup-2": RAP_PROMOTERS_FU2,
+  "rap-central-promoters-followup-3": RAP_PROMOTERS_FU3,
+  "rap-central-promoters-followup-4": RAP_PROMOTERS_FU4,
+  // Corgi Care – Brand sponsors (Stella)
+  "corgi-care-sponsor": CORGI_SPONSOR,
+  "corgi-care-sponsor-followup-1": CORGI_SPONSOR_FU1,
+  "corgi-care-sponsor-followup-2": CORGI_SPONSOR_FU2,
+  "corgi-care-sponsor-followup-3": CORGI_SPONSOR_FU3,
+  "corgi-care-sponsor-followup-4": CORGI_SPONSOR_FU4,
 };
 
 export function isNewServiceTemplateId(id: string): id is NewServiceTemplateId {
@@ -1493,4 +2046,7 @@ export const NEW_SERVICE_TEMPLATE_OPTIONS: { value: NewServiceTemplateId; label:
   { value: "luxury-resource-fareharbor", label: "Luxury Resource – FareHarbor partner (add us as affiliate)" },
   { value: "luxury-resource-direct", label: "Luxury Resource – Direct (non-FareHarbor – contract attached)" },
   { value: "rap-central-rappers", label: "Rap Central – Rappers + management (5% booking engine)" },
+  { value: "rap-central-managers", label: "Rap Central – Managers / booking agents (Contract #5, 3%/2% split)" },
+  { value: "rap-central-promoters", label: "Rap Central – Promoters / venues (Contract #4, $0 fee to promoter)" },
+  { value: "corgi-care-sponsor", label: "Corgi Care – Brand sponsor / seed program (Stella, 13yo corgi)" },
 ];
