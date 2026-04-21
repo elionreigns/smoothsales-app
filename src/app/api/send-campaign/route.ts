@@ -267,6 +267,21 @@ export async function POST(request: NextRequest) {
       "rap-central-rappers-followup-2",
       "rap-central-rappers-followup-3",
       "rap-central-rappers-followup-4",
+      "rap-central-managers",
+      "rap-central-managers-followup-1",
+      "rap-central-managers-followup-2",
+      "rap-central-managers-followup-3",
+      "rap-central-managers-followup-4",
+      "rap-central-promoters",
+      "rap-central-promoters-followup-1",
+      "rap-central-promoters-followup-2",
+      "rap-central-promoters-followup-3",
+      "rap-central-promoters-followup-4",
+      "corgi-care-sponsor",
+      "corgi-care-sponsor-followup-1",
+      "corgi-care-sponsor-followup-2",
+      "corgi-care-sponsor-followup-3",
+      "corgi-care-sponsor-followup-4",
     ];
     if (!templateId || !validIds.includes(templateId)) {
       return NextResponse.json(
