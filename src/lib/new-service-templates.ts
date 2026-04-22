@@ -166,6 +166,8 @@ export type NewServiceTemplateId =
   | "corgi-care-teeth-followup-2"
   | "corgi-care-teeth-followup-3"
   | "corgi-care-teeth-followup-4"
+  | "corgi-care-teeth-book-me"
+  | "corgi-care-hair-book-me"
   | "corgi-care-military"
   | "corgi-care-military-followup-1"
   | "corgi-care-military-followup-2"
@@ -506,7 +508,7 @@ Please let me know:
 
 Thank you so much, {{Name}} – looking forward to your reply.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
   html: card(
     "#b45309",
     "rgba(180,83,9,0.18)",
@@ -536,6 +538,7 @@ ${STELLA_BLURB_HTML}
 </div>
 <p style="margin:0 0 12px;font-size:14px;font-weight:600;">Thank you so much, {{Name}}.</p>
 ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#b45309")}`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -547,12 +550,13 @@ Quick follow-up on grooming for Stella – my 13-year-old corgi. I do not want t
 
 If you do have an opening, I am flexible on the day and time, and I can be on the road in 15 minutes for Hawaii Kai-area appointments. Just let me know your soonest slot and the total price.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#b45309",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick follow-up on grooming for <strong>Stella – my 13-year-old corgi</strong>. I do not want to keep emailing if you are full – a one-line reply ("booked out" / "not seniors") is more than enough.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If you do have an opening, I am flexible on day and time, and can be on the road in 15 minutes for Hawaii Kai-area appointments.</p>
 ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#b45309")}`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -566,13 +570,14 @@ She is calm, leashes well, no aggression, no separation panic. The double coat i
 
 If not – truly no offense – please send me one name of a groomer you trust who handles double coats well. I would owe you one.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#b45309",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Asking on purpose. Sometimes groomers see "13-year-old double-coat" and quietly skip past – I would rather you just tell me if Stella is more than you want to take on.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">She is calm, leashes well, no aggression, no separation panic. The <strong>double coat is the only work</strong> – and the only thing she needs is a thorough deshed + high-velocity blowout, <strong>never shaving</strong>. If your team is comfortable with that, I am ready to book.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If not – truly no offense – please send me one name of a groomer you trust who handles double coats well. I would owe you one.</p>
 ${btn("tel:8083930153", "Talk it through – (808) 393-0153", "#b45309")}`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -584,14 +589,15 @@ Almost done with the chasing. Just wanted to add this:
 
 If you do book Stella in and we are happy, I will gladly leave a thoughtful, real Yelp + Google review (with photos), and refer other corgi / double-coat owners I know to you. That is the easiest way I know to say thank you.
 
-If now is not the right time but you want to grab my info for later, totally fine – I am at (808) 393-0153 / coralcrowntechnologies@gmail.com.
+If now is not the right time but you want to grab my info for later, totally fine – I am at (808) 393-0153 / elionreigns@gmail.com.
 
-Eric${NS_FOOTER_TEXT}`,
+Eric${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#b45309",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Almost done with the chasing. Just wanted to add this:</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If you book Stella in and we are happy, I will gladly leave a <strong>thoughtful, real Yelp + Google review with photos</strong>, and refer other corgi / double-coat owners I know to you. That is the easiest way I know to say thank you.</p>
-<p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If now is not the right time but you want to grab my info for later, totally fine – (808) 393-0153 / coralcrowntechnologies@gmail.com.</p>`,
+<p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If now is not the right time but you want to grab my info for later, totally fine – (808) 393-0153 / elionreigns@gmail.com.</p>`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -603,13 +609,14 @@ Last email, promise. We are going to keep looking for the right groomer for Stel
 
 If anything changes (cancellation, new opening, new senior-dog program), my contact does not change: (808) 393-0153.${SOFT_CLOSE_TEXT}
 
-Eric & Stella the cutest corgi${NS_FOOTER_TEXT}`,
+Eric & Stella the cutest corgi${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#94a3b8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last email, promise. We will keep looking for the right groomer for Stella – your shop was high on our list, but I do not want to be a nuisance.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If anything changes (cancellation, new opening, new senior-dog program), my contact does not change: <strong>(808) 393-0153</strong>.</p>
 ${SOFT_CLOSE_HTML}
 <p style="margin:14px 0 0;font-size:14px;color:#334155;">Eric &amp; Stella the cutest corgi.</p>`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -737,6 +744,97 @@ Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note. We will move forward with whichever clinic gets back to us first with a clear, all-in price.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If we miss each other this round – please keep us on file. Stella will need cleanings every 1–2 years for the rest of her life and we are loyal once we find a good fit.</p>
 ${SOFT_CLOSE_HTML}`,
+    CORGI_FOOTER_HTML,
+  ),
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CORGI CARE – BOOK ME (high-intent ready-to-book with 3 proposed slots)
+// Sent when we want an appointment THIS WEEK, not a quote conversation.
+// ─────────────────────────────────────────────────────────────────────────────
+const CORGI_TEETH_BOOK_ME = {
+  subject: "Ready to Book Stella's Dental This Week — Three Slots That Work For Us",
+  text: `Hi {{Name}},
+
+Short and direct so we can both save time.
+
+We are ready to book a routine anesthesia dental cleaning for Stella, our 13-year-old Pembroke corgi (~25 lb, generally healthy, no known extractions). We have our budget set ($300–$500 all-in is ideal; we will stretch for a great fit).
+
+Any of these three slots would work for us:
+
+  • Thursday, April 23 — morning (9:00 – 11:00 AM)
+  • Saturday, April 25 — any time you have open
+  • Monday, April 27 — afternoon (1:00 – 4:00 PM)
+
+Can you hold one of those for Stella and reply with "CONFIRM + [slot]"? If none of those fit, please send your next two available openings and we will lock it in the same day.
+
+We will fill out paperwork, send her vaccine records, and pre-pay or put a card on file — whatever you need to reserve the slot.
+
+Thank you, {{Name}}. Calling is fastest for us — (808) 393-0153.
+
+Eric & Ashley Schaefer${CORGI_FOOTER_TEXT}`,
+  html: card(
+    "#0e7490",
+    "rgba(14,116,144,0.18)",
+    "Booking request – Stella the corgi · dental",
+    "Ready to book this week – three slots that work for us",
+    "13-yr Pembroke corgi · ~25 lb · healthy mouth · we will lock a slot today.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Short and direct so we can both save time.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are ready to book a routine anesthesia dental cleaning for <strong>Stella – our 13-year-old Pembroke corgi (~25 lb, generally healthy, no known extractions)</strong>. Budget target: <strong>$300–$500 all-in</strong>, we will stretch for the right fit.</p>
+<div style="background:#ecfeff;border:1px solid rgba(14,116,144,0.28);border-radius:14px;padding:16px 18px;margin:18px 0;">
+<p style="margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:0.14em;color:#0e7490;text-transform:uppercase;">Any of these three slots work</p>
+<ul style="margin:0;padding-left:20px;font-size:15px;line-height:1.8;color:#134e4a;">
+<li><strong>Thursday, April 23</strong> – morning (9:00 – 11:00 AM)</li>
+<li><strong>Saturday, April 25</strong> – any time you have open</li>
+<li><strong>Monday, April 27</strong> – afternoon (1:00 – 4:00 PM)</li>
+</ul>
+</div>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Can you hold one of those and reply with <strong>"CONFIRM + [slot]"</strong>? If none of those fit, please send your next two available openings and we will lock it in the same day.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#475569;">Happy to fill out paperwork, send vaccine records, and pre-pay or put a card on file — whatever you need to reserve the slot.</p>
+<p style="margin:0 0 12px;font-size:14px;font-weight:600;">Thank you, {{Name}}.</p>
+${btn("tel:8083930153", "Call now – (808) 393-0153", "#0e7490")}`,
+    CORGI_FOOTER_HTML,
+  ),
+};
+
+const CORGI_HAIR_BOOK_ME = {
+  subject: "Ready to Book Stella's Groom This Week — Three Slots That Work For Us",
+  text: `Hi {{Name}},
+
+Short and direct so we can both save time.
+
+We are ready to book a full groom for Stella, our 13-year-old Pembroke corgi. She is calm, leashes well, no aggression, no separation panic. The only ask: a thorough deshed + high-velocity blowout, NO shaving of the body. Standard budget $100–$150 is fine, I will stretch for the right groomer.
+
+Any of these three slots would work for us:
+
+  • Thursday, April 23 — morning (9:00 – 11:00 AM)
+  • Saturday, April 25 — any time you have open
+  • Monday, April 27 — afternoon (1:00 – 4:00 PM)
+
+Can you hold one of those for Stella and reply with "CONFIRM + [slot]"? If mobile, we are in Hawaii Kai (96825). If salon, we can drive to you. If none of those fit, please send your next two available openings and we will lock it in the same day.
+
+Thank you, {{Name}}. Calling is fastest for us — (808) 393-0153.
+
+Eric – Stella's dad${CORGI_FOOTER_TEXT}`,
+  html: card(
+    "#b45309",
+    "rgba(180,83,9,0.18)",
+    "Booking request – Stella the corgi · groom",
+    "Ready to book this week – three slots that work for us",
+    "13-yr Pembroke corgi · deshed + blowout · no shaving · we will lock a slot today.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Short and direct so we can both save time.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">We are ready to book a full groom for <strong>Stella – our 13-year-old Pembroke corgi</strong>. Calm, leashes well, no aggression, no separation panic. The only ask: a thorough <strong>deshed + high-velocity blowout, NO shaving</strong> of the body. Standard budget $100–$150 is fine – will stretch for the right groomer.</p>
+<div style="background:#fffbeb;border:1px solid rgba(180,83,9,0.28);border-radius:14px;padding:16px 18px;margin:18px 0;">
+<p style="margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:0.14em;color:#b45309;text-transform:uppercase;">Any of these three slots work</p>
+<ul style="margin:0;padding-left:20px;font-size:15px;line-height:1.8;color:#78350f;">
+<li><strong>Thursday, April 23</strong> – morning (9:00 – 11:00 AM)</li>
+<li><strong>Saturday, April 25</strong> – any time you have open</li>
+<li><strong>Monday, April 27</strong> – afternoon (1:00 – 4:00 PM)</li>
+</ul>
+</div>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Can you hold one of those and reply with <strong>"CONFIRM + [slot]"</strong>? If mobile, we are in Hawaii Kai (96825). If salon, we can drive to you. If none of those fit, please send your next two available openings and we will lock it in the same day.</p>
+<p style="margin:0 0 12px;font-size:14px;font-weight:600;">Thank you, {{Name}}.</p>
+${btn("tel:8083930153", "Call now – (808) 393-0153", "#b45309")}`,
     CORGI_FOOTER_HTML,
   ),
 };
@@ -1994,6 +2092,8 @@ export const NEW_SERVICE_TEMPLATES: Record<NewServiceTemplateId, { subject: stri
   "corgi-care-teeth-followup-2": CORGI_TEETH_FU2,
   "corgi-care-teeth-followup-3": CORGI_TEETH_FU3,
   "corgi-care-teeth-followup-4": CORGI_TEETH_FU4,
+  "corgi-care-teeth-book-me": CORGI_TEETH_BOOK_ME,
+  "corgi-care-hair-book-me": CORGI_HAIR_BOOK_ME,
   "corgi-care-military": CORGI_MILITARY,
   "corgi-care-military-followup-1": CORGI_MILITARY_FU1,
   "corgi-care-military-followup-2": CORGI_MILITARY_FU2,
@@ -2049,7 +2149,9 @@ export const NEW_SERVICE_TEMPLATE_OPTIONS: { value: NewServiceTemplateId; label:
   { value: "apartments-individual", label: "Apartments – Individual landlord (Craigslist / FB Marketplace / FSBO)" },
   { value: "apartments-realtor", label: "Apartments – Realtor / property manager" },
   { value: "corgi-care-hair", label: "Corgi Care – Hair (groomers, deshed + blowout, NO shaving)" },
+  { value: "corgi-care-hair-book-me", label: "Corgi Care – Hair BOOK ME (ready-to-book, 3 slots proposed)" },
   { value: "corgi-care-teeth", label: "Corgi Care – Teeth cleaning ($300–$500 budget, civilian vets)" },
+  { value: "corgi-care-teeth-book-me", label: "Corgi Care – Teeth BOOK ME (ready-to-book, 3 slots proposed)" },
   { value: "corgi-care-military", label: "Corgi Care – Military VTF (cousin's corgi, bottom-dollar rate)" },
   { value: "luxury-resource-fareharbor", label: "Luxury Resource – FareHarbor partner (add us as affiliate)" },
   { value: "luxury-resource-direct", label: "Luxury Resource – Direct (non-FareHarbor – contract attached)" },

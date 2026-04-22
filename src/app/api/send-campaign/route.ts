@@ -247,6 +247,8 @@ export async function POST(request: NextRequest) {
       "corgi-care-teeth-followup-2",
       "corgi-care-teeth-followup-3",
       "corgi-care-teeth-followup-4",
+      "corgi-care-teeth-book-me",
+      "corgi-care-hair-book-me",
       "corgi-care-military",
       "corgi-care-military-followup-1",
       "corgi-care-military-followup-2",
