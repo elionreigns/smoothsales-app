@@ -25,6 +25,9 @@ const NS_FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1p
 const APT_FOOTER_TEXT = `\n\nA Hawaii couple looking for a spot to call home.\nEric & Ashley Schaefer · elionreigns@gmail.com · (808) 393-0153\nReply or call – easiest, fastest, no middleman.`;
 const APT_FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">A Hawaii couple looking for a spot to call home</p><p style="margin:6px 0 0;font-size:14px;color:#334155;"><strong>Eric &amp; Ashley Schaefer</strong> · <a href="mailto:elionreigns@gmail.com" style="color:#0d9488;text-decoration:none;font-weight:600;">elionreigns@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Reply or call – easiest, fastest, no middleman.</p>`;
 
+const CORGI_FOOTER_TEXT = `\n\nA Hawaii couple, our 13-year-old corgi Stella, and her 2-year-old cat sister Mittens.\nEric & Ashley Schaefer · elionreigns@gmail.com · (808) 393-0153\nReply or call – we're easy to reach.`;
+const CORGI_FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;opacity:0.95;">Stella's family</p><p style="margin:6px 0 0;font-size:14px;color:#334155;"><strong>Eric &amp; Ashley Schaefer</strong> · <a href="mailto:elionreigns@gmail.com" style="color:#0e7490;text-decoration:none;font-weight:600;">elionreigns@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Reply or call – we're easy to reach.</p>`;
+
 const SOFT_CLOSE_TEXT =
   " Thanks for your time. If this ever becomes a fit, we would love to hear from you. Take care.";
 const SOFT_CLOSE_HTML =
@@ -633,7 +636,7 @@ Budget context (so we are not wasting your time): we are aiming to land between 
 
 Best way to reach me is direct: (808) 393-0153 or this email. Thank you, {{Name}}.
 
-Eric Schaefer${NS_FOOTER_TEXT}`,
+Eric & Ashley Schaefer${CORGI_FOOTER_TEXT}`,
   html: card(
     "#0e7490",
     "rgba(14,116,144,0.18)",
@@ -655,8 +658,9 @@ Eric Schaefer${NS_FOOTER_TEXT}`,
 <p style="margin:0;font-size:14px;color:#155e75;line-height:1.6;"><strong>Budget context:</strong> we are aiming to land between <strong>$300 and $500 all-in</strong> for a healthy mouth, and we know Oahu prices range higher. If you are above that range but include something extra (full X-rays, longer recovery, surgical specialist), please just say so – we can adjust.</p>
 </div>
 <p style="margin:0 0 12px;font-size:14px;font-weight:600;">Thank you, {{Name}}.</p>
-<p style="margin:0;font-size:14px;color:#334155;">Direct line: (808) 393-0153 · coralcrowntechnologies@gmail.com</p>
+<p style="margin:0;font-size:14px;color:#334155;">Direct line: (808) 393-0153 · elionreigns@gmail.com</p>
 ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#0e7490")}`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -668,12 +672,13 @@ Quick nudge on the dental quote for Stella (13-yr corgi, ~25 lb, healthy mouth).
 
 If you can spare 60 seconds, even a rough range ("$X–$Y for our healthy-mouth package") would help me figure out where to book.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#0e7490",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick nudge on the dental quote for <strong>Stella (13-yr corgi, ~25 lb, healthy mouth)</strong>. I know quote requests pile up – just making sure mine did not slip through.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If you can spare 60 seconds, even a rough range ("$X–$Y for our healthy-mouth package") would help me figure out where to book.</p>
 ${btn("tel:8083930153", "Call Eric – (808) 393-0153", "#0e7490")}`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -687,13 +692,14 @@ If you ARE in or near our range, please send the package details and I will book
 
 Either way I appreciate the honest answer.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#0e7490",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Asking the direct question on purpose so neither of us wastes time.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If your typical all-in for a healthy 25-lb corgi dental (cleaning + bloodwork + X-rays + anesthesia) is <strong>over $500</strong>, I would rather know upfront so I can budget or look elsewhere.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If you ARE in or near our range, please send the package details and <strong>I will book this week</strong>.</p>
-${btn("mailto:coralcrowntechnologies@gmail.com?subject=Stella%20dental%20quote", "Send the package details", "#0e7490")}`,
+${btn("mailto:elionreigns@gmail.com?subject=Stella%20dental%20quote", "Send the package details", "#0e7490")}`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -707,12 +713,13 @@ That is my way of saying thank you for transparent pricing and good care.
 
 If now is not the right time, no problem – I will move on. Either way, thanks for considering.
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#0e7490",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If we book Stella with you and the experience is good, I will leave a <strong>thoughtful Yelp + Google review</strong> (with photos and the actual price you quoted, so other owners can find you), and refer other dog owners on Oahu.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">That is my way of saying thank you for transparent pricing and good care.</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.65;color:#334155;">If now is not the right time, no problem – I will move on. Either way, thanks for considering.</p>`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
@@ -724,12 +731,13 @@ Last note. We will move forward with whichever clinic gets back to us first with
 
 If we miss each other this round – please keep us on file for future visits. Stella will need cleanings every 1–2 years for the rest of her life and we are loyal once we find a good fit.${SOFT_CLOSE_TEXT}
 
-Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+Eric – (808) 393-0153${CORGI_FOOTER_TEXT}`,
   html: fbox(
     "#94a3b8",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note. We will move forward with whichever clinic gets back to us first with a clear, all-in price.</p>
 <p style="margin:0 0 14px;font-size:15px;line-height:1.65;">If we miss each other this round – please keep us on file. Stella will need cleanings every 1–2 years for the rest of her life and we are loyal once we find a good fit.</p>
 ${SOFT_CLOSE_HTML}`,
+    CORGI_FOOTER_HTML,
   ),
 };
 
