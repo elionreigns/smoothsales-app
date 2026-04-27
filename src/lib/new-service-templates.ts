@@ -1553,6 +1553,8 @@ const RAP_MGR_ACCENT_SOFT = "rgba(14,116,144,0.18)";
 const RAP_MGR_CONTRACT_URL = "https://www.prayerauthority.com/rap.com-static/contracts/booking-agent-agreement.html";
 const RAP_MGR_ROLODEX_URL = "https://www.prayerauthority.com/rap.com-static/rolodex.html#managers";
 const RAP_MGR_PARTNERS_URL = "https://www.prayerauthority.com/rap.com-static/partners/managers.html";
+const RAP_MGR_INTAKE_HELP_URL =
+  "https://www.prayerauthority.com/business-docs/services/rap-central/RAP-MANAGER-PROMOTER-HANDOFF.md";
 
 const RAP_MGR = {
   subject: "Would 3% extra on Rap-Central-sourced bookings be useful at {{Name of Organization}}?",
@@ -1571,6 +1573,8 @@ How it works for a manager / booking agent:
 Why we added the 3 percent: your approval layer is real work (contract review, production, settlement). Most routing networks ignore that and just take a flat cut on top of the artist. We wanted a structure a veteran manager would actually sign.
 
 The full contract is here (v1.0, e-signable, no DocuSign account needed): ${RAP_MGR_CONTRACT_URL}
+
+What we need from you so we do not mispitch promoters: a one-time snapshot (bullets are fine) — (1) fee floor and any flex, (2) what the promoter must provide on production / PA, (3) travel and lodging, (4) hospitality must-haves, (5) blackouts and boundaries, (6) who signs and payee. Checklist: ${RAP_MGR_INTAKE_HELP_URL}
 
 No rush. If it is interesting, sign it at your pace and we start feeding vetted promoter briefs that match your artists' Base Fee Floor.
 
@@ -1593,6 +1597,7 @@ Coral Crown Solutions, LLC — Rap Central partnerships
 </ul>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;"><strong>Why the 3%:</strong> your approval layer is real work. Most routing networks ignore that and just stack a fee on top of the artist. We wanted a structure a veteran manager would actually sign.</p>
 ${btn(RAP_MGR_CONTRACT_URL, "Read &amp; e-sign Contract #5 →", RAP_MGR_ACCENT)}
+<p style="margin:14px 0 0;font-size:14px;line-height:1.65;color:#334155;"><strong>So we don&rsquo;t mispitch promoters</strong> — when you&rsquo;re ready, send a <strong>one-time snapshot</strong> (bullets are fine): (1) fee floor + flex, (2) what the <strong>promoter must provide</strong> (PA, mics, subs, in-ears&hellip;), (3) travel &amp; lodging, (4) hospitality must-haves, (5) blackouts &amp; boundaries, (6) who signs &amp; payee. <a href="${RAP_MGR_INTAKE_HELP_URL}" style="color:${RAP_MGR_ACCENT};font-weight:600;">Full intake checklist (same wording we use internally)</a>.</p>
 <p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#64748b;">No rush. Sign at your pace and we start feeding vetted promoter briefs that match your artists' Base Fee Floor.</p>`,
   ),
 };
@@ -1612,6 +1617,8 @@ Following up on the Contract #5 note. Two questions we get from most managers, i
 If the structure still feels interesting, the contract is still here: ${RAP_MGR_CONTRACT_URL}
 Live rolodex (your firm is already listed): ${RAP_MGR_ROLODEX_URL}
 
+If you already signed or are close: reply with the six-line snapshot (fee floor, what you need from promoters on production, travel, hospitality, blackouts, who signs) so our promoter desk has your real rider — checklist: ${RAP_MGR_INTAKE_HELP_URL}
+
 Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
   html: fbox(
     RAP_MGR_ACCENT,
@@ -1621,6 +1628,7 @@ Eric — (808) 393-0153${NS_FOOTER_TEXT}`,
 <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#0f172a;">2) What if I book them somewhere we found on our own?</p>
 <p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">You owe us nothing. Rap Central only earns on shows we introduced in writing. Ambiguous cases default to no fee to us.</p>
 ${btn(RAP_MGR_CONTRACT_URL, "Re-read the contract →", RAP_MGR_ACCENT)}
+<p style="margin:14px 0 0;font-size:14px;line-height:1.65;color:#334155;">Signed or close? Reply with the <strong>six-line snapshot</strong> (fee floor, promoter production minimums, travel, hospitality, blackouts, who signs) so we brief promoters correctly — <a href="${RAP_MGR_INTAKE_HELP_URL}" style="color:${RAP_MGR_ACCENT};font-weight:600;">checklist</a>.</p>
 <p style="margin:14px 0 0;font-size:13px;color:#64748b;">Live rolodex (your firm is already listed): <a href="${RAP_MGR_ROLODEX_URL}" style="color:${RAP_MGR_ACCENT};font-weight:600;">rap-central-static/rolodex#managers</a>.</p>`,
   ),
 };
