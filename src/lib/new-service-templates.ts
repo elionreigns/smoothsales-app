@@ -1554,7 +1554,7 @@ const RAP_MGR_CONTRACT_URL = "https://www.prayerauthority.com/rap.com-static/con
 const RAP_MGR_ROLODEX_URL = "https://www.prayerauthority.com/rap.com-static/rolodex.html#managers";
 const RAP_MGR_PARTNERS_URL = "https://www.prayerauthority.com/rap.com-static/partners/managers.html";
 const RAP_MGR_INTAKE_HELP_URL =
-  "https://www.prayerauthority.com/business-docs/services/rap-central/RAP-MANAGER-PROMOTER-HANDOFF.md";
+  "https://www.prayerauthority.com/prayers/rap-central-manager-handoff.php";
 
 const RAP_MGR = {
   subject: "Would 3% extra on Rap-Central-sourced bookings be useful at {{Name of Organization}}?",
