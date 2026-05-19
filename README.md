@@ -6,11 +6,12 @@ Service outreach and bulk email campaigns for Coral Crown Solutions. One dashboa
 
 ## What it does
 
-- **Main dropdown:** Botox | Tech | Prayer | Tourism
+- **Main dropdown:** Botox | Tech | Prayer | Tourism | … | **Custom (Task Killer composer)**
 - **Tourism sub-dropdown:** Hawaii (Time for Fun Hawaii) | USA (Time for Fun USA)
 - **Prayer sub-options:** Individual member | Church organization
 - **Content:** Pitch / price sheet / info per service (Botox Oahu, Coral Crown Tech, Prayer Authority, Time for Fun)
 - **Email campaign:** Paste emails (one per line or comma/semicolon separated), choose template, send to all via Resend
+- **Custom composer:** Service → Custom → Audience **Business** or **Music** — type subject + body; templates `coral-business` / `coral-music` (see `TASK_KILLER_COMPOSER.md`). API supports `composerBody`, `bodyOverride`, `subjectOverride` for Task Exterminator Torpedo.
 
 ---
 

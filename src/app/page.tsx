@@ -14,7 +14,10 @@ import {
   type CorgiCareSub,
   type LuxuryResourceSub,
   type RapCentralSub,
+  type AutoBodySub,
+  type CustomSub,
 } from "@/lib/templates";
+import { CORAL_COMPOSER_DEFAULT_BODY } from "@/lib/coral-task-killer-templates";
 
 /** Password gate: show form until unlocked; ?access=KEY bypasses for clawdbot/AI. */
 function SmoothSalesGate({ children }: { children: React.ReactNode }) {
@@ -101,7 +104,7 @@ function SmoothSalesGate({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "stella" | "apartments" | "corgi-care" | "luxury-resource" | "rap-central" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "stella" | "apartments" | "corgi-care" | "luxury-resource" | "rap-central" | "auto-body" | "custom" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
@@ -128,6 +131,10 @@ export default function SmoothSalesPage() {
   const [corgiCareSub, setCorgiCareSub] = useState<CorgiCareSub>("");
   const [luxuryResourceSub, setLuxuryResourceSub] = useState<LuxuryResourceSub>("");
   const [rapCentralSub, setRapCentralSub] = useState<RapCentralSub>("");
+  const [autoBodySub, setAutoBodySub] = useState<AutoBodySub>("");
+  const [customSub, setCustomSub] = useState<CustomSub>("");
+  const [composerBody, setComposerBody] = useState(CORAL_COMPOSER_DEFAULT_BODY);
+  const [composerSubject, setComposerSubject] = useState("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [templateId, setTemplateId] = useState<string>("");
@@ -141,12 +148,12 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub]
   );
 
   useEffect(() => {
@@ -198,6 +205,12 @@ export default function SmoothSalesPage() {
         body: JSON.stringify({
           templateId,
           recipients: recipients.map((r) => ({ email: r.email, name: r.name || undefined })),
+          ...(service === "custom" && composerBody
+            ? { composerBody }
+            : {}),
+          ...(service === "custom" && composerSubject.trim()
+            ? { subjectOverride: composerSubject.trim() }
+            : {}),
         }),
       });
       type SendResponse = {
@@ -242,12 +255,13 @@ export default function SmoothSalesPage() {
         Name: previewName,
         "Name of Person": previewName,
         "Name of Organization": previewName,
+        ...(service === "custom" ? { Body: composerBody || CORAL_COMPOSER_DEFAULT_BODY } : {}),
       });
       return personalized;
     } catch {
       return "";
     }
-  }, [templateId, previewName]);
+  }, [templateId, previewName, service, composerBody]);
 
   return (
     <SmoothSalesGate>
@@ -286,6 +300,8 @@ export default function SmoothSalesPage() {
                     setCorgiCareSub("");
                     setLuxuryResourceSub("");
                     setRapCentralSub("");
+                    setAutoBodySub("");
+                    setCustomSub("");
                   }}
                   className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
@@ -304,6 +320,8 @@ export default function SmoothSalesPage() {
                   <option value="corgi-care">Corgi Care (grooming + dental for Stella)</option>
                   <option value="luxury-resource">Luxury Resource of Hawaii (vendor partnerships)</option>
                   <option value="rap-central">Rap Central (Rap Artist Booking Engine)</option>
+                  <option value="auto-body">HHR / Auto cosmetic (2009 Chevy HHR restoration outreach)</option>
+                  <option value="custom">Custom (Task Killer composer — Business / Music)</option>
                 </select>
               </div>
 
@@ -531,6 +549,36 @@ export default function SmoothSalesPage() {
                   </select>
                 </div>
               )}
+
+              {service === "auto-body" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={autoBodySub}
+                    onChange={(e) => setAutoBodySub(e.target.value as AutoBodySub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="shop">Body shop / collision bay (owner, estimator, production)</option>
+                    <option value="independent">Independent (mobile tech, Craigslist, side work)</option>
+                  </select>
+                </div>
+              )}
+
+              {service === "custom" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Audience</label>
+                  <select
+                    value={customSub}
+                    onChange={(e) => setCustomSub(e.target.value as CustomSub)}
+                    className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-amber-500/50"
+                  >
+                    <option value="">Select…</option>
+                    <option value="business">Business — Eric Hans Schaefer (official)</option>
+                    <option value="music">Music — E Lion (Family Feud 2016)</option>
+                  </select>
+                </div>
+              )}
             </div>
           </section>
 
@@ -555,6 +603,33 @@ export default function SmoothSalesPage() {
                     ))}
                   </select>
                 </div>
+                {service === "custom" && (
+                  <div className="mt-5 space-y-4 border-t border-slate-600/80 pt-5">
+                    <h3 className="text-sm font-semibold text-amber-300">Email composer</h3>
+                    <p className="text-slate-400 text-xs">
+                      Add each recipient&apos;s name in the sidebar. Customize subject and body — the official signature is in the template.
+                    </p>
+                    <label className="block text-sm font-medium text-slate-300">
+                      Subject (optional override)
+                      <input
+                        type="text"
+                        value={composerSubject}
+                        onChange={(e) => setComposerSubject(e.target.value)}
+                        placeholder="Leave blank for default subject"
+                        className="mt-2 w-full bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 text-base"
+                      />
+                    </label>
+                    <label className="block text-sm font-medium text-slate-300">
+                      Email body
+                      <textarea
+                        value={composerBody}
+                        onChange={(e) => setComposerBody(e.target.value)}
+                        rows={8}
+                        className="mt-2 w-full bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3 text-slate-100 text-sm leading-relaxed"
+                      />
+                    </label>
+                  </div>
+                )}
                 {service === "botox" && <BotoxContent />}
                 {service === "tech" && <TechContent />}
                 {service === "prayer" && <PrayerContent audience={prayerSub} />}
@@ -565,6 +640,7 @@ export default function SmoothSalesPage() {
                 {service === "healing-herbals" && <HealingHerbalsContent audience={healingHerbalsSub} />}
                 {service === "yachts" && <YachtsContent audience={yachtSub} />}
                 {service === "stella" && <StellaContent audience={stellaSub} />}
+                {service === "auto-body" && <HhrAutoBodyContent audience={autoBodySub} />}
                 {/* Email preview */}
                 {templateId && (
                   <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-600/80">
@@ -631,8 +707,11 @@ export default function SmoothSalesPage() {
           {service === "stella" && !stellaSub && (
             <p className="text-slate-500 text-sm">Select Brands, Media, or Talent above to continue.</p>
           )}
-          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (service !== "healing-herbals" || healingHerbalsSub !== "") && (service !== "yachts" || yachtSub !== "") && (service !== "stella" || stellaSub !== "") && (
+          {service && !showPitchAndCampaign && (service !== "p48x" || p48xSub !== "") && (service !== "healing-herbals" || healingHerbalsSub !== "") && (service !== "yachts" || yachtSub !== "") && (service !== "stella" || stellaSub !== "") && (service !== "auto-body" || autoBodySub !== "") && (
             <p className="text-slate-500 text-sm">Select an option above to continue.</p>
+          )}
+          {service === "auto-body" && !autoBodySub && (
+            <p className="text-slate-500 text-sm">Select Body shop or Independent above to continue.</p>
           )}
         </div>
 
@@ -823,6 +902,21 @@ function StellaContent({ audience }: { audience: StellaSub }) {
       {audience === "media" && <p>Media audience: magazines, editorial features, commercials, TV and film opportunities where Stella can be featured on camera.</p>}
       {audience === "talent" && <p>Talent audience: pet talent agencies, casting directors, producers, and campaign teams seeking a trained, camera-friendly corgi for paid work.</p>}
       <p>Contact: <a href="mailto:coralcrowntechnologies@gmail.com" className="text-amber-400 hover:text-amber-300">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
+    </div>
+  );
+}
+
+function HhrAutoBodyContent({ audience }: { audience: AutoBodySub }) {
+  return (
+    <div className="prose prose-invert prose-sm max-w-none text-slate-300">
+      <p><strong className="text-slate-100">2009 Chevy HHR</strong> (~55k miles) — cosmetic restoration outreach for Oahu. Two tones: professional body shop vs independent / mobile.</p>
+      {audience === "shop" && (
+        <p><strong>Body shop</strong> template: collision-bay language, estimates, financing question, salvage-hood sequencing, Coral Crown footer + reply buttons.</p>
+      )}
+      {audience === "independent" && (
+        <p><strong>Independent</strong> template: Craigslist / side-work tone, cash-flexible, asks for honest scope — same vehicle story, lighter voice.</p>
+      )}
+      <p>Reply path: <a href="mailto:coralcrowntechnologies@gmail.com" className="text-amber-400 hover:text-amber-300">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p>
     </div>
   );
 }

@@ -17,14 +17,22 @@ import {
   getNewServiceTemplate,
   type NewServiceTemplateId,
   type ApartmentsSub,
+  type AutoBodySub,
   type CorgiCareSub,
   type LuxuryResourceSub,
   type RapCentralSub,
   NEW_SERVICE_TEMPLATE_OPTIONS,
 } from "./new-service-templates";
+import {
+  isCoralTaskKillerTemplateId,
+  getCoralTaskKillerTemplate,
+  type CoralTaskKillerTemplateId,
+  CORAL_TASK_KILLER_TEMPLATE_OPTIONS,
+} from "./coral-task-killer-templates";
 
 export type {
   ApartmentsSub,
+  AutoBodySub,
   CorgiCareSub,
   LuxuryResourceSub,
   RapCentralSub,
@@ -154,11 +162,15 @@ export type TemplateId =
   | "p48x-affiliate-sellers-v2"
   | "healing-herbals-smoke-shop-v2"
   | "healing-herbals-individual-v2"
+  | CoralTaskKillerTemplateId
   | NewServiceTemplateId;
 
 /** Base templates only (no follow-up ids, no v2); follow-ups and v2 are resolved in getTemplate. */
 type BaseTemplateId = Exclude<
-  Exclude<TemplateId, ElionFollowUpTemplateId | OtherFollowUpTemplateId | NewServiceTemplateId>,
+  Exclude<
+    TemplateId,
+    ElionFollowUpTemplateId | OtherFollowUpTemplateId | NewServiceTemplateId | CoralTaskKillerTemplateId
+  >,
   `${string}-v2`
 >;
 
@@ -361,6 +373,10 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
     const t = getNewServiceTemplate(id as NewServiceTemplateId);
     return finalize({ subject: t.subject, html: t.html, text: t.text });
   }
+  if (isCoralTaskKillerTemplateId(id as string)) {
+    const t = getCoralTaskKillerTemplate(id as CoralTaskKillerTemplateId);
+    return finalize({ subject: t.subject, html: t.html, text: t.text });
+  }
   // Initial – Enhanced (v2): use TEMPLATES_V2 if defined, else same as base
   if (typeof id === "string" && id.endsWith("-v2")) {
     const v2 = TEMPLATES_V2[id];
@@ -397,18 +413,38 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
 export function substitutePlaceholders(
   html: string,
   text: string,
-  vars: { Name?: string; "Name of Person"?: string; "Name of Organization"?: string }
+  vars: {
+    Name?: string;
+    "Name of Person"?: string;
+    "Name of Organization"?: string;
+    Body?: string;
+  }
 ): { html: string; text: string } {
   let h = html;
   let t = text;
+  const bodyPlain = vars.Body ?? "";
+  const bodyHtml = bodyPlain
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/\n/g, "<br>");
   const map: Record<string, string> = {
-    Name: vars.Name ?? "",
-    "Name of Person": vars["Name of Person"] ?? vars.Name ?? "",
-    "Name of Organization": vars["Name of Organization"] ?? vars.Name ?? "",
+    Name: vars.Name ?? "there",
+    "Name of Person": vars["Name of Person"] ?? vars.Name ?? "there",
+    "Name of Organization": vars["Name of Organization"] ?? vars.Name ?? "your team",
+    Body: bodyHtml,
+  };
+  const textMap: Record<string, string> = {
+    ...map,
+    Body: bodyPlain,
   };
   for (const [key, value] of Object.entries(map)) {
     const re = new RegExp(`\\{\\{\\s*${key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*\\}\\}`, "g");
     h = h.replace(re, value);
+  }
+  for (const [key, value] of Object.entries(textMap)) {
+    const re = new RegExp(`\\{\\{\\s*${key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*\\}\\}`, "g");
     t = t.replace(re, value);
   }
   return { html: h, text: t };
@@ -430,7 +466,10 @@ export type ServiceSelection =
   | "apartments"
   | "corgi-care"
   | "luxury-resource"
-  | "rap-central";
+  | "rap-central"
+  | "auto-body"
+  | "custom";
+export type CustomSub = "" | "business" | "music";
 export type TourismSub = "" | "hawaii" | "usa" | "featured-tour";
 export type PrayerSub = "" | "individual" | "church";
 export type BotoxSub = "" | "individual" | "corporate";
@@ -524,6 +563,11 @@ const RAP_CENTRAL_TEMPLATE_MAP: Record<Exclude<RapCentralSub, "">, TemplateId> =
   promoters: "rap-central-promoters",
 };
 
+const AUTO_BODY_TEMPLATE_MAP: Record<Exclude<AutoBodySub, "">, TemplateId> = {
+  shop: "auto-body-shop",
+  independent: "auto-body-independent",
+};
+
 /** Build dropdown for a new-service base id: Initial + Follow Up 1..4 (4 follow-ups, not 3). */
 function newServiceTemplateOptions(baseId: TemplateId): { value: TemplateId; label: string }[] {
   const initialLabel = TEMPLATE_OPTIONS.find((o) => o.value === baseId)?.label ?? "Initial";
@@ -570,7 +614,9 @@ export function getTemplatesForSelection(
   apartmentsSub: ApartmentsSub = "",
   corgiCareSub: CorgiCareSub = "",
   luxuryResourceSub: LuxuryResourceSub = "",
-  rapCentralSub: RapCentralSub = ""
+  rapCentralSub: RapCentralSub = "",
+  autoBodySub: AutoBodySub = "",
+  customSub: CustomSub = ""
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return templateOptionsWithFollowUps("botox");
@@ -637,6 +683,14 @@ export function getTemplatesForSelection(
   if (service === "rap-central" && rapCentralSub !== "") {
     return newServiceTemplateOptions(RAP_CENTRAL_TEMPLATE_MAP[rapCentralSub]);
   }
+  if (service === "auto-body" && autoBodySub !== "") {
+    return newServiceTemplateOptions(AUTO_BODY_TEMPLATE_MAP[autoBodySub]);
+  }
+  if (service === "custom" && customSub !== "") {
+    const id: CoralTaskKillerTemplateId = customSub === "music" ? "coral-music" : "coral-business";
+    const label = CORAL_TASK_KILLER_TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? id;
+    return [{ value: id, label: "Composer: " + label }];
+  }
   return [];
 }
 
@@ -656,9 +710,12 @@ export function hasRequiredSelection(
   apartmentsSub: ApartmentsSub = "",
   corgiCareSub: CorgiCareSub = "",
   luxuryResourceSub: LuxuryResourceSub = "",
-  rapCentralSub: RapCentralSub = ""
+  rapCentralSub: RapCentralSub = "",
+  autoBodySub: AutoBodySub = "",
+  customSub: CustomSub = ""
 ): boolean {
   if (!service) return false;
+  if (service === "custom") return customSub !== "";
   if (service === "prayer") return prayerSub !== "";
   if (service === "tourism") return tourismSub !== "";
   if (service === "botox") return botoxSub !== "";
@@ -673,6 +730,7 @@ export function hasRequiredSelection(
   if (service === "corgi-care") return corgiCareSub !== "";
   if (service === "luxury-resource") return luxuryResourceSub !== "";
   if (service === "rap-central") return rapCentralSub !== "";
+  if (service === "auto-body") return autoBodySub !== "";
   return false;
 }
 

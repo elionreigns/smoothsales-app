@@ -75,6 +75,12 @@ export async function POST(request: NextRequest) {
     const scheduledAt = typeof body.scheduledAt === "string" ? body.scheduledAt.trim() || undefined : undefined;
     const subjectOverrideRaw = typeof body.subjectOverride === "string" ? body.subjectOverride.trim() : "";
     const subjectOverride = subjectOverrideRaw.length > 0 ? subjectOverrideRaw.slice(0, 180) : undefined;
+    const bodyOverrideRaw = typeof body.bodyOverride === "string" ? body.bodyOverride.trim() : "";
+    const bodyOverride = bodyOverrideRaw.length > 0 ? bodyOverrideRaw : undefined;
+    const bodyTextOverrideRaw = typeof body.bodyTextOverride === "string" ? body.bodyTextOverride.trim() : "";
+    const bodyTextOverride = bodyTextOverrideRaw.length > 0 ? bodyTextOverrideRaw : undefined;
+    const composerBodyRaw = typeof body.composerBody === "string" ? body.composerBody.trim() : "";
+    const composerBody = composerBodyRaw.length > 0 ? composerBodyRaw : undefined;
 
     let recipients: Recipient[] = [];
     if (Array.isArray(recipientsRaw) && recipientsRaw.length > 0) {
@@ -284,6 +290,19 @@ export async function POST(request: NextRequest) {
       "corgi-care-sponsor-followup-2",
       "corgi-care-sponsor-followup-3",
       "corgi-care-sponsor-followup-4",
+      // HHR / auto cosmetic — body shops vs independents (initial + 4 follow-ups).
+      "auto-body-shop",
+      "auto-body-shop-followup-1",
+      "auto-body-shop-followup-2",
+      "auto-body-shop-followup-3",
+      "auto-body-shop-followup-4",
+      "auto-body-independent",
+      "auto-body-independent-followup-1",
+      "auto-body-independent-followup-2",
+      "auto-body-independent-followup-3",
+      "auto-body-independent-followup-4",
+      "coral-business",
+      "coral-music",
     ];
     if (!templateId || !validIds.includes(templateId)) {
       return NextResponse.json(
@@ -306,8 +325,13 @@ export async function POST(request: NextRequest) {
     try {
       const template = getTemplate(templateId);
       subject = subjectOverride || template.subject;
-      html = template.html;
-      text = template.text;
+      if (bodyOverride) {
+        html = bodyOverride;
+        text = bodyTextOverride || bodyOverride.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      } else {
+        html = template.html;
+        text = template.text;
+      }
     } catch (e) {
       console.error("getTemplate error:", e);
       return json500("Template error: " + (e instanceof Error ? e.message : "unknown"));
@@ -343,8 +367,11 @@ export async function POST(request: NextRequest) {
         Name: rec.name ?? "there",
         "Name of Person": rec.nameOfPerson ?? rec.name ?? "there",
         "Name of Organization": orgFallback,
+        ...(composerBody && !bodyOverride ? { Body: composerBody } : {}),
       };
-      const { html: personalHtml, text: personalText } = substitutePlaceholders(htmlWithImages, text, vars);
+      const { html: personalHtml, text: personalText } = bodyOverride
+        ? { html, text }
+        : substitutePlaceholders(htmlWithImages, text, vars);
       // Personalize the subject too — previously the subject was sent verbatim
       // which is why some recipients saw the literal "{{Name of Organization}}"
       // placeholder text in their inbox.
@@ -373,17 +400,21 @@ export async function POST(request: NextRequest) {
           // Register follow-up state on initial send.
           if (hasFollowUps || isNewsletterRebumpBase) {
             const nowIso = new Date().toISOString();
-            await upsertFollowUpState({
-              baseTemplateId: templateId,
-              email: rec.email,
-              name: rec.name ?? rec.nameOfPerson ?? undefined,
-              nameOfOrganization: rec.nameOfOrganization ?? undefined,
-              initialSentAt: nowIso,
-              initialEmailId: data?.id,
-              followUpsSent: 0,
-              lastSentAt: nowIso,
-              lastEmailId: data?.id,
-            });
+            try {
+              await upsertFollowUpState({
+                baseTemplateId: templateId,
+                email: rec.email,
+                name: rec.name ?? rec.nameOfPerson ?? undefined,
+                nameOfOrganization: rec.nameOfOrganization ?? undefined,
+                initialSentAt: nowIso,
+                initialEmailId: data?.id,
+                followUpsSent: 0,
+                lastSentAt: nowIso,
+                lastEmailId: data?.id,
+              });
+            } catch (kvErr) {
+              console.error("followup KV upsert skipped (email still sent):", kvErr);
+            }
           }
         }
       } catch (err) {

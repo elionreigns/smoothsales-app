@@ -14,6 +14,10 @@ export function getSmsTeaser(templateId: TemplateId): string {
       return "Want clearer, younger-looking skin without guesswork? Click to view the Botox Oahu pitch and reply to book an easy consult.";
     case "tech":
       return "Do you want a website + SEO that brings more bookings in Hawaii? Click to open the Coral Crown Tech pitch and tell me what you sell.";
+    case "coral-business":
+      return "Would you take a moment to read a short official note from Coral Crown Solutions? Click to open the message and reply if it fits.";
+    case "coral-music":
+      return "Got a minute for a note from E Lion (Family Feud grand prize, 2016)? Click to read the full message and hit reply if you're open.";
     case "elion-leaders":
       return "Would you take 60 seconds to see what P48X + PrayerAuthority could add to your church or leaders group? If it resonates, click to view the exact pitch and I’ll tailor options + a setlist for your dates.";
     case "elion-laymen":
@@ -91,6 +95,10 @@ export function getSmsTeaser(templateId: TemplateId): string {
       return "If you don’t use FareHarbor – would you be open to a simple referral agreement with Hawaii Luxury Resource (10% on tracked bookings)? Click to view the contract draft.";
     case "rap-central-rappers":
       return "Would you say no to more booking offers from vetted promoters for just 5%? Click to view the Rap Artist Booking Engine pitch and your requirements form.";
+    case "auto-body-shop":
+      return "Low-mile 2009 HHR — mostly cosmetic (hood/latch, door gap). Call me at (808) 393-0153 or open the email for photos / estimate — reply if you like oddball restorations.";
+    case "auto-body-independent":
+      return "Side-work on a 2009 HHR (cosmetic + alignment)? Call me at (808) 393-0153 or open the email — text is fine if you want pics first.";
     default:
       return "Will you take 60 seconds to read this and reply with your thoughts? Click to open the full pitch and choose the next step.";
   }

@@ -23,6 +23,14 @@ General format:
   - Standalone: https://smoothsales-app.vercel.app/newsletter/tech?access=CROWN&name=there&org=YourBusiness
   - Preview API (JSON): `GET /api/sms-preview?templateId=tech`
 
+- **coral-business** (Task Killer composer — Eric Hans Schaefer)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/coral-business?access=CROWN&name=there
+  - Preview API: `GET /api/sms-preview?templateId=coral-business`
+
+- **coral-music** (Task Killer composer — E Lion / Family Feud 2016)
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/coral-music?access=CROWN&name=there
+  - Preview API: `GET /api/sms-preview?templateId=coral-music`
+
 - **prayer-individual**
   - Standalone: https://smoothsales-app.vercel.app/newsletter/prayer-individual?access=CROWN&name=there
   - Preview API (JSON): `GET /api/sms-preview?templateId=prayer-individual`
