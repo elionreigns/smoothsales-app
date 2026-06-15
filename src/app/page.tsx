@@ -16,7 +16,9 @@ import {
   type RapCentralSub,
   type AutoBodySub,
   type CustomSub,
+  type HeadHuntSub,
 } from "@/lib/templates";
+import { HEAD_HUNT_AUDIENCE_OPTIONS } from "@/lib/head-hunt-templates";
 import { CORAL_COMPOSER_DEFAULT_BODY } from "@/lib/coral-task-killer-templates";
 
 /** Password gate: show form until unlocked; ?access=KEY bypasses for clawdbot/AI. */
@@ -104,7 +106,7 @@ function SmoothSalesGate({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "stella" | "apartments" | "corgi-care" | "luxury-resource" | "rap-central" | "auto-body" | "custom" | "";
+type Service = "botox" | "tech" | "prayer" | "tourism" | "elion" | "wedding" | "p48x" | "healing-herbals" | "yachts" | "stella" | "apartments" | "corgi-care" | "luxury-resource" | "rap-central" | "auto-body" | "head-hunt" | "custom" | "";
 type TourismSub = "hawaii" | "usa" | "";
 type PrayerSub = "individual" | "church" | "";
 type BotoxSub = "individual" | "corporate" | "";
@@ -133,6 +135,7 @@ export default function SmoothSalesPage() {
   const [rapCentralSub, setRapCentralSub] = useState<RapCentralSub>("");
   const [autoBodySub, setAutoBodySub] = useState<AutoBodySub>("");
   const [customSub, setCustomSub] = useState<CustomSub>("");
+  const [headHuntSub, setHeadHuntSub] = useState<HeadHuntSub>("");
   const [composerBody, setComposerBody] = useState(CORAL_COMPOSER_DEFAULT_BODY);
   const [composerSubject, setComposerSubject] = useState("");
   const [emails, setEmails] = useState("");
@@ -148,13 +151,23 @@ export default function SmoothSalesPage() {
   const [error, setError] = useState("");
 
   const filteredTemplates = useMemo(
-    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub]
+    () => getTemplatesForSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub, headHuntSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub, headHuntSub]
   );
   const showPitchAndCampaign = useMemo(
-    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub),
-    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub]
+    () => hasRequiredSelection(service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub, headHuntSub),
+    [service, tourismSub, prayerSub, botoxSub, techSub, elionSub, weddingSub, p48xSub, healingHerbalsSub, yachtSub, stellaSub, apartmentsSub, corgiCareSub, luxuryResourceSub, rapCentralSub, autoBodySub, customSub, headHuntSub]
   );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("service") === "head-hunt") {
+      setService("head-hunt");
+      const audience = params.get("audience");
+      if (audience) setHeadHuntSub(audience as HeadHuntSub);
+    }
+  }, []);
 
   useEffect(() => {
     if (filteredTemplates.length === 0) {
@@ -302,6 +315,7 @@ export default function SmoothSalesPage() {
                     setRapCentralSub("");
                     setAutoBodySub("");
                     setCustomSub("");
+                    setHeadHuntSub("");
                   }}
                   className="w-full sm:max-w-sm bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 min-h-[48px] touch-manipulation"
                 >
@@ -321,6 +335,7 @@ export default function SmoothSalesPage() {
                   <option value="luxury-resource">Luxury Resource of Hawaii (vendor partnerships)</option>
                   <option value="rap-central">Rap Central (Rap Artist Booking Engine)</option>
                   <option value="auto-body">HHR / Auto cosmetic (2009 Chevy HHR restoration outreach)</option>
+                  <option value="head-hunt">Head Hunting (One Page Miracle — find passionate allies)</option>
                   <option value="custom">Custom (Task Killer composer — Business / Music)</option>
                 </select>
               </div>
@@ -562,6 +577,25 @@ export default function SmoothSalesPage() {
                     <option value="shop">Body shop / collision bay (owner, estimator, production)</option>
                     <option value="independent">Independent (mobile tech, Craigslist, side work)</option>
                   </select>
+                </div>
+              )}
+
+              {service === "head-hunt" && (
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Who are we finding?</label>
+                  <select
+                    value={headHuntSub}
+                    onChange={(e) => setHeadHuntSub(e.target.value as HeadHuntSub)}
+                    className="w-full sm:max-w-lg bg-slate-700/80 border border-slate-600 rounded-xl px-4 py-3.5 sm:py-3 text-slate-100 text-base min-h-[48px] touch-manipulation focus:ring-2 focus:ring-violet-500/50"
+                  >
+                    <option value="">Select audience…</option>
+                    {HEAD_HUNT_AUDIENCE_OPTIONS.map((o) => (
+                      <option key={o.value} value={o.value}>{o.label}</option>
+                    ))}
+                  </select>
+                  <p className="mt-2 text-xs text-slate-400 max-w-lg">
+                    One Page Miracle head hunting — passionate allies for music, faith, AI, cleaning co, corgis, books, tourism SEO, and capital partners.
+                  </p>
                 </div>
               )}
 

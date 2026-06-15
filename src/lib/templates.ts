@@ -29,6 +29,15 @@ import {
   type CoralTaskKillerTemplateId,
   CORAL_TASK_KILLER_TEMPLATE_OPTIONS,
 } from "./coral-task-killer-templates";
+import {
+  isHeadHuntTemplateId,
+  getHeadHuntTemplate,
+  headHuntTemplateOptions,
+  type HeadHuntSub,
+  type HeadHuntTemplateId,
+} from "./head-hunt-templates";
+
+export type { HeadHuntSub } from "./head-hunt-templates";
 
 export type {
   ApartmentsSub,
@@ -163,7 +172,8 @@ export type TemplateId =
   | "healing-herbals-smoke-shop-v2"
   | "healing-herbals-individual-v2"
   | CoralTaskKillerTemplateId
-  | NewServiceTemplateId;
+  | NewServiceTemplateId
+  | HeadHuntTemplateId;
 
 /** Base templates only (no follow-up ids, no v2); follow-ups and v2 are resolved in getTemplate. */
 type BaseTemplateId = Exclude<
@@ -373,6 +383,10 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
     const t = getNewServiceTemplate(id as NewServiceTemplateId);
     return finalize({ subject: t.subject, html: t.html, text: t.text });
   }
+  if (isHeadHuntTemplateId(id as string)) {
+    const t = getHeadHuntTemplate(id as HeadHuntTemplateId);
+    return finalize({ subject: t.subject, html: t.html, text: t.text });
+  }
   if (isCoralTaskKillerTemplateId(id as string)) {
     const t = getCoralTaskKillerTemplate(id as CoralTaskKillerTemplateId);
     return finalize({ subject: t.subject, html: t.html, text: t.text });
@@ -468,6 +482,7 @@ export type ServiceSelection =
   | "luxury-resource"
   | "rap-central"
   | "auto-body"
+  | "head-hunt"
   | "custom";
 export type CustomSub = "" | "business" | "music";
 export type TourismSub = "" | "hawaii" | "usa" | "featured-tour";
@@ -616,7 +631,8 @@ export function getTemplatesForSelection(
   luxuryResourceSub: LuxuryResourceSub = "",
   rapCentralSub: RapCentralSub = "",
   autoBodySub: AutoBodySub = "",
-  customSub: CustomSub = ""
+  customSub: CustomSub = "",
+  headHuntSub: HeadHuntSub = ""
 ): { value: TemplateId; label: string }[] {
   if (service === "botox") {
     if (botoxSub === "individual" || botoxSub === "corporate") return templateOptionsWithFollowUps("botox");
@@ -691,6 +707,9 @@ export function getTemplatesForSelection(
     const label = CORAL_TASK_KILLER_TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? id;
     return [{ value: id, label: "Composer: " + label }];
   }
+  if (service === "head-hunt" && headHuntSub !== "") {
+    return headHuntTemplateOptions(headHuntSub);
+  }
   return [];
 }
 
@@ -712,7 +731,8 @@ export function hasRequiredSelection(
   luxuryResourceSub: LuxuryResourceSub = "",
   rapCentralSub: RapCentralSub = "",
   autoBodySub: AutoBodySub = "",
-  customSub: CustomSub = ""
+  customSub: CustomSub = "",
+  headHuntSub: HeadHuntSub = ""
 ): boolean {
   if (!service) return false;
   if (service === "custom") return customSub !== "";
@@ -731,6 +751,7 @@ export function hasRequiredSelection(
   if (service === "luxury-resource") return luxuryResourceSub !== "";
   if (service === "rap-central") return rapCentralSub !== "";
   if (service === "auto-body") return autoBodySub !== "";
+  if (service === "head-hunt") return headHuntSub !== "";
   return false;
 }
 

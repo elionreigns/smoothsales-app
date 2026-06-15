@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getTemplate, substitutePlaceholders, type TemplateId } from "@/lib/templates";
+import { isHeadHuntTemplateId, getAllHeadHuntTemplateIds } from "@/lib/head-hunt-templates";
 import { isAuthenticated, isAuthRequired } from "@/lib/auth";
 import { upsertFollowUpState } from "@/lib/followups-store";
 
@@ -304,14 +305,14 @@ export async function POST(request: NextRequest) {
       "coral-business",
       "coral-music",
     ];
-    if (!templateId || !validIds.includes(templateId)) {
+    if (!templateId || (!validIds.includes(templateId) && !isHeadHuntTemplateId(templateId))) {
       return NextResponse.json(
         { success: false, error: "Invalid templateId" },
         { status: 400 }
       );
     }
 
-    const validSet = new Set<string>(validIds);
+    const validSet = new Set<string>([...validIds, ...getAllHeadHuntTemplateIds()]);
     // Accept follow-ups 1-4 (legacy services use 1-3, new April-2026 services use 1-4).
     const isFollowUp = /-followup-[1-4]$/.test(templateId);
     const followUpBase = isFollowUp ? templateId.replace(/-followup-[1-4]$/, "") : templateId;
