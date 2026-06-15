@@ -260,15 +260,19 @@ If you sell digital services but need a fulfillment bench, let's open the partne
   },
 ];
 
+const MEETING_TEXT =
+  "\n\nI'm on Oahu and would love to set a brief in-person coffee or a phone call — whatever is easiest. (808) 393-0153";
+const MEETING_HTML = `<p style="margin:16px 0 0;font-size:15px;line-height:1.75;"><strong>I'm on Oahu</strong> — happy to meet for coffee at your office or jump on a quick call. Reply with a time or text <strong>(808) 393-0153</strong>.</p>`;
+
 function buildInitial(a: Audience) {
-  const text = `Hi {{Name}},\n\n${a.textBody}${FOOTER_TEXT}`;
+  const text = `Hi {{Name}},\n\n${a.textBody}${MEETING_TEXT}${FOOTER_TEXT}`;
   const html = card(
     a.accent,
     a.accent + "33",
     a.kicker,
     a.headline,
     a.sub,
-    a.htmlBody,
+    `${a.htmlBody}${MEETING_HTML}`,
     FOOTER_HTML,
   );
   return { subject: a.subject, text, html };
