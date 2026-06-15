@@ -2,10 +2,10 @@
  * Head Hunting as a Service — recruit passionate allies for Eric's One Page Miracle roster.
  * Wired to Task Exterminator OPM + SmoothSales / Resend + Clawd torpedo strikes.
  */
-import { card, fbox } from "./head-hunt-ui";
+import { card, fbox, replyCtaButtons, REPLY_CTA_TEXT } from "./head-hunt-ui";
 
-const FOOTER_TEXT = `\n\nEric Hans Schaefer (E Lion) · elionreigns@gmail.com · (808) 393-0153\n2016 Family Feud Grand Prize · coralcrownsolutions.com · elionmusic.com\nReply if this resonates — I save the deep talks for people who get it.`;
-const FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;">One Page Miracle · Head hunt</p><p style="margin:6px 0 0;font-size:14px;color:#334155;"><strong>Eric Hans Schaefer</strong> (E Lion) · <a href="mailto:elionreigns@gmail.com" style="color:#7c3aed;font-weight:600;">elionreigns@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Family Feud Grand Prize 2016 · <a href="https://coralcrownsolutions.com" style="color:#0ea5e9;">coralcrownsolutions.com</a> · <a href="https://elionmusic.com" style="color:#0ea5e9;">elionmusic.com</a></p>`;
+const FOOTER_TEXT = `\n\nEric Hans Schaefer (E Lion) · coralcrowntechnologies@gmail.com · (808) 393-0153\n2016 Family Feud Grand Prize · coralcrownsolutions.com · elionmusic.com\nReply if this resonates — I save the deep talks for people who get it.`;
+const FOOTER_HTML = `<p style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);color:#64748b;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;">One Page Miracle · Head hunt</p><p style="margin:6px 0 0;font-size:14px;color:#334155;"><strong>Eric Hans Schaefer</strong> (E Lion) · <a href="mailto:coralcrowntechnologies@gmail.com" style="color:#7c3aed;font-weight:600;">coralcrowntechnologies@gmail.com</a> · (808) 393-0153</p><p style="margin:8px 0 0;font-size:12px;color:#64748b;">Family Feud Grand Prize 2016 · <a href="https://coralcrownsolutions.com" style="color:#0ea5e9;">coralcrownsolutions.com</a> · <a href="https://elionmusic.com" style="color:#0ea5e9;">elionmusic.com</a></p>`;
 
 type Audience = {
   slug: string;
@@ -261,18 +261,19 @@ If you sell digital services but need a fulfillment bench, let's open the partne
 ];
 
 const MEETING_TEXT =
-  "\n\nI'm on Oahu and would love to set a brief in-person coffee or a phone call — whatever is easiest. (808) 393-0153";
-const MEETING_HTML = `<p style="margin:16px 0 0;font-size:15px;line-height:1.75;"><strong>I'm on Oahu</strong> — happy to meet for coffee at your office or jump on a quick call. Reply with a time or text <strong>(808) 393-0153</strong>.</p>`;
+  "\n\nI'm on Oahu — happy to meet for coffee or a quick call. Tap text or email below to reach me directly.";
+const MEETING_HTML = `<p style="margin:16px 0 0;font-size:15px;line-height:1.75;"><strong>I'm on Oahu</strong> — happy to meet for coffee at your office or jump on a quick call. Use the buttons below to text or email me directly.</p>`;
 
 function buildInitial(a: Audience) {
-  const text = `Hi {{Name}},\n\n${a.textBody}${MEETING_TEXT}${FOOTER_TEXT}`;
+  const cta = replyCtaButtons(a.accent);
+  const text = `Hi {{Name}},\n\n${a.textBody}${MEETING_TEXT}${REPLY_CTA_TEXT}${FOOTER_TEXT}`;
   const html = card(
     a.accent,
     a.accent + "33",
     a.kicker,
     a.headline,
     a.sub,
-    `${a.htmlBody}${MEETING_HTML}`,
+    `${a.htmlBody}${MEETING_HTML}${cta}`,
     FOOTER_HTML,
   );
   return { subject: a.subject, text, html };
@@ -280,11 +281,12 @@ function buildInitial(a: Audience) {
 
 function buildFollowUp1(a: Audience) {
   const subject = `Re: ${a.subject}`;
-  const text = `Hi {{Name}},\n\nQuick bump — my note may have landed on a busy day. I am still looking for someone passionate about this lane (${a.label}). If it is not you, a one-line point-in-the-right-direction would mean a lot.\n\nEric${FOOTER_TEXT}`;
+  const cta = replyCtaButtons(a.accent);
+  const text = `Hi {{Name}},\n\nQuick bump — my note may have landed on a busy day. I am still looking for someone passionate about this lane (${a.label}). If it is not you, a one-line point-in-the-right-direction would mean a lot.${REPLY_CTA_TEXT}\n\nEric${FOOTER_TEXT}`;
   const html = fbox(
     a.accent,
     `<p style="margin:0 0 12px;font-size:15px;line-height:1.7;">Quick bump — still looking for the right person for <strong>${a.label}</strong>.</p>
-<p style="margin:0;font-size:14px;line-height:1.7;">If it is not you, a one-line referral helps tremendously.</p>`,
+<p style="margin:0 0 12px;font-size:14px;line-height:1.7;">If it is not you, a one-line referral helps tremendously.</p>${cta}`,
     FOOTER_HTML,
   );
   return { subject, text, html };
