@@ -5,9 +5,14 @@ import { type TemplateId } from "@/lib/templates";
  * Keep it short; SMS may be concatenated automatically.
  */
 export function getSmsTeaser(templateId: TemplateId): string {
-  const baseId = String(templateId)
+  const id = String(templateId);
+  const baseId = id
     .replace(/-followup-\d+$/g, "")
     .replace(/-v2$/g, "") as TemplateId;
+
+  if (baseId.startsWith("headhunt-")) {
+    return "Eric Schaefer (E Lion) — Family Feud 2016, Oahu — I have one clear ask and proof links you can verify. Click to read the full note and text or email me in one tap.";
+  }
 
   switch (baseId) {
     case "botox":
@@ -17,7 +22,7 @@ export function getSmsTeaser(templateId: TemplateId): string {
     case "coral-business":
       return "Would you take a moment to read a short official note from Coral Crown Solutions? Click to open the message and reply if it fits.";
     case "coral-music":
-      return "Got a minute for a note from E Lion (Family Feud grand prize, 2016)? Click to read the full message and hit reply if you're open.";
+      return "Festival bookers: E Lion has 30K+ Pandora listeners, 500K+ streams, and a Family Feud grand prize win — full EPK with photos and links inside. Tap to view the pitch and reply if you want a live set.";
     case "elion-leaders":
       return "Would you take 60 seconds to see what P48X + PrayerAuthority could add to your church or leaders group? If it resonates, click to view the exact pitch and I’ll tailor options + a setlist for your dates.";
     case "elion-laymen":

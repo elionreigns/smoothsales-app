@@ -1,0 +1,39 @@
+{
+  "sender": {
+    "name": "Eric Hans Schaefer",
+    "artistName": "E Lion",
+    "email": "coralcrowntechnologies@gmail.com",
+    "phone": "(808) 393-0153"
+  },
+  "linkLabel": "Festival booking pitch (standalone page)",
+  "tinyUrls": {
+    "coral-music": "https://tinyurl.com/elion-festival-pitch"
+  },
+  "standaloneBase": "https://smoothsales-app.vercel.app/newsletter/coral-music?access=CROWN",
+  "summaries": {
+    "coral-music": "Festival booking: E Lion — faith-rooted hip-hop from Hawaii. Family Feud 2016 grand prize · 30K+ Pandora monthly listeners · 500K+ streams. Full EPK: https://www.elionmusic.com/downloads/ — seeking paid live set with travel covered."
+  },
+  "paths": {
+    "contactedEmails": "contacts/leads/contacted-emails.json",
+    "contactedForms": "contacts/leads/festival-contacted-forms.json",
+    "attemptsLog": "contacts/leads/festival-form-attempts.json"
+  },
+  "targets": [
+    {
+      "id": "rock-the-universe-contact",
+      "org": "Rock the Universe",
+      "formUrl": "https://www.universalorlando.com/web/en/us/contact-us",
+      "templateId": "coral-music",
+      "skipDomains": ["rocktheuniverse.com", "universalorlando.com"],
+      "notes": "info@rocktheuniverse.com is a catch-all — use UO contact form + tinyurl pitch"
+    },
+    {
+      "id": "flavorfest-contact",
+      "org": "Flavor Fest",
+      "formUrl": "https://flavorfest.org/contact/",
+      "templateId": "coral-music",
+      "skipDomains": ["flavorfest.org"],
+      "notes": "info@flavorfest.org — use site contact form"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { getTemplate, substitutePlaceholders, type TemplateId } from "@/lib/templates";
+import { CORAL_COMPOSER_DEFAULT_BODY, isCoralTaskKillerTemplateId } from "@/lib/coral-task-killer-templates";
 import { getSmsTeaser } from "@/lib/sms";
 import { sanitizeStandaloneName, sanitizeStandaloneOrg } from "@/lib/standalone-query";
 
@@ -59,9 +60,15 @@ export default function NewsletterTemplatePage({
   }
 
   const htmlWithImages = t.html.replace(/\{\{BASE_URL\}\}/g, baseUrlOrigin);
+  const bodyParam =
+    typeof searchParams?.body === "string" ? decodeURIComponent(searchParams.body.replace(/\+/g, " ")) : "";
+  const bodyForTemplate =
+    bodyParam.trim() ||
+    (isCoralTaskKillerTemplateId(templateIdRaw) ? CORAL_COMPOSER_DEFAULT_BODY : "");
   const substituted = substitutePlaceholders(htmlWithImages, t.text, {
     Name: name,
     "Name of Organization": org,
+    ...(bodyForTemplate ? { Body: bodyForTemplate } : {}),
   });
 
   const teaser = getSmsTeaser(templateIdRaw);
@@ -101,11 +108,50 @@ export default function NewsletterTemplatePage({
         </div>
 
         <style>{`
-          /* Standalone/mobile: readable links and images inside the newsletter HTML */
-          a { text-decoration: underline; text-decoration-thickness: 1px; }
-          img { max-width: 100%; height: auto; }
+          /* Standalone/mobile: readable links, images, and email tables */
+          .standalone-newsletter-wrap {
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+          }
+          .standalone-newsletter-wrap table {
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+          .standalone-newsletter-wrap img {
+            max-width: 100% !important;
+            height: auto !important;
+          }
+          .standalone-newsletter-wrap a {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            word-break: break-word;
+          }
+          .standalone-newsletter-wrap .epk-wrap {
+            margin: 0 auto;
+          }
+          @media only screen and (max-width: 640px) {
+            .standalone-newsletter-wrap .epk-pad {
+              padding: 20px 16px !important;
+            }
+            .standalone-newsletter-wrap .epk-stat-cell,
+            .standalone-newsletter-wrap .epk-photo-cell {
+              display: block !important;
+              width: 100% !important;
+            }
+            .standalone-newsletter-wrap .epk-btn {
+              display: block !important;
+              width: 100% !important;
+              margin: 8px 0 !important;
+              text-align: center !important;
+              box-sizing: border-box !important;
+            }
+          }
         `}</style>
-        <div style={{ transform: "translateZ(0)" }} dangerouslySetInnerHTML={{ __html: substituted.html }} />
+        <div
+          className="standalone-newsletter-wrap"
+          style={{ transform: "translateZ(0)" }}
+          dangerouslySetInnerHTML={{ __html: substituted.html }}
+        />
       </div>
     </div>
   );
