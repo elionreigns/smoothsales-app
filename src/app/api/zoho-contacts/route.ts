@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated, isAuthRequired } from "@/lib/auth";
-import { fetchZohoContacts } from "@/lib/zoho";
+import { fetchZohoContacts, searchZohoContactsByWord } from "@/lib/zoho";
 
 export async function GET(request: NextRequest) {
   if (isAuthRequired() && !isAuthenticated(request)) {
@@ -11,9 +11,12 @@ export async function GET(request: NextRequest) {
   }
 
   const category = request.nextUrl.searchParams.get("category")?.trim() || undefined;
+  const q = request.nextUrl.searchParams.get("q")?.trim() || undefined;
 
   try {
-    const contacts = await fetchZohoContacts(category);
+    // ?q= is the typeahead path (single-contact search-as-you-type); ?category=
+    // (or no param, for "all contacts") is the bulk group/audience loader.
+    const contacts = q ? await searchZohoContactsByWord(q) : await fetchZohoContacts(category);
     return NextResponse.json({ success: true, count: contacts.length, contacts });
   } catch (err) {
     console.error("Zoho contacts route error:", err);

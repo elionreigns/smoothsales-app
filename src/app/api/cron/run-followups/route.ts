@@ -25,6 +25,7 @@ const NEW_SERVICE_BASE_PREFIXES = [
   "corgi-care-",
   "luxury-resource-",
   "rap-central-",
+  "auto-body-",
 ] as const;
 
 const NEWSLETTER_IDS = new Set(["elion-leaders", "elion-laymen"]);

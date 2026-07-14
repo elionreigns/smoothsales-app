@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import {
   getTemplatesForSelection,
   hasRequiredSelection,
@@ -142,6 +142,10 @@ export default function SmoothSalesPage() {
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [zohoCategory, setZohoCategory] = useState("");
   const [loadingZoho, setLoadingZoho] = useState(false);
+  const [zohoNameQuery, setZohoNameQuery] = useState("");
+  const [zohoNameResults, setZohoNameResults] = useState<{ email: string; name?: string }[]>([]);
+  const [searchingZohoName, setSearchingZohoName] = useState(false);
+  const [showZohoDropdown, setShowZohoDropdown] = useState(false);
   const [templateId, setTemplateId] = useState<string>("");
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{
@@ -199,6 +203,48 @@ export default function SmoothSalesPage() {
     setRecipients((prev) =>
       prev.map((r) => (r.email === email ? { ...r, name } : r))
     );
+  };
+
+  // Typeahead: as the user types a name, pop up matching live Zoho contacts (debounced).
+  const zohoSearchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (zohoSearchTimer.current) clearTimeout(zohoSearchTimer.current);
+    const query = zohoNameQuery.trim();
+    if (query.length < 2) {
+      setZohoNameResults([]);
+      setSearchingZohoName(false);
+      return;
+    }
+    setSearchingZohoName(true);
+    zohoSearchTimer.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/zoho-contacts?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+        setZohoNameResults(res.ok && data.success ? data.contacts ?? [] : []);
+      } catch {
+        setZohoNameResults([]);
+      } finally {
+        setSearchingZohoName(false);
+      }
+    }, 300);
+    return () => {
+      if (zohoSearchTimer.current) clearTimeout(zohoSearchTimer.current);
+    };
+  }, [zohoNameQuery]);
+
+  const addSingleZohoContact = (c: { email: string; name?: string }) => {
+    setRecipients((prev) => {
+      if (prev.some((r) => r.email === c.email)) return prev;
+      return [...prev, { email: c.email, name: c.name || "" }];
+    });
+    setEmails((prevText) => {
+      const existing = new Set(prevText.split(/[\n,;]+/).map((e) => e.trim().toLowerCase()).filter(Boolean));
+      if (existing.has(c.email)) return prevText;
+      return prevText.trim() ? prevText.trim() + "\n" + c.email : c.email;
+    });
+    setZohoNameQuery("");
+    setZohoNameResults([]);
+    setShowZohoDropdown(false);
   };
 
   const handleLoadFromZoho = async () => {
@@ -735,6 +781,43 @@ export default function SmoothSalesPage() {
                 <p className="text-slate-400 text-xs sm:text-sm mb-3">
                   Paste emails below (one per line or comma/semicolon separated). Recipients appear in the sidebar where you can add names for personalization.
                 </p>
+                {/* Typeahead: add a single Zoho contact by name */}
+                <div className="mb-3 relative">
+                  <input
+                    type="text"
+                    value={zohoNameQuery}
+                    onChange={(e) => {
+                      setZohoNameQuery(e.target.value);
+                      setShowZohoDropdown(true);
+                    }}
+                    onFocus={() => setShowZohoDropdown(true)}
+                    onBlur={() => setTimeout(() => setShowZohoDropdown(false), 150)}
+                    placeholder="Start typing a name to find one Zoho contact…"
+                    className="w-full bg-slate-700/80 border border-slate-600 rounded-xl px-3 py-2.5 text-slate-100 text-sm placeholder-slate-500 focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
+                  />
+                  {showZohoDropdown && zohoNameQuery.trim().length >= 2 && (
+                    <div className="absolute z-20 mt-1 w-full max-h-64 overflow-auto bg-slate-800 border border-slate-600 rounded-xl shadow-2xl">
+                      {searchingZohoName ? (
+                        <div className="px-3 py-2.5 text-sm text-slate-400">Searching Zoho…</div>
+                      ) : zohoNameResults.length === 0 ? (
+                        <div className="px-3 py-2.5 text-sm text-slate-400">No matching Zoho contacts</div>
+                      ) : (
+                        zohoNameResults.map((c) => (
+                          <button
+                            key={c.email}
+                            type="button"
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => addSingleZohoContact(c)}
+                            className="w-full text-left px-3 py-2.5 text-sm hover:bg-slate-700 transition flex flex-col"
+                          >
+                            <span className="text-slate-100 font-medium">{c.name || "(no name)"}</span>
+                            <span className="text-slate-400 text-xs">{c.email}</span>
+                          </button>
+                        ))
+                      )}
+                    </div>
+                  )}
+                </div>
                 <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-3">
                   <input
                     type="text"
@@ -748,7 +831,7 @@ export default function SmoothSalesPage() {
                     disabled={loadingZoho}
                     className="min-h-[44px] bg-slate-700 border border-slate-600 text-amber-400 font-semibold px-4 py-2.5 rounded-xl hover:bg-slate-600 disabled:opacity-50 disabled:pointer-events-none transition"
                   >
-                    {loadingZoho ? "Loading…" : "Load from Zoho"}
+                    {loadingZoho ? "Loading…" : "Load from Zoho (group/all)"}
                   </button>
                 </div>
                 <textarea
