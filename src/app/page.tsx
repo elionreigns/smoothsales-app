@@ -140,6 +140,8 @@ export default function SmoothSalesPage() {
   const [composerSubject, setComposerSubject] = useState("");
   const [emails, setEmails] = useState("");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
+  const [zohoCategory, setZohoCategory] = useState("");
+  const [loadingZoho, setLoadingZoho] = useState(false);
   const [templateId, setTemplateId] = useState<string>("");
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{
@@ -197,6 +199,44 @@ export default function SmoothSalesPage() {
     setRecipients((prev) =>
       prev.map((r) => (r.email === email ? { ...r, name } : r))
     );
+  };
+
+  const handleLoadFromZoho = async () => {
+    setError("");
+    setLoadingZoho(true);
+    try {
+      const qs = zohoCategory.trim() ? `?category=${encodeURIComponent(zohoCategory.trim())}` : "";
+      const res = await fetch(`/api/zoho-contacts${qs}`);
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setError(data.error || "Failed to load Zoho contacts");
+        return;
+      }
+      const zc: { email: string; name?: string }[] = data.contacts ?? [];
+      if (zc.length === 0) {
+        setError("No Zoho contacts found" + (zohoCategory.trim() ? ` for category "${zohoCategory.trim()}".` : "."));
+        return;
+      }
+      setRecipients((prev) => {
+        const byEmail = new Map(prev.map((r) => [r.email, r]));
+        for (const c of zc) {
+          byEmail.set(c.email, { email: c.email, name: byEmail.get(c.email)?.name || c.name || "" });
+        }
+        return Array.from(byEmail.values());
+      });
+      setEmails((prevText) => {
+        const existing = new Set(
+          prevText.split(/[\n,;]+/).map((e) => e.trim().toLowerCase()).filter(Boolean)
+        );
+        const newOnes = zc.map((c) => c.email).filter((e) => !existing.has(e));
+        if (newOnes.length === 0) return prevText;
+        return prevText.trim() ? prevText.trim() + "\n" + newOnes.join("\n") : newOnes.join("\n");
+      });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to load Zoho contacts");
+    } finally {
+      setLoadingZoho(false);
+    }
   };
 
   const handleSend = async () => {
@@ -695,6 +735,22 @@ export default function SmoothSalesPage() {
                 <p className="text-slate-400 text-xs sm:text-sm mb-3">
                   Paste emails below (one per line or comma/semicolon separated). Recipients appear in the sidebar where you can add names for personalization.
                 </p>
+                <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-3">
+                  <input
+                    type="text"
+                    value={zohoCategory}
+                    onChange={(e) => setZohoCategory(e.target.value)}
+                    placeholder="Zoho category (Lead Source) — blank = all contacts"
+                    className="flex-1 min-w-[220px] bg-slate-700/80 border border-slate-600 rounded-xl px-3 py-2.5 text-slate-100 text-sm placeholder-slate-500 focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
+                  />
+                  <button
+                    onClick={handleLoadFromZoho}
+                    disabled={loadingZoho}
+                    className="min-h-[44px] bg-slate-700 border border-slate-600 text-amber-400 font-semibold px-4 py-2.5 rounded-xl hover:bg-slate-600 disabled:opacity-50 disabled:pointer-events-none transition"
+                  >
+                    {loadingZoho ? "Loading…" : "Load from Zoho"}
+                  </button>
+                </div>
                 <textarea
                   value={emails}
                   onChange={(e) => setEmails(e.target.value)}
