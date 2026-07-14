@@ -205,12 +205,24 @@ export type NewServiceTemplateId =
   | "corgi-care-sponsor-followup-1"
   | "corgi-care-sponsor-followup-2"
   | "corgi-care-sponsor-followup-3"
-  | "corgi-care-sponsor-followup-4";
+  | "corgi-care-sponsor-followup-4"
+  // Auto Body (2009 Chevy HHR cosmetic restoration outreach)
+  | "auto-body-shop"
+  | "auto-body-shop-followup-1"
+  | "auto-body-shop-followup-2"
+  | "auto-body-shop-followup-3"
+  | "auto-body-shop-followup-4"
+  | "auto-body-independent"
+  | "auto-body-independent-followup-1"
+  | "auto-body-independent-followup-2"
+  | "auto-body-independent-followup-3"
+  | "auto-body-independent-followup-4";
 
 export type ApartmentsSub = "" | "individual" | "realtor";
 export type CorgiCareSub = "" | "hair" | "teeth" | "military" | "sponsor";
 export type LuxuryResourceSub = "" | "fareharbor" | "direct";
 export type RapCentralSub = "" | "rappers" | "managers" | "promoters";
+export type AutoBodySub = "" | "shop" | "independent";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // APARTMENTS – INDIVIDUAL (Craigslist / FB Marketplace / FSBO landlords)
@@ -2074,6 +2086,192 @@ ${SOFT_CLOSE_HTML}
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
+// AUTO BODY — 2009 Chevy HHR cosmetic restoration outreach (~55k miles).
+// Two audiences: professional body shop (estimate/financing tone) vs
+// independent / mobile mechanic (cash-flexible, side-work tone).
+// ─────────────────────────────────────────────────────────────────────────────
+const AUTO_BODY_ACCENT_SHOP = "#475569";
+const AUTO_BODY_ACCENT_IND = "#ea580c";
+
+const AUTO_BODY_SHOP = {
+  subject: "Estimate Request — 2009 Chevy HHR Cosmetic Restoration (Hood/Latch, Door Gap)",
+  text: `Hi {{Name}},
+
+I have a low-mile 2009 Chevy HHR (~55k miles) that's mechanically solid but needs cosmetic attention — mainly the hood/latch assembly and a door gap alignment. Mostly bodywork, not collision repair.
+
+What I'm hoping to get from you:
+- A written estimate (parts + labor) for the hood/latch fix and door gap correction
+- Whether you'd want to see it in person first or if photos are enough for a rough quote
+- Your current turnaround time for a job like this
+- Whether you offer any financing or payment plans for cosmetic work
+
+I can send photos right away if that's easier than scheduling a walk-in. Happy to work around your bay schedule.
+
+Thanks, {{Name}} — looking forward to your reply.
+
+Eric${NS_FOOTER_TEXT}`,
+  html: card(
+    AUTO_BODY_ACCENT_SHOP,
+    "rgba(71,85,105,0.18)",
+    "Estimate request",
+    "2009 Chevy HHR — cosmetic restoration",
+    "Hood/latch + door gap alignment · ~55k miles · mechanically solid.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">I have a low-mile 2009 Chevy HHR (~55k miles) that's mechanically solid but needs cosmetic attention — mainly the <strong>hood/latch assembly</strong> and a <strong>door gap alignment</strong>. Mostly bodywork, not collision repair.</p>
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:${AUTO_BODY_ACCENT_SHOP};text-transform:uppercase;">What I'm hoping to get from you</p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
+<li>A written estimate (parts + labor) for the hood/latch fix and door gap correction</li>
+<li>Whether you'd want to see it in person first, or if photos are enough for a rough quote</li>
+<li>Your current turnaround time for a job like this</li>
+<li>Whether you offer financing or payment plans for cosmetic work</li>
+</ul>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.7;color:#334155;">I can send photos right away if that's easier than scheduling a walk-in. Happy to work around your bay schedule.</p>
+<p style="margin:0 0 12px;font-size:14px;font-weight:600;">Thanks so much, {{Name}}.</p>
+${btn("tel:8083930153", "Call Eric – (808) 393-0153", AUTO_BODY_ACCENT_SHOP)}`,
+  ),
+};
+const AUTO_BODY_SHOP_FU1 = {
+  subject: "Following Up — HHR Hood/Latch + Door Gap Estimate",
+  text: `Hi {{Name}},
+
+Quick follow-up on the estimate request for my 2009 HHR (hood/latch, door gap). No pressure at all — if you're booked out or this isn't the right fit, a one-line reply is plenty and I'll move on.
+
+If you do have room, I can send photos today and work around whatever timeline suits your shop.
+
+Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    AUTO_BODY_ACCENT_SHOP,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Quick follow-up on the estimate request for my 2009 HHR (hood/latch, door gap). No pressure — if you're booked out or this isn't the right fit, a one-line reply is plenty and I'll move on.</p>
+<p style="margin:0 0 14px;font-size:14px;line-height:1.65;">If you do have room, I can send photos today and work around whatever timeline suits your shop.</p>
+${btn("tel:8083930153", "Call Eric – (808) 393-0153", AUTO_BODY_ACCENT_SHOP)}`,
+  ),
+};
+const AUTO_BODY_SHOP_FU2 = {
+  subject: "Photos Ready — 2009 HHR Cosmetic Work",
+  text: `Hi {{Name}},
+
+Following up again on the HHR — I have photos of the hood/latch area and door gap ready to send whenever it's convenient. Just reply and I'll get them right over so you can put together a rough number.
+
+Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    AUTO_BODY_ACCENT_SHOP,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Following up again on the HHR — I have photos of the hood/latch area and door gap ready to send whenever it's convenient. Just reply and I'll get them right over so you can put together a rough number.</p>
+${btn("tel:8083930153", "Call Eric – (808) 393-0153", AUTO_BODY_ACCENT_SHOP)}`,
+  ),
+};
+const AUTO_BODY_SHOP_FU3 = {
+  subject: "Still Interested — Flexible on Timing (HHR Cosmetic Estimate)",
+  text: `Hi {{Name}},
+
+Still hoping to get this HHR taken care of at your shop if there's room on the schedule. I'm flexible on timing and can drop the car off whenever works best for you — just let me know a rough estimate range and I'll plan around it.
+
+Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    AUTO_BODY_ACCENT_SHOP,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Still hoping to get this HHR taken care of at your shop if there's room on the schedule. I'm flexible on timing and can drop the car off whenever works best for you — just let me know a rough estimate range and I'll plan around it.</p>
+${btn("tel:8083930153", "Call Eric – (808) 393-0153", AUTO_BODY_ACCENT_SHOP)}`,
+  ),
+};
+const AUTO_BODY_SHOP_FU4 = {
+  subject: "Last Note — Door Stays Open (HHR Cosmetic Work)",
+  text: `Hi {{Name}},
+
+Last note on this thread so I stop clogging your inbox. If a hood/latch + door gap job ever opens up room on your schedule, I'd love to bring the HHR by — otherwise, thanks for reading and take care.
+
+Eric – (808) 393-0153${SOFT_CLOSE_TEXT}${NS_FOOTER_TEXT}`,
+  html: fbox(
+    "#94a3b8",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note on this thread so I stop clogging your inbox. If a hood/latch + door gap job ever opens up room on your schedule, I'd love to bring the HHR by.</p>
+${SOFT_CLOSE_HTML}
+<p style="margin:14px 0 0;font-size:14px;color:#334155;">Thanks for reading — Eric.</p>`,
+  ),
+};
+
+const AUTO_BODY_INDEPENDENT = {
+  subject: "Side-Work? 2009 HHR Cosmetic Fix (Hood/Latch + Door Alignment)",
+  text: `Hi {{Name}},
+
+Got a 2009 Chevy HHR (~55k miles, runs great) that needs some cosmetic side-work — hood/latch assembly and a door gap that's out of alignment. Nothing structural, just wants to look right again.
+
+If you take on side jobs like this:
+- I'm flexible on price and can work with cash
+- Happy to text you a few photos first so you know what you're looking at
+- No rush on timing — whenever fits around your other work
+
+Let me know if this is something you'd take on, and I'll send pics over.
+
+Eric${NS_FOOTER_TEXT}`,
+  html: card(
+    AUTO_BODY_ACCENT_IND,
+    "rgba(234,88,12,0.18)",
+    "Side-work inquiry",
+    "2009 Chevy HHR — cosmetic fix",
+    "Hood/latch + door alignment · ~55k miles · cash-flexible.",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.7;">Got a 2009 Chevy HHR (~55k miles, runs great) that needs some cosmetic side-work — <strong>hood/latch assembly</strong> and a <strong>door gap</strong> that's out of alignment. Nothing structural, just wants to look right again.</p>
+<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:${AUTO_BODY_ACCENT_IND};text-transform:uppercase;">If you take on side jobs like this</p>
+<ul style="margin:0 0 14px;padding-left:22px;font-size:14px;line-height:1.7;">
+<li>I'm flexible on price and can work with cash</li>
+<li>Happy to text a few photos first so you know what you're looking at</li>
+<li>No rush on timing — whenever fits around your other work</li>
+</ul>
+<p style="margin:0 0 12px;font-size:14px;font-weight:600;">Let me know if this is something you'd take on, {{Name}}, and I'll send pics over.</p>
+${btn("tel:8083930153", "Call/text Eric – (808) 393-0153", AUTO_BODY_ACCENT_IND)}`,
+  ),
+};
+const AUTO_BODY_INDEPENDENT_FU1 = {
+  subject: "Still Looking — HHR Side-Work",
+  text: `Hi {{Name}},
+
+Following up on the HHR side-work — hood/latch and a door gap fix. If it's not your kind of job or you're too busy, no worries at all, just say so and I'll leave it there. If you're interested I can text pics today.
+
+Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    AUTO_BODY_ACCENT_IND,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Following up on the HHR side-work — hood/latch and a door gap fix. If it's not your kind of job or you're too busy, no worries, just say so and I'll leave it there. If you're interested I can text pics today.</p>
+${btn("tel:8083930153", "Call/text Eric – (808) 393-0153", AUTO_BODY_ACCENT_IND)}`,
+  ),
+};
+const AUTO_BODY_INDEPENDENT_FU2 = {
+  subject: "Pics Ready — HHR Hood/Latch + Door Gap",
+  text: `Hi {{Name}},
+
+Got the photos ready whenever you want to take a look — just the hood/latch area and the door gap that's out of alignment. Cash works for me, and I'm flexible on timing.
+
+Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    AUTO_BODY_ACCENT_IND,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Got the photos ready whenever you want to take a look — just the hood/latch area and the door gap that's out of alignment. Cash works for me, and I'm flexible on timing.</p>
+${btn("tel:8083930153", "Call/text Eric – (808) 393-0153", AUTO_BODY_ACCENT_IND)}`,
+  ),
+};
+const AUTO_BODY_INDEPENDENT_FU3 = {
+  subject: "Whenever Works — Still Have the HHR Side-Work Open",
+  text: `Hi {{Name}},
+
+Still have this HHR cosmetic fix open if you get some free time — hood/latch and door alignment. Cash, flexible schedule, your call on timing.
+
+Eric – (808) 393-0153${NS_FOOTER_TEXT}`,
+  html: fbox(
+    AUTO_BODY_ACCENT_IND,
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Still have this HHR cosmetic fix open if you get some free time — hood/latch and door alignment. Cash, flexible schedule, your call on timing.</p>
+${btn("tel:8083930153", "Call/text Eric – (808) 393-0153", AUTO_BODY_ACCENT_IND)}`,
+  ),
+};
+const AUTO_BODY_INDEPENDENT_FU4 = {
+  subject: "Last Note — HHR Side-Work Still Open If You Want It",
+  text: `Hi {{Name}},
+
+Last note so I stop filling up your inbox. If some free time opens up for a small cosmetic job (hood/latch + door alignment on a 2009 HHR), I'd love to send it your way — otherwise, appreciate you reading this far.
+
+Eric – (808) 393-0153${SOFT_CLOSE_TEXT}${NS_FOOTER_TEXT}`,
+  html: fbox(
+    "#94a3b8",
+    `<p style="margin:0 0 14px;font-size:15px;line-height:1.65;">Last note so I stop filling up your inbox. If some free time opens up for a small cosmetic job (hood/latch + door alignment on a 2009 HHR), I'd love to send it your way.</p>
+${SOFT_CLOSE_HTML}
+<p style="margin:14px 0 0;font-size:14px;color:#334155;">Appreciate you reading this far — Eric.</p>`,
+  ),
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 // REGISTRY
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -2140,6 +2338,17 @@ export const NEW_SERVICE_TEMPLATES: Record<NewServiceTemplateId, { subject: stri
   "corgi-care-sponsor-followup-2": CORGI_SPONSOR_FU2,
   "corgi-care-sponsor-followup-3": CORGI_SPONSOR_FU3,
   "corgi-care-sponsor-followup-4": CORGI_SPONSOR_FU4,
+  // Auto Body
+  "auto-body-shop": AUTO_BODY_SHOP,
+  "auto-body-shop-followup-1": AUTO_BODY_SHOP_FU1,
+  "auto-body-shop-followup-2": AUTO_BODY_SHOP_FU2,
+  "auto-body-shop-followup-3": AUTO_BODY_SHOP_FU3,
+  "auto-body-shop-followup-4": AUTO_BODY_SHOP_FU4,
+  "auto-body-independent": AUTO_BODY_INDEPENDENT,
+  "auto-body-independent-followup-1": AUTO_BODY_INDEPENDENT_FU1,
+  "auto-body-independent-followup-2": AUTO_BODY_INDEPENDENT_FU2,
+  "auto-body-independent-followup-3": AUTO_BODY_INDEPENDENT_FU3,
+  "auto-body-independent-followup-4": AUTO_BODY_INDEPENDENT_FU4,
 };
 
 export function isNewServiceTemplateId(id: string): id is NewServiceTemplateId {
@@ -2167,4 +2376,6 @@ export const NEW_SERVICE_TEMPLATE_OPTIONS: { value: NewServiceTemplateId; label:
   { value: "rap-central-managers", label: "Rap Central – Managers / booking agents (Contract #5, 3%/2% split)" },
   { value: "rap-central-promoters", label: "Rap Central – Promoters / venues (Contract #4, $0 fee to promoter)" },
   { value: "corgi-care-sponsor", label: "Corgi Care – Brand sponsor / seed program (Stella, 13yo corgi)" },
+  { value: "auto-body-shop", label: "Auto Body – Professional shop (2009 HHR estimate, hood/latch + door gap)" },
+  { value: "auto-body-independent", label: "Auto Body – Independent / mobile (2009 HHR side-work, cash-flexible)" },
 ];

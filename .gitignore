@@ -32,3 +32,4 @@ contacts/**/*.csv
 contacts/**/*.vcf
 contacts/**/*.vcard
 contacts/**/*.json
+.env*
