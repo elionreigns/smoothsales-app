@@ -106,3 +106,54 @@ export async function fetchZohoContacts(leadSource?: string): Promise<ZohoContac
     })
     .filter((c) => c.email && c.email.includes("@"));
 }
+
+/**
+ * Typeahead search — as the user types a name (or email/phone), this hits Zoho's
+ * "word" search which matches across the CRM's default-searchable fields, so results
+ * pop up live. Used for picking a single contact rather than a whole category/group.
+ */
+export async function searchZohoContactsByWord(word: string): Promise<ZohoContact[]> {
+  const trimmed = word.trim();
+  if (trimmed.length < 2) return [];
+
+  let token = await getAccessToken();
+  const fields = "Email,First_Name,Last_Name,Account_Name,Lead_Source";
+  const url = `${API_DOMAIN}/crm/v3/Contacts/search?word=${encodeURIComponent(trimmed)}&fields=${fields}`;
+
+  let res = await fetch(url, {
+    headers: { Authorization: `Zoho-oauthtoken ${token}` },
+    cache: "no-store",
+  });
+  if (res.status === 401) {
+    token = await refreshAccessToken();
+    res = await fetch(url, {
+      headers: { Authorization: `Zoho-oauthtoken ${token}` },
+      cache: "no-store",
+    });
+  }
+
+  if (res.status === 204) return [];
+  const body = await res.json();
+  if (!res.ok) {
+    throw new Error("Zoho contact search failed: " + JSON.stringify(body));
+  }
+
+  const records: Record<string, unknown>[] = body.data ?? [];
+  return records
+    .map((r) => {
+      const email = String(r.Email ?? "").trim().toLowerCase();
+      const first = String(r.First_Name ?? "").trim();
+      const last = String(r.Last_Name ?? "").trim();
+      const name = [first, last].filter(Boolean).join(" ");
+      const account = r.Account_Name as { name?: string } | string | null;
+      const nameOfOrganization =
+        typeof account === "object" && account?.name ? account.name : typeof account === "string" ? account : undefined;
+      return {
+        email,
+        name: name || undefined,
+        nameOfOrganization,
+        leadSource: typeof r.Lead_Source === "string" ? r.Lead_Source : undefined,
+      };
+    })
+    .filter((c) => c.email && c.email.includes("@"));
+}
