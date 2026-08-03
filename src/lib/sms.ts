@@ -50,6 +50,8 @@ export function getSmsTeaser(templateId: TemplateId): string {
     case "elion-record-label-mainstream":
     case "elion-record-label-christian":
       return "Record label decision-makers: want to review E Lion’s catalog and what a release could look like? Click to view the label pitch and reply if you’re interested in next steps.";
+    case "elion-epk":
+      return "E Lion (Eric Schaefer) — Family Feud grand-prize winner, 100+ songs, 10M+ YouTube views. Click for the full electronic press kit — bio, media, books, and contact.";
     case "prayer-individual":
       return "Want free PrayerAuthority tools that help you journal, interpret, and move forward? Click to see the exact link and claim access.";
     case "prayer-church":

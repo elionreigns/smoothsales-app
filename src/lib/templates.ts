@@ -117,6 +117,7 @@ export type TemplateId =
   | "elion-record-label-christian-followup-1"
   | "elion-record-label-christian-followup-2"
   | "elion-record-label-christian-followup-3"
+  | "elion-epk"
   | "wedding-couples"
   | "wedding-couples-followup-1"
   | "wedding-couples-followup-2"
@@ -206,6 +207,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-products-programs", label: "E Lion Music – Products & programs (gear, AI tools, cameras, drones – creator partnership pitch)" },
   { value: "elion-record-label-mainstream", label: "E Lion Music – Record label (mainstream: Bruno Mars, Bieber, Jelly Roll type – Behind the Scenes of Shine)" },
   { value: "elion-record-label-christian", label: "E Lion Music – Record label (Christian: NF type – world tour vision)" },
+  { value: "elion-epk", label: "E Lion Music – Electronic Press Kit (standalone, share as a link)" },
   { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples (one place to plan your dream Hawaiian wedding)" },
   { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors & vendors (get featured, couples build packages)" },
   { value: "p48x-personal", label: "P48X – Personal (book, app, 24+ hr audiobook & member chatbots)" },
@@ -1971,6 +1973,78 @@ Coral Crown Solutions · coralcrowntechnologies@gmail.com · (808) 393-0153`,
 <p style="margin:0 0 8px;font-size:13px;color:#164e63;">Or call/text <strong>(808) 393-0153</strong> – tell me what product, credit, or membership you can offer and I'll outline the promo.</p>
 <p style="margin:0 0 20px;"><a href="https://www.elionmusic.com" style="display:inline-block;background:rgba(8,145,178,0.12);color:#0e7490;border:2px solid #0891b2;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;">elionmusic.com</a></p>
 </div>
+</div>`,
+  },
+  "elion-epk": {
+    subject: "E Lion — Electronic Press Kit",
+    text: `E Lion (Eric Schaefer) — Recording Artist & Author, Honolulu HI
+
+Christian Hip-Hop / Holy Hip-Hop. Grand-prize winner on Family Feud (2016), combined broadcast + press reach estimated at 115M+. 100+ original songs on every major platform, 10M+ combined YouTube views — built independently, without a label.
+
+Bio: E Lion is an independent Christian hip-hop artist from Honolulu writing at the intersection of rap and melody. Over the past decade he has independently written, recorded, and released 100+ original songs, distributed via DistroKid and Landr. His story reached a national audience in 2016 when he won the grand prize on Family Feud. He has performed live at HebrewFest alongside the reggae band The Highway (10 songs), authored three books, and founded Prayer Authority. Now looking for a label partner.
+
+Streaming: Spotify, Apple Music, Amazon Music, Pandora, TikTok, SoundCloud, Deezer, iHeartRadio.
+
+Video & media: Family Feud grand-prize win — https://www.elionmusic.com/familyfeud | Press & articles — https://www.elionmusic.com/articles | HebrewFest live w/ The Highway — https://www.youtube.com/watch?v=zz0oX6FIcPU
+
+Books: Christ Is My Best Friend (faith memoir/devotional, audiobook available) · P48X (Philippians 4:8, Expounded) · Stella the Cutest Corgi (children's book, audiobook available).
+
+Beyond the music: Founder, Prayer Authority — a faith and prayer community platform.
+
+Open to label partnership, sync, and management inquiries. Eric Schaefer (E Lion) — (808) 393-0153 — elionreigns@gmail.com — elionmusic.com`,
+    html: `<div class="epk-wrap" style="max-width:720px;margin:0 auto;background:#ffffff;border-radius:20px;overflow:hidden;font-family:Georgia,'Times New Roman',serif;color:#17181c;box-shadow:0 20px 50px -15px rgba(20,20,20,0.15);">
+<div class="epk-pad" style="padding:14px 26px;border-bottom:1px solid #e2e0da;display:flex;align-items:center;justify-content:space-between;font-family:'Helvetica Neue',Arial,sans-serif;">
+<span style="font-weight:700;letter-spacing:0.08em;font-size:13px;text-transform:uppercase;">E <span style="color:#8a1f2b;">LION</span></span>
+<span style="font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:#4a4b52;">Electronic Press Kit</span>
+</div>
+<div class="epk-pad" style="padding:34px 26px 20px;">
+<p style="margin:0 0 12px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8a1f2b;font-weight:700;">Christian Hip-Hop / Holy Hip-Hop</p>
+<h1 style="margin:0 0 6px;font-size:38px;line-height:1.05;letter-spacing:-0.01em;">E Lion</h1>
+<p style="margin:0 0 20px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;color:#4a4b52;">Eric Schaefer &nbsp;•&nbsp; Recording Artist &amp; Author &nbsp;•&nbsp; Honolulu, HI</p>
+<p style="margin:0;font-size:18px;line-height:1.45;max-width:60ch;">Grand-prize winner on <strong>Family Feud</strong> (2016), combined broadcast + press reach estimated at <strong style="color:#a9822f;">115M+</strong>. 100+ original songs across every major streaming platform, <strong style="color:#a9822f;">10M+</strong> combined YouTube views — built independently, without a label.</p>
+</div>
+<table class="epk-stat-cell" role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:6px 26px 8px;width:calc(100% - 52px);">
+<tr>
+<td class="epk-stat-cell" style="width:25%;text-align:center;padding:16px 6px;border:1px solid #e2e0da;font-family:'Helvetica Neue',Arial,sans-serif;"><div style="font-weight:800;font-size:20px;">115M+</div><div style="font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:#4a4b52;margin-top:4px;">Feud Reach</div></td>
+<td class="epk-stat-cell" style="width:25%;text-align:center;padding:16px 6px;border:1px solid #e2e0da;font-family:'Helvetica Neue',Arial,sans-serif;"><div style="font-weight:800;font-size:20px;">100+</div><div style="font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:#4a4b52;margin-top:4px;">Original Songs</div></td>
+<td class="epk-stat-cell" style="width:25%;text-align:center;padding:16px 6px;border:1px solid #e2e0da;font-family:'Helvetica Neue',Arial,sans-serif;"><div style="font-weight:800;font-size:20px;">10M+</div><div style="font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:#4a4b52;margin-top:4px;">YouTube Views</div></td>
+<td class="epk-stat-cell" style="width:25%;text-align:center;padding:16px 6px;border:1px solid #e2e0da;font-family:'Helvetica Neue',Arial,sans-serif;"><div style="font-weight:800;font-size:20px;">3</div><div style="font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:#4a4b52;margin-top:4px;">Published Books</div></td>
+</tr>
+</table>
+<div class="epk-pad" style="padding:22px 26px 8px;">
+<h2 style="margin:0 0 14px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#4a4b52;font-weight:700;">Bio</h2>
+<p style="margin:0 0 14px;font-size:16px;line-height:1.6;max-width:64ch;">E Lion (Eric Schaefer) is an independent Christian hip-hop artist from Honolulu, Hawaii, writing at the intersection of rap and melody — genre-blurring, built on an explicitly faith-centered foundation. Over the past decade he has independently written, recorded, and released 100+ original songs, distributed to every major platform through DistroKid and Landr.</p>
+<p style="margin:0;font-size:16px;line-height:1.6;max-width:64ch;">His story reached a national audience in 2016 when he won the grand prize on Family Feud, a moment that put his music and testimony in front of a combined broadcast and press audience estimated at 115 million-plus. He has performed live at HebrewFest alongside the reggae band The Highway, contributing verses to ten of their songs, and has authored three books exploring faith, identity, and everyday joy. He also founded Prayer Authority, a faith and prayer community platform. E Lion is now looking for a label partner to help take the next step.</p>
+</div>
+<div class="epk-pad" style="padding:22px 26px 8px;">
+<h2 style="margin:0 0 14px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#4a4b52;font-weight:700;">Streaming &amp; Distribution</h2>
+<p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#4a4b52;">Spotify &nbsp;·&nbsp; Apple Music &nbsp;·&nbsp; Amazon Music &nbsp;·&nbsp; Pandora &nbsp;·&nbsp; TikTok &nbsp;·&nbsp; SoundCloud &nbsp;·&nbsp; Deezer &nbsp;·&nbsp; iHeartRadio</p>
+</div>
+<div class="epk-pad" style="padding:22px 26px 8px;">
+<h2 style="margin:0 0 14px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#4a4b52;font-weight:700;">Video &amp; Media</h2>
+<p style="margin:0 0 10px;font-size:14.5px;line-height:1.7;"><a href="https://www.elionmusic.com/familyfeud" style="color:#8a1f2b;">Family Feud — Grand Prize Win (2016)</a> — broadcast segment &amp; national coverage</p>
+<p style="margin:0 0 10px;font-size:14.5px;line-height:1.7;"><a href="https://www.elionmusic.com/articles" style="color:#8a1f2b;">Press Coverage &amp; Articles</a> — feature write-ups following the Family Feud win</p>
+<p style="margin:0 0 10px;font-size:14.5px;line-height:1.7;"><a href="https://www.youtube.com/watch?v=zz0oX6FIcPU" style="color:#8a1f2b;">HebrewFest Live Performances w/ The Highway</a> — reggae-band collaboration, verses on 10 songs</p>
+</div>
+<div class="epk-pad" style="padding:22px 26px 8px;">
+<h2 style="margin:0 0 14px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#4a4b52;font-weight:700;">Published Books</h2>
+<p style="margin:0 0 8px;font-size:14.5px;line-height:1.6;"><strong>Christ Is My Best Friend</strong> — Faith memoir &amp; devotional. Available as an audiobook.</p>
+<p style="margin:0 0 8px;font-size:14.5px;line-height:1.6;"><strong>P48X</strong> — Philippians 4:8, Expounded — a study on right thinking.</p>
+<p style="margin:0;font-size:14.5px;line-height:1.6;"><strong>Stella the Cutest Corgi</strong> — Children's book, also available as an audiobook.</p>
+</div>
+<div class="epk-pad" style="padding:22px 26px;">
+<div style="background:#f0e4e0;border-radius:10px;padding:18px;">
+<p style="margin:0 0 4px;font-size:15px;font-weight:700;">Founder, Prayer Authority</p>
+<p style="margin:0;font-size:14px;color:#4a4b52;">A faith and prayer community platform — reflecting the same conviction behind the music.</p>
+</div>
+</div>
+<div class="epk-pad" style="padding:30px 26px 44px;text-align:center;">
+<h2 style="margin:0 0 8px;font-size:26px;">Let's talk.</h2>
+<p style="margin:0 0 20px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#4a4b52;">Open to label partnership, sync, and management inquiries.</p>
+<p style="margin:0 0 18px;"><a class="epk-btn" href="mailto:elionreigns@gmail.com?subject=E%20Lion%20-%20Label%20Inquiry" style="display:inline-block;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:15px;color:#fff;background:#8a1f2b;padding:15px 34px;border-radius:999px;text-decoration:none;">Get In Touch</a></p>
+<p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#4a4b52;">Eric Schaefer (E Lion) &nbsp;·&nbsp; <a href="tel:+18083930153" style="color:#4a4b52;">(808) 393-0153</a> &nbsp;·&nbsp; <a href="mailto:elionreigns@gmail.com" style="color:#4a4b52;">elionreigns@gmail.com</a><br><a href="https://elionmusic.com" style="color:#4a4b52;">elionmusic.com</a></p>
+</div>
+<div class="epk-pad" style="padding:16px 26px;border-top:1px solid #e2e0da;text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;color:#4a4b52;letter-spacing:0.03em;">E LION MUSIC — ELECTRONIC PRESS KIT — 2026</div>
 </div>`,
   },
   "elion-record-label-mainstream": {
