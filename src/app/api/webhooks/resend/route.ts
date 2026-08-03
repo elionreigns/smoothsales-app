@@ -183,6 +183,60 @@ export async function POST(request: NextRequest) {
 
     if (type === "email.received") {
       console.log("[Resend] email.received", data.from, data.to);
+      const apiKey = process.env.RESEND_API_KEY?.trim();
+      const emailId = typeof data.email_id === "string" ? data.email_id : undefined;
+      if (apiKey && emailId && OPEN_ALERT_TO) {
+        try {
+          const res = await fetch(`https://api.resend.com/emails/receiving/${emailId}`, {
+            method: "GET",
+            headers: { Authorization: `Bearer ${apiKey}` },
+          });
+          if (!res.ok) {
+            const errText = await res.text();
+            console.error("[Resend] failed to fetch received email", emailId, res.status, errText);
+          } else {
+            const received = (await res.json()) as {
+              from?: string;
+              subject?: string;
+              text?: string | null;
+              html?: string | null;
+            };
+            const fromRaw = received.from ?? data.from ?? "unknown sender";
+            const subject = received.subject ?? data.subject ?? "(no subject)";
+            const bodyText = (received.text || "").trim() || "(no plain-text body — check HTML in Resend dashboard)";
+            const resend = new Resend(apiKey);
+            await resend.emails.send({
+              from: FROM_EMAIL,
+              to: OPEN_ALERT_TO,
+              replyTo: fromRaw,
+              subject: `↩ Reply: ${subject}`,
+              html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:#f1f5f9;padding:24px;">
+  <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#16a34a 0%,#166534 100%);color:#fff;padding:24px 28px;">
+      <div style="font-size:20px;font-weight:700;">↩ Someone replied</div>
+      <div style="font-size:13px;opacity:0.95;margin-top:4px;">${escapeHtml(fromRaw)}</div>
+    </div>
+    <div style="padding:24px 28px;">
+      <p style="margin:0 0 4px;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;">Subject</p>
+      <p style="margin:0 0 16px;color:#0f172a;font-size:15px;">${escapeHtml(subject)}</p>
+      <p style="margin:0 0 4px;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;">Message</p>
+      <div style="white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;color:#0f172a;font-size:14px;line-height:1.6;">${escapeHtml(bodyText)}</div>
+      <p style="margin:18px 0 0;font-size:12px;color:#94a3b8;">Hit reply on THIS email to write straight back to them — Reply-To is set to their address.</p>
+    </div>
+  </div>
+</body>
+</html>`,
+              text: `Reply from: ${fromRaw}\nSubject: ${subject}\n\n${bodyText}\n\n(Reply to this alert to write straight back to them.)`,
+            });
+          }
+        } catch (e) {
+          console.error("[Resend] failed to forward received email", e);
+        }
+      }
     }
 
     return NextResponse.json({ received: true });

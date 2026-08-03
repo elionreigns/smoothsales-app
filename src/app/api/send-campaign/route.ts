@@ -7,6 +7,9 @@ import { upsertFollowUpState } from "@/lib/followups-store";
 
 // Use SMOOTHSALES_FROM once coralcrownsolutions.com is verified in Resend. For testing, use onboarding@resend.dev in Resend dashboard.
 const FROM_EMAIL = process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
+// Replies (hit "Reply" on a campaign email) land here. Without this, replies go to whatever
+// mailbox the FROM address itself receives — which may not be actively monitored.
+const REPLY_TO_EMAIL = process.env.SMOOTHSALES_REPLY_TO?.trim() || "elionreigns@gmail.com";
 
 type Recipient = { email: string; name?: string; nameOfPerson?: string; nameOfOrganization?: string };
 
@@ -382,6 +385,7 @@ export async function POST(request: NextRequest) {
         const payload: Parameters<Resend["emails"]["send"]>[0] = {
           from: FROM_EMAIL,
           to: rec.email,
+          replyTo: REPLY_TO_EMAIL,
           subject: personalSubject,
           html: personalHtml,
           text: personalText,
