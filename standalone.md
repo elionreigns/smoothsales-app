@@ -63,6 +63,14 @@ General format:
   - Standalone: https://smoothsales-app.vercel.app/newsletter/elion-brands?access=CROWN&name=there&org=Brand
   - Preview API (JSON): `GET /api/sms-preview?templateId=elion-brands`
 
+- **elion-gear-sponsor**
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/elion-gear-sponsor?access=CROWN&name=there&org=AudioBrand
+  - Preview API (JSON): `GET /api/sms-preview?templateId=elion-gear-sponsor`
+
+- **elion-clothing-sponsor**
+  - Standalone: https://smoothsales-app.vercel.app/newsletter/elion-clothing-sponsor?access=CROWN&name=ClothingTeam&org=ApparelBrand
+  - Preview API (JSON): `GET /api/sms-preview?templateId=elion-clothing-sponsor`
+
 - **elion-producers**
   - Standalone: https://smoothsales-app.vercel.app/newsletter/elion-producers?access=CROWN&name=there
   - Preview API (JSON): `GET /api/sms-preview?templateId=elion-producers`
@@ -183,6 +191,32 @@ The Vercel cron at `/api/cron/run-followups` (daily 17:00 UTC / 07:00 HST) autom
 ### Rap Central — Rap Artist Booking Engine (5% to LXR)
 - **rap-central-rappers** (artists + management — 5% commission booking engine)
   - Standalone: https://smoothsales-app.vercel.app/newsletter/rap-central-rappers?access=CROWN&name=there&org=Artist
+
+## Head Hunting — One Page Miracle allies (16 audiences)
+
+Each audience has an initial template and **`-followup-1`**. Open in SmoothSales with `?service=head-hunt&audience=<slug>` or use standalone URLs below (`name` + `org` personalize the greeting).
+
+| Audience slug | Standalone preview |
+|---------------|-------------------|
+| music-promo | https://smoothsales-app.vercel.app/newsletter/headhunt-music-promo?access=CROWN&name=there&org=Station |
+| music-video | https://smoothsales-app.vercel.app/newsletter/headhunt-music-video?access=CROWN&name=there&org=Studio |
+| pastor-theology | https://smoothsales-app.vercel.app/newsletter/headhunt-pastor-theology?access=CROWN&name=there&org=Church |
+| prayer-healing | https://smoothsales-app.vercel.app/newsletter/headhunt-prayer-healing?access=CROWN&name=there&org=Ministry |
+| ai-automation | https://smoothsales-app.vercel.app/newsletter/headhunt-ai-automation?access=CROWN&name=there&org=Builder |
+| social-growth | https://smoothsales-app.vercel.app/newsletter/headhunt-social-growth?access=CROWN&name=there&org=Agency |
+| house-cleaning-build | https://smoothsales-app.vercel.app/newsletter/headhunt-house-cleaning-build?access=CROWN&name=there&org=Operator |
+| house-cleaning-crew | https://smoothsales-app.vercel.app/newsletter/headhunt-house-cleaning-crew?access=CROWN&name=there&org=Recruiter |
+| auto-hhr | https://smoothsales-app.vercel.app/newsletter/headhunt-auto-hhr?access=CROWN&name=there&org=Shop |
+| corgi-community | https://smoothsales-app.vercel.app/newsletter/headhunt-corgi-community?access=CROWN&name=there&org=Club |
+| publish-books | https://smoothsales-app.vercel.app/newsletter/headhunt-publish-books?access=CROWN&name=there&org=Bookstore |
+| print-merch | https://smoothsales-app.vercel.app/newsletter/headhunt-print-merch?access=CROWN&name=there&org=PrintShop |
+| web-seo-music | https://smoothsales-app.vercel.app/newsletter/headhunt-web-seo-music?access=CROWN&name=there&org=Agency |
+| web-seo-tourism | https://smoothsales-app.vercel.app/newsletter/headhunt-web-seo-tourism?access=CROWN&name=there&org=Agency |
+| capital-partner | https://smoothsales-app.vercel.app/newsletter/headhunt-capital-partner?access=CROWN&name=there&org=Fund |
+| coral-partner | https://smoothsales-app.vercel.app/newsletter/headhunt-coral-partner?access=CROWN&name=there&org=Agency |
+
+- **SMS teaser:** `GET /api/sms-preview?templateId=headhunt-music-promo` (any `headhunt-*` id)
+- **SmoothSales UI:** https://smoothsales-app.vercel.app/?service=head-hunt&audience=music-promo
 
 ## Using this for SMS
 - Call GET /api/sms-preview?templateId=<templateId> to get the exact **2-sentence** teaser + the correct standalone URL with your access key.

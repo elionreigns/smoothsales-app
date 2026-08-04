@@ -468,6 +468,8 @@ export default function SmoothSalesPage() {
                     <option value="fans">Fans & listeners</option>
                     <option value="artists">Peer artists / collaboration</option>
                     <option value="brands">Sponsored brands</option>
+                    <option value="gear-sponsor">Studio gear / artist-relations partnership</option>
+                    <option value="clothing-sponsor">Clothing / stagewear partnership</option>
                     <option value="producers">Producers (beats)</option>
                     <option value="venue-church">Venue: Church</option>
                     <option value="venue-show">Venue: Show / festival</option>

@@ -29,6 +29,12 @@ function json500(message: string) {
  */
 function sanitizeSubject(subject: string, templateId: string): string {
   let s = subject
+    .normalize("NFKC")
+    // U+FFFD means an upstream character could not be decoded. Never allow it
+    // into a subject line; use a plain ASCII separator that survives all mail
+    // clients and makes the correction obvious in the audit trail.
+    .replace(/\uFFFD/g, "-")
+    .replace(/[\u0000-\u001F\u007F]/g, " ")
     .replace(/\{\{\s*[^}]+\s*\}\}/g, "")
     .replace(/\s{2,}/g, " ")
     .replace(/\s+([?.,!])/g, "$1")
@@ -126,6 +132,8 @@ export async function POST(request: NextRequest) {
       "elion-fans",
       "elion-artists",
       "elion-brands",
+      "elion-gear-sponsor",
+      "elion-clothing-sponsor",
       "elion-fans-followup-1",
       "elion-fans-followup-2",
       "elion-fans-followup-3",
@@ -237,6 +245,7 @@ export async function POST(request: NextRequest) {
       "stella-brands",
       "stella-media",
       "stella-talent",
+      "ivf-grant-inquiry",
       // ---- April 2026: new SmoothSales services (Apartments, Corgi Care, Luxury Resource, Rap Central) ----
       // Each has 1 initial + 4 follow-ups.
       "apartments-individual",

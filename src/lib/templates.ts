@@ -36,6 +36,17 @@ import {
   type HeadHuntSub,
   type HeadHuntTemplateId,
 } from "./head-hunt-templates";
+import {
+  isIvfGrantTemplateId,
+  getIvfGrantTemplate,
+  type IvfGrantTemplateId,
+} from "./ivf-grant-template";
+import {
+  isElionSponsorTemplateId,
+  getElionSponsorTemplate,
+  type ElionSponsorTemplateId,
+  ELION_SPONSOR_TEMPLATE_OPTIONS,
+} from "./elion-sponsor-templates";
 
 export type { HeadHuntSub } from "./head-hunt-templates";
 
@@ -76,6 +87,7 @@ export type TemplateId =
   | "elion-fans"
   | "elion-artists"
   | "elion-brands"
+  | ElionSponsorTemplateId
   | "elion-fans-followup-1"
   | "elion-fans-followup-2"
   | "elion-fans-followup-3"
@@ -118,6 +130,7 @@ export type TemplateId =
   | "elion-record-label-christian-followup-2"
   | "elion-record-label-christian-followup-3"
   | "elion-epk"
+  | "ivf-grant-inquiry"
   | "wedding-couples"
   | "wedding-couples-followup-1"
   | "wedding-couples-followup-2"
@@ -180,7 +193,7 @@ export type TemplateId =
 type BaseTemplateId = Exclude<
   Exclude<
     TemplateId,
-    ElionFollowUpTemplateId | OtherFollowUpTemplateId | NewServiceTemplateId | CoralTaskKillerTemplateId
+    ElionFollowUpTemplateId | OtherFollowUpTemplateId | NewServiceTemplateId | CoralTaskKillerTemplateId | IvfGrantTemplateId | ElionSponsorTemplateId
   >,
   `${string}-v2`
 >;
@@ -196,6 +209,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-fans", label: "E Lion Music – Fans & listeners (Holy Hip-Hop, Family Feud, 10M+ views)" },
   { value: "elion-artists", label: "E Lion Music – Peer artists & collaboration" },
   { value: "elion-brands", label: "E Lion Music – Sponsored brands (your brand in front of his audience)" },
+  ...ELION_SPONSOR_TEMPLATE_OPTIONS,
   { value: "elion-producers", label: "E Lion Music – Producers (beats, your name on every release)" },
   { value: "elion-venue-church", label: "E Lion Music – Venue: Church (worship, youth night, DJ)" },
   { value: "elion-venue-show", label: "E Lion Music – Venue: Show / festival (door + merch, local draw)" },
@@ -208,6 +222,7 @@ export const TEMPLATE_OPTIONS: { value: TemplateId; label: string }[] = [
   { value: "elion-record-label-mainstream", label: "E Lion Music – Record label (mainstream: Bruno Mars, Bieber, Jelly Roll type – Behind the Scenes of Shine)" },
   { value: "elion-record-label-christian", label: "E Lion Music – Record label (Christian: NF type – world tour vision)" },
   { value: "elion-epk", label: "E Lion Music – Electronic Press Kit (standalone, share as a link)" },
+  { value: "ivf-grant-inquiry", label: "IVF grant inquiry – eligibility question (draft-first; no medical attachments)" },
   { value: "wedding-couples", label: "Hawaii Wedding Plans – Couples (one place to plan your dream Hawaiian wedding)" },
   { value: "wedding-contractors", label: "Hawaii Wedding Plans – Contractors & vendors (get featured, couples build packages)" },
   { value: "p48x-personal", label: "P48X – Personal (book, app, 24+ hr audiobook & member chatbots)" },
@@ -363,6 +378,14 @@ export function getTemplate(id: TemplateId): { subject: string; html: string; te
     html: payload.html.replace(/\{\{BASE_URL\}\}/g, IMAGE_BASE_URL),
   });
   const foot = emailFooterForTemplate(id);
+  if (isIvfGrantTemplateId(id as string)) {
+    const t = getIvfGrantTemplate(id as IvfGrantTemplateId);
+    return finalize({ subject: t.subject, html: t.html, text: t.text });
+  }
+  if (isElionSponsorTemplateId(id as string)) {
+    const t = getElionSponsorTemplate(id as ElionSponsorTemplateId);
+    return finalize({ subject: t.subject, html: t.html, text: t.text });
+  }
   if (isElionFollowUpTemplateId(id as string)) {
     const t = getElionFollowUpTemplate(id as ElionFollowUpTemplateId);
     return finalize(
@@ -496,6 +519,8 @@ export type ElionSub =
   | "fans"
   | "artists"
   | "brands"
+  | "gear-sponsor"
+  | "clothing-sponsor"
   | "producers"
   | "venue-church"
   | "venue-show"
@@ -517,6 +542,8 @@ const ELION_TEMPLATE_MAP: Record<Exclude<ElionSub, "">, TemplateId> = {
   fans: "elion-fans",
   artists: "elion-artists",
   brands: "elion-brands",
+  "gear-sponsor": "elion-gear-sponsor",
+  "clothing-sponsor": "elion-clothing-sponsor",
   producers: "elion-producers",
   "venue-church": "elion-venue-church",
   "venue-show": "elion-venue-show",
@@ -661,7 +688,7 @@ export function getTemplatesForSelection(
   }
   if (service === "elion" && elionSub !== "") {
     const id = ELION_TEMPLATE_MAP[elionSub];
-    if (elionSub === "levelup" || elionSub === "products-programs") {
+    if (elionSub === "levelup" || elionSub === "products-programs" || elionSub === "gear-sponsor" || elionSub === "clothing-sponsor") {
       const label = TEMPLATE_OPTIONS.find((o) => o.value === id)?.label ?? "A&R / Level Up";
       return [{ value: id, label: "Initial: " + label }];
     }

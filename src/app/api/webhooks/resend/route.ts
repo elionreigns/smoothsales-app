@@ -48,6 +48,16 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
+function safeMailText(s: string, fallback: string): string {
+  const cleaned = s
+    .normalize("NFKC")
+    .replace(/\uFFFD/g, "-")
+    .replace(/[\u0000-\u001F\u007F]/g, " ")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+  return cleaned || fallback;
+}
+
 function getTemplateFromTags(tags: ResendWebhookEvent["data"]["tags"]): string {
   if (!tags) return "—";
   if (Array.isArray(tags)) {
@@ -110,7 +120,7 @@ export async function POST(request: NextRequest) {
     if (type === "email.opened") {
       const to = toEmails(data.to);
       const who = to.length ? to.join(", ") : "unknown";
-      const subject = typeof data.subject === "string" ? data.subject : "(no subject)";
+      const subject = typeof data.subject === "string" ? safeMailText(data.subject, "(no subject)") : "(no subject)";
       const templateId = getTemplateFromTags(data.tags);
       const baseId = getBaseFromTags(data.tags);
       const timeStr = formatTime(created_at);
@@ -145,7 +155,7 @@ export async function POST(request: NextRequest) {
       const apiKey = process.env.RESEND_API_KEY?.trim();
       if (apiKey && OPEN_ALERT_TO) {
         const resend = new Resend(apiKey);
-        const alertSubject = `✓ Someone opened your email — ${who}`;
+        const alertSubject = `Success: Someone opened your email - ${safeMailText(who, "unknown")}`;
         const alertHtml = `
 <!DOCTYPE html>
 <html>
@@ -153,7 +163,7 @@ export async function POST(request: NextRequest) {
 <body style="margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:#f1f5f9;padding:24px;">
   <div style="max-width:480px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;">
     <div style="background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);color:#fff;padding:24px 28px;text-align:center;">
-      <div style="font-size:28px;margin-bottom:4px;">✓ Success</div>
+      <div style="font-size:16px;font-weight:800;letter-spacing:0.14em;margin-bottom:4px;">SUCCESS</div>
       <div style="font-size:14px;opacity:0.95;">Someone opened your campaign email</div>
     </div>
     <div style="padding:28px;">
@@ -202,14 +212,14 @@ export async function POST(request: NextRequest) {
               html?: string | null;
             };
             const fromRaw = received.from ?? data.from ?? "unknown sender";
-            const subject = received.subject ?? data.subject ?? "(no subject)";
+            const subject = safeMailText(received.subject ?? data.subject ?? "", "(no subject)");
             const bodyText = (received.text || "").trim() || "(no plain-text body — check HTML in Resend dashboard)";
             const resend = new Resend(apiKey);
             await resend.emails.send({
               from: FROM_EMAIL,
               to: OPEN_ALERT_TO,
               replyTo: fromRaw,
-              subject: `↩ Reply: ${subject}`,
+              subject: `Reply: ${subject}`,
               html: `
 <!DOCTYPE html>
 <html>
@@ -217,7 +227,7 @@ export async function POST(request: NextRequest) {
 <body style="margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:#f1f5f9;padding:24px;">
   <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;">
     <div style="background:linear-gradient(135deg,#16a34a 0%,#166534 100%);color:#fff;padding:24px 28px;">
-      <div style="font-size:20px;font-weight:700;">↩ Someone replied</div>
+      <div style="font-size:20px;font-weight:700;">Someone replied</div>
       <div style="font-size:13px;opacity:0.95;margin-top:4px;">${escapeHtml(fromRaw)}</div>
     </div>
     <div style="padding:24px 28px;">
