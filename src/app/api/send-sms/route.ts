@@ -10,6 +10,8 @@ type Body = {
   org?: string;
   dryRun?: boolean;
   fromOverride?: string;
+  /** Custom SMS body — skips template teaser (still needs templateId for API shape) */
+  text?: string;
 };
 
 function normalizeNumber(n: string): string {
@@ -51,8 +53,9 @@ export async function POST(request: NextRequest) {
     accessKey
   )}${body.name ? `&name=${encodeURIComponent(body.name)}` : ""}${body.org ? `&org=${encodeURIComponent(body.org)}` : ""}`;
 
+  const customText = typeof body.text === "string" ? body.text.trim() : "";
   const teaser = getSmsTeaser(templateId);
-  const messageBody = `${teaser} ${landingUrl}`;
+  const messageBody = customText || `${teaser} ${landingUrl}`;
 
   const rawNums = Array.isArray(body.numbers)
     ? body.numbers

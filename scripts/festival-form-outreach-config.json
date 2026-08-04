@@ -1,4 +1,6 @@
 {
+  "campaign": "festival-outreach-2026-2027",
+  "subjectTemplate": "E Lion — festival booking inquiry ({org})",
   "sender": {
     "name": "Eric Hans Schaefer",
     "artistName": "E Lion",
@@ -7,14 +9,23 @@
   },
   "linkLabel": "Festival booking pitch (standalone page)",
   "tinyUrls": {
-    "coral-music": "https://tinyurl.com/elion-festival-pitch"
+    "coral-music": "https://tinyurl.com/elion-festival-pitch",
+    "coral-music-epk": "https://tinyurl.com/elion-festival-epk",
+    "festival-epk-full": "https://www.elionmusic.com/downloads/festival-epk/"
   },
   "standaloneBase": "https://smoothsales-app.vercel.app/newsletter/coral-music?access=CROWN",
   "summaries": {
-    "coral-music": "Festival booking: E Lion — faith-rooted hip-hop from Hawaii. Family Feud 2016 grand prize · 30K+ Pandora monthly listeners · 500K+ streams. Full EPK: https://www.elionmusic.com/downloads/ — seeking paid live set with travel covered."
+    "coral-music": "Festival booking: E Lion — faith-rooted hip-hop from Hawaii. Family Feud 2016 grand prize · 30K+ Pandora monthly listeners · 500K+ streams · 10M+ YouTube. Interactive festival EPK (127+ tracks, all streaming links): https://www.elionmusic.com/downloads/festival-epk/ — seeking paid live set (5+ songs) with Hawaii→mainland travel covered by promoter."
   },
+  "extraLinks": [
+    { "label": "Festival EPK (full catalog)", "url": "https://www.elionmusic.com/downloads/festival-epk/" },
+    { "label": "EPK summary", "url": "https://www.elionmusic.com/downloads/" },
+    { "label": "Press kit", "url": "https://www.elionmusic.com/presskit/" }
+  ],
+  "closing": "Happy to send a sample set list or jump on a 15-minute call this week.",
+  "signoff": "— Eric Schaefer / E Lion",
   "paths": {
-    "contactedEmails": "contacts/leads/contacted-emails.json",
+    "contactedEmails": "contacts/leads/festival-contacted-emails.json",
     "contactedForms": "contacts/leads/festival-contacted-forms.json",
     "attemptsLog": "contacts/leads/festival-form-attempts.json"
   },
@@ -25,7 +36,7 @@
       "formUrl": "https://www.universalorlando.com/web/en/us/contact-us",
       "templateId": "coral-music",
       "skipDomains": ["rocktheuniverse.com", "universalorlando.com"],
-      "notes": "info@rocktheuniverse.com is a catch-all — use UO contact form + tinyurl pitch"
+      "notes": "info@rocktheuniverse.com — UO contact form"
     },
     {
       "id": "flavorfest-contact",
@@ -33,7 +44,111 @@
       "formUrl": "https://flavorfest.org/contact/",
       "templateId": "coral-music",
       "skipDomains": ["flavorfest.org"],
-      "notes": "info@flavorfest.org — use site contact form"
+      "notes": "info@flavorfest.org — site contact form"
+    },
+    {
+      "id": "govball-zendesk",
+      "org": "Governors Ball",
+      "formUrl": "https://support.govball.com/hc/en-us/requests/new",
+      "templateId": "coral-music",
+      "skipDomains": ["governorsballmusicfestival.com"],
+      "notes": "Jun 5-7 2026 NYC — Zendesk artist inquiry"
+    },
+    {
+      "id": "bonnaroo-zendesk",
+      "org": "Bonnaroo",
+      "formUrl": "https://support.bonnaroo.com/hc/en-us/requests/new",
+      "templateId": "coral-music",
+      "skipDomains": ["bonnaroo.com"],
+      "notes": "Jun 11-14 2026 — Zendesk artist inquiry"
+    },
+    {
+      "id": "lollapalooza-zendesk",
+      "org": "Lollapalooza",
+      "formUrl": "https://support.lollapalooza.com/hc/en-us/requests/new",
+      "templateId": "coral-music",
+      "skipDomains": ["lollapalooza.com", "c3presents.com"],
+      "notes": "Jul 30-Aug 2 2026 Chicago — C3 Zendesk"
+    },
+    {
+      "id": "acl-zendesk",
+      "org": "ACL Music Festival",
+      "formUrl": "https://support.aclfestival.com/hc/en-us/requests/new",
+      "templateId": "coral-music",
+      "skipDomains": ["aclfestival.com", "c3presents.com"],
+      "notes": "Oct 2-11 2026 Austin — C3 Zendesk"
+    },
+    {
+      "id": "shaky-knees-zendesk",
+      "org": "Shaky Knees",
+      "formUrl": "https://support.shakykneesfestival.com/hc/en-us/requests/new",
+      "templateId": "coral-music",
+      "skipDomains": ["shakykneesfestival.com", "c3presents.com"],
+      "notes": "Sep 18-20 2026 Atlanta — C3 Zendesk"
+    },
+    {
+      "id": "wwwy-zendesk",
+      "org": "When We Were Young",
+      "formUrl": "https://support.whenwewereyoungfestival.com/hc/en-us/requests/new",
+      "templateId": "coral-music",
+      "skipDomains": ["whenwewereyoungfestival.com"],
+      "notes": "Oct 2026 — AEG Zendesk artist inquiry"
+    },
+    {
+      "id": "iiipoints-contact",
+      "org": "III Points",
+      "formUrl": "https://www.iiipoints.com/contact",
+      "templateId": "coral-music",
+      "skipDomains": ["iiipoints.com"],
+      "notes": "Oct 2026 Miami — Insomniac contact form"
+    },
+    {
+      "id": "outside-lands-contact",
+      "org": "Outside Lands",
+      "formUrl": "https://sfoutsidelands.com/contact",
+      "templateId": "coral-music",
+      "skipDomains": ["sfoutsidelands.com"],
+      "notes": "Aug 2026/2027 SF — contact page"
+    },
+    {
+      "id": "coachella-contact",
+      "org": "Coachella",
+      "formUrl": "https://www.coachella.com/contact",
+      "templateId": "coral-music",
+      "skipDomains": ["coachella.com", "goldenvoice.com"],
+      "notes": "Apr 2027 — Goldenvoice contact"
+    },
+    {
+      "id": "stagecoach-contact",
+      "org": "Stagecoach",
+      "formUrl": "https://www.stagecoachfestival.com/contact-us/",
+      "templateId": "coral-music",
+      "skipDomains": ["stagecoachfestival.com", "goldenvoice.com"],
+      "notes": "Apr 2027 country fest — Goldenvoice"
+    },
+    {
+      "id": "breakaway-contact",
+      "org": "Breakaway Music Festival",
+      "formUrl": "https://breakawayfestival.com/contact",
+      "templateId": "coral-music",
+      "skipDomains": ["teambreakaway.com", "breakawayfestival.com"],
+      "notes": "2026 multi-city tour — hey@teambreakaway.com"
+    },
+    {
+      "id": "riotfest-contact",
+      "org": "Riot Fest",
+      "formUrl": "https://riotfest.org/contact-us/",
+      "templateId": "coral-music",
+      "skipDomains": ["riotfest.org"],
+      "notes": "Sep 2026 Chicago punk/alt"
+    },
+    {
+      "id": "dwp-twitch-unsigned",
+      "org": "DWPresents (Rockville/LTL/Sonic Temple)",
+      "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScES7yQqxy1VlK4KnpQwuZNaHEuL-kftyv9q5K472qfKYJIvQ/viewform",
+      "templateId": "coral-music",
+      "skipDomains": ["dwpresents.com", "welcometorockville.com", "louderthanlifefestival.com", "sonictemplefestival.com"],
+      "notes": "DWP unsigned artist Twitch pipeline — jake@dwpresents.com"
     }
   ]
 }
