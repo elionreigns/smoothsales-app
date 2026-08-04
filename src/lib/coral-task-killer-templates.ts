@@ -17,7 +17,7 @@ export const CORAL_TASK_KILLER_TEMPLATE_OPTIONS: { value: CoralTaskKillerTemplat
 ];
 
 export const DEFAULT_BODY =
-  "I'm reaching out about booking E Lion for a paid live set at your festival — faith-rooted Holy Hip-Hop from Hawaii with national TV reach (2016 Family Feud grand prize), 30K+ Pandora monthly listeners, 500K+ streams, and 10M+ YouTube views. I promote every show to my fanbase, deliver a full 1hr+ set with audience interaction, and I'm growing across every platform — I'd love to connect with fans in person at your stage.";
+  "I'm reaching out to ask whether {{Name of Organization}} is accepting 2027 artists for a paid festival set. E Lion is a faith-rooted Holy Hip-Hop artist from Honolulu with a 2016 Family Feud grand-prize win, 1,000+ live performances, 10M+ YouTube views, and an interactive festival EPK. I can deliver a clean 5–8 song set with audience interaction and promote the date to my audience. For a mainland booking, I'm looking for a paid performance fee plus round-trip Hawaii travel, hotel, and local ground transportation covered by the promoter. If the fit is right, I'm glad to send a set list, tech needs, and a short call time.";
 
 export function isCoralTaskKillerTemplateId(id: string): id is CoralTaskKillerTemplateId {
   return id === "coral-business" || id === "coral-music";
@@ -67,7 +67,7 @@ const MUSIC_HTML = [
   "<img src=\"https://www.elionmusic.com/elionmusiclogoz.png\" width=\"88\" height=\"88\" alt=\"E Lion Music\" style=\"display:block;margin:0 auto 12px;border-radius:50%;\">",
   "<p style=\"margin:0 0 6px;font-size:10px;font-weight:700;letter-spacing:0.2em;color:#ffd700;text-transform:uppercase;\">Electronic Press Kit · Festival Booking</p>",
   "<h1 class=\"epk-h1\" style=\"margin:0;font-size:26px;color:#fff;font-weight:800;\">E Lion</h1>",
-  "<p style=\"margin:10px 0 0;font-size:13px;color:#e8d4ff;\">2016 Family Feud Grand Prize · Honolulu Holy Hip-Hop</p>",
+  "<p style=\"margin:10px 0 0;font-size:13px;color:#e8d4ff;\">2027 Festival Booking · Honolulu Holy Hip-Hop · Hawaii → mainland</p>",
   "</td></tr>",
 
   "<tr><td class=\"epk-pad\" style=\"padding:24px 28px;background:#14141f;\">",
@@ -86,21 +86,23 @@ const MUSIC_HTML = [
   "<p style=\"margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#ff6bcb;text-transform:uppercase;\">Why book E Lion</p>",
   "<p style=\"margin:0 0 16px;font-size:14px;line-height:1.6;color:#d4c8f0;\">",
   "<strong>1,000+ live shows</strong> · <strong>10M+ YouTube views</strong> · Waikiki Shell, Blaisdell, HebrewFest. ",
-  "Full <strong>1hr+ Holy Hip-Hop set</strong> with speaking and audience interaction. Promotes to local fanbase, brings merch, ready for mainland festival travel.</p>",
+  "Clean <strong>5–8 song Holy Hip-Hop set</strong> with speaking, audience interaction, and promoter-friendly timing. E Lion promotes the date to his audience and can bring merch.</p>",
+  "<div style=\"margin:0 0 18px;padding:14px 16px;border-left:3px solid #ffd700;background:#1c1c2a;border-radius:10px;color:#f3eaff;font-size:14px;line-height:1.6;\"><strong style=\"color:#ffd700;\">Booking package requested:</strong> paid performance fee plus round-trip Hawaii travel, hotel, and local ground transportation for a mainland date. Set list, tech needs, and a short call are available on request.</div>",
 
   "<p style=\"margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#ff6bcb;text-transform:uppercase;\">Celebrity proof · CD slider highlights</p>",
   "<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>",
   "<td class=\"epk-photo-cell\" width=\"33%\" style=\"padding:4px;text-align:center;\">",
-  "<a href=\"https://www.elionmusic.com/downloads/\"><img src=\"https://www.elionmusic.com/images/cdz/elion-cd-hustle-with-steve-harvey.webp\" width=\"170\" alt=\"E Lion with Steve Harvey\" style=\"max-width:100%;height:auto;border-radius:10px;border:2px solid rgba(255,215,0,0.3);\"></a></td>",
+  "<a href=\"https://www.elionmusic.com/downloads/festival-epk/\"><img src=\"https://www.elionmusic.com/images/cdz/elion-cd-hustle-with-steve-harvey.webp\" width=\"170\" alt=\"E Lion with Steve Harvey\" style=\"max-width:100%;height:auto;border-radius:10px;border:2px solid rgba(255,215,0,0.3);\"></a></td>",
   "<td class=\"epk-photo-cell\" width=\"33%\" style=\"padding:4px;text-align:center;\">",
-  "<a href=\"https://www.elionmusic.com/downloads/\"><img src=\"https://www.elionmusic.com/images/cdz/elion-cd-hustle-with-nick-cannon.webp\" width=\"170\" alt=\"E Lion with Nick Cannon\" style=\"max-width:100%;height:auto;border-radius:10px;border:2px solid rgba(255,215,0,0.3);\"></a></td>",
+  "<a href=\"https://www.elionmusic.com/downloads/festival-epk/\"><img src=\"https://www.elionmusic.com/images/cdz/elion-cd-hustle-with-nick-cannon.webp\" width=\"170\" alt=\"E Lion with Nick Cannon\" style=\"max-width:100%;height:auto;border-radius:10px;border:2px solid rgba(255,215,0,0.3);\"></a></td>",
   "<td class=\"epk-photo-cell\" width=\"33%\" style=\"padding:4px;text-align:center;\">",
-  "<a href=\"https://www.elionmusic.com/downloads/\"><img src=\"https://www.elionmusic.com/images/cdz/elion-cd-hustle-with-fabio.webp\" width=\"170\" alt=\"E Lion with Fabio\" style=\"max-width:100%;height:auto;border-radius:10px;border:2px solid rgba(255,215,0,0.3);\"></a></td>",
+  "<a href=\"https://www.elionmusic.com/downloads/festival-epk/\"><img src=\"https://www.elionmusic.com/images/cdz/elion-cd-hustle-with-fabio.webp\" width=\"170\" alt=\"E Lion with Fabio\" style=\"max-width:100%;height:auto;border-radius:10px;border:2px solid rgba(255,215,0,0.3);\"></a></td>",
   "</tr></table>",
 
   "<p style=\"margin:16px 0 10px;font-size:11px;font-weight:700;letter-spacing:0.15em;color:#ff6bcb;text-transform:uppercase;\">Links &amp; proof</p>",
   "<p style=\"margin:0 0 16px;font-size:14px;line-height:1.7;\">",
-  "<a href=\"https://www.elionmusic.com/downloads/\" style=\"color:#00d4ff;\">Full EPK</a> · ",
+  "<a href=\"https://www.elionmusic.com/downloads/festival-epk/\" style=\"color:#00d4ff;\">Festival EPK</a> · ",
+  "<a href=\"https://www.elionmusic.com/downloads/\" style=\"color:#00d4ff;\">Downloads</a> · ",
   "<a href=\"https://www.elionmusic.com/presskit/\" style=\"color:#00d4ff;\">Press Kit</a> · ",
   "<a href=\"https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize\" style=\"color:#00d4ff;\">Family Feud Grand Prize</a> · ",
   "<a href=\"https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq\" style=\"color:#00d4ff;\">Pandora</a> · ",
@@ -109,11 +111,11 @@ const MUSIC_HTML = [
   "<a href=\"https://www.elionmusic.com/rap/\" style=\"color:#00d4ff;\">Catalog</a> · ",
   "<a href=\"https://www.elionmusic.com/wiki/\" style=\"color:#00d4ff;\">Wiki</a></p>",
 
-  "<p style=\"margin:0 0 12px;\"><a class=\"epk-btn\" href=\"https://www.elionmusic.com/downloads/\" style=\"display:inline-block;background:linear-gradient(135deg,#ffd700,#c9a227);color:#1a1200;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;\">View Full EPK →</a></p>",
+  "<p style=\"margin:0 0 12px;\"><a class=\"epk-btn\" href=\"https://www.elionmusic.com/downloads/festival-epk/\" style=\"display:inline-block;background:linear-gradient(135deg,#ffd700,#c9a227);color:#1a1200;padding:14px 28px;text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;\">View Festival EPK →</a></p>",
   "<p style=\"margin:0 0 10px;\"><a class=\"epk-btn\" href=\"https://www.elionmusic.com/presskit/\" style=\"display:inline-block;background:rgba(255,107,203,0.2);color:#ff6bcb;border:2px solid #ff6bcb;padding:12px 24px;text-decoration:none;border-radius:999px;font-weight:700;font-size:14px;\">Press Kit &amp; Booking</a></p>",
 
   "<p style=\"margin:20px 0 0;font-size:14px;color:#c8b8ff;\">— E Lion<br>",
-  "<span style=\"font-size:12px;\">coralcrowntechnologies@gmail.com · (808) 393-0153</span></p>",
+  "<span style=\"font-size:12px;\">elionreigns@gmail.com · (808) 393-0153</span></p>",
   "</td></tr>",
 
   "<tr><td style=\"padding:14px;text-align:center;font-size:11px;color:#7a7090;border-top:1px dashed rgba(255,107,203,0.3);background:#0f0f18;\">",
@@ -130,8 +132,8 @@ const TEMPLATES: Record<CoralTaskKillerTemplateId, { subject: string; html: stri
     html: BUSINESS_HTML,
   },
   "coral-music": {
-    subject: "E Lion — festival booking (EPK, 30K Pandora listeners, Family Feud winner)",
-    text: `Hi {{Name}},\n\n{{Body}}\n\nStats: 30K+ Pandora monthly listeners · 500K+ streams · 115M+ Family Feud reach · 10M+ YouTube · 1,000+ live shows\n\nFull EPK: https://www.elionmusic.com/downloads/\nPress Kit: https://www.elionmusic.com/presskit/\nFamily Feud Grand Prize: https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize\nPandora: https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq\nYouTube: https://youtube.com/@elionreigns\nSpotify: https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA\nCatalog: https://www.elionmusic.com/rap/\nWiki: https://www.elionmusic.com/wiki/\n\n— E Lion\ncoralcrowntechnologies@gmail.com · (808) 393-0153\nhttps://www.elionmusic.com`,
+    subject: "E Lion — 2027 festival booking from Hawaii (paid set + travel package)",
+    text: `Hi {{Name}},\n\n{{Body}}\n\nBooking request: paid 5–8 song set, plus round-trip Hawaii travel, hotel, and local ground transportation for a mainland date.\n\nStats: 30K+ Pandora monthly listeners · 500K+ streams · 115M+ Family Feud reach · 10M+ YouTube · 1,000+ live shows\n\nFestival EPK: https://www.elionmusic.com/downloads/festival-epk/\nDownloads: https://www.elionmusic.com/downloads/\nPress Kit: https://www.elionmusic.com/presskit/\nFamily Feud Grand Prize: https://www.elionmusic.com/articles/hawaii-family-wins-grand-prize\nPandora: https://www.pandora.com/artist/e-lion/AR9vZJllkt3JmVq\nYouTube: https://youtube.com/@elionreigns\nSpotify: https://open.spotify.com/artist/2S3rAhbq65ECikmOW1k2EA\nCatalog: https://www.elionmusic.com/rap/\nWiki: https://www.elionmusic.com/wiki/\n\n— E Lion\nelionreigns@gmail.com · (808) 393-0153\nhttps://www.elionmusic.com`,
     html: MUSIC_HTML,
   },
 };
