@@ -7,9 +7,11 @@ import { upsertFollowUpState } from "@/lib/followups-store";
 
 // Use SMOOTHSALES_FROM once coralcrownsolutions.com is verified in Resend. For testing, use onboarding@resend.dev in Resend dashboard.
 const FROM_EMAIL = process.env.SMOOTHSALES_FROM?.trim() || "Coral Crown Solutions <onboarding@resend.dev>";
-// Replies (hit "Reply" on a campaign email) land here. Without this, replies go to whatever
-// mailbox the FROM address itself receives — which may not be actively monitored.
-const REPLY_TO_EMAIL = process.env.SMOOTHSALES_REPLY_TO?.trim() || "elionreigns@gmail.com";
+// Replies (hit "Reply" on a campaign email) land here. This MUST be an address Resend
+// itself receives (Resend → Emails → Receiving), so the email.received webhook fires and
+// forwards the reply to OPEN_ALERT_TO (elionreigns@gmail.com) in src/app/api/webhooks/resend/route.ts.
+// Pointing this straight at a Gmail address would mean Resend never sees the reply at all.
+const REPLY_TO_EMAIL = process.env.SMOOTHSALES_REPLY_TO?.trim() || "leads@taleiorkii.resend.app";
 
 type Recipient = { email: string; name?: string; nameOfPerson?: string; nameOfOrganization?: string };
 
