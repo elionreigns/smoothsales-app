@@ -16,7 +16,7 @@ function escBodyForEmail(plain) {
 }
 
 const DEFAULT_FESTIVAL_BODY =
-  "I'm reaching out to ask whether {{Name of Organization}} is accepting 2027 artists for a paid festival set. E Lion is a faith-rooted Holy Hip-Hop artist from Honolulu with a 2016 Family Feud grand-prize win, 1,000+ live performances, 10M+ YouTube views, and an interactive festival EPK. I can deliver a clean 5–8 song set with audience interaction and promote the date to my audience. For a mainland booking, I'm looking for a paid performance fee plus round-trip Hawaii travel, hotel, and local ground transportation covered by the promoter. If the fit is right, I'm glad to send a set list, tech needs, and a short call time.";
+  "I'm reaching out to ask whether your festival is accepting 2027 artists for a paid festival set. E Lion is a faith-rooted Holy Hip-Hop artist from Honolulu with a 2016 Family Feud grand-prize win, 1,000+ live performances, 10M+ YouTube views, and an interactive festival EPK. I can deliver a clean 5–8 song set with audience interaction and promote the date to my audience. For a mainland booking, I'm looking for a paid performance fee plus round-trip Hawaii travel, hotel, and local ground transportation covered by the promoter. If the fit is right, I'm glad to send a set list, tech needs, and a short call time.";
 
 function buildCoralMusicEmailHtml({ name = 'there', org = 'your festival', body } = {}) {
   const who = escHtml(name || 'there');

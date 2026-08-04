@@ -32,10 +32,10 @@ Press kit: https://www.elionmusic.com/presskit/
 | SOS Christian Apparel | https://soschristianapparel.com/contact-us/ | Submitted; confirmation said they will be in touch |
 | Revelation Apparel | https://revelationapparel.com/pages/collab | Official creator/affiliate page found; no submission because it routes to an account-based creator signup |
 | Faith Reign Wear | https://faithreignwear.com/ | Official site reviewed; no usable partnership form exposed on the live homepage, no submission |
-| Elevated Faith | https://elevatedfaith.com/pages/contact | Candidate; verify live contact path before sending |
-| C28 | https://c28.com/pages/contact-us | Candidate; verify live contact path before sending |
-| God Is Greater | https://godisgreater.com/pages/contact-us | Candidate; verify live contact path before sending |
-| Fearless With Faith | https://fearlesswithfaith.org/ | Official faith-streetwear site found; partnership form still needs live verification |
+| Elevated Faith | https://elevatedfaith.com/pages/contact-us | Submitted; confirmation said they received the message and will reply |
+| C28 | https://c28.com/pages/contact-us | Domain is protected/parked; no submission |
+| God Is Greater | https://godisgreater.com/pages/contact-us | Official route timed out; no submission |
+| Fearless With Faith | https://fearlesswithfaith.org/pages/contact | Form filled; visible hCaptcha remains for Eric |
 
 ## Music-gear targets (20)
 
@@ -57,9 +57,9 @@ Press kit: https://www.elionmusic.com/presskit/
 | PreSonus | https://www.presonus.com/en-US/support/contact.html | Current URL returned 404; no submission |
 | Arturia | https://support.arturia.com/hc/en-us/requests/new | Generic support form; no artist-relations route identified, no submission |
 | Native Instruments | https://support.native-instruments.com/hc/en-us/requests/new | Candidate generic support route; no submission |
-| Waves | https://www.waves.com/contact-us | Candidate; verify artist-relations route before sending |
-| Solid State Logic | https://www.solidstatelogic.com/contact | Candidate; verify artist-relations route before sending |
-| Mackie | https://mackie.com/contact | Candidate; verify artist-relations route before sending |
+| Waves | https://www.waves.com/contact-us | Artist Relations selected; submitted after human CAPTCHA; confirmation received |
+| Solid State Logic | https://www.solidstatelogic.com/contact | Official `/contact` returned 404; no submission |
+| Mackie | https://mackie.com/contact | Official `/contact` returned an error page; no submission |
 | Fender | Official artist-submission guidance | Artist package is email-only; no form submission |
 
 ## Human handoff tabs

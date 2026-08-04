@@ -65,10 +65,13 @@ export default function NewsletterTemplatePage({
   const bodyForTemplate =
     bodyParam.trim() ||
     (isCoralTaskKillerTemplateId(templateIdRaw) ? CORAL_COMPOSER_DEFAULT_BODY : "");
+  const personalizedBody = bodyForTemplate
+    .replaceAll("{{Name}}", name)
+    .replaceAll("{{Name of Organization}}", org);
   const substituted = substitutePlaceholders(htmlWithImages, t.text, {
     Name: name,
     "Name of Organization": org,
-    ...(bodyForTemplate ? { Body: bodyForTemplate } : {}),
+    ...(personalizedBody ? { Body: personalizedBody } : {}),
   });
 
   const teaser = getSmsTeaser(templateIdRaw);
